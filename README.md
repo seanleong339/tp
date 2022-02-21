@@ -11,6 +11,10 @@ ReCLIne is a desktop application for recruiters to track job applicant details a
 
 ReCLine aims to help job recruiters by keeping all relevant information they require in a centralized location. It provides useful features such as add, delete, sort and many more! 
 
+Uses:
+* Track job application process of multiple job potential candidates
+* Match candidates to companies based on certain attributes
+
 Features (For detailed features, see User Guide) :
 * Lists to track applicants, employers and jobs.
 * Search for applicants of a job
