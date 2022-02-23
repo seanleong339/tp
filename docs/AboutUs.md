@@ -9,6 +9,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+### Justin Ng
+
+<img src="images/justinnje.png" width="200px">
+
+[[github](https://github.com/Justinnje)]
+
+* Role: Developer - Job Feature
+* Responsibilities: Testing
+
 ### John Doe
 
 <img src="images/johndoe.png" width="200px">
