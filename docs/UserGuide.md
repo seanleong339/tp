@@ -3,14 +3,16 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+ReCLIne is a **desktop app to organize contacts for recruiters to track, optimized for use via a 
+Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). 
+If you can type fast, ReCLIne can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## Quick start 
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -64,7 +66,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 </div>
 
-### Viewing help : `help`
+### Viewing help : `help` [coming soon]
 
 Shows a message explaning how to access the help page.
 
@@ -72,28 +74,120 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
+### Listing all applicants : `list list applicant`
 
-### Adding a person: `add`
+Shows a list of all applicants in the address book.
 
-Adds a person to the address book.
+Format: `list list applicant`
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+### Listing all jobs : `list list job`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
-</div>
+Shows a list of all jobs in the address book.
+
+Format: `list list job`
+
+### Listing all employers : `list list employer`
+
+Shows a list of all employers in the address book.
+
+Format: `list list employer`
+
+### Adding an Applicant to the ApplicantList: `list add applicant`
+
+Adds an applicant to the applicant list in the address book.
+
+Format: `list add applicant n/[NAME] p/[PHONE] nric/[NRIC]
+            q/[QUALIFICATIONS] d/[DATE] i/[INTERVIEW DATE] j/[JOB ID]`
+
+Tip: Fill in fields in the stipulated order. Since all the fields are optional. 
+Just enter the flag of the attributes followed by the details you want to add.
+
+flag/[ATTRIBUTE]:
+
+`n/[NAME]`: Applicant name
+
+`p/[PHONE]`: Applicant phone number
+
+`nric/[NRIC]`: Applicant NRIC
+
+`q/[QUALIFICATION]`: Applicant highest qualification
+
+`i/[INTERVIEW DATE]`: Date of applicant's interview. `INTERVIEW DATE` should 
+be in the following format: yymmdd hhMM ie i/220328 1800
+
+`j/[JOB ID]`: Job ID applicant is applying for. `JOB ID` must be a positive integer 1,2,3,...
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `list add applicant n/Jaden Ho p/92812192 nric/S1234567A q/A Level i/220528 1900 j/4` 
+Adds an applicant with name-Jaden Ho, phone number-92812191, nric-S1234567A, highest qualification-A Level
+interview date-28 May 2022 at 7:00pm, Job ID-4 to the applicant list in the address book.
+* `list add applicant n/Cheryl Tan p/81728194` Adds an applicant with name-Cheryl Tan, phone number-81728194 to the
+applicant list in the address book.
 
-### Listing all persons : `list`
+### Adding a Job to the JobList: `list add job`
 
-Shows a list of all persons in the address book.
+Adds a job to the job list in the address book.
 
-Format: `list`
+Format: `list add job t/[TITLE] v/[VACANCY] e/[EMPLOYER ID] ed/[EDUCATION] s/[SALARY] 
+l/[LOCATION] sp/[SPECIALISATION] d/[DURATION] ti/[TIME]`
 
-### Editing a person : `edit`
+Tip: Fill in fields in the stipulated order. Since all the fields are optional.
+Just enter the flag of the attributes followed by the details you want to add.
+
+flag/[ATTRIBUTE]:
+
+`t/[TITLE]`: Job title
+
+`v/[VACANCY]`: Number of vacancies for the job. The `VACANCY` must be a positive integer 1,2,3,...
+
+`e/[EMPLOYER ID]`: Unique ID of the employer. `EMPLOYER ID` must be a positive integer 1,2,3,...
+
+`ed/[EDUCATION]` : Education requirement of job
+
+`s/[SALARY]` : Salary of job, based on how much the job pays per month. The `SALARY` must be a positive integer 1000,2000,3000,...
+
+`l/[LOCATION]` : Location of Job
+
+`sp/[SPECIALISATION]` : Field of specialisation of job
+
+`d/[DURATION]` : Duration of job in months. ie d/8
+
+`t/[TIME]` : time of interview. `TIME` should be in the following format: yymmdd hhMM. ie t/220329 1800
+
+Examples:
+* `list add job t/Software Engineer Intern v/5 e/1 ed/Undergraduate s/4000 
+l/Tiong Bahru sp/Software Engineer d/3 ti/220329 1800` Adds the job with name-Software Engineer Intern,
+number of vacancies-5, employer ID-1, education requirement-Undergraduate, salary-$4000 per month, location-
+Tiong Bahru, specialisation-Software Engineer, duration-3 months, time of interview-29 Mar 2022 at 6:00pm to the
+job list in the address book.
+* `list add job t/Admin Administrator v/4 e/2` Adds a job with name-Admin Administrator, number of vacancies-5,
+employer ID-2 to the job list in the address book.
+
+### Adding an Employer to the EmployerList: `list add employer`
+
+Adds an employer to the employer list in the address book.
+
+Format: `list add employer n/[NAME] c/[COMPANY] p/[PHONE]`
+
+flag/[ATTRIBUTE]:
+
+`n/[NAME]`: Employer name
+
+`c/[COMPANY]`: Employer company
+
+`p/[PHONE]`: Employer phone number
+
+Tip: Fill in fields in the stipulated order. Since all the fields are optional. 
+Just enter the flag of the attributes followed by the details you want to add.
+
+Examples:
+
+* `list add employer n/John Tan c/Mircrosoft p/92023951` Adds the employer with name-John Tan,
+company name-Microsoft, phone number-92023951 to the employer list in the address book.
+* `list add employer n/Rachel Solanda c/Facebook` Adds the employer with name-Rachel Solanda,
+company name-Facebook to the employer list in the address book.
+
+### Editing a person : `edit` [coming soon]
 
 Edits an existing person in the address book.
 
@@ -110,7 +204,7 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name: `find`
+### Locating persons by name: `find` [coming soon]
 
 Finds persons whose names contain any of the given keywords.
 
@@ -128,33 +222,55 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Deleting a person : `delete`
+### Deleting an Applicant : `list delete applicant`
 
-Deletes the specified person from the address book.
+Deletes the specified applicant from the applicant list in the address book.
 
-Format: `delete INDEX`
+Format: `list delete applicant [ID*]`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+`[ID*]`: Unique ID of the applicant. `ID` must be a positive integer 1,2,3,...
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list delete 4` Deletes an applicant with ID 4 from the applicant list in the address book.
+* `list delete 5` Deletes an applicant with ID 5 from the applicant list in the address book.
 
-### Clearing all entries : `clear`
+### Deleting a Job : `list delete job`
+
+Deletes the specified job from the job list in the address book.
+
+Format: `list delete job [ID*]`
+
+`[ID*]`: Unique ID of the job. `ID` must be a positive integer 1,2,3,...
+
+Examples:
+* `list delete job 4` Deletes a job with ID 4 from the job list in the address book.
+* `list delete job 5` Deletes a job with ID 5 from the job list in the address book.
+
+### Deleting an employer: `list delete employer`
+
+Deletes the specified employer from the employer list in the address book.
+
+Format: `list delete employer [ID*]`
+
+`[ID*]`: Unique ID of the employer. `ID` must be a positive integer 1,2,3,...
+
+Examples:
+* `list delete employer 4` Deletes an employer with ID 4 from the employer list in the address book.
+* `list delete employer 5` Deletes an employer with ID 5 from the employer list in the address book.
+
+### Clearing all entries : `clear` [coming soon]
 
 Clears all entries from the address book.
 
 Format: `clear`
 
-### Exiting the program : `exit`
+### Exiting the program : `exit` [coming soon]
 
 Exits the program.
 
 Format: `exit`
 
-### Saving the data
+### Saving the data 
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
@@ -179,7 +295,7 @@ _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## Command summary 
 
 Action | Format, Examples
 --------|------------------
