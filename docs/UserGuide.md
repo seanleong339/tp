@@ -258,6 +258,39 @@ Examples:
 * `list delete employer 4` Deletes an employer with ID 4 from the employer list in the address book.
 * `list delete employer 5` Deletes an employer with ID 5 from the employer list in the address book.
 
+### Deleting a Job attribute: `job delete`
+
+* Deletes attributes from the specified job id. Command should include at least 1 flag.
+
+Format: `job delete [ID] ed/ l/ s/ sp/ d/`
+
+`flag/[Attribute]`
+
+`[ID]` : Unique id for the job instance. The ID must be a positive integer 1, 2, 3,...
+
+`ed/`  : Flag to represent education attribute
+
+`l/` : Flag to represent location attribute
+
+`s/` : Flag to represent salary attribute
+
+`sp/` : Flag to represent specialisation attribute
+
+`d/` : Flag to represent duration attribute
+
+Examples:
+* `job delete 101 e/ s/ d/`
+Deletes the education history, salary and duration attribute from job with ID 101.
+
+* `job delete 132 sp/ ed/ l/` 
+Deletes the specialisation, education and location attribute from job with ID 132.
+
+
+
+Tip: Fill in fields in the stipulated order. Since all the fields are optional except [ID*]. Just enter the flag of the attributes you want to delete.
+
+
+
 ### Clearing all entries : `clear` [coming soon]
 
 Clears all entries from the address book.
