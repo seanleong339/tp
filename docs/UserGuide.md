@@ -3,8 +3,8 @@ layout: page
 title: User Guide
 ---
 
-ReCLIne is a **desktop app to organize contacts for recruiters to track, optimized for use via a 
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). 
+ReCLIne is a **desktop app to organize contacts for recruiters to track, optimized for use via a
+Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, ReCLIne can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
@@ -15,7 +15,7 @@ If you can type fast, ReCLIne can get your contact management tasks done faster 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick Start 
+## Quick Start
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -61,11 +61,11 @@ If you can type fast, ReCLIne can get your contact management tasks done faster 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of 
+* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of
   the parameter will be taken.<br>
   e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) 
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`)
   will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
@@ -92,21 +92,21 @@ Format: `job add [ID*] ed/[EDUCATION] l/[LOCATION] s/[SALARY] sp/[SPECIALISATION
 
 `l/[LOCATION]`: Location of the job
 
-`s/[SALARY]`:  Salary of job, based on how much the job pays a month. The SALARY must be a positive integer 
+`s/[SALARY]`:  Salary of job, based on how much the job pays a month. The SALARY must be a positive integer
 1000,2000,3000,...
 
 `sp/[SPECIALIZATION]`: Field of Specialisation required for the job
 
 `d/[DURATION]`: Duration of job in months. ie d/8 represents 8 months
 
-**Tip**: Fill in fields in the stipulated order. Since all the fields are optional except `[ID*]`. 
+**Tip**: Fill in fields in the stipulated order. Since all the fields are optional except `[ID*]`.
 Just enter the flag of the attributes you want to add, followed by the details related to that flag.
 
 Example:
 
 `job add 231 e/degree in computer science l/Tiong Bahru s/4000`
 
-* Add details to a Job ID 231, a Computer Science degree requirement, adds that location of the job 
+* Add details to a Job ID 231, a Computer Science degree requirement, adds that location of the job
   is at Tiong Bahru and salary of the Job is 4000 a month.
 
 `job add 432 sp/Machine Learning`
@@ -115,9 +115,9 @@ Example:
 
 `job add 32 l/OCBC s/5000 sp/Accountancy d/3`
 
-* Add details to Job ID 32, that location of job is at OCBC, salary is 5000 a month, looking for someone with 
+* Add details to Job ID 32, that location of job is at OCBC, salary is 5000 a month, looking for someone with
     specialisation in Accountancy and a contract of 3 years.
-    
+
 ### Deleting a Job attribute: `job delete`
 
 * Deletes attributes from the specified job id. Command should include at least 1 flag.
@@ -146,7 +146,7 @@ Examples:
 
 * Deletes the education history, salary and duration attribute from job with ID 101.
 
-`job delete 132 sp/ ed/ l/` 
+`job delete 132 sp/ ed/ l/`
 
 * Deletes the specialisation, education and location attribute from job with ID 132.
 
@@ -174,10 +174,10 @@ Tip: Fill in fields in the stipulated order. Since all the fields are optional e
 
 Examples:
 
-`applicant add 110 q/diploma d/220216 1800`  
+`applicant add 110 q/diploma d/220216 1800`
 - Adds a diploma attribute and date applied attribute to the applicant with ID 110.
 
-`applicant add 112 j/1 in/220226`  
+`applicant add 112 j/1 in/220226`
 - Adds a job id attribute and interview date attribute to the applicant with ID 112.
 
 ### Delete Applicant attribute: `applicant delete`
@@ -202,10 +202,10 @@ nric/: Flag to represent the NRIC number
 
 Example:
 
-`applicant delete 101 nric/` 
+`applicant delete 101 nric/`
 - Deletes NRIC attribute of the applicant with an ID 101.
 
-`applicant delete 102 nric/ qual/ i/` 
+`applicant delete 102 nric/ qual/ i/`
 - Deletes NRIC, qualification, date of the interview attribute of the applicant with an ID 102.
 
 `applicant delete 103 da/ j/ delete`
@@ -229,10 +229,10 @@ Format: `applicant mark [ID*] i/ st/[STATUS]`
 
 Example:
 
-`applicant mark 104 i/` 
+`applicant mark 104 i/`
 - Marks the applicant as interviewed
 
-`applicant mark 105 st/pending` 
+`applicant mark 105 st/pending`
 - Marks the status of application of the applicant with ID 105 as pending.
 
 `applicant delete 106 st/offered`
@@ -256,7 +256,7 @@ Example:
 
 `applicant unmark 107 i/`
 - Unmarks the applicant as interviewed.
-`applicant mark 108 st/` 
+`applicant mark 108 st/`
 - -Unmarks the status of application of the applicant with ID 108. The application status will no longer be either pending or offered.
 
 ### Listing all applicants : `list list applicant`
@@ -284,7 +284,7 @@ Adds an applicant to the applicant list in the address book.
 Format: `list add applicant n/[NAME] p/[PHONE] nric/[NRIC]
             q/[QUALIFICATIONS] d/[DATE] i/[INTERVIEW DATE] j/[JOB ID]`
 
-Tip: Fill in fields in the stipulated order. Since all the fields are optional. 
+Tip: Fill in fields in the stipulated order. Since all the fields are optional.
 Just enter the flag of the attributes followed by the details you want to add.
 
 *flag/[ATTRIBUTE]:*
@@ -297,19 +297,19 @@ Just enter the flag of the attributes followed by the details you want to add.
 
 `q/[QUALIFICATION]`: Applicant highest qualification
 
-`i/[INTERVIEW DATE]`: Date of applicant's interview. `INTERVIEW DATE` should 
+`i/[INTERVIEW DATE]`: Date of applicant's interview. `INTERVIEW DATE` should
 be in the following format: yymmdd hhMM ie i/220328 1800
 
 `j/[JOB ID]`: Job ID applicant is applying for. `JOB ID` must be a positive integer 1,2,3,...
 
 Examples:
 
-`list add applicant n/Jaden Ho p/92812192 nric/S1234567A q/A Level i/220528 1900 j/4` 
+`list add applicant n/Jaden Ho p/92812192 nric/S1234567A q/A Level i/220528 1900 j/4`
 
 * Adds an applicant with name-Jaden Ho, phone number-92812191, nric-S1234567A, highest qualification-A Level,
 interview date-28 May 2022 at 7:00pm, Job ID-4 to the applicant list in the address book.
 
-`list add applicant n/Cheryl Tan p/81728194` 
+`list add applicant n/Cheryl Tan p/81728194`
 
 * Adds an applicant with name-Cheryl Tan, phone number-81728194 to the
 applicant list in the address book.
@@ -318,7 +318,7 @@ applicant list in the address book.
 
 Adds a job to the job list in the address book.
 
-Format: `list add job t/[TITLE] v/[VACANCY] e/[EMPLOYER ID] ed/[EDUCATION] s/[SALARY] 
+Format: `list add job t/[TITLE] v/[VACANCY] e/[EMPLOYER ID] ed/[EDUCATION] s/[SALARY]
 l/[LOCATION] sp/[SPECIALISATION] d/[DURATION] ti/[TIME]`
 
 Tip: Fill in fields in the stipulated order. Since all the fields are optional.
@@ -345,15 +345,15 @@ Just enter the flag of the attributes followed by the details you want to add.
 `t/[TIME]` : time of interview. `TIME` should be in the following format: yymmdd hhMM. ie t/220329 1800
 
 Examples:
-`list add job t/Software Engineer Intern v/5 e/1 ed/Undergraduate s/4000 
-l/Tiong Bahru sp/Software Engineer d/3 ti/220329 1800` 
+`list add job t/Software Engineer Intern v/5 e/1 ed/Undergraduate s/4000
+l/Tiong Bahru sp/Software Engineer d/3 ti/220329 1800`
 
 * Adds the job with name-Software Engineer Intern,
 number of vacancies-5, employer ID-1, education requirement-Undergraduate, salary-$4000 per month, location-
 Tiong Bahru, specialisation-Software Engineer, duration-3 months, time of interview-29 Mar 2022 at 6:00pm to the
-job list in the address book.
-  
-`list add job t/Admin Administrator v/4 e/2` 
+job list in the address book
+
+`list add job t/Admin Administrator v/4 e/2`
 
 * Adds a job with name-Admin Administrator, number of vacancies-5, employer ID-2 to the job list in the address book.
 
@@ -371,21 +371,21 @@ Format: `list add employer n/[NAME] c/[COMPANY] p/[PHONE]`
 
 `p/[PHONE]`: Employer phone number
 
-Tip: Fill in fields in the stipulated order. Since all the fields are optional. 
+Tip: Fill in fields in the stipulated order. Since all the fields are optional.
 Just enter the flag of the attributes followed by the details you want to add.
 
 Examples:
 
-`list add employer n/John Tan c/Mircrosoft p/92023951` 
+`list add employer n/John Tan c/Mircrosoft p/92023951`
 
 * Adds the employer with name-John Tan,
 company name-Microsoft, phone number-92023951 to the employer list in the address book.
-  
-`list add employer n/Rachel Solanda c/Facebook` 
+
+`list add employer n/Rachel Solanda c/Facebook`
 
 * Adds the employer with name-Rachel Solanda,
 company name-Facebook to the employer list in the address book.
-  
+
 ### Deleting an Applicant : `list delete applicant`
 
 Deletes the specified applicant from the applicant list in the address book.
@@ -396,11 +396,11 @@ Format: `list delete applicant [ID*]`
 
 Examples:
 
-`list delete 4` 
+`list delete 4`
 
 * Deletes an applicant with ID 4 from the applicant list in the address book.
 
-`list delete 5` 
+`list delete 5`
 
 * Deletes an applicant with ID 5 from the applicant list in the address book.
 
@@ -414,11 +414,11 @@ Format: `list delete job [ID*]`
 
 Examples:
 
-`list delete job 4` 
+`list delete job 4`
 
 * Deletes a job with ID 4 from the job list in the address book.
 
-`list delete job 5` 
+`list delete job 5`
 
 * Deletes a job with ID 5 from the job list in the address book.
 
@@ -432,12 +432,12 @@ Format: `list delete employer [ID*]`
 
 Examples:
 
-`list delete employer 4` 
+`list delete employer 4`
 
 * Deletes an employer with ID 4 from the employer list in the address book.
 
-`list delete employer 5` 
-  
+`list delete employer 5`
+
 * Deletes an employer with ID 5 from the employer list in the address book.
 
 ### Saving the data
@@ -512,7 +512,7 @@ _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary 
+## Command summary
 
 Action | Format, Examples
 --------|------------------
