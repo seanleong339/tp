@@ -22,16 +22,16 @@ Given below are my contributions to the project.
 
 * **Documentation**:
     * User Guide:
-        * Added documentation for the features `job add` 
+        * Added documentation for the features `job add`
     * Developer Guide:
-        * 
+        *
 
 * **Community**:
-    * PRs reviewed (with non-trivial review comments): 
+    * PRs reviewed (with non-trivial review comments):
       [\#7](https://github.com/AY2122S2-CS2103T-W15-1/tp/commit/35c48e3f37f12d2a8442cfeafb4d625ffbaa2651)
       [\#25](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/25)
 
 * **Tools**:
-    * 
+    *
 
 * _{you can add/remove categories in the list above}_
