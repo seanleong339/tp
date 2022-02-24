@@ -124,7 +124,7 @@ Example:
 
 Format: `job delete [ID] ed/ l/ s/ sp/ d/`
 
-`flag/[Attribute]`
+*flag/[Attribute]*
 
 `[ID]` : Unique id for the job instance. The ID must be a positive integer 1, 2, 3,...
 
@@ -150,7 +150,114 @@ Examples:
 
 * Deletes the specialisation, education and location attribute from job with ID 132.
 
+###Adding Applicant attribute: `applicant add`
 
+Adds attributes to a specified applicant.
+
+Format: `applicant add [ID*] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEW] nric/[NRIC]`
+
+Tip: Fill in fields in the stipulated order. Since all the fields are optional except `[ID*]`. Just enter the flag of the attributes you want to add, followed by the details related to that flag.
+
+*flag/[ATTRIBUTE]*
+
+`[ID*]` : Id of the applicant
+
+`q/[QUALIFICATION]` : Applicant’s qualification
+
+`d/[DATE APPLIED]` : Date Applicant applied for job. Format: yymmdd
+
+`j/[JOB ID]` : Unique ID of the job Applicant is applying for
+
+`i/[INTERVIEW]` : Applicant’s upcoming job interview date. Format: yymmdd hhMM
+
+`nric/[NRIC]`: Flag to represent the NRIC number
+
+Examples:
+
+`applicant add 110 q/diploma d/220216 1800`  
+- Adds a diploma attribute and date applied attribute to the applicant with ID 110.
+
+`applicant add 112 j/1 in/220226`  
+- Adds a job id attribute and interview date attribute to the applicant with ID 112.
+
+### Delete Applicant attribute: `applicant delete`
+
+Delete attributes of an applicant corresponding to the flags.
+
+**Fields:** ID, Name, Contact Number, Qualification, Date applied, Job ID, upcoming interview
+
+Format: `applicant delete [ID*] qual/ d/ j/ i/ nric/`
+
+**Tip:** Fill in fields in the stipulated order. Since all the fields are optional except `[ID*]`. Just enter the flag of the attributes you want to delete.
+
+`[ID*]`: Unique ID of the applicant. The ID must be a positive integer 1, 2, 3,...
+
+*flag/*
+
+`q/`: Flag to represent the qualification
+`d/`: Flag to represent the date the applicant applied for a job
+`j/`: Flag to represent the job id
+`i/`: Flag to represent the date of an upcoming interview
+nric/: Flag to represent the NRIC number
+
+Example:
+
+`applicant delete 101 nric/` 
+- Deletes NRIC attribute of the applicant with an ID 101.
+
+`applicant delete 102 nric/ qual/ i/` 
+- Deletes NRIC, qualification, date of the interview attribute of the applicant with an ID 102.
+
+`applicant delete 103 da/ j/ delete`
+- The date the applicant applied for a job, and job attribute of the applicant with an ID 103.
+
+
+### Mark an Applicant: `applicant mark`
+
+Mark interview and application status of the applicant.
+
+**Fields:** ID, interview status, application status
+
+Format: `applicant mark [ID*] i/ st/[STATUS]`
+
+*flag/[Attribute]*
+
+`i/`: Flag to represent interview status of the applicant
+`st/[STATUS]`: Flag to mark the application status of the applicant. [STATUS] must be either pending, offered
+
+**Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
+
+Example:
+
+`applicant mark 104 i/` 
+- Marks the applicant as interviewed
+
+`applicant mark 105 st/pending` 
+- Marks the status of application of the applicant with ID 105 as pending.
+
+`applicant delete 106 st/offered`
+- Marks the status of application of the applicant with ID 106 as offered.
+
+###Unmark an Applicant: `applicant unmark`
+Unmark the interview and application status of the applicant.
+
+**Fields:** ID, interview status, application status
+
+Format: `applicant unmark [ID*] i/ st/`
+
+*flag/*
+
+`i/`: Flag to represent interview status of the applicant
+`st/`: Flag to represent the application status of the applicant
+
+**Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
+
+Example:
+
+`applicant unmark 107 i/`
+- Unmarks the applicant as interviewed.
+`applicant mark 108 st/` 
+- -Unmarks the status of application of the applicant with ID 108. The application status will no longer be either pending or offered.
 
 ### Listing all applicants : `list list applicant`
 
