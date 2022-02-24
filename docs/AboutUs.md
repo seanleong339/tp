@@ -18,15 +18,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer - Job Feature
 * Responsibilities: Testing
 
-### John Doe
+### Rosa Kang
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/ro4k9.jpg" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/ro4k9)]
 
-* Role: Project Advisor
+* Role: Developer - Employer Feature
+* Responsibilities: Documentation
 
 ### Jane Doe
 

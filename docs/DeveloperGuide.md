@@ -256,12 +256,11 @@ _{Explain here how the data archiving feature will be implemented}_
 ### Product scope
 
 **Target user profile**:
-
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* Job recruiters who have to sieve through numerous CVs a day and contact multiple people for different job applications
+* Prefer desktop apps over other types
+* Can type fast
+* Prefers typing to mouse interactions
+* Is reasonably comfortable using CLI apps
 
 **Value proposition**: manage contacts faster than a typical mouse/GUI driven app
 
@@ -284,6 +283,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Use cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+
+**Use case: Mark an applicant as interviewed**
+
+**MSS**
+
+1. User requests to mark a specific applicant as interviewed given their ID and /i flag.
+2. AddressBook marks the person as interviewed.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. ID  is not given
+
+    * 1a1. reCLIne shows an error message.
+
+      Use case ends.
+
+* 1b. The given ID is invalid.
+
+    * 1b1. reCLIne shows an error message.
+
+      Use case ends.
+
+*{More to be added}*
 
 **Use case: Delete a person**
 
