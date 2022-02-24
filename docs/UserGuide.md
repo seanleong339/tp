@@ -117,6 +117,40 @@ Example:
 
 * Add details to Job ID 32, that location of job is at OCBC, salary is 5000 a month, looking for someone with 
     specialisation in Accountancy and a contract of 3 years.
+    
+### Deleting a Job attribute: `job delete`
+
+* Deletes attributes from the specified job id. Command should include at least 1 flag.
+
+Format: `job delete [ID] ed/ l/ s/ sp/ d/`
+
+`flag/[Attribute]`
+
+`[ID]` : Unique id for the job instance. The ID must be a positive integer 1, 2, 3,...
+
+`ed/`  : Flag to represent education attribute
+
+`l/` : Flag to represent location attribute
+
+`s/` : Flag to represent salary attribute
+
+`sp/` : Flag to represent specialisation attribute
+
+`d/` : Flag to represent duration attribute
+
+**Tip**: Fill in fields in the stipulated order. Since all the fields are optional except `[ID*]`. Just enter the flag of the attributes you want to delete.
+
+Examples:
+
+`job delete 101 e/ s/ d/`
+
+* Deletes the education history, salary and duration attribute from job with ID 101.
+
+`job delete 132 sp/ ed/ l/` 
+
+* Deletes the specialisation, education and location attribute from job with ID 132.
+
+
 
 ### Listing all applicants : `list list applicant`
 
