@@ -271,12 +271,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* * *`  | new recruiter                              | see usage instructions         | refer to instructions when I forget how to use the App                 |
+|  `* * *` | recruiter                                  | add a Job that the Applicant is applying for | know the Job he is applying for            |
+|  `* * *` | recruiter                                  | add the Employer's contact details | keep track of the employer’s contact details. |
+|  `* * *` | recruiter                                  | add the date of Applicants upcoming interview| know when to contact the Applicant |
+|  `* * *` | recruiter                                  | add the qualification requirement that an Employer is looking for | know what type of Applicants the Employer is looking for|
+|  `* * *` | recruiter                                  | add a education requirement for a Job posting |know what education level is required for this Job |
+|  `* * *` | recruiter                                  | add a skill requirement to a Job posting  | know what skill is required for this Job|
+|  `* * *` | recruiter                                  | add a duration for the Job posting| match applicants with compatible availabilities to the Job posting|
+|  `* * *` | recruiter                                  | add a location for the Job posting| match applicants with compatible locations to the Job posting |
+|  `* * *` | recruiter                                  | edit Employer’s details| keep the details up to date|
+|  `* * *` | recruiter                                  | edit a Applicant’s details after an interview|keep the contact details updated during the recruitment process |
+|  `* * *` | recruiter                                  | edit a field of an Applicant | make sure that all Applicant's details are up to date|
+|  `* * *` | recruiter                                  | edit the date of the Interview| keep an updated records of Interview date/time |
+|  `* * *` | recruiter                                  | mark a contact as accepted for a Job posting| keep track of who is accepted for a Job posting|
+|  `* * *` | recruiter                                  | mark a contact as pending for a Job posting| keep track of Applicants who are pending|
+|  `* * *` | recruiter                                  | mark whether an Applicant has been interviewed |  make sure not to contact him twice |
+|  `* * *` | recruiter                                  | list out all Job postings in my database| view all Job postings and also |
+|  `* * *` | recruiter                                  | list out all Applicants in my database| view all Applicants in the database |
+|  `* * *` | recruiter                                  | view the number of Applicants that a Job has| decide whether to contact more Applicants|
+|  `* * *` | recruiter                                  | delete an Applicant contact|keep the database neat |
+|  `* * *` | recruiter                                  | create a new Job posting | find suitable Applicants for a Job opening |
+|  `* * *` | recruiter                                  | record down that replies from the interviewee during the interview| have a centralized location for all interviewees’ answers |
+|  `* * *` | recruiter                                  | save the questions that need to be asked during the interview| ask important questions during the interview|
+|  `* * *` | recruiter                                  | know if the job opening a contact applied for has been filled| know to whether to submit his Portfolio for other Jobs|
+
 
 *{More to be added}*
 
