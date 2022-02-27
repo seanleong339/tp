@@ -301,8 +301,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
-
 **Use case: Mark an Applicant as interviewed**
 
 Precondition: Recruiter knows the applicant contact ID
@@ -319,14 +317,16 @@ Precondition: Recruiter knows the applicant contact ID
 * 1a. ID is not given
 
     * 1a1. ReCLIne shows an error message.
-
-      Use case ends.
+    * 1a2. Recruiter enters the command with a valid ID
+      
+       Use case resumes from step 2.
 
 * 1b. The given ID is invalid.
 
     * 1b1. ReCLIne shows an error message.
+    * 1b2. Recruiter enters the command with another ID
 
-      Use case ends.
+      Steps 1b1 and 1b2 repeats until Recruiter enters a valid Id. Use case resumes from step 2.
 
 *{More to be added}*
 
@@ -340,18 +340,14 @@ Guarantees:
 **MSS**
 
 1.  Recruiter indicates that he wants to delete a contact.
-2.  ReCLine requests for confirmation if the contact found is correct.
-3.  Recruiter confirms contact.
-4.  ReCLine requests for confirmation of deletion.
-5.  Recruiter confirms deletion.
-6.  ReCLine deletes indicated contact from database. 
+6.  ReCLine deletes indicated contact from database and shows a success message. 
     
     Use case ends
 
 **Extensions**
 
 * 2a.  Indicated contact is not found on the database.
-  * 2a1. ReCLine requests for the correct contact.
+  * 2a1. ReCLine shows an error message.
   * 2a2. Recruiter enters new data.
   
 
@@ -426,14 +422,16 @@ Precondition: Recruiter knows the applicant contact ID
     * 1a1. ReCLIne shows an error message saying that Id is invalid.
     * 1a2. Recruiter enters new edit command with correct Id.
 
-      Use case resumes from step 2.
+      Steps 1a1-1a2 are repeated until recruiter enters
+      valid Id. Use case resumes from step 2.
 
 * 1b. Recruiter enters the wrong flag.
 
     * 1b1. ReCLIne shows an error message saying that argument is invalid.
     * 1b2. Recruiter enters new edit command with correct flag.
 
-      Use case resumes from step 2.
+      Steps 1b1-1b2 are repeated until recruiter enters
+      correct flag. Use case resumes from step 2.
 
 *{More to be added}*
 
