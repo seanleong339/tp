@@ -301,6 +301,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
+
 **Use case: Mark an Applicant as interviewed**
 
 Precondition: Recruiter knows the applicant contact ID
@@ -330,6 +331,8 @@ Precondition: Recruiter knows the applicant contact ID
 
 *{More to be added}*
 
+
+
 **Use case: Delete an Applicant Contact**
 
 Precondition: Recruiter knows the applicant contact ID
@@ -347,9 +350,8 @@ Guarantees:
 **Extensions**
 
 * 2a.  Indicated contact is not found on the database.
-  * 2a1. ReCLine shows an error message.
-  * 2a2. Recruiter enters new data.
-  
+    * 2a1. ReCLine shows an error message.
+    * 2a2. Recruiter enters new data.
 
 Steps 2a1 – 2a2 are repeated until the contact inputted exists in the database.
 Use case resumes at step 3.
@@ -375,32 +377,35 @@ Use case resumes at step 3.
 **Extensions**
 
 * 1a. Recruiter enters wrong command.
-  * 1a1. ReCLIne responds saying that command is
-invalid.
-  * 1a2. Recruiter enters new command.
+    * 1a1. ReCLIne responds saying that command is
+      invalid.
+    * 1a2. Recruiter enters new command.
+
 
 Steps 1a1-1a2 are repeated until recruiter enters
 correct command.
 
 Use case resumes from step 2.
-    
+
+
 * 1b. Recruiter enters wrong format for mark command.
-  * 1b1. ReCLIne responds with the correct format for
-         mark command.
-  * 1b2. Recruiter enters new command.
-         
+    * 1b1. ReCLIne responds with the correct format for
+      mark command.
+    * 1b2. Recruiter enters new command.
+
 Steps 1b1-1b2 are repeated until recruiter enters
 correct format.
 Use case resumes from step 2.
 
 * 1c. Recruiter inputs an applicant that is not found in the
-address book.
-  * 1c1. ReCLIne responds with invalid applicant.
-  * 1c2. Recruiter enters new command.
-Steps 1c1-1c2 are repeated until recruiter enters
-valid applicant.
+  address book.
+    * 1c1. ReCLIne responds with invalid applicant.
+    * 1c2. Recruiter enters new command.
+      Steps 1c1-1c2 are repeated until recruiter enters
+      valid applicant.
 
-    Use case resumes from step 2.
+      Use case resumes from step 2.
+
 
 *{More to be added}*
 
@@ -432,6 +437,35 @@ Precondition: Recruiter knows the applicant contact ID
 
       Steps 1b1-1b2 are repeated until recruiter enters
       correct flag. Use case resumes from step 2.
+
+*{More to be added}*
+
+Use case: List out all job postings in my database
+
+Precondition: Recruiter has previously added job postings
+
+MSS
+
+1. Recruiter enters command to list all job postings.
+2. ReCLIne gives confirmation and displays all job posting.
+
+   Use case ends.
+
+Extensions
+
+* 1a. There are no job postings in the database
+
+    * 1a1. ReCLIne shows message that stating that there are no job postings yet
+    * 1a2. Recruiter adds job posting (if applicable, otherwise stop attempting to list)
+
+      Steps 1a1-1a2 are repeated until recruiter adds a job posting. Use case resumes from step 2.
+
+* 1b. Recruiter enters unnecessary/invalid argument
+
+    * 1b1. ReCLIne shows an error message saying that argument is invalid.
+    * 1b2. Recruiter enters new list command without argument.
+
+      Steps 1b1-1b2 are repeated until recruiter removes invalid argument. Use case resumes from step 2.
 
 *{More to be added}*
 
