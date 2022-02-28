@@ -301,30 +301,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-**Use case: Mark an applicant as interviewed**
-
-**MSS**
-
-1. User requests to mark a specific applicant as interviewed given their ID and /i flag.
-2. AddressBook marks the person as interviewed.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. ID  is not given
-
-    * 1a1. reCLIne shows an error message.
-
-      Use case ends.
-
-* 1b. The given ID is invalid.
-
-    * 1b1. reCLIne shows an error message.
-
-      Use case ends.
-
-*{More to be added}*
 
 **Use case: Mark an Applicant as interviewed**
 
@@ -335,7 +311,7 @@ Precondition: Recruiter knows the applicant contact ID
 1. Recruiter requests to mark a specific Applicant as interviewed given their ID and /i flag.
 2. ReCLIne marks the person as interviewed.
 
-   Use case ends.
+    Use case ends.
 
 **Extensions**
 
@@ -343,8 +319,8 @@ Precondition: Recruiter knows the applicant contact ID
 
     * 1a1. ReCLIne shows an error message.
     * 1a2. Recruiter enters the command with a valid ID
-
-      Use case resumes from step 2.
+      
+       Use case resumes from step 2.
 
 * 1b. The given ID is invalid.
 
@@ -354,6 +330,8 @@ Precondition: Recruiter knows the applicant contact ID
       Steps 1b1 and 1b2 repeats until Recruiter enters a valid Id. Use case resumes from step 2.
 
 *{More to be added}*
+
+
 
 **Use case: Delete an Applicant Contact**
 
@@ -365,8 +343,8 @@ Guarantees:
 **MSS**
 
 1.  Recruiter indicates that he wants to delete a contact.
-6.  ReCLine deletes indicated contact from database and shows a success message.
-
+6.  ReCLine deletes indicated contact from database and shows a success message. 
+    
     Use case ends
 
 **Extensions**
@@ -374,7 +352,6 @@ Guarantees:
 * 2a.  Indicated contact is not found on the database.
     * 2a1. ReCLine shows an error message.
     * 2a2. Recruiter enters new data.
-
 
 Steps 2a1 – 2a2 are repeated until the contact inputted exists in the database.
 Use case resumes at step 3.
@@ -404,10 +381,12 @@ Use case resumes at step 3.
       invalid.
     * 1a2. Recruiter enters new command.
 
+
 Steps 1a1-1a2 are repeated until recruiter enters
 correct command.
 
 Use case resumes from step 2.
+
 
 * 1b. Recruiter enters wrong format for mark command.
     * 1b1. ReCLIne responds with the correct format for
@@ -426,6 +405,7 @@ Use case resumes from step 2.
       valid applicant.
 
       Use case resumes from step 2.
+
 
 *{More to be added}*
 
@@ -488,6 +468,7 @@ Extensions
       Steps 1b1-1b2 are repeated until recruiter removes invalid argument. Use case resumes from step 2.
 
 *{More to be added}*
+
 
 ### Non-Functional Requirements
 
