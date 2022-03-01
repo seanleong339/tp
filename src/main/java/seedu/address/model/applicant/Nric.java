@@ -5,14 +5,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's Nric in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidNric(String)}
  */
 public class Nric {
 
     public static final String MESSAGE_CONSTRAINTS = "Nric can take any values, and it should not be blank";
 
     /*
-     * The first character of the address must not be a whitespace,
+     * The first character of the Nric must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
@@ -20,9 +19,9 @@ public class Nric {
     public final String value;
 
     /**
-     * Constructs an {@code Nric}.
+     * Constructs a Nric object.
      *
-     * @param nric A valid Nric
+     * @param nric A valid Nric string
      */
     public Nric(String nric) {
         requireNonNull(nric);
@@ -31,7 +30,7 @@ public class Nric {
     }
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if the input string is a valid Nric.
      */
     public static boolean isValidNric(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -45,8 +44,8 @@ public class Nric {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof seedu.address.model.applicant.Nric // instanceof handles nulls
-                && value.equals(((seedu.address.model.applicant.Nric) other).value)); // state check
+                || (other instanceof seedu.address.model.applicant.Nric
+                && value.equals(((seedu.address.model.applicant.Nric) other).value));
     }
 
     @Override
