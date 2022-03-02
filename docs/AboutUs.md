@@ -27,15 +27,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer - Employer Feature
 * Responsibilities: Documentation
 
-### Jane Doe
+### Sean Leong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/seanleong339.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/seanleong339)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer - Applicant Feature
+* Responsibilities: Code Quality
 
 ### Johnny Doe
 

@@ -271,68 +271,204 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* * *`  | new recruiter                              | see usage instructions         | refer to instructions when I forget how to use the App                 |
+|  `* * *` | recruiter                                  | add a Job that the Applicant is applying for | know the Job he is applying for            |
+|  `* * *` | recruiter                                  | add the Employer's contact details | keep track of the employer’s contact details. |
+|  `* * *` | recruiter                                  | add the date of Applicants upcoming interview| know when to contact the Applicant |
+|  `* * *` | recruiter                                  | add the qualification requirement that an Employer is looking for | know what type of Applicants the Employer is looking for|
+|  `* * *` | recruiter                                  | add a education requirement for a Job posting |know what education level is required for this Job |
+|  `* * *` | recruiter                                  | add a skill requirement to a Job posting  | know what skill is required for this Job|
+|  `* * *` | recruiter                                  | add a duration for the Job posting| match applicants with compatible availabilities to the Job posting|
+|  `* * *` | recruiter                                  | add a location for the Job posting| match applicants with compatible locations to the Job posting |
+|  `* * *` | recruiter                                  | edit Employer’s details| keep the details up to date|
+|  `* * *` | recruiter                                  | edit a Applicant’s details after an interview|keep the contact details updated during the recruitment process |
+|  `* * *` | recruiter                                  | edit a field of an Applicant | make sure that all Applicant's details are up to date|
+|  `* * *` | recruiter                                  | edit the date of the Interview| keep an updated records of Interview date/time |
+|  `* * *` | recruiter                                  | mark a contact as accepted for a Job posting| keep track of who is accepted for a Job posting|
+|  `* * *` | recruiter                                  | mark a contact as pending for a Job posting| keep track of Applicants who are pending|
+|  `* * *` | recruiter                                  | mark whether an Applicant has been interviewed |  make sure not to contact him twice |
+|  `* * *` | recruiter                                  | list out all Job postings in my database| view all Job postings and also |
+|  `* * *` | recruiter                                  | list out all Applicants in my database| view all Applicants in the database |
+|  `* * *` | recruiter                                  | view the number of Applicants that a Job has| decide whether to contact more Applicants|
+|  `* * *` | recruiter                                  | delete an Applicant contact|keep the database neat |
+|  `* * *` | recruiter                                  | create a new Job posting | find suitable Applicants for a Job opening |
+|  `* * *` | recruiter                                  | record down that replies from the interviewee during the interview| have a centralized location for all interviewees’ answers |
+|  `* * *` | recruiter                                  | save the questions that need to be asked during the interview| ask important questions during the interview|
+|  `* * *` | recruiter                                  | know if the job opening a contact applied for has been filled| know to whether to submit his Portfolio for other Jobs|
+
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Mark an applicant as interviewed**
+**Use case: Mark an Applicant as interviewed**
+
+Precondition: Recruiter knows the applicant contact ID
 
 **MSS**
 
-1. User requests to mark a specific applicant as interviewed given their ID and /i flag.
-2. AddressBook marks the person as interviewed.
+1. Recruiter requests to mark a specific Applicant as interviewed given their ID and /i flag.
+2. ReCLIne marks the person as interviewed.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. ID  is not given
+* 1a. ID is not given
 
-    * 1a1. reCLIne shows an error message.
-
-      Use case ends.
+    * 1a1. ReCLIne shows an error message.
+    * 1a2. Recruiter enters the command with a valid ID
+      
+       Use case resumes from step 2.
 
 * 1b. The given ID is invalid.
 
-    * 1b1. reCLIne shows an error message.
+    * 1b1. ReCLIne shows an error message.
+    * 1b2. Recruiter enters the command with another ID
 
-      Use case ends.
+      Steps 1b1 and 1b2 repeats until Recruiter enters a valid Id. Use case resumes from step 2.
 
 *{More to be added}*
 
-**Use case: Delete a person**
+
+
+**Use case: Delete an Applicant Contact**
+
+Precondition: Recruiter knows the applicant contact ID
+
+Guarantees:
+-  ReCLine will only delete a contact if the contact exists.
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
-    Use case ends.
+1.  Recruiter indicates that he wants to delete a contact.
+6.  ReCLine deletes indicated contact from database and shows a success message. 
+    
+    Use case ends
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a.  Indicated contact is not found on the database.
+    * 2a1. ReCLine shows an error message.
+    * 2a2. Recruiter enters new data.
 
-  Use case ends.
+Steps 2a1 – 2a2 are repeated until the contact inputted exists in the database.
+Use case resumes at step 3.
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. ReCLIne shows an error message.
 
       Use case resumes at step 2.
 
 *{More to be added}*
+
+**Use case: Mark an Applicant job application status as pending.**
+
+**MSS**
+
+1. Recruiter enters command to mark an applicant job application status as pending.
+2. ReCLIne gives confirmation and mark status as pending.
+3. ReCLIne displays the updated applicant list.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Recruiter enters wrong command.
+    * 1a1. ReCLIne responds saying that command is
+      invalid.
+    * 1a2. Recruiter enters new command.
+
+
+Steps 1a1-1a2 are repeated until recruiter enters
+correct command.
+
+Use case resumes from step 2.
+
+
+* 1b. Recruiter enters wrong format for mark command.
+    * 1b1. ReCLIne responds with the correct format for
+      mark command.
+    * 1b2. Recruiter enters new command.
+
+Steps 1b1-1b2 are repeated until recruiter enters
+correct format.
+Use case resumes from step 2.
+
+* 1c. Recruiter inputs an applicant that is not found in the
+  address book.
+    * 1c1. ReCLIne responds with invalid applicant.
+    * 1c2. Recruiter enters new command.
+      Steps 1c1-1c2 are repeated until recruiter enters
+      valid applicant.
+
+      Use case resumes from step 2.
+
+
+*{More to be added}*
+
+**Use case: Edit the date of an Applicant upcoming job interview**
+
+Precondition: Recruiter knows the applicant contact ID
+
+**MSS**
+
+1. Recruiter enters command to edit date of interview of an Applicant.
+2. ReCLIne gives confirmation and displays new Applicant attributes.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Recruiter inputs an invalid Id
+
+    * 1a1. ReCLIne shows an error message saying that Id is invalid.
+    * 1a2. Recruiter enters new edit command with correct Id.
+
+      Steps 1a1-1a2 are repeated until recruiter enters
+      valid Id. Use case resumes from step 2.
+
+* 1b. Recruiter enters the wrong flag.
+
+    * 1b1. ReCLIne shows an error message saying that argument is invalid.
+    * 1b2. Recruiter enters new edit command with correct flag.
+
+      Steps 1b1-1b2 are repeated until recruiter enters
+      correct flag. Use case resumes from step 2.
+
+*{More to be added}*
+
+Use case: List out all job postings in my database
+
+Precondition: Recruiter has previously added job postings
+
+MSS
+
+1. Recruiter enters command to list all job postings.
+2. ReCLIne gives confirmation and displays all job posting.
+
+   Use case ends.
+
+Extensions
+
+* 1a. There are no job postings in the database
+
+    * 1a1. ReCLIne shows message that stating that there are no job postings yet
+    * 1a2. Recruiter adds job posting (if applicable, otherwise stop attempting to list)
+
+      Steps 1a1-1a2 are repeated until recruiter adds a job posting. Use case resumes from step 2.
+
+* 1b. Recruiter enters unnecessary/invalid argument
+
+    * 1b1. ReCLIne shows an error message saying that argument is invalid.
+    * 1b2. Recruiter enters new list command without argument.
+
+      Steps 1b1-1b2 are repeated until recruiter removes invalid argument. Use case resumes from step 2.
+
+*{More to be added}*
+
 
 ### Non-Functional Requirements
 
