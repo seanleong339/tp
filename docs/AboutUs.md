@@ -57,7 +57,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Paing Oo
 
 <img src="images/e0543517.png" width="200px">
 
