@@ -45,15 +45,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Chan Yi Juan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/chanyijuan.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/chanyijuan)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Developer - List Features
+* Responsibilities: Deliverables and deadlines.
 
 ### Paing Oo
 
