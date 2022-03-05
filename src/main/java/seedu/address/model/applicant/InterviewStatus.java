@@ -21,7 +21,7 @@ public class InterviewStatus {
 
     @Override
     public String toString() {
-        return (isInterviewed? "true" :"false");
+        return isInterviewed.toString();
     }
 
     @Override
