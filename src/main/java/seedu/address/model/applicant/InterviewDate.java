@@ -33,7 +33,7 @@ public class InterviewDate {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid date.
      */
     public static boolean isValidInterviewDate(String test) {
         return test.matches(VALIDATION_REGEX);

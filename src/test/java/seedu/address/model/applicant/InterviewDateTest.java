@@ -20,10 +20,10 @@ public class InterviewDateTest {
 
     @Test
     public void isValidInterviewDate() {
-        // null email
+        // null date
         assertThrows(NullPointerException.class, () -> InterviewDate.isValidInterviewDate(null));
 
-        // blank email
+        // blank date
         assertFalse(InterviewDate.isValidInterviewDate("")); // empty string
         assertFalse(InterviewDate.isValidInterviewDate(" ")); // spaces only
 
