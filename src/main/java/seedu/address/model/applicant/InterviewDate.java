@@ -44,8 +44,8 @@ public class InterviewDate {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof InterviewDate // instanceof handles nulls
-                && date.equals(((InterviewDate) other).date)); // state check
+                || (other instanceof seedu.address.model.applicant.InterviewDate // instanceof handles nulls
+                && date.equals(((seedu.address.model.applicant.InterviewDate) other).date)); // state check
     }
 
     @Override
