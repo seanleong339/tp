@@ -24,7 +24,7 @@ public class InterviewDate {
      */
     public InterviewDate(String interviewDate) {
         requireNonNull(interviewDate);
-        checkArgument(isValidDate(interviewDate), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidInterviewDate(interviewDate), MESSAGE_CONSTRAINTS);
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         date = LocalDate.parse(interviewDate, format);
     }
@@ -32,7 +32,7 @@ public class InterviewDate {
     /**
      * Returns true if a given string is a valid name.
      */
-    public static boolean isValidDate(String test) {
+    public static boolean isValidInterviewDate(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
