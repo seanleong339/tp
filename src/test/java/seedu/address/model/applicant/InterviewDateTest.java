@@ -1,10 +1,10 @@
 package seedu.address.model.applicant;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class InterviewDateTest {
     @Test
@@ -14,8 +14,8 @@ public class InterviewDateTest {
 
     @Test
     public void constructor_invalidEInterviewDate_throwsIllegalArgumentException() {
-        String InterviewDate = "";
-        assertThrows(IllegalArgumentException.class, () -> new InterviewDate(InterviewDate));
+        String interviewDate = "";
+        assertThrows(IllegalArgumentException.class, () -> new InterviewDate(interviewDate));
     }
 
     @Test
