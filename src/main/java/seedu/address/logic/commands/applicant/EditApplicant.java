@@ -8,9 +8,11 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.InterviewStatus;
 import seedu.address.model.applicant.Nric;
+import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -32,6 +34,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -50,6 +53,7 @@ public class EditApplicant extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_NRIC + "NRIC] "
             + "[" + PREFIX_QUALIFICATION + "QUALIFICATION]\n"
             + "[" + PREFIX_DATEAPPLIED + "DATE APPLIED] "
             + "[" + PREFIX_JOB + "JOB ID] "
@@ -69,8 +73,6 @@ public class EditApplicant extends Command {
     private final Index index;
     private final EditApplicantDescriptor editApplicantDescriptor;
 
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Remark: %2$s";
-
     public EditApplicant(Index index, EditApplicantDescriptor editApplicantDescriptor) {
         requireAllNonNull(index, editApplicantDescriptor);
 
@@ -80,6 +82,7 @@ public class EditApplicant extends Command {
 
     @Override
     // todo edit if there is going to be a Applicant class
+    // todo figure out how the getFilterApplicantList will go
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
@@ -104,7 +107,7 @@ public class EditApplicant extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editApplicantDescriptor}.
      */
-    // todo edit if we created an Applicant class, then change this to an Applicant class
+    // todo edit change this to an Applicant class
     private static Person createEditedApplicant(Person applicantToEdit, EditApplicantDescriptor editApplicantDescriptor) {
         assert applicantToEdit != null;
 
@@ -146,12 +149,11 @@ public class EditApplicant extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Qualification qualification;
+        private DateApplied dateApplied;
         // todo uncomment this part when the related parts are completed
-        // Qualification,
-        // Date Applied - date that the user applied for the job
         // Job ID
         private InterviewDate interviewDate;
-        private InterviewStatus interviewStatus;
 
         public EditApplicantDescriptor() {}
 
@@ -166,10 +168,9 @@ public class EditApplicant extends Command {
             setAddress(toCopy.address);
             setNric(toCopy.nric);
             setInterviewDate(toCopy.interviewDate);
-            setInterviewStatus(toCopy.interviewStatus);
+            setQualification(toCopy.qualification);
+            setDateApplied(toCopy.dateApplied);
             // todo uncomment this part
-//            setQualification(toCopy.qualification);
-//            setDateApplied(toCopy.dateApplied);
 //            setJobId(toCopy.jobId);
             setTags(toCopy.tags);
         }
@@ -179,8 +180,8 @@ public class EditApplicant extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(
-                    name, phone, email, address, interviewDate, interviewStatus, tags);
-        } //Todo Add qualification, date applied, job id
+                    name, phone, email, address, interviewDate, qualification, dateApplied, tags);
+        } //Todo Add job id
 
         public void setName(Name name) {
             this.name = name;
@@ -222,23 +223,22 @@ public class EditApplicant extends Command {
             return Optional.ofNullable(nric);
         }
 
-        // todo uncomment this part
-//        public void setQualification(Qualification qualification) {
-//            this.qualification = qualification;
-//        }
-//
-//        public Optional<Qualification> getQualification() {
-//            return Optional.ofNullable(Qualification);
-//        }
-//
-//        public void setDateApplied(DateApplied dateApplied) {
-//            this.dateApplied = dateApplied;
-//        }
-//
-//        public Optional<DateApplied> getDateApplied() {
-//            return Optional.ofNullable(dateApplied);
-//        }
-//
+        public void setQualification(Qualification qualification) {
+            this.qualification = qualification;
+        }
+
+        public Optional<Qualification> getQualification() {
+            return Optional.ofNullable(qualification);
+        }
+
+        public void setDateApplied(DateApplied dateApplied) {
+            this.dateApplied = dateApplied;
+        }
+
+        public Optional<DateApplied> getDateApplied() {
+            return Optional.ofNullable(dateApplied);
+        }
+//      // todo uncomment this part
 //        public void setJobId(JobId jobId) {
 //            this.jobId = jobId;
 //        }
@@ -253,14 +253,6 @@ public class EditApplicant extends Command {
 
         public Optional<InterviewDate> getInterviewDate() {
             return Optional.ofNullable(interviewDate);
-        }
-
-        public void setInterviewStatus(InterviewStatus interviewStatus) {
-            this.interviewStatus = interviewStatus;
-        }
-
-        public Optional<InterviewStatus> getInterviewStatus() {
-            return Optional.ofNullable(interviewStatus);
         }
 
         /**
@@ -299,6 +291,10 @@ public class EditApplicant extends Command {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
+                    && getNric().equals(e.getNric())
+                    && getDateApplied().equals(e.getDateApplied())
+                    && getInterviewDate().equals(e.getInterviewDate())
+                    && getQualification().equals(e.getQualification())
                     && getTags().equals(e.getTags());
         }
     }
