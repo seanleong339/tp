@@ -22,7 +22,7 @@ public class AddApplicant extends Command {
         return new CommandResult(String.format("Testing applicant add Parser " + toAdd));
     }
 
-    public String showToAdd(){
+    public String showToAdd() {
         return toAdd.toString();
     }
 }

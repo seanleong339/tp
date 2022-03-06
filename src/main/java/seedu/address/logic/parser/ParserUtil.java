@@ -134,7 +134,7 @@ public class ParserUtil {
         String trimmedDate = dateapplied.trim();
         // Include bottom when DateApplied class is merged
         //if (!Name.isValidName(trimmedDate)) {
-            //throw new ParseException(DateApplied.MESSAGE_CONSTRAINTS);
+        //throw new ParseException(DateApplied.MESSAGE_CONSTRAINTS);
         //}
         return new String(trimmedDate);
     }

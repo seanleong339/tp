@@ -1,16 +1,16 @@
 package seedu.address.model.applicant;
 
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Tag;
 
 public class Applicant {
 
@@ -28,6 +28,9 @@ public class Applicant {
     private final String job;
     private final String qualification;
 
+    /**
+     * Creates an Applicant object
+     */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      String dateApplied, String dateInterview, Nric nric, String job, String qualification) {
         requireAllNonNull(name, phone, email, address, tags, dateApplied, dateInterview, nric, job, qualification);
