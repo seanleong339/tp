@@ -46,9 +46,10 @@ public class AddApplicantParser implements Parser<AddApplicant> {
                         PREFIX_JOB, PREFIX_QUALIFICATION
                 );
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_JOB,
+        PREFIX_NRIC, PREFIX_DATEAPPLIED)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddApplicant.MESSAGE_USAGE));
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
@@ -57,13 +58,11 @@ public class AddApplicantParser implements Parser<AddApplicant> {
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         String dateApplied = ParserUtil.parseDateApplied(argMultimap.getValue(PREFIX_DATEAPPLIED).get());
-        String dateInterview = ParserUtil.parseDateInterview(argMultimap.getValue(PREFIX_DATEINTERVIEW).get());
         Nric nric = ParserUtil.parseNric(argMultimap.getValue(PREFIX_NRIC).get());
         String job = ParserUtil.parseJob(argMultimap.getValue(PREFIX_JOB).get());
-        String qualification = ParserUtil.parseQualification(argMultimap.getValue(PREFIX_QUALIFICATION).get());
 
         Applicant applicant = new Applicant(name, phone, email, address,
-                tagList, dateApplied, dateInterview, nric, job, qualification
+                tagList, dateApplied, nric, job
         );
 
         //Print out details of applicant just to test that AddApplicantParser is working

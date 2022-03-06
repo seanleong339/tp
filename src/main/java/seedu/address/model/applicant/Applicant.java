@@ -29,7 +29,7 @@ public class Applicant {
     private final String qualification;
 
     /**
-     * Creates an Applicant object
+     * Creates an Applicant object with all attributes
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      String dateApplied, String dateInterview, Nric nric, String job, String qualification) {
@@ -44,6 +44,24 @@ public class Applicant {
         this.dateInterview = dateInterview;
         this.job = job;
         this.qualification = qualification;
+    }
+
+    /**
+     * Creates an Applicant object with minimum required attributes
+     */
+    public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                     String dateApplied, Nric nric, String job) {
+        requireAllNonNull(name, phone, email, address, tags, dateApplied, nric, job);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.nric = nric;
+        this.dateApplied = dateApplied;
+        this.job = job;
+        this.dateInterview = "PENDING";
+        this.qualification = "PENDING";
     }
 
     public Name getName() {
