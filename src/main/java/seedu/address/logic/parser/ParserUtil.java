@@ -10,6 +10,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.InterviewStatus;
+import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -100,12 +102,22 @@ public class ParserUtil {
 
     public static InterviewDate parseInterviewDate(String interviewDate) throws ParseException {
         requireNonNull(interviewDate);
-        String trimmerInterviewDate = interviewDate.trim();
-        if (!InterviewDate.isValidInterviewDate(trimmerInterviewDate)) {
+        String trimmedInterviewDate = interviewDate.trim();
+        if (!InterviewDate.isValidInterviewDate(trimmedInterviewDate)) {
             throw new ParseException(InterviewDate.MESSAGE_CONSTRAINTS);
         }
-        return new InterviewDate(trimmerInterviewDate);
+        return new InterviewDate(trimmedInterviewDate);
     }
+
+    public static Nric parseNric(String nric) throws ParseException {
+        requireNonNull(nric);
+        String trimmedNric = nric.trim();
+        if (!Nric.isValidNric(trimmedNric)) {
+            throw new ParseException(Nric.MESSAGE_CONSTRAINTS);
+        }
+        return new Nric(trimmedNric);
+    }
+
 
     /**
      * Parses a {@code String tag} into a {@code Tag}.

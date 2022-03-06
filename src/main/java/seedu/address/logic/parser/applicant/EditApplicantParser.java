@@ -24,6 +24,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -36,7 +37,7 @@ public class EditApplicantParser implements Parser<EditApplicant> {
         requireNonNull(userInput);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(userInput, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_QUALIFICATION, PREFIX_DATEAPPLIED, PREFIX_JOB, PREFIX_STATUS, PREFIX_TAG);
+                        PREFIX_NRIC, PREFIX_QUALIFICATION, PREFIX_DATEAPPLIED, PREFIX_JOB, PREFIX_STATUS, PREFIX_TAG);
 
         Index index;
 
@@ -60,6 +61,9 @@ public class EditApplicantParser implements Parser<EditApplicant> {
         if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
             editApplicantDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
+        if (argMultimap.getValue(PREFIX_NRIC).isPresent()) {
+            editApplicantDescriptor.setNric(ParserUtil.parseNric(argMultimap.getValue(PREFIX_NRIC).get()));
+        }
         // todo when relevant class is added, uncomment, add ParserUtil functions into ParserUtilClass
 //        if (argMultimap.getValue(PREFIX_QUALIFICATION).isPresent()) {
 //            editApplicantDescriptor.setQualification(ParserUtil
@@ -76,10 +80,6 @@ public class EditApplicantParser implements Parser<EditApplicant> {
         if (argMultimap.getValue(PREFIX_DATEINTERVIEW).isPresent()) {
             editApplicantDescriptor.setInterviewDate(ParserUtil
                     .parseInterviewDate(argMultimap.getValue(PREFIX_DATEINTERVIEW).get()));
-        }
-        if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
-            editApplicantDescriptor.setInterviewStatus(ParserUtil
-                    .parseInterviewStatus(argMultimap.getValue(PREFIX_STATUS).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editApplicantDescriptor::setTags);
 

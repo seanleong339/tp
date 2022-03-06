@@ -10,6 +10,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.InterviewStatus;
+import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -22,6 +23,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+
+import javax.swing.text.html.Option;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -39,7 +42,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 public class EditApplicant extends Command {
 
-    public static final String COMMAND_WORD = "editApplicant";
+    public static final String COMMAND_WORD = "editapplicant";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the applicant identified "
             + "by the index number used in the displayed Applicant list. "
@@ -145,6 +148,7 @@ public class EditApplicant extends Command {
      */
     public static class EditApplicantDescriptor {
         private Name name;
+        private Nric nric;
         private Phone phone;
         private Email email;
         private Address address;
@@ -167,6 +171,7 @@ public class EditApplicant extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
+            setNric(toCopy.nric);
             setInterviewDate(toCopy.interviewDate);
             setInterviewStatus(toCopy.interviewStatus);
             // todo uncomment this part
@@ -214,6 +219,14 @@ public class EditApplicant extends Command {
 
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
+        }
+
+        public void setNric(Nric nric) {
+            this.nric = nric;
+        }
+
+        public Optional<Nric> getNric() {
+            return Optional.ofNullable(nric);
         }
 
         // todo uncomment this part
