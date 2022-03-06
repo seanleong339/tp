@@ -15,7 +15,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.applicant.AddApplicant;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
@@ -47,7 +46,7 @@ public class AddApplicantParser implements Parser<AddApplicant> {
                 );
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_JOB,
-        PREFIX_NRIC, PREFIX_DATEAPPLIED)
+            PREFIX_NRIC, PREFIX_DATEAPPLIED)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddApplicant.MESSAGE_USAGE));
         }
