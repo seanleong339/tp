@@ -3,8 +3,10 @@ package seedu.address.model.applicant;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import seedu.address.model.person.Name;
-
+/**
+ * Represents a Person's name in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidQualification(String)}
+ */
 public class Qualification {
     public static final String MESSAGE_CONSTRAINTS =
             "Qualifications should only contain alphanumeric characters and spaces, and it should not be blank";
