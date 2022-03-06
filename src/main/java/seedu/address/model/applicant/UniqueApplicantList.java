@@ -19,7 +19,7 @@ public class UniqueApplicantList implements Iterable<Applicant> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains an equivalent Applicant as the given argument.
      */
     public boolean contains(Applicant toCheck) {
         requireNonNull(toCheck);
@@ -27,8 +27,8 @@ public class UniqueApplicantList implements Iterable<Applicant> {
     }
 
     /**
-     * Adds a person to the list.
-     * The person must not already exist in the list.
+     * Adds an Applicant to the list.
+     * The Applicant must not already exist in the list.
      */
     public void add(Applicant toAdd) {
         requireNonNull(toAdd);
@@ -39,28 +39,28 @@ public class UniqueApplicantList implements Iterable<Applicant> {
     }
 
     /**
-     * Replaces the person {@code target} in the list with {@code editedPerson}.
+     * Replaces the Applicant {@code target} in the list with {@code editedApplicant}.
      * {@code target} must exist in the list.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the list.
+     * The applicant identity of {@code editedApplicant} must not be the same as another existing applicant in the list.
      */
-    public void setPerson(Applicant target, Applicant editedPerson) {
-        requireAllNonNull(target, editedPerson);
+    public void setPerson(Applicant target, Applicant editedApplicant) {
+        requireAllNonNull(target, editedApplicant);
 
         int index = internalList.indexOf(target);
         if (index == -1) {
             throw new PersonNotFoundException();
         }
 
-        if (!target.isSameApplicant(editedPerson) && contains(editedPerson)) {
+        if (!target.isSameApplicant(editedApplicant) && contains(editedApplicant)) {
             throw new DuplicatePersonException();
         }
 
-        internalList.set(index, editedPerson);
+        internalList.set(index, editedApplicant);
     }
 
     /**
-     * Removes the equivalent person from the list.
-     * The person must exist in the list.
+     * Removes the equivalent applicant from the list.
+     * The applicant must exist in the list.
      */
     public void remove(Applicant toRemove) {
         requireNonNull(toRemove);
@@ -75,16 +75,16 @@ public class UniqueApplicantList implements Iterable<Applicant> {
     }
 
     /**
-     * Replaces the contents of this list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of this list with {@code applicants}.
+     * {@code applicants} must not contain duplicate applicants.
      */
-    public void setPersons(List<Applicant> persons) {
-        requireAllNonNull(persons);
-        if (!applicantAreUnique(persons)) {
+    public void setPersons(List<Applicant> applicants) {
+        requireAllNonNull(applicants);
+        if (!applicantAreUnique(applicants)) {
             throw new DuplicatePersonException();
         }
 
-        internalList.setAll(persons);
+        internalList.setAll(applicants);
     }
 
     /**
@@ -112,12 +112,12 @@ public class UniqueApplicantList implements Iterable<Applicant> {
     }
 
     /**
-     * Returns true if {@code persons} contains only unique persons.
+     * Returns true if {@code applicants} contains only unique applicants.
      */
-    private boolean applicantAreUnique(List<Applicant> persons) {
-        for (int i = 0; i < persons.size() - 1; i++) {
-            for (int j = i + 1; j < persons.size(); j++) {
-                if (persons.get(i).isSameApplicant(persons.get(j))) {
+    private boolean applicantAreUnique(List<Applicant> applicants) {
+        for (int i = 0; i < applicants.size() - 1; i++) {
+            for (int j = i + 1; j < applicants.size(); j++) {
+                if (applicants.get(i).isSameApplicant(applicants.get(j))) {
                     return false;
                 }
             }
