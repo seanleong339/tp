@@ -24,8 +24,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.swing.text.html.Option;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
