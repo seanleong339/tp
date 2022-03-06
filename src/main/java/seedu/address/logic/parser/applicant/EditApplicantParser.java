@@ -1,8 +1,6 @@
 package seedu.address.logic.parser.applicant;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.applicant.EditApplicant;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
@@ -44,7 +42,7 @@ public class EditApplicantParser implements Parser<EditApplicant> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditApplicant.MESSAGE_USAGE), pe);
         }
 
         EditApplicant.EditApplicantDescriptor editApplicantDescriptor = new EditApplicant.EditApplicantDescriptor();
@@ -84,7 +82,7 @@ public class EditApplicantParser implements Parser<EditApplicant> {
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editApplicantDescriptor::setTags);
 
         if (!editApplicantDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(EditApplicant.MESSAGE_NOT_EDITED);
         }
 
         return new EditApplicant(index, editApplicantDescriptor);
