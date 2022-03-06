@@ -9,11 +9,14 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+
+import javax.naming.PartialResultException;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -93,6 +96,15 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    public static InterviewDate parseInterviewDate(String interviewDate) throws ParseException {
+        requireNonNull(interviewDate);
+        String trimmerInterviewDate = interviewDate.trim();
+        if (!InterviewDate.isValidInterviewDate(trimmerInterviewDate)) {
+            throw new ParseException(InterviewDate.MESSAGE_CONSTRAINTS);
+        }
+        return new InterviewDate(trimmerInterviewDate);
     }
 
     /**
