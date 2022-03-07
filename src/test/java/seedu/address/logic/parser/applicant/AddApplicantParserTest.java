@@ -29,8 +29,8 @@ class AddApplicantParserTest {
         String arg = " n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, "
                 + "#02-25 q/Bachelors d/2022-12-12 j/123456 nric/S1234567D";
         String expected = "John Doe; Phone: 98765432; Email: johnd@example.com; Address: 311, Clementi Ave 2, #02-25;"
-                + " Nric: S1234567D; Date applied: 2022-12-12; Date of interview: PENDING; "
-                + "Job: 123456; Qualification: PENDING";
+                + " Nric: S1234567D; Date applied: 2022-12-12; Date of interview: null; "
+                + "Job: 123456; Qualification: null";
         try {
             assertEquals(expected, parser.parse(arg).showToAdd());
         } catch (ParseException e) {

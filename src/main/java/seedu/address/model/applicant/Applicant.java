@@ -24,7 +24,7 @@ public class Applicant {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
     private final String dateApplied;
-    private final String dateInterview;
+    private final InterviewDate interviewDate;
     private final String job;
     private final String qualification;
 
@@ -32,8 +32,8 @@ public class Applicant {
      * Creates an Applicant object with all attributes
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     String dateApplied, String dateInterview, Nric nric, String job, String qualification) {
-        requireAllNonNull(name, phone, email, address, tags, dateApplied, dateInterview, nric, job, qualification);
+                     String dateApplied, InterviewDate interviewDate, Nric nric, String job, String qualification) {
+        requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -41,7 +41,7 @@ public class Applicant {
         this.tags.addAll(tags);
         this.nric = nric;
         this.dateApplied = dateApplied;
-        this.dateInterview = dateInterview;
+        this.interviewDate = interviewDate;
         this.job = job;
         this.qualification = qualification;
     }
@@ -60,8 +60,8 @@ public class Applicant {
         this.nric = nric;
         this.dateApplied = dateApplied;
         this.job = job;
-        this.dateInterview = "PENDING";
-        this.qualification = "PENDING";
+        this.interviewDate = null;
+        this.qualification = null;
     }
 
     public Name getName() {
@@ -89,7 +89,11 @@ public class Applicant {
     }
 
     public String getDateInterview() {
-        return dateInterview;
+        if (interviewDate == null) {
+            return "null";
+        } else {
+            return interviewDate.toString();
+        }
     }
 
     public String getJob() {
