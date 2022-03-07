@@ -89,7 +89,7 @@ public class Applicant {
     }
 
     public String getInterviewDate() {
-        if(interviewDate == null) {
+        if (interviewDate == null) {
             return "PENDING";
         } else {
             return interviewDate.toString();
