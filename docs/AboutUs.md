@@ -20,7 +20,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Rosa Kang
 
-<img src="images/ro4k9.jpg" width="200px">
+<img src="images/ro4k9.png" width="200px">
 
 [[github](https://github.com/ro4k9)]
 
@@ -36,24 +36,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer - Applicant Feature
 * Responsibilities: Code Quality
 
-### Johnny Doe
+### Chan Yi Juan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/chanyijuan.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/chanyijuan)]
 
-* Role: Developer
-* Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Developer - List Features
+* Responsibilities: Deliverables and deadlines.
 
 ### Paing Oo
 
