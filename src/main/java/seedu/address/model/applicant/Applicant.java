@@ -46,6 +46,24 @@ public class Applicant {
         this.qualification = qualification;
     }
 
+    /**
+     * Creates an Applicant object with minimum required attributes
+     */
+    public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                     String dateApplied, Nric nric, String job) {
+        requireAllNonNull(name, phone, email, address, tags, dateApplied, nric, job);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.nric = nric;
+        this.dateApplied = dateApplied;
+        this.job = job;
+        this.dateInterview = "PENDING";
+        this.qualification = "PENDING";
+    }
+
     public Name getName() {
         return name;
     }
