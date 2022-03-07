@@ -25,7 +25,7 @@ public class Id {
     }
 
     /**
-     * Returns true if the input string is a valid Id.
+     * Returns true if the input integer is a valid Id.
      */
     public static boolean isValidId(int test) {
         return test > 0;
