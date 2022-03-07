@@ -8,43 +8,38 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Id {
 
-    public static final String MESSAGE_CONSTRAINTS = "Id can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Id can take any positive integer value, "
+            + "and it should not be blank";
 
-    /*
-     * The first character of the Id must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
-
-    public final String value;
+    public final Integer uid;
 
     /**
      * Constructs an Id object.
      *
-     * @param id A valid Id string
+     * @param id A valid Id int
      */
-    public Id(String id) {
+    public Id(int id) {
         requireNonNull(id);
         checkArgument(isValidId(id), MESSAGE_CONSTRAINTS);
-        value = id;
+        uid = id;
     }
 
     /**
      * Returns true if the input string is a valid Id.
      */
-    public static boolean isValidId(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidId(int test) {
+        return test > 0;
     }
 
     @Override
     public String toString() {
-        return value;
+        return uid.toString();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof seedu.address.model.applicant.Id
-                && value.equals(((seedu.address.model.applicant.Id) other).value));
+                && uid.equals(((seedu.address.model.applicant.Id) other).uid));
     }
 }
