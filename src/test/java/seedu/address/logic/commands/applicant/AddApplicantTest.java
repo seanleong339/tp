@@ -33,8 +33,8 @@ class AddApplicantTest {
         Set<Tag> tagSet = new HashSet<>();
         tagSet.add(new Tag("testtag"));
         Applicant test = new Applicant(new Name("John"), new Phone("1234567"), new Email("johnd@example.com"),
-                new Address("311, Clementi Ave 2"), tagSet, "2022-12-12", "2022-12-14",
-                new Nric("S1234"), "123456", "Bachelors");
+                new Address("311, Clementi Ave 2"), tagSet, "2022-12-12",
+                new Nric("S1234"), "123456");
         AddApplicant testCommand = new AddApplicant(test);
         ModelStubAcceptingApplicantAdded modelStub = new ModelStubAcceptingApplicantAdded();
         testCommand.execute(modelStub);
