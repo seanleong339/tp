@@ -262,7 +262,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * Prefers typing to mouse interactions
 * Is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Our application helps to organize the contacts by priority, keeps contacts in a centralized workspace, streamlines workflow and increases efficiency of recruiter work
 
 
 ### User stories
