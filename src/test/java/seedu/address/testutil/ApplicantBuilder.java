@@ -122,6 +122,48 @@ public class ApplicantBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Date Applied} of the {@code Applicant} that we are building.
+     */
+    public ApplicantBuilder withDateApplied(String dateApplied) {
+        this.dateApplied = new DateApplied(dateApplied);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Nric} of the {@code Applicant} that we are building.
+     */
+    public ApplicantBuilder withNric(String nric) {
+        this.nric = new Nric(nric);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Job} of the {@code Applicant} that we are building.
+     */
+    public ApplicantBuilder withJob(String job) {
+        // TODO: remove comment when completed
+        // this.job = new Job(job);
+        this.job = job;
+        return this;
+    }
+
+    /**
+     * Sets the {@code Interview Date} of the {@code Applicant} that we are building.
+     */
+    public ApplicantBuilder withInterviewDate(String interviewDate) {
+        this.interviewDate = new InterviewDate(interviewDate);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Qualification} of the {@code Applicant} that we are building.
+     */
+    public ApplicantBuilder withQualification(String qualification) {
+        this.qualification = new Qualification(qualification);
+        return this;
+    }
+
     public Applicant build() {
         return new Applicant(name, phone, email, address, tags, dateApplied, nric, job, interviewDate, qualification);
     }
