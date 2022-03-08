@@ -1,23 +1,20 @@
 package seedu.address.logic.commands.applicant;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.InterviewStatus;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.*;
 import seedu.address.model.tag.Tag;
 
-import java.util.List;
 import java.util.Set;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICANTS;
 
 /**
  * Changes the remark of an existing person in the address book.
@@ -45,7 +42,7 @@ public class UnmarkApplicant extends Command {
      * Creates an UnmarkApplicant to unmark {@code interviewStatus} and
      * an applicant with specified {@code interviewStatus}
      */
-     public UnmarkApplicant(int id, boolean interviewStatus, boolean applicationStatus) {
+     public UnmarkApplicant(Integer id, boolean interviewStatus, boolean applicationStatus) {
         requireNonNull(id);
         this.id = id;
         this.interviewStatus = interviewStatus;
@@ -55,8 +52,10 @@ public class UnmarkApplicant extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        // TODO: Implement a method that gets an applicant with a corresponding id
-        // TODO: Implement a method that sets an applicant in the list
+        // TODO: - Implement Applicant List
+        //       - Get applicant by the given id
+        //       - Set unmarked applicant to the applicant list
+
         /*
         List<Applicant> lastShownList = model.getFilteredApplicantList();
         Applicant applicantToUnmark = lastShownList.get();
@@ -80,12 +79,13 @@ public class UnmarkApplicant extends Command {
         Address address = applicantToUnmark.getAddress();
         Set<Tag> tags = applicantToUnmark.getTags();
         String dateApplied = applicantToUnmark.getDateApplied();
-        String dateInterview = applicantToUnmark.getDateInterview();
+        InterviewDate dateInterview = applicantToUnmark.getDateInterview();
         Nric nric = applicantToUnmark.getNric();
         String job = applicantToUnmark.getJob();
         String qualification = applicantToUnmark.getQualification();
+        String applicationStauts = applicantToUnmark.getApplicationStatus();
 
         return new Applicant(name, phone, email, address, tags, dateApplied, dateInterview,
-                nric, job, qualification, new InterviewStatus(false));
+                nric, job, qualification, new InterviewStatus(false), applicationStauts);
     }
 }

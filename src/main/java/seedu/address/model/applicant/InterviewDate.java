@@ -22,6 +22,13 @@ public class InterviewDate {
 
     /**
      * Constructs an Interview Date
+     */
+    public InterviewDate() {
+        date = null;
+    }
+
+    /**
+     * Constructs an Interview Date
      *
      * @param interviewDate A valid interviewDate.
      */
@@ -41,7 +48,11 @@ public class InterviewDate {
 
     @Override
     public String toString() {
-        return date.toString();
+        if(date == null) {
+            return null;
+        } else {
+            return date.toString();
+        }
     }
 
     @Override

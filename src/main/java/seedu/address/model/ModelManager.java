@@ -151,35 +151,4 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }
-
-    //=========== RECLINE =============================================================
-
-    /* AddressBook */
-
-    @Override
-    public void setApplicant(Applicant target, Applicant editedApplicant) {
-        requireAllNonNull(target, editedApplicant);
-        applicants.set();
-        // addressBook.setApplicant(target, editedApplicant);
-    }
-
-    /* Filtered Applicant List Accessor */
-
-    /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public List<Applicant> getFilteredApplicantList() {
-        return applicants;
-    }
-
-    /* @Override
-    public void updateFilteredApplicantList(Predicate<Applicant> predicate) {
-        requireNonNull(predicate);
-        applicants.setPredicate(predicate);
-    } */
-
-
-
 }
