@@ -48,7 +48,7 @@ public class InterviewDate {
 
     @Override
     public String toString() {
-        if(date == null) {
+        if (date == null) {
             return null;
         } else {
             return date.toString();

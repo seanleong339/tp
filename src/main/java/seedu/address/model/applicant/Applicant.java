@@ -87,11 +87,17 @@ public class Applicant {
         return address;
     }
 
-    public Nric getNric() { return nric; }
+    public Nric getNric() {
+        return nric;
+    }
 
-    public String getDateApplied() { return dateApplied; }
+    public String getDateApplied() {
+        return dateApplied;
+    }
 
-    public InterviewDate getDateInterview() { return interviewDate;}
+    public InterviewDate getDateInterview() {
+        return interviewDate;
+    }
 
     public String getJob() {
         return job;
@@ -101,9 +107,14 @@ public class Applicant {
         return qualification;
     }
 
-    public InterviewStatus getInterviewStatus() { return interviewStatus; }
+    public InterviewStatus getInterviewStatus() {
+        return interviewStatus;
+    }
 
-    public String getApplicationStatus() { return applicationStatus; }
+    public String getApplicationStatus() {
+        return applicationStatus;
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
