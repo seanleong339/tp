@@ -126,6 +126,8 @@ public class Applicant {
                 && otherApplicant.getName().equals(getName());
     }
 
+    //todo may have to do a hard equal function to compare all the properties of Applicant
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
