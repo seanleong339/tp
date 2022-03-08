@@ -9,4 +9,3 @@ public class DuplicateApplicantException extends RuntimeException {
         super("Operation would result in duplicate applicants");
     }
 }
-

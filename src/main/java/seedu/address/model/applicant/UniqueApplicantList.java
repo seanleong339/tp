@@ -12,7 +12,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 public class UniqueApplicantList implements Iterable<Applicant> {
-    private final ObservableList<Applicant> internalList = FXCollections.observableArrayList();
+    private final ObservableList<Applicant> internalList =
+            FXCollections.observableArrayList();
     private final ObservableList<Applicant> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
