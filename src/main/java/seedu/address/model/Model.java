@@ -1,10 +1,12 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.applicant.Applicant;
 import seedu.address.model.person.Person;
 
 /**
@@ -84,4 +86,28 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    //------------------------------ReCLIne------------------------------
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Applicant> PREDICATE_SHOW_ALL_APPLICANTS = unused -> true;
+
+    /** Returns an unmodifiable view of the filtered applicant list */
+    List<Applicant> getFilteredApplicantList();
+
+    /**
+     * Replaces the given applicant {@code target} with {@code editedPerson}.
+     * {@code target} must exist in the address book.
+     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     */
+    void setApplicant(Applicant target, Applicant editedPerson);
+
+    /**
+     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+   // void updateFilteredApplicantList(Predicate<Applicant> predicate);
+
+
+
 }
+
