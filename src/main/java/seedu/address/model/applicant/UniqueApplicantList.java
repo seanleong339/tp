@@ -2,10 +2,8 @@ package seedu.address.model.applicant;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.applicant.exceptions.ApplicantNotFoundException;
+import seedu.address.model.applicant.exceptions.DuplicateApplicantException;
 
 import java.util.Iterator;
 import java.util.List;
@@ -33,7 +31,7 @@ public class UniqueApplicantList implements Iterable<Applicant> {
     public void add(Applicant toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateApplicantException();
         }
         internalList.add(toAdd);
     }
@@ -43,16 +41,16 @@ public class UniqueApplicantList implements Iterable<Applicant> {
      * {@code target} must exist in the list.
      * The applicant identity of {@code editedApplicant} must not be the same as another existing applicant in the list.
      */
-    public void setPerson(Applicant target, Applicant editedApplicant) {
+    public void setApplicant(Applicant target, Applicant editedApplicant) {
         requireAllNonNull(target, editedApplicant);
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new ApplicantNotFoundException();
         }
 
         if (!target.isSameApplicant(editedApplicant) && contains(editedApplicant)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateApplicantException();
         }
 
         internalList.set(index, editedApplicant);
@@ -65,11 +63,11 @@ public class UniqueApplicantList implements Iterable<Applicant> {
     public void remove(Applicant toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new ApplicantNotFoundException();
         }
     }
 
-    public void setPersons(UniquePersonList replacement) {
+    public void setApplicants(UniqueApplicantList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
@@ -78,10 +76,10 @@ public class UniqueApplicantList implements Iterable<Applicant> {
      * Replaces the contents of this list with {@code applicants}.
      * {@code applicants} must not contain duplicate applicants.
      */
-    public void setPersons(List<Applicant> applicants) {
+    public void setApplicants(List<Applicant> applicants) {
         requireAllNonNull(applicants);
         if (!applicantAreUnique(applicants)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateApplicantException();
         }
 
         internalList.setAll(applicants);
@@ -102,8 +100,8 @@ public class UniqueApplicantList implements Iterable<Applicant> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof UniquePersonList // instanceof handles nulls
-                && internalList.equals(((UniquePersonList) other).internalList));
+                || (other instanceof UniqueApplicantList // instanceof handles nulls
+                && internalList.equals(((UniqueApplicantList) other).internalList));
     }
 
     @Override
