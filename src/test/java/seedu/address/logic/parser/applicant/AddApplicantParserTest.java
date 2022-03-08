@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.applicant.AddApplicant;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -39,7 +40,7 @@ class AddApplicantParserTest {
                 + " d/2022-12-12 j/123456 nric/S1234567D ";
         Set<Tag> tagSet = new HashSet<Tag>();
         Applicant app = new Applicant(new Name("John Doe"), new Phone("98765432"), new Email("johnd@example.com"),
-                new Address("311, Clementi Ave 2"), tagSet, "2022-12-12",
+                new Address("311, Clementi Ave 2"), tagSet, new DateApplied("2022-12-12"),
                 new Nric("S1234567D"), "123456"
         );
         assertParseSuccess(parser, arg, new AddApplicant(app));
