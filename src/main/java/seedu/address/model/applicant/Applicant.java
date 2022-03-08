@@ -65,7 +65,7 @@ public class Applicant {
         this.nric = nric;
         this.dateApplied = dateApplied;
         this.job = job;
-        this.interviewDate = null;
+        this.interviewDate = new InterviewDate();
         this.qualification = null;
     }
 
@@ -94,11 +94,7 @@ public class Applicant {
     }
 
     public InterviewDate getInterviewDate() {
-        if (interviewDate == null) {
-            return new InterviewDate("null");
-        } else {
-            return interviewDate;
-        }
+        return interviewDate;
     }
 
     public String getJob() {
