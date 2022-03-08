@@ -23,16 +23,17 @@ public class Applicant {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
-    private final String dateApplied;
+    private final DateApplied dateApplied;
     private final InterviewDate interviewDate;
     private final String job;
-    private final String qualification;
+    private final Qualification qualification;
 
     /**
      * Creates an Applicant object with all attributes
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     String dateApplied, InterviewDate interviewDate, Nric nric, String job, String qualification) {
+                     DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
+                     Qualification qualification) {
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
         this.phone = phone;
@@ -50,7 +51,7 @@ public class Applicant {
      * Creates an Applicant object with minimum required attributes
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     String dateApplied, Nric nric, String job) {
+                     DateApplied dateApplied, Nric nric, String job) {
         requireAllNonNull(name, phone, email, address, tags, dateApplied, nric, job);
         this.name = name;
         this.phone = phone;
@@ -84,15 +85,15 @@ public class Applicant {
         return nric;
     }
 
-    public String getDateApplied() {
+    public DateApplied getDateApplied() {
         return dateApplied;
     }
 
-    public String getDateInterview() {
+    public InterviewDate getDateInterview() {
         if (interviewDate == null) {
-            return "null";
+            return new InterviewDate("null");
         } else {
-            return interviewDate.toString();
+            return interviewDate;
         }
     }
 
@@ -100,7 +101,10 @@ public class Applicant {
         return job;
     }
 
-    public String getQualification() {
+    public Qualification getQualification() {
+        if (qualification == null) {
+            return new Qualification("null");
+        }
         return qualification;
     }
 
