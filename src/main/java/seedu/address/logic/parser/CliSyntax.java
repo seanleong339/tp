@@ -16,6 +16,8 @@ public class CliSyntax {
     public static final Prefix PREFIX_JOB = new Prefix("j/");
     public static final Prefix PREFIX_DATEINTERVIEW = new Prefix("i/");
     public static final Prefix PREFIX_NRIC = new Prefix("nric/");
-    public static final Prefix PREFIX_STATUS = new Prefix("s/");
+    public static final Prefix PREFIX_INTERVIEW_STATUS = new Prefix("is/");
+    public static final Prefix PREFIX_APPLICATION_STATUS = new Prefix("as/");
+
 
 }
