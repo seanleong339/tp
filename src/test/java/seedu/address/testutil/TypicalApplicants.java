@@ -16,37 +16,37 @@ import seedu.address.model.applicant.Applicant;
 public class TypicalApplicants {
     public static final Applicant ALICE = new ApplicantBuilder().withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
-            .withPhone("94351253").withDateApplied("2022-01-21").withNric("S9920202A").withInterviewDate("2022-01-28")
+            .withPhone("94351253").withNric("S9920202A").withInterviewDate("2022-01-28").withDateApplied("2022-01-21")
             .withJob("1").withQualification("degree in Computing")
             .withTags("friends").build();
     public static final Applicant BENSON = new ApplicantBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPhone("98765432")
-            .withDateApplied("22-1-2022").withNric("S9930303B").withInterviewDate("29-1-2022")
+            .withDateApplied("2022-01-22").withNric("S9930303B").withInterviewDate("2022-01-29")
             .withJob("2").withQualification("degree in Computer Engineering")
             .withTags("owesMoney", "friends").build();
     public static final Applicant CARL = new ApplicantBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withAddress("wall street")
-            .withDateApplied("23-1-2022").withNric("S9940404AC").withInterviewDate("30-1-2022")
+            .withDateApplied("2022-01-23").withNric("S9940404AC").withInterviewDate("2022-01-30")
             .withJob("3").withQualification("degree in Economics")
             .build();
     public static final Applicant DANIEL = new ApplicantBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withAddress("10th street")
-            .withDateApplied("24-1-2022").withNric("S9950505D").withInterviewDate("31-1-2022")
+            .withDateApplied("2022-01-24").withNric("S9950505D").withInterviewDate("2022-01-31")
             .withJob("4").withQualification("degree in Business")
             .withTags("friends").build();
     public static final Applicant ELLE = new ApplicantBuilder().withName("Elle Meyer").withPhone("9482224")
             .withEmail("werner@example.com").withAddress("michegan ave")
-            .withDateApplied("25-1-2022").withNric("S9960606E").withInterviewDate("1-2-2022")
+            .withDateApplied("2022-01-25").withNric("S9960606E").withInterviewDate("2022-02-01")
             .withJob("5").withQualification("degree in Data Science").build();
     public static final Applicant FIONA = new ApplicantBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withEmail("lydia@example.com").withAddress("little tokyo")
-            .withDateApplied("26-1-2022").withNric("S9970707F").withInterviewDate("2-2-2022")
+            .withDateApplied("2022-01-26").withNric("S9970707F").withInterviewDate("2022-02-02")
             .withJob("6").withQualification("degree in Real Estate")
             .build();
     public static final Applicant GEORGE = new ApplicantBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withAddress("4th street")
-            .withDateApplied("27-1-2022").withNric("S9980808G").withInterviewDate("3-2-2022")
+            .withDateApplied("2022-01-27").withNric("S9980808G").withInterviewDate("2022-02-03")
             .withJob("7").withQualification("degree in Political Science")
             .build();
 

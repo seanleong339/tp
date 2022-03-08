@@ -26,8 +26,8 @@ public class ApplicantBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "S9901010A";
-    public static final String DEFAULT_DATEAPPLIED = "8-3-2022";
-    public static final String DEFAULT_INTERVIEWDATE = "15-3-2022";
+    public static final String DEFAULT_DATEAPPLIED = "2022-03-08";
+    public static final String DEFAULT_INTERVIEWDATE = "2022-03-15";
     public static final String DEFAULT_JOB = "1";
     public static final String DEFAULT_QUALIFICATION = "degree in computing";
 
