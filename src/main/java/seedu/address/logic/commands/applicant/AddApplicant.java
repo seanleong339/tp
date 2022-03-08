@@ -78,4 +78,5 @@ public class AddApplicant extends Command {
                 || (other instanceof AddApplicant // instanceof handles nulls
                 && toAdd.equals(((AddApplicant) other).toAdd));
     }
+
 }

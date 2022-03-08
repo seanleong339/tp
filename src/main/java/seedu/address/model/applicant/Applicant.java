@@ -29,7 +29,11 @@ public class Applicant {
     private final String qualification;
 
     /**
+<<<<<<< HEAD
      * Constructs a new Applicant, every field is not null
+=======
+     * Creates an Applicant object with all attributes
+>>>>>>> master
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      String dateApplied, InterviewDate interviewDate, Nric nric, String job, String qualification) {
@@ -61,7 +65,7 @@ public class Applicant {
         this.dateApplied = dateApplied;
         this.job = job;
         this.interviewDate = null;
-        this.qualification = "PENDING";
+        this.qualification = null;
     }
 
     public Name getName() {
