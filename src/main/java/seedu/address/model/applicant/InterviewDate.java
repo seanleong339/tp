@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class InterviewDate {
     public static final String MESSAGE_CONSTRAINTS =
-            "Date should be of the format yyyy-mm-dd"
+            "Date should be of the format yyyy-mm-dd "
                     + "and adhere to the following constraints:\n"
                     + "1. The date should not be blank\n"
                     + "2. The date should be within a range of 1-31\n"

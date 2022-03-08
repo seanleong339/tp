@@ -23,6 +23,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -56,7 +57,7 @@ public class AddApplicantParser implements Parser<AddApplicant> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        String dateApplied = ParserUtil.parseDateApplied(argMultimap.getValue(PREFIX_DATEAPPLIED).get());
+        DateApplied dateApplied = ParserUtil.parseDateApplied(argMultimap.getValue(PREFIX_DATEAPPLIED).get());
         Nric nric = ParserUtil.parseNric(argMultimap.getValue(PREFIX_NRIC).get());
         String job = ParserUtil.parseJob(argMultimap.getValue(PREFIX_JOB).get());
 
