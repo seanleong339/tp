@@ -22,6 +22,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final ArrayList<Applicant> applicantList;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -34,6 +35,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        applicantList = new ArrayList<Applicant>(this.addressBook.getApplicantList());
     }
 
     public ModelManager() {
@@ -99,6 +101,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteApplicant(Applicant target) {
+        addressBook.removeApplicant(target);
+    }
+
+    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -120,6 +127,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Person> getFilteredPersonList() {
         return filteredPersons;
+    }
+
+    @Override
+    public ArrayList<Applicant> getApplicantList() {
+        return applicantList;
     }
 
     @Override
