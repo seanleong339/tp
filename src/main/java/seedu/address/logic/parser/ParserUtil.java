@@ -205,6 +205,27 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String applicationStatus} into a {@code ApplicationStatus}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Qualification} is invalid.
+     */
+    // TODO: return ApplicationStatus once the class Application Status is merged
+    public static int parseApplicationStatus(String applicationStatus) throws ParseException {
+        requireNonNull(applicationStatus);
+        String trimmedQualification = applicationStatus.trim();
+        int status = -1;
+        if (applicationStatus.equals("rejected")) {
+            status = 0;
+        } else if (applicationStatus.equals("accepted")) {
+            status = 1;
+        } else if (applicationStatus.equals("pending")) {
+            status = 2;
+        }
+        return status;
+    }
+
+    /**
      * Parses {@code String id} into an {@code Integer} and returns it. Leading and trailing whitespaces will be
      * trimmed.
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).

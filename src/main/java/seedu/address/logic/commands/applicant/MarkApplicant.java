@@ -26,8 +26,8 @@ import seedu.address.model.tag.Tag;
 /**
  * Changes the remark of an existing person in the address book.
  */
-public class UnmarkApplicant extends Command {
-    public static final String COMMAND_WORD = "unmarkapplicant";
+public class MarkApplicant extends Command {
+    public static final String COMMAND_WORD = "markapplicant";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Unmarks the applicant's interview and/or "
             + "application status "
@@ -41,20 +41,21 @@ public class UnmarkApplicant extends Command {
             + PREFIX_APPLICATION_STATUS;
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Unmark applicant %1$d success. Interview status"
-            + "Interview status is unmarked: %2$b. Application status is unmarked: %3$b";
+            + "Interview status is marked: %2$b. Application status is unmarked: %3$d";
 
     private final int id;
-    private final boolean interviewStatus;
-    private final boolean applicationStatus;
+    private final boolean markInterviewStatus;
+    private final int applicationStatus;
 
     /**
       * Creates an UnmarkApplicant to unmark {@code interviewStatus} and
       * an applicant with specified {@code interviewStatus}
       */
-    public UnmarkApplicant(Integer id, boolean interviewStatus, boolean applicationStatus) {
+    // TODO: change int applicationStatus to ApplicationStatus applicationStatus
+    public MarkApplicant(Integer id, boolean markInterviewStatus, int applicationStatus) {
         requireNonNull(id);
         this.id = id;
-        this.interviewStatus = interviewStatus;
+        this.markInterviewStatus = markInterviewStatus;
         this.applicationStatus = applicationStatus;
     }
 
@@ -72,7 +73,7 @@ public class UnmarkApplicant extends Command {
         model.setApplicant(applicantToUnmark, unmarkedApplicant);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
         */
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, id, interviewStatus, applicationStatus));
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, id, markInterviewStatus, applicationStatus));
     }
 
     /**
