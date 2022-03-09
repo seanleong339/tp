@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class DateApplied {
     public static final String MESSAGE_CONSTRAINTS =
-            "DateApplied should be of the format yyyy-mm-dd"
+            "DateApplied should be of the format yyyy-mm-dd "
                     + "and adhere to the following constraints:\n"
                     + "1. The date should not be blank\n"
                     + "2. The day should be within a range of 1-31\n"
@@ -21,7 +21,7 @@ public class DateApplied {
      * The first character of the date must not be a whitespace,
      * and the date has to be valid and in the format of yyyy-mm-dd with leading zeros.
      */
-    public static final String VALIDATION_REGEX = "^\\d{4}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$";
+    public static final String VALIDATION_REGEX = "^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$";
     public final LocalDate date;
 
     /**

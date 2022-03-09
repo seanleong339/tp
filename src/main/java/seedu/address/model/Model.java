@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.applicant.Applicant;
 import seedu.address.model.person.Person;
 
 /**
@@ -85,5 +86,15 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-    ArrayList<Applicant> getApplicantList();
+    //--------------ReCLIne------------------------------
+
+    /**
+     * Adds a given Applicant to filteredList
+     */
+    void addApplicant(Applicant applicant);
+
+    /**
+     * Returns true if an Applicant with the same identity exists in the Applicant List
+     */
+    boolean hasApplicant(Applicant applicant);
 }
