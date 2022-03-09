@@ -19,6 +19,7 @@ public class InterviewDate {
      */
     public static final String VALIDATION_REGEX = "^[0-9]{4}-(1[0-2]|0[1-9])-(3[01]|[12][0-9]|0[1-9])$";
     public final LocalDate date;
+    private boolean isInit;
 
     /**
      * Constructs an Interview Date
@@ -36,7 +37,17 @@ public class InterviewDate {
         requireNonNull(interviewDate);
         checkArgument(isValidInterviewDate(interviewDate), MESSAGE_CONSTRAINTS);
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        isInit = true;
         date = LocalDate.parse(interviewDate, format);
+    }
+
+    /**
+     * Constructs an Interview Date with state not initialised
+     */
+    public InterviewDate() {
+        isInit = false;
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        date = LocalDate.parse("1999-01-19", format);
     }
 
     /**
@@ -48,10 +59,10 @@ public class InterviewDate {
 
     @Override
     public String toString() {
-        if (date == null) {
-            return null;
-        } else {
+        if (isInit) {
             return date.toString();
+        } else {
+            return "PENDING";
         }
     }
 

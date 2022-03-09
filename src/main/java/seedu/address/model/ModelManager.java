@@ -38,7 +38,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
-        applicants = new ArrayList<>();
+        applicants = new ArrayList<Applicant>();
     }
 
     public ModelManager() {
@@ -114,6 +114,20 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPerson);
 
         addressBook.setPerson(target, editedPerson);
+    }
+
+
+    //=========== AddressBook ================================================================================
+
+
+    @Override
+    public void addApplicant(Applicant applicant) {
+        applicants.add(applicant);
+    }
+
+    @Override
+    public boolean hasApplicant(Applicant applicant) {
+        return applicants.indexOf(applicant) >= 0;
     }
 
     //=========== Filtered Person List Accessors =============================================================
