@@ -23,13 +23,6 @@ public class InterviewDate {
 
     /**
      * Constructs an Interview Date
-     */
-    public InterviewDate() {
-        date = null;
-    }
-
-    /**
-     * Constructs an Interview Date
      *
      * @param interviewDate A valid interviewDate.
      */
