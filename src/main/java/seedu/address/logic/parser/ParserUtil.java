@@ -9,6 +9,9 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.applicant.DateApplied;
+import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -120,5 +123,83 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String DateApplied} into a {@code DateApplied}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static DateApplied parseDateApplied(String dateApplied) throws ParseException {
+        requireNonNull(dateApplied);
+        String trimmedDate = dateApplied.trim();
+        // Include bottom when DateApplied class is merged
+        if (!Name.isValidName(trimmedDate)) {
+            throw new ParseException(DateApplied.MESSAGE_CONSTRAINTS);
+        }
+        return new DateApplied(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code DateInterview}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static InterviewDate parseDateInterview(String dateInterview) throws ParseException {
+        requireNonNull(dateInterview);
+        String trimmedDate = dateInterview.trim();
+        if (!InterviewDate.isValidInterviewDate(trimmedDate)) {
+            throw new ParseException(InterviewDate.MESSAGE_CONSTRAINTS);
+        }
+        return new InterviewDate(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String nric} into a {@code Nric}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code nric} is invalid.
+     */
+    public static Nric parseNric(String nric) throws ParseException {
+        requireNonNull(nric);
+        String trimmedDate = nric.trim();
+        if (!Name.isValidName(trimmedDate)) {
+            throw new ParseException(Nric.MESSAGE_CONSTRAINTS);
+        }
+        return new Nric(nric);
+    }
+
+    /**
+     * Parses a {@code String job} into a {@code Job}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Job} is invalid.
+     */
+    public static String parseJob(String job) throws ParseException {
+        requireNonNull(job);
+        String trimmedJob = job.trim();
+        // Include bottom when Job class is merged
+        //if (!Name.isValidName(trimmedJob)) {
+        //throw new ParseException(Job.MESSAGE_CONSTRAINTS);
+        //}
+        return new String(trimmedJob);
+    }
+
+    /**
+     * Parses a {@code String qualification} into a {@code Qualification}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Qualification} is invalid.
+     */
+    public static String parseQualification(String qualification) throws ParseException {
+        requireNonNull(qualification);
+        String trimmedQualification = qualification.trim();
+        // Include bottom when Qualification class is merged
+        //if (!Name.isValidName(trimmedQualification)) {
+        //throw new ParseException(Qualification.MESSAGE_CONSTRAINTS);
+        //}
+        return new String(trimmedQualification);
     }
 }
