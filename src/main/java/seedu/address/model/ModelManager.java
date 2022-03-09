@@ -105,11 +105,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteApplicant(Applicant target) {
-        addressBook.removeApplicant(target);
-    }
-
-    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -148,11 +143,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ArrayList<Applicant> getApplicantList() {
-        return applicantList;
-    }
-
-    @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
@@ -175,6 +165,12 @@ public class ModelManager implements Model {
         return addressBook.equals(other.addressBook)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
+    }
+
+
+    @Override
+    public void deleteApplicant(Applicant target) {
+        addressBook.removeApplicant(target);
     }
 
 }

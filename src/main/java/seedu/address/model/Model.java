@@ -97,4 +97,10 @@ public interface Model {
      * Returns true if an Applicant with the same identity exists in the Applicant List
      */
     boolean hasApplicant(Applicant applicant);
+
+    /**
+     * Deletes a given Applicant from the Applicant List
+     * @param applicant Applicant to delete
+     */
+    void deleteApplicant(Applicant applicant);
 }
