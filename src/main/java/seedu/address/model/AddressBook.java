@@ -105,7 +105,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     public void removeApplicant(Applicant key) {
-
+        applicants.remove(key);
     }
     //// util methods
 

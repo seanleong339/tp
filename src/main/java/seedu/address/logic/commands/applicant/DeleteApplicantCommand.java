@@ -1,17 +1,21 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.applicant;
 
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
 import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.Id;
-import seedu.address.model.person.Person;
+import seedu.address.model.applicant.UniqueApplicantList;
 
-public class DeleteApplicantCommand {
+
+public class DeleteApplicantCommand extends Command {
     public static final String COMMAND_WORD = "deleteapplicant";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -23,7 +27,7 @@ public class DeleteApplicantCommand {
 
     private final Id uniqueID;
 
-    public DeleteCommand(Id id) {
+    public DeleteApplicantCommand(Id id) {
         this.uniqueID = id;
     }
 
@@ -31,21 +35,21 @@ public class DeleteApplicantCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         //List<Person> lastShownList = model.getFilteredPersonList();
-        List<Applicant> lastShownList = model.getApplicantList();
+        UniqueApplicantList lastShownList = model.getApplicantList();
 
-        if () {
+        if (!lastShownList.containsById()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Applicant applicantToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(applicantToDelete);
+        Applicant applicantToDelete = lastShownList.get(uniqueID);
+        model.deleteApplicant(applicantToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_APPLICANT_SUCCESS, applicantToDelete));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check
+                || (other instanceof DeleteApplicantCommand // instanceof handles nulls
+                && uniqueID.equals(((DeleteApplicantCommand) other).uniqueID)); // state check
     }
 }

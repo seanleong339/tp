@@ -28,12 +28,9 @@ public class Applicant {
     private final String job;
     private final Qualification qualification;
 
-    /**
-<<<<<<< HEAD
-     * Constructs a new Applicant, every field is not null
-=======
-     * Creates an Applicant object with all attributes
->>>>>>> master
+
+     /**
+      *  Constructs a new Applicant, every field is not null
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,

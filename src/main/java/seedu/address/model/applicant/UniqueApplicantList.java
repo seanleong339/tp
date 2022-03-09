@@ -24,6 +24,17 @@ public class UniqueApplicantList implements Iterable<Applicant> {
         return internalList.stream().anyMatch(toCheck::isSameApplicant);
     }
 
+    public boolean containsById(Id id) {
+        requireNonNull(id);
+        for (Applicant applicant : internalList) {
+            Id uniqueId = applicant.getId();
+            if (id.equals(uniqueId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Adds an Applicant to the list.
      * The Applicant must not already exist in the list.
