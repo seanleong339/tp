@@ -1,5 +1,7 @@
 package seedu.address.model.applicant;
 
+import java.util.Locale;
+
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
@@ -45,7 +47,7 @@ public class Nric {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof seedu.address.model.applicant.Nric
-                && value.equals(((seedu.address.model.applicant.Nric) other).value));
+                && value.toLowerCase().equals(((seedu.address.model.applicant.Nric) other).value.toLowerCase()));
     }
 
     @Override
