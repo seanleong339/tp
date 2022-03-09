@@ -56,4 +56,17 @@ class EditApplicantTest {
 
         assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
     }
+
+    @Test
+    public void execute_noFieldSpecifiedUnfilteredList_success() {
+        EditApplicant editApplicant =
+                new EditApplicant(INDEX_FIRST_PERSON, new EditApplicant.EditApplicantDescriptor());
+        Applicant editedApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
+
+        String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+
+        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+    }
 }

@@ -44,6 +44,7 @@ public class EditApplicantDescriptorBuilder {
         descriptor.setDateApplied(applicant.getDateApplied());
         descriptor.setQualification(applicant.getQualification());
         // TODO: add Job ID when it is done
+        // descriptor.
     }
 
     /**
