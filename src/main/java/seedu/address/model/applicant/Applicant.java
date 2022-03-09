@@ -29,7 +29,11 @@ public class Applicant {
     private final Qualification qualification;
 
     /**
+<<<<<<< HEAD
+     * Constructs a new Applicant, every field is not null
+=======
      * Creates an Applicant object with all attributes
+>>>>>>> master
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
@@ -61,7 +65,7 @@ public class Applicant {
         this.nric = nric;
         this.dateApplied = dateApplied;
         this.job = job;
-        this.interviewDate = null;
+        this.interviewDate = new InterviewDate();
         this.qualification = null;
     }
 
@@ -89,12 +93,8 @@ public class Applicant {
         return dateApplied;
     }
 
-    public InterviewDate getDateInterview() {
-        if (interviewDate == null) {
-            return new InterviewDate("null");
-        } else {
-            return interviewDate;
-        }
+    public InterviewDate getInterviewDate() {
+        return interviewDate;
     }
 
     public String getJob() {
@@ -129,7 +129,30 @@ public class Applicant {
                 && otherApplicant.getName().equals(getName());
     }
 
-    //todo may have to do a hard equal function to compare all the properties of Applicant
+    /**
+     * Returns true if both applicants have the same identity and data fields.
+     * This defines a stronger notion of equality between two persons.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Applicant)) {
+            return false;
+        }
+
+        Applicant otherApplicant = (Applicant) other;
+        return otherApplicant.getName().equals(getName())
+                && otherApplicant.getPhone().equals(getPhone())
+                && otherApplicant.getEmail().equals(getEmail())
+                && otherApplicant.getAddress().equals(getAddress())
+                && otherApplicant.getTags().equals(getTags())
+                && otherApplicant.getDateApplied().equals(getDateApplied())
+                && otherApplicant.getNric().equals(getNric())
+                && otherApplicant.getJob().equals(getJob());
+    }
 
     @Override
     public String toString() {
@@ -146,7 +169,7 @@ public class Applicant {
                 .append("; Date applied: ")
                 .append(getDateApplied())
                 .append("; Date of interview: ")
-                .append(getDateInterview())
+                .append(getInterviewDate())
                 .append("; Job: ")
                 .append(getJob())
                 .append("; Qualification: ")

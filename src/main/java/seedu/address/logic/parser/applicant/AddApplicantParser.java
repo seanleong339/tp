@@ -66,7 +66,7 @@ public class AddApplicantParser implements Parser<AddApplicant> {
         );
 
         //Print out details of applicant just to test that AddApplicantParser is working
-        System.out.println(applicant.toString());
+        System.out.println(name.toString());
 
         return new AddApplicant(applicant);
     }

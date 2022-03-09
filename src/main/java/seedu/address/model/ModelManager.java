@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -11,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.applicant.Applicant;
 import seedu.address.model.person.Person;
 
 /**
@@ -22,6 +25,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final List<Applicant> applicants;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -34,6 +38,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        applicants = new ArrayList<Applicant>();
     }
 
     public ModelManager() {
@@ -109,6 +114,20 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPerson);
 
         addressBook.setPerson(target, editedPerson);
+    }
+
+
+    //=========== AddressBook ================================================================================
+
+
+    @Override
+    public void addApplicant(Applicant applicant) {
+        applicants.add(applicant);
+    }
+
+    @Override
+    public boolean hasApplicant(Applicant applicant) {
+        return applicants.indexOf(applicant) >= 0;
     }
 
     //=========== Filtered Person List Accessors =============================================================
