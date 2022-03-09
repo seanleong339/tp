@@ -8,13 +8,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Nric {
 
-    public static final String MESSAGE_CONSTRAINTS = "Nric can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Nric must be a string with the format "
+            + "[Char][7 numeric digits][Char]";
 
     /*
-     * The first character of the Nric must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * The Nric must be in the format [Char][7 numeric digits][Char].
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "^[a-zA-z]\\d{7}[a-zA-Z]$";
 
     public final String value;
 
