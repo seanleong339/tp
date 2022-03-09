@@ -28,7 +28,6 @@ public class Id {
      * Returns true if the input integer is a valid Id.
      */
     public static boolean isValidId(int test) {
-        System.out.println(test);
         return test > 0;
     }
 

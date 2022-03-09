@@ -32,6 +32,7 @@ class NricTest {
         assertTrue(Name.isValidName("s0978347t")); // all letters lowercase
         assertTrue(Name.isValidName("A1670384y")); // last letter lowercase
         assertTrue(Name.isValidName("G9853957D")); // all letters uppercase
+        assertTrue(Name.isValidName("S9901010A")); // all letters uppercase
         assertTrue(Name.isValidName("f6538567Y")); // last letter uppercase
     }
 
