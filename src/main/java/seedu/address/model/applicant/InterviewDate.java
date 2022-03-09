@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class InterviewDate {
     public static final String MESSAGE_CONSTRAINTS =
-            "Date should be of the format yyyy-mm-dd"
+            "Date should be of the format yyyy-mm-dd "
                     + "and adhere to the following constraints:\n"
                     + "1. The date should not be blank\n"
                     + "2. The date should be within a range of 1-31\n"
@@ -19,6 +19,7 @@ public class InterviewDate {
      */
     public static final String VALIDATION_REGEX = "^[0-9]{4}-(1[0-2]|0[1-9])-(3[01]|[12][0-9]|0[1-9])$";
     public final LocalDate date;
+    private boolean isInit;
 
     /**
      * Constructs an Interview Date
@@ -29,7 +30,17 @@ public class InterviewDate {
         requireNonNull(interviewDate);
         checkArgument(isValidInterviewDate(interviewDate), MESSAGE_CONSTRAINTS);
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        isInit = true;
         date = LocalDate.parse(interviewDate, format);
+    }
+
+    /**
+     * Constructs an Interview Date with state not initialised
+     */
+    public InterviewDate() {
+        isInit = false;
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        date = LocalDate.parse("1999-01-19", format);
     }
 
     /**
@@ -41,7 +52,11 @@ public class InterviewDate {
 
     @Override
     public String toString() {
-        return date.toString();
+        if (isInit) {
+            return date.toString();
+        } else {
+            return "PENDING";
+        }
     }
 
     @Override
