@@ -27,17 +27,14 @@ public class Applicant {
     private final InterviewDate interviewDate;
     private final String job;
     private final Qualification qualification;
+    private final InterviewStatus interviewStatus;
 
     /**
-<<<<<<< HEAD
-     * Constructs a new Applicant, every field is not null
-=======
      * Creates an Applicant object with all attributes
->>>>>>> master
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
-                     Qualification qualification) {
+                     Qualification qualification, InterviewStatus interviewStatus) {
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
         this.phone = phone;
@@ -49,6 +46,7 @@ public class Applicant {
         this.interviewDate = interviewDate;
         this.job = job;
         this.qualification = qualification;
+        this.interviewStatus = interviewStatus;
     }
 
     /**
@@ -67,6 +65,7 @@ public class Applicant {
         this.job = job;
         this.interviewDate = new InterviewDate();
         this.qualification = null;
+        this.interviewStatus = new InterviewStatus();
     }
 
     public Name getName() {
@@ -107,6 +106,11 @@ public class Applicant {
         }
         return qualification;
     }
+
+    public InterviewStatus getInterviewStatus() {
+        return interviewStatus;
+    }
+
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -174,7 +178,6 @@ public class Applicant {
                 .append(getJob())
                 .append("; Qualification: ")
                 .append(getQualification());
-
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
             builder.append("; Tags: ");

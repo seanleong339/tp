@@ -98,3 +98,4 @@ public interface Model {
      */
     boolean hasApplicant(Applicant applicant);
 }
+
