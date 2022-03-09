@@ -23,12 +23,12 @@ public class Applicant {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
-    private final String dateApplied;
+    private final DateApplied dateApplied;
     private final InterviewDate interviewDate;
     private final String job;
-    private final String qualification;
     private final InterviewStatus interviewStatus;
     private final String applicationStatus;
+    private final Qualification qualification;
 
     /**
      * Creates an Applicant object with all attributes
@@ -55,7 +55,7 @@ public class Applicant {
      * Creates an Applicant object with minimum required attributes
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     String dateApplied, Nric nric, String job) {
+                     DateApplied dateApplied, Nric nric, String job) {
         requireAllNonNull(name, phone, email, address, tags, dateApplied, nric, job);
         this.name = name;
         this.phone = phone;
@@ -91,7 +91,7 @@ public class Applicant {
         return nric;
     }
 
-    public String getDateApplied() {
+    public DateApplied getDateApplied() {
         return dateApplied;
     }
 
@@ -103,7 +103,10 @@ public class Applicant {
         return job;
     }
 
-    public String getQualification() {
+    public Qualification getQualification() {
+        if (qualification == null) {
+            return new Qualification("null");
+        }
         return qualification;
     }
 
@@ -122,6 +125,21 @@ public class Applicant {
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
     }
+
+    /**
+     * Returns true if both applicants have the same name.
+     * This defines a weaker notion of equality between two applicants.
+     */
+    public boolean isSameApplicant(Applicant otherApplicant) {
+        if (otherApplicant == this) {
+            return true;
+        }
+
+        return otherApplicant != null
+                && otherApplicant.getName().equals(getName());
+    }
+
+    //todo may have to do a hard equal function to compare all the properties of Applicant
 
     @Override
     public String toString() {
