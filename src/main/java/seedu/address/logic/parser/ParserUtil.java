@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.Address;
@@ -131,14 +132,14 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
-    public static String parseDateApplied(String dateApplied) throws ParseException {
+    public static DateApplied parseDateApplied(String dateApplied) throws ParseException {
         requireNonNull(dateApplied);
         String trimmedDate = dateApplied.trim();
         // Include bottom when DateApplied class is merged
-        //if (!Name.isValidName(trimmedDate)) {
-        //throw new ParseException(DateApplied.MESSAGE_CONSTRAINTS);
-        //}
-        return new String(trimmedDate);
+        if (!Name.isValidName(trimmedDate)) {
+            throw new ParseException(DateApplied.MESSAGE_CONSTRAINTS);
+        }
+        return new DateApplied(trimmedDate);
     }
 
     /**
@@ -147,13 +148,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
-    public static String parseDateInterview(String dateInterview) throws ParseException {
+    public static InterviewDate parseDateInterview(String dateInterview) throws ParseException {
         requireNonNull(dateInterview);
         String trimmedDate = dateInterview.trim();
         if (!InterviewDate.isValidInterviewDate(trimmedDate)) {
             throw new ParseException(InterviewDate.MESSAGE_CONSTRAINTS);
         }
-        return trimmedDate;
+        return new InterviewDate(trimmedDate);
     }
 
     /**
