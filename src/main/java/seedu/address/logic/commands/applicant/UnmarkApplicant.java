@@ -10,10 +10,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.applicant.Applicant;
-import seedu.address.model.applicant.InterviewDate;
-import seedu.address.model.applicant.InterviewStatus;
-import seedu.address.model.applicant.Nric;
+import seedu.address.model.applicant.*;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -85,14 +82,13 @@ public class UnmarkApplicant extends Command {
         Email email = applicantToUnmark.getEmail();
         Address address = applicantToUnmark.getAddress();
         Set<Tag> tags = applicantToUnmark.getTags();
-        String dateApplied = applicantToUnmark.getDateApplied();
+        DateApplied dateApplied = applicantToUnmark.getDateApplied();
         InterviewDate dateInterview = applicantToUnmark.getDateInterview();
         Nric nric = applicantToUnmark.getNric();
         String job = applicantToUnmark.getJob();
-        String qualification = applicantToUnmark.getQualification();
-        String applicationStauts = applicantToUnmark.getApplicationStatus();
+        Qualification qualification = applicantToUnmark.getQualification();
 
-        return new Applicant(name, phone, email, address, tags, dateApplied, dateInterview,
-                nric, job, qualification, new InterviewStatus(false), applicationStauts);
+        return new Applicant(name, phone, email, address, tags, dateApplied, nric, job, dateInterview,
+                qualification, new InterviewStatus(false));
     }
 }

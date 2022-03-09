@@ -3,11 +3,7 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.applicant.Applicant;
-import seedu.address.model.applicant.DateApplied;
-import seedu.address.model.applicant.InterviewDate;
-import seedu.address.model.applicant.Nric;
-import seedu.address.model.applicant.Qualification;
+import seedu.address.model.applicant.*;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -30,6 +26,7 @@ public class ApplicantBuilder {
     public static final String DEFAULT_INTERVIEWDATE = "2022-03-15";
     public static final String DEFAULT_JOB = "1";
     public static final String DEFAULT_QUALIFICATION = "degree in computing";
+    public static final boolean DEFAULT_INTERVIEW_STATUS = false;
 
     private Name name;
     private Phone phone;
@@ -40,6 +37,7 @@ public class ApplicantBuilder {
     private DateApplied dateApplied;
     private InterviewDate interviewDate;
     private Qualification qualification;
+    private InterviewStatus interviewStatus;
 
     // TODO: Change this to Job class once it is ready.
     private String job;
@@ -57,6 +55,7 @@ public class ApplicantBuilder {
         dateApplied = new DateApplied(DEFAULT_DATEAPPLIED);
         interviewDate = new InterviewDate(DEFAULT_INTERVIEWDATE);
         qualification = new Qualification(DEFAULT_QUALIFICATION);
+        interviewStatus = new InterviewStatus(DEFAULT_INTERVIEW_STATUS);
         tags = new HashSet<>();
 
         // TODO: change this to the Job class once Job class is done.
@@ -165,6 +164,7 @@ public class ApplicantBuilder {
     }
 
     public Applicant build() {
-        return new Applicant(name, phone, email, address, tags, dateApplied, nric, job, interviewDate, qualification);
+        return new Applicant(name, phone, email, address, tags, dateApplied, nric, job, interviewDate,
+                qualification, interviewStatus);
     }
 }
