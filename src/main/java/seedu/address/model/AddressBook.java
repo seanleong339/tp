@@ -6,9 +6,9 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.UniqueApplicantList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.applicant.UniqueApplicantList;
 
 /**
  * Wraps all data at the address-book level
@@ -133,7 +133,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The applicant identity of {@code editedApplicant} must not be the same as another existing applicant
      * in the address book.
      */
-    public void setApplicants(Applicant target, Applicant editedApplicant) {
+    public void setApplicant(Applicant target, Applicant editedApplicant) {
         requireNonNull(editedApplicant);
 
         applicants.setApplicant(target, editedApplicant);
@@ -152,7 +152,9 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        // TODO: change this back if there is an error
+        // return persons.asUnmodifiableObservableList().size() + " persons";
+        return applicants.asUnmodifiableObservableList().size() + " applicants";
         // TODO: refine later
     }
 
@@ -170,7 +172,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                // TODO: change back if there is error
+                // && persons.equals(((AddressBook) other).persons));
+                && applicants.equals(((AddressBook) other).applicants));
     }
 
     @Override

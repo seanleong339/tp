@@ -11,7 +11,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -35,7 +34,8 @@ public class EditApplicantParser implements Parser<EditApplicant> {
         requireNonNull(userInput);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(userInput, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_NRIC, PREFIX_QUALIFICATION, PREFIX_DATEAPPLIED, PREFIX_JOB, PREFIX_STATUS, PREFIX_TAG);
+                        PREFIX_NRIC, PREFIX_QUALIFICATION, PREFIX_DATEAPPLIED, PREFIX_JOB, PREFIX_DATEINTERVIEW,
+                        PREFIX_TAG);
 
         Index index;
 

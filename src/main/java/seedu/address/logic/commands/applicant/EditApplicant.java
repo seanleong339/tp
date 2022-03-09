@@ -14,7 +14,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICANTS;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -123,7 +122,18 @@ public class EditApplicant extends Command {
         Address updatedAddress = editApplicantDescriptor.getAddress().orElse(applicantToEdit.getAddress());
         Set<Tag> updatedTags = editApplicantDescriptor.getTags().orElse(applicantToEdit.getTags());
 
-        return new Applicant(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        DateApplied updatedDateApplied = editApplicantDescriptor.getDateApplied()
+                .orElse(applicantToEdit.getDateApplied());
+        Nric updatedNric = editApplicantDescriptor.getNric().orElse(applicantToEdit.getNric());
+        Qualification updatedQualification = editApplicantDescriptor.getQualification()
+                .orElse(applicantToEdit.getQualification());
+        InterviewDate updatedInterviewDate = editApplicantDescriptor.getInterviewDate()
+                .orElse(applicantToEdit.getDateInterview());
+        // TODO: Add Job update method as well
+        String updatedJob = applicantToEdit.getJob();
+
+        return new Applicant(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedDateApplied,
+                updatedNric, updatedJob, updatedInterviewDate, updatedQualification);
     }
 
     @Override
