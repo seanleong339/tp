@@ -13,7 +13,7 @@ class DateAppliedTest {
     }
 
     @Test
-    public void constructor_invalidEInterviewDate_throwsIllegalArgumentException() {
+    public void constructor_invalidDateApplied_throwsIllegalArgumentException() {
         String dateApplied = "";
         assertThrows(IllegalArgumentException.class, () -> new DateApplied(dateApplied));
     }
