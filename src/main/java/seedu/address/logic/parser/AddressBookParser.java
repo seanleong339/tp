@@ -15,13 +15,10 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
-<<<<<<< HEAD
-import seedu.address.logic.commands.applicant.EditApplicant;
-import seedu.address.logic.parser.applicant.EditApplicantParser;
-=======
 import seedu.address.logic.commands.applicant.AddApplicant;
+import seedu.address.logic.commands.applicant.EditApplicant;
 import seedu.address.logic.parser.applicant.AddApplicantParser;
->>>>>>> master
+import seedu.address.logic.parser.applicant.EditApplicantParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
