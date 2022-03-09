@@ -1,31 +1,5 @@
 package seedu.address.logic.commands.applicant;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.applicant.DateApplied;
-import seedu.address.model.applicant.InterviewDate;
-import seedu.address.model.applicant.InterviewStatus;
-import seedu.address.model.applicant.Nric;
-import seedu.address.model.applicant.Qualification;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
-
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
@@ -40,6 +14,30 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.applicant.DateApplied;
+import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.Nric;
+import seedu.address.model.applicant.Qualification;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Tag;
 
 public class EditApplicant extends Command {
 
@@ -73,6 +71,12 @@ public class EditApplicant extends Command {
     private final Index index;
     private final EditApplicantDescriptor editApplicantDescriptor;
 
+    /**
+     * Constructor for EditApplicant Class
+     *
+     * @param index of the applicant in the filtered applicant list to edit
+     * @param editApplicantDescriptor details to edit the applicant with
+     */
     public EditApplicant(Index index, EditApplicantDescriptor editApplicantDescriptor) {
         requireAllNonNull(index, editApplicantDescriptor);
 
@@ -108,7 +112,8 @@ public class EditApplicant extends Command {
      * edited with {@code editApplicantDescriptor}.
      */
     // todo edit change this to an Applicant class
-    private static Person createEditedApplicant(Person applicantToEdit, EditApplicantDescriptor editApplicantDescriptor) {
+    private static Person createEditedApplicant(Person applicantToEdit,
+                                                EditApplicantDescriptor editApplicantDescriptor) {
         assert applicantToEdit != null;
 
         Name updatedName = editApplicantDescriptor.getName().orElse(applicantToEdit.getName());
@@ -238,14 +243,17 @@ public class EditApplicant extends Command {
         public Optional<DateApplied> getDateApplied() {
             return Optional.ofNullable(dateApplied);
         }
-//      // todo uncomment this part
-//        public void setJobId(JobId jobId) {
-//            this.jobId = jobId;
-//        }
-//
-//        public Optional<JobId> getJobId() {
-//            return Optional.ofNullable(JobId);
-//        }
+
+        // todo uncomment this part.
+        /*public void setJobId(JobId jobId) {
+            this.jobId = jobId;
+        }
+
+
+        public Optional<JobId> getJobId() {
+            return Optional.ofNullable(JobId);
+        }
+        */
 
         public void setInterviewDate(InterviewDate interviewDate) {
             this.interviewDate = interviewDate;

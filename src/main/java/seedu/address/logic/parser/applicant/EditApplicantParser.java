@@ -1,19 +1,5 @@
 package seedu.address.logic.parser.applicant;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.applicant.EditApplicant;
-import seedu.address.logic.parser.ArgumentMultimap;
-import seedu.address.logic.parser.ArgumentTokenizer;
-import seedu.address.logic.parser.Parser;
-import seedu.address.logic.parser.ParserUtil;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.tag.Tag;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
@@ -27,6 +13,20 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.applicant.EditApplicant;
+import seedu.address.logic.parser.ArgumentMultimap;
+import seedu.address.logic.parser.ArgumentTokenizer;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.tag.Tag;
 
 public class EditApplicantParser implements Parser<EditApplicant> {
 
@@ -63,18 +63,20 @@ public class EditApplicantParser implements Parser<EditApplicant> {
             editApplicantDescriptor.setNric(ParserUtil.parseNric(argMultimap.getValue(PREFIX_NRIC).get()));
         }
         // todo when relevant class is added, uncomment, add ParserUtil functions into ParserUtilClass
-//        if (argMultimap.getValue(PREFIX_QUALIFICATION).isPresent()) {
-//            editApplicantDescriptor.setQualification(ParserUtil
-//                    .parseQualification(argMultimap.getValue(PREFIX_QUALIFICATION).get()));
-//        }
-//        if (argMultimap.getValue(PREFIX_DATEAPPLIED).isPresent()) {
-//            editApplicantDescriptor.setDateApplied(ParserUtil
-//                    .parseDateApplied(argMultimap.getValue(PREFIX_DATEAPPLIED).get()));
-//        }
-//        if (argMultimap.getValue(PREFIX_JOB).isPresent()) {
-//            editApplicantDescriptor.setJobId(ParserUtil
-//                    .parseJobId(argMultimap.getValue(PREFIX_JOB).get()));
-//        }
+        if (argMultimap.getValue(PREFIX_QUALIFICATION).isPresent()) {
+            editApplicantDescriptor.setQualification(ParserUtil
+                    .parseQualification(argMultimap.getValue(PREFIX_QUALIFICATION).get()));
+        }
+        if (argMultimap.getValue(PREFIX_DATEAPPLIED).isPresent()) {
+            editApplicantDescriptor.setDateApplied(ParserUtil
+                    .parseDateApplied(argMultimap.getValue(PREFIX_DATEAPPLIED).get()));
+        }
+        /*
+        if (argMultimap.getValue(PREFIX_JOB).isPresent()) {
+            editApplicantDescriptor.setJobId(ParserUtil
+                    .parseJobId(argMultimap.getValue(PREFIX_JOB).get()));
+        }
+         */
         if (argMultimap.getValue(PREFIX_DATEINTERVIEW).isPresent()) {
             editApplicantDescriptor.setInterviewDate(ParserUtil
                     .parseInterviewDate(argMultimap.getValue(PREFIX_DATEINTERVIEW).get()));
