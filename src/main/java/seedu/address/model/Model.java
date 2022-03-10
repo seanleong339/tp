@@ -104,10 +104,17 @@ public interface Model {
     /**
      * Adds the given applicant.
      * {@code applicant} must not already exist in the address book.
+=======
+    //--------------ReCLIne------------------------------
+
+    /**
+     * Adds a given Applicant to filteredList
+>>>>>>> master
      */
     void addApplicant(Applicant applicant);
 
     /**
+<<<<<<< HEAD
      * Replaces the given applicant {@code target} with {@code editedApplicant}.
      * {@code target} must exist in the address book.
      * The applicant identity of {@code editedApplicant} must not be the same as another existing applicant

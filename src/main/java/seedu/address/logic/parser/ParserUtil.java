@@ -151,7 +151,7 @@ public class ParserUtil {
         requireNonNull(dateApplied);
         String trimmedDate = dateApplied.trim();
         // Include bottom when DateApplied class is merged
-        if (!Name.isValidName(trimmedDate)) {
+        if (!DateApplied.isValidDateApplied(trimmedDate)) {
             throw new ParseException(DateApplied.MESSAGE_CONSTRAINTS);
         }
         return new DateApplied(trimmedDate);

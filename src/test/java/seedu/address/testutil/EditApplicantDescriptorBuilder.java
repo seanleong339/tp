@@ -40,7 +40,7 @@ public class EditApplicantDescriptorBuilder {
         descriptor.setTags(applicant.getTags());
 
         descriptor.setNric(applicant.getNric());
-        descriptor.setInterviewDate(applicant.getDateInterview());
+        descriptor.setInterviewDate(applicant.getInterviewDate());
         descriptor.setDateApplied(applicant.getDateApplied());
         descriptor.setQualification(applicant.getQualification());
         // TODO: add Job ID when it is done

@@ -51,7 +51,7 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_DON = "Block 132 Don Street 4";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-    public static final String VALID_NRIC = "S12345567D";
+    public static final String VALID_NRIC = "S1234556D";
     public static final String VALID_NRIC_TWO = "S9987236F";
     public static final String VALID_DATE = "2022-12-12";
     public static final String VALID_DATE_TWO = "2022-11-11";

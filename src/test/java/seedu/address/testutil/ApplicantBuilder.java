@@ -75,7 +75,7 @@ public class ApplicantBuilder {
 
         nric = applicantToCopy.getNric();
         dateApplied = applicantToCopy.getDateApplied();
-        interviewDate = applicantToCopy.getDateInterview();
+        interviewDate = applicantToCopy.getInterviewDate();
         qualification = applicantToCopy.getQualification();
 
         // TODO: change this to the Job class once the Job class is done.
