@@ -17,11 +17,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.applicant.EditApplicant;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.NameApplicantContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.testutil.EditApplicantDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -31,17 +35,30 @@ public class CommandTestUtil {
 
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
+    public static final String VALID_NAME_CHARLIE = "Charlie Goh";
+    public static final String VALID_NAME_DON = "Don Lee";
     public static final String VALID_PHONE_AMY = "11111111";
     public static final String VALID_PHONE_BOB = "22222222";
+    public static final String VALID_PHONE_CHARLIE = "33333333";
+    public static final String VALID_PHONE_DON = "44444444";
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
+    public static final String VALID_EMAIL_CHARLIE = "charlie@example.com";
+    public static final String VALID_EMAIL_DON = "don@example.com";
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_ADDRESS_CHARLIE = "Block 321 Charlie Street 2";
+    public static final String VALID_ADDRESS_DON = "Block 132 Don Street 4";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-    public static final String VALID_NRIC = "S12345567D";
+    public static final String VALID_NRIC = "S1234556D";
+    public static final String VALID_NRIC_TWO = "S9987236F";
     public static final String VALID_DATE = "2022-12-12";
+    public static final String VALID_DATE_TWO = "2022-11-11";
     public static final String VALID_JOB = "12345678";
+    public static final String VALID_JOB_TWO = "12678";
+    public static final String VALID_QUALIFICATION = "Degree in Computing";
+    public static final String VALID_QUALIFICATION_TWO = "Degree in Engineering";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -73,6 +90,9 @@ public class CommandTestUtil {
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
+    // ==================== Applicant =================================
+    public static final EditApplicant.EditApplicantDescriptor DESC_CHARLIE;
+    public static final EditApplicant.EditApplicantDescriptor DESC_DON;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -81,6 +101,14 @@ public class CommandTestUtil {
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+        DESC_CHARLIE = new EditApplicantDescriptorBuilder().withName(VALID_NAME_CHARLIE)
+                .withPhone(VALID_PHONE_CHARLIE).withEmail(VALID_EMAIL_CHARLIE).withAddress(VALID_ADDRESS_CHARLIE)
+                .withNric(VALID_NRIC).withDateApplied(VALID_DATE).withInterviewDate(VALID_DATE)
+                .withQualification(VALID_QUALIFICATION).build();
+        DESC_DON = new EditApplicantDescriptorBuilder().withName(VALID_NAME_DON)
+                .withPhone(VALID_PHONE_DON).withEmail(VALID_EMAIL_DON).withAddress(VALID_ADDRESS_DON)
+                .withNric(VALID_NRIC).withDateApplied(VALID_DATE).withInterviewDate(VALID_DATE)
+                .withQualification(VALID_QUALIFICATION).build();
     }
 
     /**
@@ -138,5 +166,20 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredPersonList().size());
     }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the applicant at the given {@code targetIndex} in the
+     * {@code model}'s address book.
+     */
+    public static void showApplicantAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredApplicantList().size());
+
+        Applicant applicant = model.getFilteredApplicantList().get(targetIndex.getZeroBased());
+        final String[] splitName = applicant.getName().fullName.split("\\s+");
+        model.updateFilteredApplicantList(new NameApplicantContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredApplicantList().size());
+    }
+
 
 }
