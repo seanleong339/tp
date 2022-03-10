@@ -210,8 +210,9 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code Qualification} is invalid.
      */
-    // TODO: return ApplicationStatus once the class Application Status is merged
-    public static int parseApplicationStatus(String applicationStatus) throws ParseException {
+    // TODO: - Add status not interviewed and interviewed
+    //       - return Applicant once the class Application Status is merged
+    public static int parseApplicantStatus(String applicationStatus) throws ParseException {
         requireNonNull(applicationStatus);
         String trimmedQualification = applicationStatus.trim();
         int status = -1;

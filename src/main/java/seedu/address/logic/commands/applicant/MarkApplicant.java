@@ -1,8 +1,7 @@
 package seedu.address.logic.commands.applicant;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_STATUS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.Set;
 
@@ -29,43 +28,33 @@ import seedu.address.model.tag.Tag;
 public class MarkApplicant extends Command {
     public static final String COMMAND_WORD = "markapplicant";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Unmarks the applicant's interview and/or "
-            + "application status "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks the applicant's "
+            + "application status given ID."
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_INTERVIEW_STATUS + " "
-            + PREFIX_APPLICATION_STATUS + "\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_INTERVIEW_STATUS + " "
-            + PREFIX_APPLICATION_STATUS;
+            + "Parameters: ID (must be a valid ID existing in applicant list) "
+            + PREFIX_STATUS + "[STATUS]\n"
+            + "Example: " + COMMAND_WORD
+            + PREFIX_STATUS + "rejected\n";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Unmark applicant %1$d success. Interview status"
-            + "Interview status is marked: %2$b. Application status is unmarked: %3$d";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Mark applicant %1$d status success. status: %2$d";
 
     private final int id;
-    private final boolean markInterviewStatus;
-    private final int applicationStatus;
+    private final int status;
 
     /**
       * Creates an UnmarkApplicant to unmark {@code interviewStatus} and
       * an applicant with specified {@code interviewStatus}
       */
     // TODO: change int applicationStatus to ApplicationStatus applicationStatus
-    public MarkApplicant(Integer id, boolean markInterviewStatus, int applicationStatus) {
+    public MarkApplicant(Integer id, int status) {
         requireNonNull(id);
         this.id = id;
-        this.markInterviewStatus = markInterviewStatus;
-        this.applicationStatus = applicationStatus;
+        this.status = status;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        // TODO: - Implement Applicant List
-        //       - Get applicant by the given id
-        //       - Set unmarked applicant to the applicant list
-
         /*
         List<Applicant> lastShownList = model.getFilteredApplicantList();
         Applicant applicantToUnmark = lastShownList.get();
@@ -73,7 +62,7 @@ public class MarkApplicant extends Command {
         model.setApplicant(applicantToUnmark, unmarkedApplicant);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
         */
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, id, markInterviewStatus, applicationStatus));
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, id, status));
     }
 
     /**
