@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import static org.junit.jupiter.api.Assertions.*;
-class DateAppliedTest {
-  
-}
-=======
 package seedu.address.model.applicant;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -54,4 +48,4 @@ class DateAppliedTest {
         assertTrue(DateApplied.isValidDateApplied("2017-02-28"));
     }
 }
->>>>>>> master
+

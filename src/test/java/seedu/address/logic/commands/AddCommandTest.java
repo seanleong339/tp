@@ -21,6 +21,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.Id;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -176,6 +177,15 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredApplicantList(Predicate<Applicant> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasApplicantById(Id id) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override public Applicant getApplicant(Id id) {
             throw new AssertionError("This method should not be called.");
         }
     }

@@ -2,8 +2,6 @@ package seedu.address.logic.commands.applicant;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.List;
-
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -11,8 +9,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.Id;
-import seedu.address.model.applicant.UniqueApplicantList;
-
 
 public class DeleteApplicantCommand extends Command {
     public static final String COMMAND_WORD = "deleteapplicant";
@@ -26,21 +22,22 @@ public class DeleteApplicantCommand extends Command {
 
     private final Id uniqueID;
 
+    /**
+     * Constructs a command which deletes an applicant by Id
+     * @param id Id of applicant to be deleted
+     */
     public DeleteApplicantCommand(Id id) {
+        requireNonNull(id);
         this.uniqueID = id;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        //List<Person> lastShownList = model.getFilteredPersonList();
-        List<Applicant> lastShownList = model.getFilteredApplicantList();
-
-        if (!lastShownList.containsById(uniqueID)) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        if (!model.hasApplicantById(uniqueID)) {
+            throw new CommandException(Messages.MESSAGE_INVALID_APPLICANT_ID);
         }
-
-        Applicant applicantToDelete = lastShownList.getApplicantById(uniqueID);
+        Applicant applicantToDelete = model.getApplicant(uniqueID);
         model.deleteApplicant(applicantToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_APPLICANT_SUCCESS, applicantToDelete));
     }
