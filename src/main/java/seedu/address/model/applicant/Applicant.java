@@ -130,6 +130,30 @@ public class Applicant {
     }
 
     //todo may have to do a hard equal function to compare all the properties of Applicant
+    /**
+     * Returns true if both applicants have the same identity and data fields.
+     * This defines a stronger notion of equality between two persons.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Applicant)) {
+            return false;
+        }
+
+        Applicant otherApplicant = (Applicant) other;
+        return otherApplicant.getName().equals(getName())
+                && otherApplicant.getPhone().equals(getPhone())
+                && otherApplicant.getEmail().equals(getEmail())
+                && otherApplicant.getAddress().equals(getAddress())
+                && otherApplicant.getTags().equals(getTags())
+                && otherApplicant.getDateApplied().equals(getDateApplied())
+                && otherApplicant.getNric().equals(getNric())
+                && otherApplicant.getJob().equals(getJob());
+    }
 
     @Override
     public String toString() {
