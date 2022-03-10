@@ -108,7 +108,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
-    //// applicant methods
+    //// applicant-level operations
 
     /**
      * Returns true if an applicant with the same identity as {@code applicant} exists in the address book.
@@ -122,14 +122,18 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Adds an applicant to the address book.
      * The applicant must not already exist in the address book.
      */
-    public void addApplicant(Applicant a) {
-        System.out.println(a.hashCode());
-        applicants.add(a);
+    public void addApplicant(Applicant applicant) {
+        System.out.println(applicant.hashCode());
+        applicants.add(applicant);
     }
 
     /**
      * Replaces the given applicant {@code target} in the list with {@code editedApplicant}.
+<<<<<<< HEAD
      * {@code Applicant} must exist in the address book.
+=======
+     * {@code target} must exist in the address book.
+>>>>>>> master
      * The applicant identity of {@code editedApplicant} must not be the same as another existing applicant
      * in the address book.
      */
@@ -146,15 +150,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void removeApplicant(Applicant key) {
         applicants.remove(key);
     }
+
     //// util methods
 
     @Override
-    public ObservableList<Applicant> getApplicantList() {
-        return applicants.asUnmodifiableObservableList();
-    }
-
-    @Override
     public String toString() {
+        // TODO: change this back if there is an error
         return persons.asUnmodifiableObservableList().size() + " persons "
                 + applicants.asUnmodifiableObservableList().size() + " applicants";
         // TODO: refine later
@@ -166,9 +167,15 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
+    public ObservableList<Applicant> getApplicantList() {
+        return applicants.asUnmodifiableObservableList();
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
+                // TODO: change back if there is error
                 && persons.equals(((AddressBook) other).persons)
                 && applicants.equals(((AddressBook) other).applicants));
     }

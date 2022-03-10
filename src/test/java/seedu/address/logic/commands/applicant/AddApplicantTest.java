@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -39,7 +40,7 @@ class AddApplicantTest {
         AddApplicant testCommand = new AddApplicant(test);
         ModelStubAcceptingApplicantAdded modelStub = new ModelStubAcceptingApplicantAdded();
         testCommand.execute(modelStub);
-        assertEquals(test, modelStub.applicantsAdded.get(0));
+        assertEquals(Arrays.asList(test), modelStub.applicantsAdded);
     }
 
     /**
@@ -122,7 +123,27 @@ class AddApplicantTest {
         }
 
         @Override
+        public void setApplicant(Applicant target, Applicant editedApplicant) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Applicant> getFilteredApplicantList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredApplicantList(Predicate<Applicant> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasApplicant(Applicant applicant) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteApplicant(Applicant target) {
             throw new AssertionError("This method should not be called.");
         }
     }
