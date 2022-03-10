@@ -27,7 +27,7 @@ public class TypicalApplicants {
             .withTags("owesMoney", "friends").build();
     public static final Applicant CARL = new ApplicantBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withAddress("wall street")
-            .withDateApplied("2022-01-23").withNric("S9940404AC").withInterviewDate("2022-01-30")
+            .withDateApplied("2022-01-23").withNric("S9940404C").withInterviewDate("2022-01-30")
             .withJob("3").withQualification("degree in Economics")
             .build();
     public static final Applicant DANIEL = new ApplicantBuilder().withName("Daniel Meier").withPhone("87652533")
