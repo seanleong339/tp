@@ -50,9 +50,13 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_NRIC = "S12345567D";
+    public static final String VALID_NRIC_TWO = "S9987236F";
     public static final String VALID_DATE = "2022-12-12";
+    public static final String VALID_DATE_TWO = "2022-11-11";
     public static final String VALID_JOB = "12345678";
+    public static final String VALID_JOB_TWO = "12678";
     public static final String VALID_QUALIFICATION = "Degree in Computing";
+    public static final String VALID_QUALIFICATION_TWO = "Degree in Engineering";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -114,7 +118,7 @@ public class CommandTestUtil {
             Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
-            // assertEquals(expectedCommandResult, result);
+            assertEquals(expectedCommandResult, result);
             assertEquals(expectedModel, actualModel);
         } catch (CommandException ce) {
             throw new AssertionError("Execution of command should not fail.", ce);

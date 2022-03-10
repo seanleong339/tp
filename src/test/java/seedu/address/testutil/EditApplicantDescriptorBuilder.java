@@ -44,7 +44,7 @@ public class EditApplicantDescriptorBuilder {
         descriptor.setDateApplied(applicant.getDateApplied());
         descriptor.setQualification(applicant.getQualification());
         // TODO: add Job ID when it is done
-        // descriptor.
+        descriptor.setJobId(applicant.getJob());
     }
 
     /**
@@ -122,15 +122,14 @@ public class EditApplicantDescriptorBuilder {
     }
 
     // TODO: uncomment this part when JobId is up
-    // /**
-    //  * Sets the {@code JobId} of the {@code EditApplicantDescriptor} that we are building.
-    //  */
-    // public EditApplicantDescriptorBuilder withJobId(String jobId) {
-    //     descriptor.setJobId(new JobId(jobId));
-    //     return this;
-    // }
-
-
+    /**
+     * Sets the {@code JobId} of the {@code EditApplicantDescriptor} that we are building.
+     */
+    public EditApplicantDescriptorBuilder withJobId(String jobId) {
+        descriptor.setJobId(jobId);
+        // descriptor.setJobId(new JobId(jobId));
+        return this;
+    }
 
     public EditApplicantDescriptor build() {
         return descriptor;

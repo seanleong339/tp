@@ -18,22 +18,24 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.testutil.ApplicantBuilder;
 import seedu.address.testutil.EditApplicantDescriptorBuilder;
+import seedu.address.testutil.TypicalApplicants;
 
 class EditApplicantTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(TypicalApplicants.getTypicalAddressBook(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
+        Model modelTest = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         Applicant editedApplicant = new ApplicantBuilder().build();
         EditApplicantDescriptor descriptor = new EditApplicantDescriptorBuilder(editedApplicant).build();
         EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON, descriptor);
 
         String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setApplicant(model.getFilteredApplicantList().get(0), editedApplicant);
+        Model expectedModel = new ModelManager(new AddressBook(modelTest.getAddressBook()), new UserPrefs());
+        expectedModel.setApplicant(modelTest.getFilteredApplicantList().get(0), editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, modelTest, expectedMessage, expectedModel);
     }
 
     @Test

@@ -6,9 +6,14 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_CHARLIE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_TWO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_JOB_TWO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC_TWO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_QUALIFICATION_TWO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import org.junit.jupiter.api.Test;
@@ -46,15 +51,39 @@ class EditApplicantDescriptorTest {
 
         // different email -> returns false
         editedCharlie = new EditApplicantDescriptorBuilder(DESC_CHARLIE).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(DESC_AMY.equals(editedCharlie));
+        assertFalse(DESC_CHARLIE.equals(editedCharlie));
 
         // different address -> returns false
         editedCharlie = new EditApplicantDescriptorBuilder(DESC_CHARLIE).withAddress(VALID_ADDRESS_BOB).build();
-        assertFalse(DESC_AMY.equals(editedCharlie));
+        assertFalse(DESC_CHARLIE.equals(editedCharlie));
 
         // different tags -> returns false
         editedCharlie = new EditApplicantDescriptorBuilder(DESC_CHARLIE).withTags(VALID_TAG_HUSBAND).build();
-        assertFalse(DESC_AMY.equals(editedCharlie));
+        assertFalse(DESC_CHARLIE.equals(editedCharlie));
+
+        // different nric -> returns false
+        editedCharlie = new EditApplicantDescriptorBuilder(DESC_CHARLIE).withNric(VALID_NRIC_TWO).build();
+        assertFalse(DESC_CHARLIE.equals(editedCharlie));
+
+        // different date applied -> returns false
+        editedCharlie = new EditApplicantDescriptorBuilder(DESC_CHARLIE).withDateApplied(VALID_DATE_TWO).build();
+        assertFalse(DESC_CHARLIE.equals(editedCharlie));
+
+        // different interview date -> returns false
+        editedCharlie = new EditApplicantDescriptorBuilder(DESC_CHARLIE).withInterviewDate(VALID_DATE_TWO).build();
+        assertFalse(DESC_CHARLIE.equals(editedCharlie));
+
+        // different qualification -> returns false
+        editedCharlie = new EditApplicantDescriptorBuilder(DESC_CHARLIE)
+                .withQualification(VALID_QUALIFICATION_TWO).build();
+        assertFalse(DESC_CHARLIE.equals(editedCharlie));
+
+        // different interview date -> returns false
+        editedCharlie = new EditApplicantDescriptorBuilder(DESC_CHARLIE).withJobId(VALID_JOB_TWO).build();
+        assertFalse(DESC_CHARLIE.equals(editedCharlie));
+
+
     }
+
 
 }
