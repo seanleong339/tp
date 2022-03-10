@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
+import seedu.address.model.applicant.Id;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
@@ -40,6 +41,7 @@ public class JsonAdaptedApplicant {
 
     /**
      * Constructs a {@code JsonAdaptedApplicant} with the given person details.
+     * todo add applicant status
      */
     @JsonCreator
     public JsonAdaptedApplicant(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
@@ -79,7 +81,7 @@ public class JsonAdaptedApplicant {
         interviewDate = source.getInterviewDate().toString();
         job = source.getJob();
         qualification = source.getQualification().highestQualification;
-        source.get
+        id = source.getId().uid.toString();
     }
 
     /**
@@ -156,17 +158,22 @@ public class JsonAdaptedApplicant {
         }
         final InterviewDate modelInterviewDate = new InterviewDate(interviewDate);
 
+        /**
+         * Include this when JobId class is created
+         *
         if (job == null) {
-            throw new IllegalValueException(JobId.MESSAGE_CONSTRAINTS, JobId.class.getSimpleName());
+            throw new IllegalValueException(String.format(JobId.MESSAGE_CONSTRAINTS, JobId.class.getSimpleName()));
         }
 
         if (JobId.isValidJobId(job)) {
             throw new IllegalValueException(JobId.MESSAGE_CONSTRAINTS);
         }
-        final JobId modelJobId = new JobId(job);
+         **/
+        final String modelJobId = job;
 
         if (qualification == null) {
-            throw new IllegalValueException(Qualification.MESSAGE_CONSTRAINTS, Qualification.class.getSimpleName());
+            throw new IllegalValueException(String.format(Qualification.MESSAGE_CONSTRAINTS,
+                    Qualification.class.getSimpleName()));
         }
 
         if (Qualification.isValidQualification(qualification)) {
@@ -174,7 +181,19 @@ public class JsonAdaptedApplicant {
         }
         final Qualification modelQualification = new Qualification(qualification);
 
-        return new Applicant(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        if (id == null) {
+            throw new IllegalValueException(String.format(Id.MESSAGE_CONSTRAINTS, Id.class.getSimpleName()));
+        }
+
+        if (Id.isValidId(id)) {
+            throw new IllegalValueException(Id.MESSAGE_CONSTRAINTS);
+        }
+        final Id modelId = new Id(Integer.parseInt(id));
+
+        //todo add Status for applicant
+
+        return new Applicant(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelDateApplied,
+                modelNric, modelJobId, modelInterviewDate, modelQualification, modelId);
     }
 
 }

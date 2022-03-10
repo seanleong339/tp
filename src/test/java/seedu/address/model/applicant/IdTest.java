@@ -17,10 +17,10 @@ class IdTest {
     @Test
     void isValidId() {
         // invalid id
-        assertFalse(Id.isValidId(-345)); // negative int
+        assertFalse(Id.isValidId("-345")); // negative int
 
         // valid id
-        assertTrue(Id.isValidId(345)); // positive int
+        assertTrue(Id.isValidId("345")); // positive int
     }
 
 }

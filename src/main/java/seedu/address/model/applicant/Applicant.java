@@ -30,8 +30,10 @@ public class Applicant {
     private final String job;
     private final Qualification qualification;
 
+
+
     /**
-     * Creates an Applicant object with all attributes
+     * Creates an Applicant object with all attributes and generates Id
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
@@ -50,6 +52,25 @@ public class Applicant {
         this.id = new Id(Objects.hash(nric) & 0x7fffffff);
     }
 
+    /**
+     * Creates an Applicant object with all attributes without generating Id
+     */
+    public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                     DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
+                     Qualification qualification, Id id) {
+        requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification, id);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.nric = nric;
+        this.dateApplied = dateApplied;
+        this.interviewDate = interviewDate;
+        this.job = job;
+        this.qualification = qualification;
+        this.id = id;
+    }
     /**
      * Creates an Applicant object with minimum required attributes
      */
