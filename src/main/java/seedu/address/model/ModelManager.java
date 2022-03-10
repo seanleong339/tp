@@ -185,9 +185,25 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
+        if (!addressBook.equals(other.addressBook)) {
+            System.out.println("address book does not equal to each other");
+            System.out.flush();
+        }
+        if (!userPrefs.equals(other.userPrefs)) {
+            System.out.println("user pref does not equal to each other");
+            System.out.flush();
+        }
+        if (!filteredPersons.equals(other.filteredPersons)) {
+            System.out.println("filtered person does not equal to each other");
+            System.out.flush();
+        }
+        if (!filteredApplicants.equals(other.filteredApplicants)) {
+            System.out.println("the 2 models are not equal due to filter applicants failing");
+            System.out.flush();
+        }
         return addressBook.equals(other.addressBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons)
+                 && filteredPersons.equals(other.filteredPersons)
                 && filteredApplicants.equals(other.filteredApplicants);
     }
 

@@ -130,7 +130,7 @@ public class EditApplicant extends Command {
         InterviewDate updatedInterviewDate = editApplicantDescriptor.getInterviewDate()
                 .orElse(applicantToEdit.getDateInterview());
         // TODO: Add Job update method as well
-        String updatedJob = applicantToEdit.getJob();
+        String updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJob());
 
         return new Applicant(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedDateApplied,
                 updatedNric, updatedJob, updatedInterviewDate, updatedQualification);

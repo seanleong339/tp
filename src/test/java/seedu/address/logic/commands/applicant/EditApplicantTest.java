@@ -4,7 +4,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalApplicants.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,7 @@ class EditApplicantTest {
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Model modelTest = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Model modelTest = new ModelManager(TypicalApplicants.getTypicalAddressBook(), new UserPrefs());
         Applicant editedApplicant = new ApplicantBuilder().build();
         EditApplicantDescriptor descriptor = new EditApplicantDescriptorBuilder(editedApplicant).build();
         EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON, descriptor);
