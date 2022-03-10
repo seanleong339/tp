@@ -169,6 +169,7 @@ public class EditApplicant extends Command {
         private DateApplied dateApplied;
         // todo uncomment this part when the related parts are completed
         // Job ID
+        private String jobId;
         private InterviewDate interviewDate;
 
         public EditApplicantDescriptor() {}
@@ -188,6 +189,7 @@ public class EditApplicant extends Command {
             setDateApplied(toCopy.dateApplied);
             // todo uncomment this part
             // setJobId(toCopy.jobId);
+            setJobId(toCopy.jobId);
             setTags(toCopy.tags);
         }
 
@@ -261,9 +263,17 @@ public class EditApplicant extends Command {
         }
 
         public Optional<JobId> getJobId() {
-            return Optional.ofNullable(JobId);
+            return Optional.ofNullable(jobId);
         }
         */
+
+        public void setJobId(String jobId) {
+            this.jobId = jobId;
+        }
+
+        public Optional<String> getJobId() {
+            return Optional.ofNullable(jobId);
+        }
 
         public void setInterviewDate(InterviewDate interviewDate) {
             this.interviewDate = interviewDate;
@@ -314,7 +324,7 @@ public class EditApplicant extends Command {
                     && getInterviewDate().equals(e.getInterviewDate())
                     && getQualification().equals(e.getQualification())
                     // TODO: uncomment this when Job Id Class is ready
-                    // && getJobId().equals(e.getJobId())
+                    && getJobId().equals(e.getJobId())
                     && getTags().equals(e.getTags());
         }
     }
