@@ -35,6 +35,18 @@ public class UniqueApplicantList implements Iterable<Applicant> {
         return false;
     }
 
+    public Applicant getApplicantById(Id id) {
+        requireNonNull(id);
+        Applicant applicantToReturn = null;
+        for (Applicant applicant : internalList) {
+            Id uniqueId = applicant.getId();
+            if (id.equals(uniqueId)) {
+                applicantToReturn = applicant;
+            }
+        }
+        return applicantToReturn;
+    }
+
     /**
      * Adds an Applicant to the list.
      * The Applicant must not already exist in the list.

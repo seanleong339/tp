@@ -2,12 +2,9 @@ package seedu.address.logic.commands.applicant;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.List;
-
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
@@ -37,11 +34,11 @@ public class DeleteApplicantCommand extends Command {
         //List<Person> lastShownList = model.getFilteredPersonList();
         UniqueApplicantList lastShownList = model.getApplicantList();
 
-        if (!lastShownList.containsById()) {
+        if (!lastShownList.containsById(uniqueID)) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Applicant applicantToDelete = lastShownList.get(uniqueID);
+        Applicant applicantToDelete = lastShownList.getApplicantById(uniqueID);
         model.deleteApplicant(applicantToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_APPLICANT_SUCCESS, applicantToDelete));
     }
