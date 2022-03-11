@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -31,8 +32,9 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
+    private TestPanel testPanel;
     private PersonListPanel personListPanel;
-    private PersonListPanel personListPanel2;
+    private PersonListPanel secondPersonListPanel;
 
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -44,10 +46,13 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private StackPane testPanelPlaceholder;
+
+    @FXML
     private StackPane personListPanelPlaceholder;
 
     @FXML
-    private StackPane personListPanelPlaceholder2;
+    private StackPane testListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -115,11 +120,23 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        // For testing purpose
+        ListView<String> testList = new ListView<>();
+        testList.getItems().add("test 1");
+        testList.getItems().add("test 2");
+        testList.getItems().add("test 3");
+        testList.setStyle("-fx-font-size: 24px; -fx-text-fill: white;");
+
+        testPanel = new TestPanel();
+        testPanelPlaceholder.getChildren().add(testPanel.getRoot());
+
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList(), testPanel);
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        personListPanel2 = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder2.getChildren().add(personListPanel2.getRoot());
+        testListPanelPlaceholder.getChildren().add(testList);
+        personListPanel.handlePersonClicks();
+
+        //
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -129,7 +146,10 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
     }
+
+
 
     /**
      * Sets the default size based on {@code guiSettings}.

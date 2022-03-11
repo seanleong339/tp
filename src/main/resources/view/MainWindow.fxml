@@ -6,8 +6,10 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
@@ -23,7 +25,7 @@
         <URL value="@Extensions.css" />
       </stylesheets>
 
-      <VBox>
+      <VBox styleClass="pane-with-border">
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
           <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
@@ -45,21 +47,31 @@
           </padding>
         </StackPane>
 
-        <HBox styleClass="pane-with-border">
-           <VBox fx:id="personList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-             <padding>
-                 <Insets bottom="10" left="10" right="10" top="10" />
-             </padding>
-             <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-           </VBox>
-           <VBox fx:id="personList2" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-             <padding>
-                  <Insets bottom="10" left="10" right="10" top="10" />
-             </padding>
-             <StackPane fx:id="personListPanelPlaceholder2" VBox.vgrow="ALWAYS" />
-           </VBox>
-        </HBox>
-     
+        <SplitPane dividerPositions="0.1" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+              <items>
+                <TabPane tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="person list">
+                        <content>
+                          <StackPane fx:id="personListPanelPlaceholder"/>
+                        </content>
+                      </Tab>
+                      <Tab text="test list">
+                        <content>
+                          <StackPane fx:id="testListPanelPlaceholder"/>
+                        </content>
+                      </Tab>
+                    </tabs>
+                </TabPane>
+                <VBox fx:id="testPanel" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                  <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                  </padding>
+                  <StackPane fx:id="testPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                </VBox>
+              </items>
+        </SplitPane>
+
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
