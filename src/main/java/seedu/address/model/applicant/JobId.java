@@ -14,7 +14,7 @@ public class JobId {
     /**
      * The job id.
      */
-    public Integer jobId;
+    public final Integer jobId;
 
     /**
      * Constructs a Job ID
@@ -24,7 +24,7 @@ public class JobId {
     public JobId(int jobId) {
         requireNonNull(jobId);
         checkArgument(isValidId(jobId), MESSAGE_CONSTRAINTS);
-        this.jobId = this.jobId;
+        this.jobId = jobId;
     }
 
     /**
