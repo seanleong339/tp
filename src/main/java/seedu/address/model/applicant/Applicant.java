@@ -25,14 +25,14 @@ public class Applicant {
     private final Set<Tag> tags = new HashSet<>();
     private final DateApplied dateApplied;
     private final InterviewDate interviewDate;
-    private final String job;
+    private final JobId job;
     private final Qualification qualification;
 
     /**
-     * Creates an Applicant object with all attributes
+     * Creates an Applicant object with all attributes for use by Edit method
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
+                     DateApplied dateApplied, Nric nric, JobId job, InterviewDate interviewDate,
                      Qualification qualification) {
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
@@ -48,11 +48,11 @@ public class Applicant {
     }
 
     /**
-     * Creates an Applicant object with minimum required attributes
+     * Creates an Applicant object with minimum required attributes for use by Add method
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     DateApplied dateApplied, Nric nric, String job) {
-        requireAllNonNull(name, phone, email, address, tags, dateApplied, nric, job);
+                     DateApplied dateApplied, Nric nric) {
+        requireAllNonNull(name, phone, email, address, tags, dateApplied, nric);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -60,7 +60,7 @@ public class Applicant {
         this.tags.addAll(tags);
         this.nric = nric;
         this.dateApplied = dateApplied;
-        this.job = job;
+        this.job = new JobId();
         this.interviewDate = new InterviewDate();
         this.qualification = null;
     }
@@ -93,7 +93,7 @@ public class Applicant {
         return interviewDate;
     }
 
-    public String getJob() {
+    public JobId getJobId() {
         return job;
     }
 

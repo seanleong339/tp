@@ -31,6 +31,7 @@ import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
@@ -130,7 +131,7 @@ public class EditApplicant extends Command {
         InterviewDate updatedInterviewDate = editApplicantDescriptor.getInterviewDate()
                 .orElse(applicantToEdit.getInterviewDate());
         // TODO: Add Job update method as well
-        String updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJob());
+        JobId updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJobId());
 
         return new Applicant(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedDateApplied,
                 updatedNric, updatedJob, updatedInterviewDate, updatedQualification);
@@ -167,9 +168,7 @@ public class EditApplicant extends Command {
         private Set<Tag> tags;
         private Qualification qualification;
         private DateApplied dateApplied;
-        // todo uncomment this part when the related parts are completed
-        // Job ID
-        private String jobId;
+        private JobId jobId;
         private InterviewDate interviewDate;
 
         public EditApplicantDescriptor() {}
@@ -187,8 +186,7 @@ public class EditApplicant extends Command {
             setInterviewDate(toCopy.interviewDate);
             setQualification(toCopy.qualification);
             setDateApplied(toCopy.dateApplied);
-            // todo uncomment this part
-            // setJobId(toCopy.jobId);
+             setJobId(toCopy.jobId);
             setJobId(toCopy.jobId);
             setTags(toCopy.tags);
         }
@@ -257,21 +255,11 @@ public class EditApplicant extends Command {
             return Optional.ofNullable(dateApplied);
         }
 
-        // todo uncomment this part.
-        /*public void setJobId(JobId jobId) {
+        public void setJobId(JobId jobId) {
             this.jobId = jobId;
         }
 
         public Optional<JobId> getJobId() {
-            return Optional.ofNullable(jobId);
-        }
-        */
-
-        public void setJobId(String jobId) {
-            this.jobId = jobId;
-        }
-
-        public Optional<String> getJobId() {
             return Optional.ofNullable(jobId);
         }
 
@@ -323,7 +311,6 @@ public class EditApplicant extends Command {
                     && getDateApplied().equals(e.getDateApplied())
                     && getInterviewDate().equals(e.getInterviewDate())
                     && getQualification().equals(e.getQualification())
-                    // TODO: uncomment this when Job Id Class is ready
                     && getJobId().equals(e.getJobId())
                     && getTags().equals(e.getTags());
         }

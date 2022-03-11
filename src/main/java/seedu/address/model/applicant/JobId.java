@@ -16,6 +16,8 @@ public class JobId {
      */
     public final Integer jobId;
 
+    private boolean isInit;
+
     /**
      * Constructs a Job ID
      *
@@ -23,20 +25,30 @@ public class JobId {
      */
     public JobId(int jobId) {
         requireNonNull(jobId);
-        checkArgument(isValidId(jobId), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidJobId(jobId), MESSAGE_CONSTRAINTS);
+        isInit = true;
         this.jobId = jobId;
+    }
+
+    public JobId() {
+        isInit = false;
+        this.jobId = 10;
     }
 
     /**
      * Returns true if the input integer is a valid Id.
      */
-    public static boolean isValidId(int test) {
+    public static boolean isValidJobId(int test) {
         return test > 0;
     }
 
     @Override
     public String toString() {
-        return "Job #" + this.jobId;
+        if (isInit) {
+            return "Job #" + this.jobId;
+        } else {
+            return "PENDING";
+        }
     }
 
     @Override

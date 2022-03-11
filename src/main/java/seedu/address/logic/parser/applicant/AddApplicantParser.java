@@ -24,6 +24,7 @@ import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
+import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -43,10 +44,10 @@ public class AddApplicantParser implements Parser<AddApplicant> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                         PREFIX_ADDRESS, PREFIX_TAG, PREFIX_DATEAPPLIED, PREFIX_DATEINTERVIEW, PREFIX_NRIC,
-                        PREFIX_JOB, PREFIX_QUALIFICATION
+                        PREFIX_QUALIFICATION
                 );
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_JOB,
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL,
             PREFIX_NRIC, PREFIX_DATEAPPLIED)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddApplicant.MESSAGE_USAGE));
@@ -59,14 +60,10 @@ public class AddApplicantParser implements Parser<AddApplicant> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         DateApplied dateApplied = ParserUtil.parseDateApplied(argMultimap.getValue(PREFIX_DATEAPPLIED).get());
         Nric nric = ParserUtil.parseNric(argMultimap.getValue(PREFIX_NRIC).get());
-        String job = ParserUtil.parseJob(argMultimap.getValue(PREFIX_JOB).get());
 
         Applicant applicant = new Applicant(name, phone, email, address,
-                tagList, dateApplied, nric, job
+                tagList, dateApplied, nric
         );
-
-        //Print out details of applicant just to test that AddApplicantParser is working
-        System.out.println(name.toString());
 
         return new AddApplicant(applicant);
     }
