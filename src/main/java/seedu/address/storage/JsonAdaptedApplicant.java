@@ -143,7 +143,7 @@ public class JsonAdaptedApplicant {
                     DateApplied.class.getSimpleName()));
         }
 
-        if (DateApplied.isValidDateApplied(dateApplied)) {
+        if (!DateApplied.isValidDateApplied(dateApplied)) {
             throw new IllegalValueException(DateApplied.MESSAGE_CONSTRAINTS);
         }
         final DateApplied modelDateApplied = new DateApplied(dateApplied);
@@ -153,7 +153,7 @@ public class JsonAdaptedApplicant {
                     InterviewDate.class.getSimpleName()));
         }
 
-        if (InterviewDate.isValidInterviewDate(interviewDate)) {
+        if (!InterviewDate.isValidInterviewDate(interviewDate)) {
             throw new IllegalValueException(InterviewDate.MESSAGE_CONSTRAINTS);
         }
         final InterviewDate modelInterviewDate = new InterviewDate(interviewDate);
@@ -165,7 +165,7 @@ public class JsonAdaptedApplicant {
             throw new IllegalValueException(String.format(JobId.MESSAGE_CONSTRAINTS, JobId.class.getSimpleName()));
         }
 
-        if (JobId.isValidJobId(job)) {
+        if (!JobId.isValidJobId(job)) {
             throw new IllegalValueException(JobId.MESSAGE_CONSTRAINTS);
         }
          **/
@@ -176,7 +176,7 @@ public class JsonAdaptedApplicant {
                     Qualification.class.getSimpleName()));
         }
 
-        if (Qualification.isValidQualification(qualification)) {
+        if (!Qualification.isValidQualification(qualification)) {
             throw new IllegalValueException(Qualification.MESSAGE_CONSTRAINTS);
         }
         final Qualification modelQualification = new Qualification(qualification);
@@ -185,7 +185,7 @@ public class JsonAdaptedApplicant {
             throw new IllegalValueException(String.format(Id.MESSAGE_CONSTRAINTS, Id.class.getSimpleName()));
         }
 
-        if (Id.isValidId(id)) {
+        if (!Id.isValidId(id)) {
             throw new IllegalValueException(Id.MESSAGE_CONSTRAINTS);
         }
         final Id modelId = new Id(Integer.parseInt(id));

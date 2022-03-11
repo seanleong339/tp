@@ -1,0 +1,130 @@
+{
+  "persons" : [ {
+    "name" : "Alice Pauline",
+    "phone" : "94351253",
+    "email" : "alice@example.com",
+    "address" : "123, Jurong West Ave 6, #08-111",
+    "tagged" : [ "friends" ]
+  }, {
+    "name" : "Benson Meier",
+    "phone" : "98765432",
+    "email" : "johnd@example.com",
+    "address" : "311, Clementi Ave 2, #02-25",
+    "tagged" : [ "owesMoney", "friends" ]
+  }, {
+    "name" : "Carl Kurz",
+    "phone" : "95352563",
+    "email" : "heinz@example.com",
+    "address" : "wall street",
+    "tagged" : [ ]
+  }, {
+    "name" : "Daniel Meier",
+    "phone" : "87652533",
+    "email" : "cornelia@example.com",
+    "address" : "10th street",
+    "tagged" : [ "friends" ]
+  }, {
+    "name" : "Elle Meyer",
+    "phone" : "9482224",
+    "email" : "werner@example.com",
+    "address" : "michegan ave",
+    "tagged" : [ ]
+  }, {
+    "name" : "Fiona Kunz",
+    "phone" : "9482427",
+    "email" : "lydia@example.com",
+    "address" : "little tokyo",
+    "tagged" : [ ]
+  }, {
+    "name" : "George Best",
+    "phone" : "9482442",
+    "email" : "anna@example.com",
+    "address" : "4th street",
+    "tagged" : [ ]
+  } ],
+  "applicants" : [ {
+    "name" : "Alice Pauline",
+    "phone" : "94351253",
+    "email" : "alice@example.com",
+    "address" : "123, Jurong West Ave 6, #08-111",
+    "tagged" : [ "friends" ],
+    "nric" : "S9920202A",
+    "job" : "1",
+    "qualification" : "degree in Computing",
+    "id" : "1386502365",
+    "dateApplied" : "2022-01-21",
+    "interviewDate" : "2022-01-28"
+  }, {
+    "name" : "Benson Meier",
+    "phone" : "98765432",
+    "email" : "johnd@example.com",
+    "address" : "311, Clementi Ave 2, #02-25",
+    "tagged" : [ "owesMoney", "friends" ],
+    "nric" : "S9930303B",
+    "job" : "2",
+    "qualification" : "degree in Computer Engineering",
+    "id" : "1415161339",
+    "dateApplied" : "2022-01-22",
+    "interviewDate" : "2022-01-29"
+  }, {
+    "name" : "Carl Kurz",
+    "phone" : "95352563",
+    "email" : "heinz@example.com",
+    "address" : "wall street",
+    "tagged" : [ ],
+    "nric" : "S9940404C",
+    "job" : "3",
+    "qualification" : "degree in Economics",
+    "id" : "1443820313",
+    "dateApplied" : "2022-01-23",
+    "interviewDate" : "2022-01-30"
+  }, {
+    "name" : "Daniel Meier",
+    "phone" : "87652533",
+    "email" : "cornelia@example.com",
+    "address" : "10th street",
+    "tagged" : [ "friends" ],
+    "nric" : "S9950505D",
+    "job" : "4",
+    "qualification" : "degree in Business",
+    "id" : "1472479287",
+    "dateApplied" : "2022-01-24",
+    "interviewDate" : "2022-01-31"
+  }, {
+    "name" : "Elle Meyer",
+    "phone" : "9482224",
+    "email" : "werner@example.com",
+    "address" : "michegan ave",
+    "tagged" : [ ],
+    "nric" : "S9960606E",
+    "job" : "5",
+    "qualification" : "degree in Data Science",
+    "id" : "1501138261",
+    "dateApplied" : "2022-01-25",
+    "interviewDate" : "2022-02-01"
+  }, {
+    "name" : "Fiona Kunz",
+    "phone" : "9482427",
+    "email" : "lydia@example.com",
+    "address" : "little tokyo",
+    "tagged" : [ ],
+    "nric" : "S9970707F",
+    "job" : "6",
+    "qualification" : "degree in Real Estate",
+    "id" : "1529797235",
+    "dateApplied" : "2022-01-26",
+    "interviewDate" : "2022-02-02"
+  }, {
+    "name" : "George Best",
+    "phone" : "9482442",
+    "email" : "anna@example.com",
+    "address" : "4th street",
+    "tagged" : [ ],
+    "nric" : "S9980808G",
+    "job" : "7",
+    "qualification" : "degree in Political Science",
+    "id" : "1558456209",
+    "dateApplied" : "2022-01-27",
+    "interviewDate" : "2022-02-03"
+  } ]
+}
