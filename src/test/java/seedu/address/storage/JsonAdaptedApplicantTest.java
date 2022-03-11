@@ -2,19 +2,22 @@ package seedu.address.storage;
 
 import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.applicant.DateApplied;
+import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.Nric;
+import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.testutil.TypicalApplicants;
-import seedu.address.testutil.TypicalPersons;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.address.storage.JsonAdaptedApplicant.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplicants.BENSON;
 
@@ -52,69 +55,176 @@ class JsonAdaptedApplicantTest {
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedApplicant applicant =
-                new JsonAdaptedApplicant(INVALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+                new JsonAdaptedApplicant(INVALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(null, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(null, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 
     @Test
     public void toModelType_invalidPhone_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, INVALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, INVALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
         String expectedMessage = Phone.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 
     @Test
     public void toModelType_nullPhone_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, null, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, null, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 
     @Test
     public void toModelType_invalidEmail_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, INVALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, INVALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
         String expectedMessage = Email.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 
     @Test
     public void toModelType_nullEmail_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, null, VALID_ADDRESS, VALID_TAGS);
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, null, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 
     @Test
     public void toModelType_invalidAddress_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, INVALID_ADDRESS, VALID_TAGS);
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, INVALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
         String expectedMessage = Address.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 
     @Test
     public void toModelType_nullAddress_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, null, VALID_TAGS);
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, null, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 
     @Test
     public void toModelType_invalidTags_throwsIllegalValueException() {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, invalidTags);
-        assertThrows(IllegalValueException.class, person::toModelType);
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, invalidTags,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
+        assertThrows(IllegalValueException.class, applicant::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidNric_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        INVALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
+        String expectedMessage = Nric.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullNric_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        null, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Nric.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
+    }
+
+
+    @Test
+    public void toModelType_invalidDateApplied_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, INVALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
+        String expectedMessage = DateApplied.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullDateApplied_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, null, VALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, DateApplied.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidInterviewDate_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, INVALID_INTERVIEWDATE, VALID_JOB, VALID_QUALIFICATION);
+        String expectedMessage = InterviewDate.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullInterviewDate_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, null, VALID_JOB, VALID_QUALIFICATION);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, InterviewDate.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
+    }
+
+    /**
+     * Todo add this in when JobId class is added
+    @Test
+    public void toModelType_invalidJob_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, INVALID_JOB, VALID_QUALIFICATION);
+        String expectedMessage = JobId.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullJobId_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, null, VALID_QUALIFICATION);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, JobId.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
+    }
+    */
+
+    @Test
+    public void toModelType_invalidQualification_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, INVALID_QUALIFICATION);
+        String expectedMessage = Qualification.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullQualification_throwsIllegalValueException() {
+        JsonAdaptedApplicant applicant =
+                new JsonAdaptedApplicant(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                        VALID_NRIC, VALID_DATEAPPLIED, VALID_INTERVIEWDATE, VALID_JOB, null);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Qualification.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 }

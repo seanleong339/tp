@@ -172,7 +172,7 @@ public class JsonAdaptedApplicant {
         final String modelJobId = job;
 
         if (qualification == null) {
-            throw new IllegalValueException(String.format(Qualification.MESSAGE_CONSTRAINTS,
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Qualification.class.getSimpleName()));
         }
 
@@ -181,19 +181,10 @@ public class JsonAdaptedApplicant {
         }
         final Qualification modelQualification = new Qualification(qualification);
 
-        if (id == null) {
-            throw new IllegalValueException(String.format(Id.MESSAGE_CONSTRAINTS, Id.class.getSimpleName()));
-        }
-
-        if (!Id.isValidId(id)) {
-            throw new IllegalValueException(Id.MESSAGE_CONSTRAINTS);
-        }
-        final Id modelId = new Id(Integer.parseInt(id));
-
         //todo add Status for applicant
 
         return new Applicant(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelDateApplied,
-                modelNric, modelJobId, modelInterviewDate, modelQualification, modelId);
+                modelNric, modelJobId, modelInterviewDate, modelQualification);
     }
 
 }
