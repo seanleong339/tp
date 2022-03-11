@@ -47,7 +47,7 @@
           </padding>
         </StackPane>
 
-        <SplitPane dividerPositions="0.1" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+        <SplitPane dividerPositions="0.3" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
               <items>
                 <TabPane tabClosingPolicy="UNAVAILABLE">
                     <tabs>
@@ -56,14 +56,14 @@
                           <StackPane fx:id="personListPanelPlaceholder"/>
                         </content>
                       </Tab>
-                      <Tab text="test list">
+                      <Tab text="test list" styleClass="tabTest">
                         <content>
                           <StackPane fx:id="testListPanelPlaceholder"/>
                         </content>
                       </Tab>
                     </tabs>
                 </TabPane>
-                <VBox fx:id="testPanel" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <VBox fx:id="testPanel"  styleClass="pane-with-border" VBox.vgrow="ALWAYS">
                   <padding>
                     <Insets bottom="10" left="10" right="10" top="10" />
                   </padding>
