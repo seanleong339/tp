@@ -62,7 +62,6 @@ public class EditApplicantParser implements Parser<EditApplicant> {
         if (argMultimap.getValue(PREFIX_NRIC).isPresent()) {
             editApplicantDescriptor.setNric(ParserUtil.parseNric(argMultimap.getValue(PREFIX_NRIC).get()));
         }
-        // todo when relevant class is added, uncomment, add ParserUtil functions into ParserUtilClass
         if (argMultimap.getValue(PREFIX_QUALIFICATION).isPresent()) {
             editApplicantDescriptor.setQualification(ParserUtil
                     .parseQualification(argMultimap.getValue(PREFIX_QUALIFICATION).get()));
@@ -71,12 +70,12 @@ public class EditApplicantParser implements Parser<EditApplicant> {
             editApplicantDescriptor.setDateApplied(ParserUtil
                     .parseDateApplied(argMultimap.getValue(PREFIX_DATEAPPLIED).get()));
         }
-        /*
+        // todo may have to change when the JobId is ready
         if (argMultimap.getValue(PREFIX_JOB).isPresent()) {
             editApplicantDescriptor.setJobId(ParserUtil
-                    .parseJobId(argMultimap.getValue(PREFIX_JOB).get()));
+                    .parseJob(argMultimap.getValue(PREFIX_JOB).get()));
         }
-         */
+
         if (argMultimap.getValue(PREFIX_DATEINTERVIEW).isPresent()) {
             editApplicantDescriptor.setInterviewDate(ParserUtil
                     .parseInterviewDate(argMultimap.getValue(PREFIX_DATEINTERVIEW).get()));
