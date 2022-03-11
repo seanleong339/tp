@@ -129,11 +129,6 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Replaces the given applicant {@code target} in the list with {@code editedApplicant}.
-<<<<<<< HEAD
-     * {@code Applicant} must exist in the address book.
-=======
-     * {@code target} must exist in the address book.
->>>>>>> master
      * The applicant identity of {@code editedApplicant} must not be the same as another existing applicant
      * in the address book.
      */

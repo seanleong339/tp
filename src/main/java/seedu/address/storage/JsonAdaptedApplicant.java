@@ -1,27 +1,26 @@
 package seedu.address.storage;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.applicant.Applicant;
-import seedu.address.model.applicant.DateApplied;
-import seedu.address.model.applicant.Id;
-import seedu.address.model.applicant.InterviewDate;
-import seedu.address.model.applicant.Nric;
-import seedu.address.model.applicant.Qualification;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.DateApplied;
+import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.Nric;
+import seedu.address.model.applicant.Qualification;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Tag;
 
 public class JsonAdaptedApplicant {
 
@@ -62,7 +61,7 @@ public class JsonAdaptedApplicant {
         this.interviewDate = interviewDate;
         this.job = job;
         this.qualification = qualification;
-        this.id = ((Integer)(Objects.hash(nric))).toString();
+        this.id = ((Integer) (Objects.hash(nric))).toString();
     }
 
     /**
@@ -158,17 +157,16 @@ public class JsonAdaptedApplicant {
         }
         final InterviewDate modelInterviewDate = new InterviewDate(interviewDate);
 
-        /**
-         * Include this when JobId class is created
-         *
-        if (job == null) {
-            throw new IllegalValueException(String.format(JobId.MESSAGE_CONSTRAINTS, JobId.class.getSimpleName()));
-        }
+        //
+        // Include this when JobId class is created
+        //
+        // if (job == null) {
+        //     throw new IllegalValueException(String.format(JobId.MESSAGE_CONSTRAINTS, JobId.class.getSimpleName()));
+        // }
 
-        if (!JobId.isValidJobId(job)) {
-            throw new IllegalValueException(JobId.MESSAGE_CONSTRAINTS);
-        }
-         **/
+        // if (!JobId.isValidJobId(job)) {
+        //     throw new IllegalValueException(JobId.MESSAGE_CONSTRAINTS);
+        // }
         final String modelJobId = job;
 
         if (qualification == null) {

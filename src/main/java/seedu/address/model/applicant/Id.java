@@ -28,7 +28,7 @@ public class Id {
      * Returns true if the input integer is a valid Id.
      */
     public static boolean isValidId(String test) {
-        return Integer.parseInt(test)> 0;
+        return Integer.parseInt(test) > 0;
     }
 
     @Override

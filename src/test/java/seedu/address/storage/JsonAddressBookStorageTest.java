@@ -18,8 +18,6 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.testutil.TypicalApplicants;
-import seedu.address.testutil.TypicalPersons;
 
 public class JsonAddressBookStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
@@ -63,13 +61,13 @@ public class JsonAddressBookStorageTest {
     }
 
     //Use to create JSON test file with applicants
-  //  @Test
-  //  public void saveAddressBook_withApplicants() throws Exception {
-  //      Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableAddressBookTest");
-  //      JsonAddressBookStorage j =
-  //              new JsonAddressBookStorage(TEST_DATA_FOLDER.resolve("typicalApplicantsAddressBook.json"));
-  //      j.saveAddressBook(TypicalPersons.getTypicalAddressBook());
-  //  }
+    // @Test
+    // public void saveAddressBook_withApplicants() throws Exception {
+    //     Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableAddressBookTest");
+    //     JsonAddressBookStorage j =
+    //             new JsonAddressBookStorage(TEST_DATA_FOLDER.resolve("duplicateApplicantsAddressBook.json"));
+    //     j.saveAddressBook(TypicalApplicants.getTypicalAddressBook());
+    // }
 
     @Test
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
