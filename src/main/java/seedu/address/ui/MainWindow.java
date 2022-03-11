@@ -135,7 +135,6 @@ public class MainWindow extends UiPart<Stage> {
 
         testListPanelPlaceholder.getChildren().add(testList);
         personListPanel.handlePersonClicks();
-
         //
 
         resultDisplay = new ResultDisplay();
@@ -146,7 +145,6 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-
     }
 
 

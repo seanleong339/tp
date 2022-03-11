@@ -1,11 +1,9 @@
 package seedu.address.ui;
 
-import java.util.Comparator;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
@@ -19,11 +17,11 @@ public class PersonListPanel extends UiPart<Region> {
 
     private static final String FXML = "PersonListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+    private TestPanel testPanel;
 
     @FXML
-    public ListView<Person> personListView;
+    private ListView<Person> personListView;
 
-    TestPanel testPanel;
 
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
@@ -35,19 +33,13 @@ public class PersonListPanel extends UiPart<Region> {
         this.testPanel = testPanel;
     }
 
-
+    /**
+     * Displays ListView item clicked on the ListView on the {@code testPanel}
+     */
     public void handlePersonClicks() {
         personListView.setOnMouseClicked(event -> {
-            testPanel.tags.getChildren().clear();
-            Person person  = personListView.getSelectionModel()
-                    .getSelectedItem();
-            testPanel.name.setText(person.getName().fullName);
-            testPanel.phone.setText("phone number: " + person.getPhone().value);
-            testPanel.address.setText("address: " + person.getAddress().value);
-            testPanel.email.setText("email: " + person.getEmail().value);
-            person.getTags().stream()
-                    .sorted(Comparator.comparing(tag -> tag.tagName))
-                    .forEach(tag -> testPanel.tags.getChildren().add(new Label(tag.tagName)));
+            Person person = personListView.getSelectionModel().getSelectedItem();
+            testPanel.setPersonText(person);
         });
     }
 

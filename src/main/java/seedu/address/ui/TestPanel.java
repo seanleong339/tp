@@ -3,11 +3,8 @@ package seedu.address.ui;
 import java.util.Comparator;
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -21,25 +18,33 @@ public class TestPanel extends UiPart<Region> {
     private static final String FXML = "TestPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(TestPanel.class);
 
-    public final Person person;
-
     @FXML
-    public HBox cardPane;
+    private HBox cardPane;
     @FXML
-    public Label name;
+    private Label name;
     @FXML
-    public Label id;
+    private Label id;
     @FXML
-    public Label phone;
+    private Label phone;
     @FXML
-    public Label address;
+    private Label address;
     @FXML
-    public Label email;
+    private Label email;
     @FXML
-    public FlowPane tags;
+    private FlowPane tags;
 
     public TestPanel() {
         super(FXML);
-        this.person = null;
+    }
+
+    public void setPersonText(Person person) {
+        tags.getChildren().clear();
+        name.setText(person.getName().fullName);
+        phone.setText("phone number: " + person.getPhone().value);
+        address.setText("address: " + person.getAddress().value);
+        email.setText("email: " + person.getEmail().value);
+        person.getTags().stream()
+                .sorted(Comparator.comparing(tag -> tag.tagName))
+                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 }
