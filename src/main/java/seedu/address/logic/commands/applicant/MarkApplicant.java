@@ -3,23 +3,15 @@ package seedu.address.logic.commands.applicant;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 
-import java.util.Set;
+import java.util.List;
 
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
-import seedu.address.model.applicant.DateApplied;
-import seedu.address.model.applicant.InterviewDate;
-import seedu.address.model.applicant.InterviewStatus;
-import seedu.address.model.applicant.Nric;
-import seedu.address.model.applicant.Qualification;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 
 
 /**
@@ -36,9 +28,9 @@ public class MarkApplicant extends Command {
             + "Example: " + COMMAND_WORD
             + PREFIX_STATUS + "rejected\n";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Mark applicant %1$d status success. status: %2$d";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Mark Applicant: %1$s with status %2$d";
 
-    private final int id;
+    private final Index index;
     private final int status;
 
     /**
@@ -46,30 +38,27 @@ public class MarkApplicant extends Command {
       * an applicant with specified {@code interviewStatus}
       */
     // TODO: change int applicationStatus to ApplicationStatus applicationStatus
-    public MarkApplicant(Integer id, int status) {
-        requireNonNull(id);
-        this.id = id;
+    public MarkApplicant(Index index, int status) {
+        requireNonNull(index);
+        this.index = index;
         this.status = status;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        /*
         List<Applicant> lastShownList = model.getFilteredApplicantList();
-        Applicant applicantToUnmark = lastShownList.get();
-        Applicant unmarkedApplicant = createUnmarkApplicant(applicantToUnmark);
-        model.setApplicant(applicantToUnmark, unmarkedApplicant);
-        model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
-        */
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, id, status));
+
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        }
+        Applicant applicantToMark = lastShownList.get(index.getZeroBased());
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS,
+                applicantToMark.getName().toString(), status));
     }
 
-    /**
-     * Returns new applicant with InterviewStatus unmark (or set to false)
-     * TODO: Add a parameter for application status of Applicant
-     */
-    private static Applicant createUnmarkApplicant(Applicant applicantToUnmark) {
+    /*
+     private static Applicant createUnmarkApplicant(Applicant applicantToUnmark) {
         assert applicantToUnmark != null;
 
         Name name = applicantToUnmark.getName();
@@ -80,10 +69,9 @@ public class MarkApplicant extends Command {
         DateApplied dateApplied = applicantToUnmark.getDateApplied();
         InterviewDate dateInterview = applicantToUnmark.getInterviewDate();
         Nric nric = applicantToUnmark.getNric();
-        String job = applicantToUnmark.getJob();
+        JobId job = applicantToUnmark.getJobId();
         Qualification qualification = applicantToUnmark.getQualification();
-
         return new Applicant(name, phone, email, address, tags, dateApplied, nric, job, dateInterview,
                 qualification, new InterviewStatus(false));
-    }
+    } */
 }

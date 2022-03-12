@@ -27,7 +27,6 @@ public class Applicant {
     private final InterviewDate interviewDate;
     private final JobId job;
     private final Qualification qualification;
-    private final InterviewStatus interviewStatus;
 
     /**
 <<<<<<< HEAD
@@ -35,7 +34,7 @@ public class Applicant {
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, JobId job, InterviewDate interviewDate,
-                     Qualification qualification, InterviewStatus interviewStatus) {
+                     Qualification qualification) {
 
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
@@ -48,11 +47,6 @@ public class Applicant {
         this.interviewDate = interviewDate;
         this.job = job;
         this.qualification = qualification;
-        this.interviewStatus = interviewStatus;
-<<<<<<< HEAD
-=======
-        this.id = new Id(Objects.hash(nric) & 0x7fffffff);
->>>>>>> e2b503fb5ba8ad3d0a12beeffe19516c4a8355f4
     }
 
     /**
@@ -71,11 +65,7 @@ public class Applicant {
         this.job = new JobId();
         this.interviewDate = new InterviewDate();
         this.qualification = null;
-        this.interviewStatus = new InterviewStatus();
-<<<<<<< HEAD
-=======
-        this.id = new Id(Objects.hash(nric) & 0x7fffffff);
->>>>>>> e2b503fb5ba8ad3d0a12beeffe19516c4a8355f4
+
     }
 
     public Name getName() {
@@ -117,18 +107,6 @@ public class Applicant {
         return qualification;
     }
 
-    public InterviewStatus getInterviewStatus() {
-        return interviewStatus;
-    }
-
-
-<<<<<<< HEAD
-=======
-    public Id getId() {
-        return id;
-    }
-
->>>>>>> e2b503fb5ba8ad3d0a12beeffe19516c4a8355f4
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
