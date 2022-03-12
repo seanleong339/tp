@@ -96,7 +96,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
-
         persons.setPerson(target, editedPerson);
     }
 
@@ -107,7 +106,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void removePerson(Person key) {
         persons.remove(key);
     }
-
 
     //// applicant-level operations
 
@@ -136,7 +134,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setApplicant(Applicant target, Applicant editedApplicant) {
         requireNonNull(editedApplicant);
-
         applicants.setApplicant(target, editedApplicant);
     }
 
@@ -147,7 +144,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void removeApplicant(Applicant key) {
         applicants.remove(key);
     }
-
 
     //// util methods
 
