@@ -70,7 +70,6 @@ public class EditApplicantParser implements Parser<EditApplicant> {
             editApplicantDescriptor.setDateApplied(ParserUtil
                     .parseDateApplied(argMultimap.getValue(PREFIX_DATEAPPLIED).get()));
         }
-        // todo may have to change when the JobId is ready
         if (argMultimap.getValue(PREFIX_JOB).isPresent()) {
             editApplicantDescriptor.setJobId(ParserUtil
                     .parseJob(argMultimap.getValue(PREFIX_JOB).get()));

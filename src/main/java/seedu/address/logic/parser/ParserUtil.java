@@ -11,6 +11,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
@@ -178,14 +179,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code Job} is invalid.
      */
-    public static String parseJob(String job) throws ParseException {
+    public static JobId parseJob(String job) throws ParseException {
         requireNonNull(job);
         String trimmedJob = job.trim();
-        // TODO: Uncomment bottom when Job class is merged
-        //if (!Job.isValidJob(trimmedJob)) {
-        //throw new ParseException(Job.MESSAGE_CONSTRAINTS);
-        //}
-        return new String(trimmedJob);
+        if (!JobId.isValidJobId(trimmedJob)) {
+            throw new ParseException(JobId.MESSAGE_CONSTRAINTS);
+        }
+        return new JobId(trimmedJob);
     }
 
     /**

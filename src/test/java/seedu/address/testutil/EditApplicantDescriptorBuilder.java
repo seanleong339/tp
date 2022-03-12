@@ -8,6 +8,7 @@ import seedu.address.logic.commands.applicant.EditApplicant.EditApplicantDescrip
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
@@ -43,8 +44,7 @@ public class EditApplicantDescriptorBuilder {
         descriptor.setInterviewDate(applicant.getInterviewDate());
         descriptor.setDateApplied(applicant.getDateApplied());
         descriptor.setQualification(applicant.getQualification());
-        // TODO: add Job ID when it is done
-        descriptor.setJobId(applicant.getJob());
+        descriptor.setJobId(applicant.getJobId());
     }
 
     /**
@@ -126,8 +126,7 @@ public class EditApplicantDescriptorBuilder {
      * Sets the {@code JobId} of the {@code EditApplicantDescriptor} that we are building.
      */
     public EditApplicantDescriptorBuilder withJobId(String jobId) {
-        descriptor.setJobId(jobId);
-        // descriptor.setJobId(new JobId(jobId));
+        descriptor.setJobId(new JobId(jobId));
         return this;
     }
 
