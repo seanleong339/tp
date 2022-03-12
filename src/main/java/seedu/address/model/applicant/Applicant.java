@@ -125,14 +125,6 @@ public class Applicant {
                 && otherApplicant.getName().equals(getName());
     }
 
-    /**
-     * Returns true if the applicant has the same id.
-     * This defines a weaker notion of equality between two applicants.
-     */
-    public boolean isSameApplicantById(Id id) {
-        return this.getId() == id;
-    }
-
     //todo may have to do a hard equal function to compare all the properties of Applicant
     /**
      * Returns true if both applicants have the same identity and data fields.
