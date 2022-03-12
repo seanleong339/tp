@@ -29,10 +29,7 @@ public class AddApplicant extends Command {
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
-            + PREFIX_QUALIFICATION + "QUALIFICATION "
             + PREFIX_DATEAPPLIED + "DATE APPLIED "
-            + PREFIX_JOB + "JOB "
-            + PREFIX_DATEINTERVIEW + "DATE OF INTERVIEW "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
@@ -40,10 +37,7 @@ public class AddApplicant extends Command {
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_QUALIFICATION + "Bachelors "
             + PREFIX_DATEAPPLIED + "21-3-2022 "
-            + PREFIX_JOB + "#123456"
-            + PREFIX_DATEINTERVIEW + "30-3-2022 "
             + PREFIX_TAG + "new applicant "
             + PREFIX_TAG + "owesMoney";
 
