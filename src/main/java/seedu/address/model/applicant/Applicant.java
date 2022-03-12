@@ -4,7 +4,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
@@ -16,7 +15,6 @@ import seedu.address.model.tag.Tag;
 public class Applicant {
 
     // Identity fields
-    private final Id id;
     private final Name name;
     private final Phone phone;
     private final Email email;
@@ -47,7 +45,6 @@ public class Applicant {
         this.interviewDate = interviewDate;
         this.job = job;
         this.qualification = qualification;
-        this.id = new Id(Objects.hash(nric) & 0x7fffffff);
     }
 
     /**
@@ -66,7 +63,6 @@ public class Applicant {
         this.job = job;
         this.interviewDate = new InterviewDate();
         this.qualification = null;
-        this.id = new Id(Objects.hash(nric) & 0x7fffffff);
     }
 
     public Name getName() {
@@ -106,10 +102,6 @@ public class Applicant {
             return new Qualification("null");
         }
         return qualification;
-    }
-
-    public Id getId() {
-        return id;
     }
 
     /**
@@ -163,8 +155,6 @@ public class Applicant {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append("; Id: ")
-                .append(getId())
                 .append("; Phone: ")
                 .append(getPhone())
                 .append("; Email: ")
