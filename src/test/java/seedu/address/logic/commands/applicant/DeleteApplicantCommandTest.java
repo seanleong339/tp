@@ -25,23 +25,23 @@ class DeleteApplicantCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() {
         Applicant applicantToDelete = model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased());
-        DeleteApplicantCommand deleteApplicantCommand = new DeleteApplicantCommand(INDEX_FIRST_APPLICANT);
+        DeleteApplicant deleteApplicant = new DeleteApplicant(INDEX_FIRST_APPLICANT);
 
         String expectedMessage = String
-                .format(DeleteApplicantCommand.MESSAGE_DELETE_APPLICANT_SUCCESS, applicantToDelete);
+                .format(DeleteApplicant.MESSAGE_DELETE_APPLICANT_SUCCESS, applicantToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteApplicant(applicantToDelete);
 
-        assertCommandSuccess(deleteApplicantCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteApplicant, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredApplicantList().size() + 1);
-        DeleteApplicantCommand deleteApplicantCommand = new DeleteApplicantCommand(outOfBoundIndex);
+        DeleteApplicant deleteApplicant = new DeleteApplicant(outOfBoundIndex);
 
-        assertCommandFailure(deleteApplicantCommand, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        assertCommandFailure(deleteApplicant, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
     }
 
     @Test
@@ -49,16 +49,16 @@ class DeleteApplicantCommandTest {
         showApplicantAtIndex(model, INDEX_FIRST_PERSON);
 
         Applicant applicantToDelete = model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased());
-        DeleteApplicantCommand deleteApplicantCommand = new DeleteApplicantCommand(INDEX_FIRST_APPLICANT);
+        DeleteApplicant deleteApplicant = new DeleteApplicant(INDEX_FIRST_APPLICANT);
 
-        String expectedMessage = String.format(DeleteApplicantCommand
+        String expectedMessage = String.format(DeleteApplicant
                 .MESSAGE_DELETE_APPLICANT_SUCCESS, applicantToDelete);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteApplicant(applicantToDelete);
         showNoApplicant(expectedModel);
 
-        assertCommandSuccess(deleteApplicantCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteApplicant, model, expectedMessage, expectedModel);
     }
 
     @Test
@@ -69,21 +69,21 @@ class DeleteApplicantCommandTest {
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getApplicantList().size());
 
-        DeleteApplicantCommand deleteApplicantCommand = new DeleteApplicantCommand(outOfBoundIndex);
+        DeleteApplicant deleteApplicant = new DeleteApplicant(outOfBoundIndex);
 
-        assertCommandFailure(deleteApplicantCommand, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        assertCommandFailure(deleteApplicant, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        DeleteApplicantCommand deleteApplicantFirstCommand = new DeleteApplicantCommand(INDEX_FIRST_APPLICANT);
-        DeleteApplicantCommand deleteApplicantSecondCommand = new DeleteApplicantCommand(INDEX_SECOND_APPLICANT);
+        DeleteApplicant deleteApplicantFirstCommand = new DeleteApplicant(INDEX_FIRST_APPLICANT);
+        DeleteApplicant deleteApplicantSecondCommand = new DeleteApplicant(INDEX_SECOND_APPLICANT);
 
         // same object -> returns true
         assertTrue(deleteApplicantFirstCommand.equals(deleteApplicantFirstCommand));
 
         // same values -> returns true
-        DeleteApplicantCommand deleteApplicantFirstCommandCopy = new DeleteApplicantCommand(INDEX_FIRST_APPLICANT);
+        DeleteApplicant deleteApplicantFirstCommandCopy = new DeleteApplicant(INDEX_FIRST_APPLICANT);
         assertTrue(deleteApplicantFirstCommand.equals(deleteApplicantFirstCommandCopy));
 
         // different types -> returns false
