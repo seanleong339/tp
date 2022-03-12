@@ -6,11 +6,8 @@ import java.util.Set;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
-<<<<<<< HEAD
 import seedu.address.model.applicant.InterviewStatus;
-=======
 import seedu.address.model.applicant.JobId;
->>>>>>> master
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
@@ -46,14 +43,8 @@ public class ApplicantBuilder {
     private DateApplied dateApplied;
     private InterviewDate interviewDate;
     private Qualification qualification;
-<<<<<<< HEAD
     private InterviewStatus interviewStatus;
-
-    // TODO: Change this to Job class once it is ready.
-    private String job;
-=======
     private JobId job;
->>>>>>> master
 
 
     /**
@@ -87,14 +78,8 @@ public class ApplicantBuilder {
         dateApplied = applicantToCopy.getDateApplied();
         interviewDate = applicantToCopy.getInterviewDate();
         qualification = applicantToCopy.getQualification();
-<<<<<<< HEAD
         interviewStatus = applicantToCopy.getInterviewStatus();
-
-        // TODO: change this to the Job class once the Job class is done.
-        job = applicantToCopy.getJob();
-=======
         job = applicantToCopy.getJobId();
->>>>>>> master
     }
 
     /**

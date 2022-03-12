@@ -186,13 +186,10 @@ public class ModelManager implements Model {
                  && filteredPersons.equals(other.filteredPersons)
                 && filteredApplicants.equals(other.filteredApplicants);
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public void deleteApplicant(Applicant target) {
         addressBook.removeApplicant(target);
     }
->>>>>>> master
 }
 

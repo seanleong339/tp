@@ -34,15 +34,9 @@ public class Applicant {
      * Creates an Applicant object with all attributes
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
-                     Qualification qualification, InterviewStatus interviewStatus) {
-=======
-     * Creates an Applicant object with all attributes for use by Edit method
-     */
-    public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, JobId job, InterviewDate interviewDate,
-                     Qualification qualification) {
->>>>>>> master
+                     Qualification qualification, InterviewStatus interviewStatus) {
+
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
         this.phone = phone;
