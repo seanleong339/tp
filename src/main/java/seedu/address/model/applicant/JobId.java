@@ -16,18 +16,18 @@ public class JobId {
      */
     public final Integer jobId;
 
-    private boolean isInit;
+    private final boolean isInit;
 
     /**
      * Constructs a Job ID
      *
      * @param jobId ID of job applicant is applying for
      */
-    public JobId(int jobId) {
+    public JobId(String jobId) {
         requireNonNull(jobId);
         checkArgument(isValidJobId(jobId), MESSAGE_CONSTRAINTS);
         isInit = true;
-        this.jobId = jobId;
+        this.jobId = Integer.parseInt(jobId);
     }
 
     public JobId() {
@@ -38,8 +38,13 @@ public class JobId {
     /**
      * Returns true if the input integer is a valid Id.
      */
-    public static boolean isValidJobId(int test) {
-        return test > 0;
+    public static boolean isValidJobId(String test) {
+        try {
+            int testing = Integer.parseInt(test);
+            return testing > 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     @Override

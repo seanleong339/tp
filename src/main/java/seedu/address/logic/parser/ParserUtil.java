@@ -182,10 +182,10 @@ public class ParserUtil {
     public static JobId parseJob(String job) throws ParseException {
         requireNonNull(job);
         String trimmedJob = job.trim();
-        if (!JobId.isValidJobId(Integer.parseInt(trimmedJob))) {
+        if (!JobId.isValidJobId(trimmedJob)) {
             throw new ParseException(JobId.MESSAGE_CONSTRAINTS);
         }
-        return new JobId(Integer.parseInt(trimmedJob));
+        return new JobId(trimmedJob);
     }
 
     /**

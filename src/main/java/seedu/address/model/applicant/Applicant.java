@@ -148,7 +148,7 @@ public class Applicant {
                 && otherApplicant.getTags().equals(getTags())
                 && otherApplicant.getDateApplied().equals(getDateApplied())
                 && otherApplicant.getNric().equals(getNric())
-                && otherApplicant.getJob().equals(getJob());
+                && otherApplicant.getJobId().equals(getJobId());
     }
 
     @Override
@@ -168,7 +168,7 @@ public class Applicant {
                 .append("; Date of interview: ")
                 .append(getInterviewDate())
                 .append("; Job: ")
-                .append(getJob())
+                .append(getJobId())
                 .append("; Qualification: ")
                 .append(getQualification());
 

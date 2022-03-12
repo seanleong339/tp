@@ -29,7 +29,7 @@ public class ApplicantBuilder {
     public static final String DEFAULT_NRIC = "S9901010A";
     public static final String DEFAULT_DATEAPPLIED = "2022-03-08";
     public static final String DEFAULT_INTERVIEWDATE = "2022-03-15";
-    public static final int DEFAULT_JOB = 2;
+    public static final String DEFAULT_JOB = "2";
     public static final String DEFAULT_QUALIFICATION = "degree in computing";
 
     private Name name;
@@ -137,7 +137,7 @@ public class ApplicantBuilder {
      * Sets the {@code Job} of the {@code Applicant} that we are building.
      */
     public ApplicantBuilder withJob(String job) {
-        this.job = new JobId(Integer.parseInt(job));
+        this.job = new JobId(job);
         return this;
     }
 

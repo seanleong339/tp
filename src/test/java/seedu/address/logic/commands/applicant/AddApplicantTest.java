@@ -36,7 +36,7 @@ class AddApplicantTest {
         tagSet.add(new Tag("testtag"));
         Applicant test = new Applicant(new Name("John"), new Phone("1234567"), new Email("johnd@example.com"),
                 new Address("311, Clementi Ave 2"), tagSet, new DateApplied("2022-12-12"),
-                new Nric("S1234567D"), "123456");
+                new Nric("S1234567D"));
         AddApplicant testCommand = new AddApplicant(test);
         ModelStubAcceptingApplicantAdded modelStub = new ModelStubAcceptingApplicantAdded();
         testCommand.execute(modelStub);
