@@ -15,7 +15,7 @@ import seedu.address.model.applicant.Applicant;
 /**
  * Constructs a delete applicant command.
  */
-public class DeleteApplicantCommand extends Command {
+public class DeleteApplicant extends Command {
     public static final String COMMAND_WORD = "deleteapplicant";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -27,7 +27,7 @@ public class DeleteApplicantCommand extends Command {
 
     private final Index targetIndex;
 
-    public DeleteApplicantCommand(Index targetIndex) {
+    public DeleteApplicant(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -53,7 +53,7 @@ public class DeleteApplicantCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteApplicantCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteApplicantCommand) other).targetIndex)); // state check
+                || (other instanceof DeleteApplicant // instanceof handles nulls
+                && targetIndex.equals(((DeleteApplicant) other).targetIndex)); // state check
     }
 }
