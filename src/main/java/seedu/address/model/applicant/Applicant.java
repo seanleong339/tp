@@ -34,7 +34,6 @@ public class Applicant {
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, JobId job, InterviewDate interviewDate,
                      Qualification qualification) {
-
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
         this.phone = phone;
@@ -64,7 +63,6 @@ public class Applicant {
         this.job = new JobId();
         this.interviewDate = new InterviewDate();
         this.qualification = null;
-
     }
 
     public Name getName() {
@@ -173,6 +171,7 @@ public class Applicant {
                 .append(getJobId())
                 .append("; Qualification: ")
                 .append(getQualification());
+        
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
             builder.append("; Tags: ");
