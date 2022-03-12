@@ -6,7 +6,11 @@ import java.util.Set;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
+<<<<<<< HEAD
 import seedu.address.model.applicant.InterviewStatus;
+=======
+import seedu.address.model.applicant.JobId;
+>>>>>>> master
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
@@ -29,7 +33,7 @@ public class ApplicantBuilder {
     public static final String DEFAULT_NRIC = "S9901010A";
     public static final String DEFAULT_DATEAPPLIED = "2022-03-08";
     public static final String DEFAULT_INTERVIEWDATE = "2022-03-15";
-    public static final String DEFAULT_JOB = "1";
+    public static final String DEFAULT_JOB = "2";
     public static final String DEFAULT_QUALIFICATION = "degree in computing";
     public static final boolean DEFAULT_INTERVIEW_STATUS = false;
 
@@ -42,10 +46,14 @@ public class ApplicantBuilder {
     private DateApplied dateApplied;
     private InterviewDate interviewDate;
     private Qualification qualification;
+<<<<<<< HEAD
     private InterviewStatus interviewStatus;
 
     // TODO: Change this to Job class once it is ready.
     private String job;
+=======
+    private JobId job;
+>>>>>>> master
 
 
     /**
@@ -62,9 +70,7 @@ public class ApplicantBuilder {
         qualification = new Qualification(DEFAULT_QUALIFICATION);
         interviewStatus = new InterviewStatus(DEFAULT_INTERVIEW_STATUS);
         tags = new HashSet<>();
-
-        // TODO: change this to the Job class once Job class is done.
-        job = DEFAULT_JOB;
+        job = new JobId(DEFAULT_JOB);
     }
 
     /**
@@ -81,10 +87,14 @@ public class ApplicantBuilder {
         dateApplied = applicantToCopy.getDateApplied();
         interviewDate = applicantToCopy.getInterviewDate();
         qualification = applicantToCopy.getQualification();
+<<<<<<< HEAD
         interviewStatus = applicantToCopy.getInterviewStatus();
 
         // TODO: change this to the Job class once the Job class is done.
         job = applicantToCopy.getJob();
+=======
+        job = applicantToCopy.getJobId();
+>>>>>>> master
     }
 
     /**
@@ -147,9 +157,7 @@ public class ApplicantBuilder {
      * Sets the {@code Job} of the {@code Applicant} that we are building.
      */
     public ApplicantBuilder withJob(String job) {
-        // TODO: remove comment when completed
-        // this.job = new Job(job);
-        this.job = job;
+        this.job = new JobId(job);
         return this;
     }
 

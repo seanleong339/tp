@@ -150,12 +150,33 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addApplicant(Applicant applicant) {
+        public boolean hasApplicant(Applicant applicant) {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public boolean hasApplicant(Applicant applicant) {
-            return false;
+        public void deleteApplicant(Applicant target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addApplicant(Applicant applicant) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setApplicant(Applicant target, Applicant editedApplicant) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Applicant> getFilteredApplicantList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredApplicantList(Predicate<Applicant> predicate) {
+            throw new AssertionError("This method should not be called.");
         }
     }
 

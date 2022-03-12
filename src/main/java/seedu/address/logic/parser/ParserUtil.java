@@ -11,7 +11,9 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
+import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -100,6 +102,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String interviewDate} into an {@code InterviewDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code interviewDate} is invalid.
+     */
+    public static InterviewDate parseInterviewDate(String interviewDate) throws ParseException {
+        requireNonNull(interviewDate);
+        String trimmedInterviewDate = interviewDate.trim();
+        if (!InterviewDate.isValidInterviewDate(trimmedInterviewDate)) {
+            throw new ParseException(InterviewDate.MESSAGE_CONSTRAINTS);
+        }
+        return new InterviewDate(trimmedInterviewDate);
+    }
+
+    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -143,21 +160,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code DateInterview}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code name} is invalid.
-     */
-    public static InterviewDate parseDateInterview(String dateInterview) throws ParseException {
-        requireNonNull(dateInterview);
-        String trimmedDate = dateInterview.trim();
-        if (!InterviewDate.isValidInterviewDate(trimmedDate)) {
-            throw new ParseException(InterviewDate.MESSAGE_CONSTRAINTS);
-        }
-        return new InterviewDate(trimmedDate);
-    }
-
-    /**
      * Parses a {@code String nric} into a {@code Nric}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -165,11 +167,11 @@ public class ParserUtil {
      */
     public static Nric parseNric(String nric) throws ParseException {
         requireNonNull(nric);
-        String trimmedDate = nric.trim();
-        if (!Name.isValidName(trimmedDate)) {
+        String trimmedNric = nric.trim();
+        if (!Nric.isValidNric(trimmedNric)) {
             throw new ParseException(Nric.MESSAGE_CONSTRAINTS);
         }
-        return new Nric(nric);
+        return new Nric(trimmedNric);
     }
 
     /**
@@ -178,14 +180,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code Job} is invalid.
      */
-    public static String parseJob(String job) throws ParseException {
+    public static JobId parseJob(String job) throws ParseException {
         requireNonNull(job);
         String trimmedJob = job.trim();
-        // Include bottom when Job class is merged
-        //if (!Name.isValidName(trimmedJob)) {
-        //throw new ParseException(Job.MESSAGE_CONSTRAINTS);
-        //}
-        return new String(trimmedJob);
+        if (!JobId.isValidJobId(trimmedJob)) {
+            throw new ParseException(JobId.MESSAGE_CONSTRAINTS);
+        }
+        return new JobId(trimmedJob);
     }
 
     /**
@@ -194,14 +195,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code Qualification} is invalid.
      */
-    public static String parseQualification(String qualification) throws ParseException {
+    public static Qualification parseQualification(String qualification) throws ParseException {
         requireNonNull(qualification);
         String trimmedQualification = qualification.trim();
-        // Include bottom when Qualification class is merged
-        //if (!Name.isValidName(trimmedQualification)) {
-        //throw new ParseException(Qualification.MESSAGE_CONSTRAINTS);
-        //}
-        return new String(trimmedQualification);
+        if (!Qualification.isValidQualification(trimmedQualification)) {
+            throw new ParseException(Qualification.MESSAGE_CONSTRAINTS);
+        }
+        return new Qualification(trimmedQualification);
     }
 
     /**

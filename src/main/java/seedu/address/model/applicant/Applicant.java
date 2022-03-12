@@ -25,16 +25,24 @@ public class Applicant {
     private final Set<Tag> tags = new HashSet<>();
     private final DateApplied dateApplied;
     private final InterviewDate interviewDate;
-    private final String job;
+    private final JobId job;
     private final Qualification qualification;
     private final InterviewStatus interviewStatus;
 
     /**
+<<<<<<< HEAD
      * Creates an Applicant object with all attributes
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
                      Qualification qualification, InterviewStatus interviewStatus) {
+=======
+     * Creates an Applicant object with all attributes for use by Edit method
+     */
+    public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                     DateApplied dateApplied, Nric nric, JobId job, InterviewDate interviewDate,
+                     Qualification qualification) {
+>>>>>>> master
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
         this.phone = phone;
@@ -50,11 +58,11 @@ public class Applicant {
     }
 
     /**
-     * Creates an Applicant object with minimum required attributes
+     * Creates an Applicant object with minimum required attributes for use by Add method
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     DateApplied dateApplied, Nric nric, String job) {
-        requireAllNonNull(name, phone, email, address, tags, dateApplied, nric, job);
+                     DateApplied dateApplied, Nric nric) {
+        requireAllNonNull(name, phone, email, address, tags, dateApplied, nric);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -62,7 +70,7 @@ public class Applicant {
         this.tags.addAll(tags);
         this.nric = nric;
         this.dateApplied = dateApplied;
-        this.job = job;
+        this.job = new JobId();
         this.interviewDate = new InterviewDate();
         this.qualification = null;
         this.interviewStatus = new InterviewStatus();
@@ -96,7 +104,7 @@ public class Applicant {
         return interviewDate;
     }
 
-    public String getJob() {
+    public JobId getJobId() {
         return job;
     }
 
@@ -133,6 +141,7 @@ public class Applicant {
                 && otherApplicant.getName().equals(getName());
     }
 
+    //todo may have to do a hard equal function to compare all the properties of Applicant
     /**
      * Returns true if both applicants have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
@@ -155,7 +164,7 @@ public class Applicant {
                 && otherApplicant.getTags().equals(getTags())
                 && otherApplicant.getDateApplied().equals(getDateApplied())
                 && otherApplicant.getNric().equals(getNric())
-                && otherApplicant.getJob().equals(getJob());
+                && otherApplicant.getJobId().equals(getJobId());
     }
 
     @Override
@@ -175,7 +184,7 @@ public class Applicant {
                 .append("; Date of interview: ")
                 .append(getInterviewDate())
                 .append("; Job: ")
-                .append(getJob())
+                .append(getJobId())
                 .append("; Qualification: ")
                 .append(getQualification());
         Set<Tag> tags = getTags();

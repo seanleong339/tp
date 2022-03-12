@@ -6,8 +6,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.person.Name;
-
 class QualificationTest {
 
     @Test
@@ -18,7 +16,7 @@ class QualificationTest {
     @Test
     public void constructor_invalidQualification_throwsIllegalArgumentException() {
         String invalidQualification = "";
-        assertThrows(IllegalArgumentException.class, () -> new Name(invalidQualification));
+        assertThrows(IllegalArgumentException.class, () -> new Qualification(invalidQualification));
     }
 
     @Test

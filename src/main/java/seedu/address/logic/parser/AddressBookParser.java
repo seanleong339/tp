@@ -16,9 +16,15 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.applicant.AddApplicant;
+<<<<<<< HEAD
 import seedu.address.logic.commands.applicant.MarkApplicant;
 import seedu.address.logic.parser.applicant.AddApplicantParser;
 import seedu.address.logic.parser.applicant.MarkApplicantParser;
+=======
+import seedu.address.logic.commands.applicant.EditApplicant;
+import seedu.address.logic.parser.applicant.AddApplicantParser;
+import seedu.address.logic.parser.applicant.EditApplicantParser;
+>>>>>>> master
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -72,8 +78,13 @@ public class AddressBookParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
+<<<<<<< HEAD
         case MarkApplicant.COMMAND_WORD:
             return new MarkApplicantParser().parse(arguments);
+=======
+        case EditApplicant.COMMAND_WORD:
+            return new EditApplicantParser().parse(arguments);
+>>>>>>> master
 
         case AddApplicant.COMMAND_WORD:
             return new AddApplicantParser().parse(arguments);
