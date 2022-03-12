@@ -78,7 +78,6 @@ public class ApplicantBuilder {
         dateApplied = applicantToCopy.getDateApplied();
         interviewDate = applicantToCopy.getInterviewDate();
         qualification = applicantToCopy.getQualification();
-        interviewStatus = applicantToCopy.getInterviewStatus();
         job = applicantToCopy.getJobId();
     }
 
@@ -175,6 +174,6 @@ public class ApplicantBuilder {
      */
     public Applicant build() {
         return new Applicant(name, phone, email, address, tags, dateApplied, nric, job, interviewDate,
-                qualification, interviewStatus);
+                qualification);
     }
 }
