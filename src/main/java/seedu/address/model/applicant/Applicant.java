@@ -29,7 +29,6 @@ public class Applicant {
     private final Qualification qualification;
 
     /**
-<<<<<<< HEAD
      * Creates an Applicant object with all attributes
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
