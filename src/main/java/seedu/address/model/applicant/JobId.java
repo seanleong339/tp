@@ -30,6 +30,9 @@ public class JobId {
         this.jobId = Integer.parseInt(jobId);
     }
 
+    /**
+     * Constructor to create JobId that is not initialized
+     */
     public JobId() {
         isInit = false;
         this.jobId = 10;
