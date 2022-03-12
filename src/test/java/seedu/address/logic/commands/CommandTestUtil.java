@@ -4,11 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEAPPLIED;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -73,6 +75,8 @@ public class CommandTestUtil {
     public static final String NRIC_DESC = " " + PREFIX_NRIC + VALID_NRIC;
     public static final String DATEAPPLIED_DESC = " " + PREFIX_DATEAPPLIED + VALID_DATE;
     public static final String JOB_DESC = " " + PREFIX_JOB + VALID_JOB;
+    public static final String QUALIFICATION_DESC = " " + PREFIX_QUALIFICATION + VALID_QUALIFICATION;
+    public static final String QUALIFICATION_TWO_DESC = " " + PREFIX_QUALIFICATION + VALID_QUALIFICATION_TWO;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
@@ -80,8 +84,10 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
     public static final String INVALID_NRIC = " " + PREFIX_NRIC + "1234567d"; // nric must end and start with alphabet
-    public static final String INVALID_DATEAPPLIED = " " + PREFIX_DATEAPPLIED + "1234567d";
-    //nric must end and start with alphabet
+    public static final String INVALID_DATEAPPLIED = " " + PREFIX_DATEAPPLIED + "123-fs-12"; // yyyy-mm-dd format
+    public static final String INVALID_INTERVIEWDATE = " " + PREFIX_DATEINTERVIEW + "fsd-fsd-fsd"; // yyyy-mm-dd format
+    // cannot have special characters in qualification
+    public static final String INVALID_QUALIFICATION = " " + PREFIX_QUALIFICATION + " **degree in science";
     public static final String INVALID_JOB = " " + PREFIX_JOB + "a12345"; // job id must be all numbers
 
 
