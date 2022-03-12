@@ -53,7 +53,7 @@ public class AddApplicant extends Command {
     private final Applicant toAdd;
 
     /**
-     * Creates an AddApplicant to add the specified {@code Applicant}
+     * Constructs an AddApplicant to add the specified {@code Applicant}
      */
     public AddApplicant(Applicant applicant) {
         requireNonNull(applicant);

@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.applicant.Applicant;
-import seedu.address.model.applicant.Id;
 import seedu.address.model.person.Person;
 
 /**
@@ -129,12 +128,5 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredApplicantList(Predicate<Applicant> predicate);
-
-    /**
-     * Return trues is an applicant with the id exists in the address book.
-     */
-    boolean hasApplicantById(Id id);
-
-    Applicant getApplicant(Id id);
 }
 

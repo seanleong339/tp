@@ -20,7 +20,6 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
-import seedu.address.model.applicant.Id;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -145,15 +144,6 @@ class AddApplicantTest {
 
         @Override
         public void deleteApplicant(Applicant target) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean hasApplicantById(Id id) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override public Applicant getApplicant(Id id) {
             throw new AssertionError("This method should not be called.");
         }
     }

@@ -6,7 +6,6 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.applicant.Applicant;
-import seedu.address.model.applicant.Id;
 import seedu.address.model.applicant.UniqueApplicantList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
@@ -119,20 +118,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Returns true if an applicant with the id as {@code applicant} exists in the address book.
-     */
-    public boolean hasApplicantById(Id id) {
-        requireNonNull(id);
-        boolean hasApplicant = false;
-        for (Applicant applicant:applicants) {
-            if (applicant.isSameApplicantById(id)) {
-                hasApplicant = true;
-            }
-        }
-        return hasApplicant;
-    }
-
-    /**
      * Adds an applicant to the address book.
      * The applicant must not already exist in the address book.
      */
@@ -158,18 +143,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeApplicant(Applicant key) {
         applicants.remove(key);
-    }
-
-    public Applicant getApplicant(Id id) {
-        requireNonNull(id);
-        Applicant applicantToReturn = null;
-        for (Applicant applicant:applicants) {
-            Id uniqueId = applicant.getId();
-            if (uniqueId.equals(id)) {
-                applicantToReturn = applicant;
-            }
-        }
-        return applicantToReturn;
     }
 
     //// util methods
