@@ -29,7 +29,7 @@ public class Applicant {
     private final Qualification qualification;
 
     /**
-     * Creates an Applicant object with all attributes
+     * Creates an Applicant object with all attributes for use by Edit method
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, JobId job, InterviewDate interviewDate,
