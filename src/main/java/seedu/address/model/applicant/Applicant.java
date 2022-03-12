@@ -49,6 +49,10 @@ public class Applicant {
         this.job = job;
         this.qualification = qualification;
         this.interviewStatus = interviewStatus;
+<<<<<<< HEAD
+=======
+        this.id = new Id(Objects.hash(nric) & 0x7fffffff);
+>>>>>>> e2b503fb5ba8ad3d0a12beeffe19516c4a8355f4
     }
 
     /**
@@ -68,6 +72,10 @@ public class Applicant {
         this.interviewDate = new InterviewDate();
         this.qualification = null;
         this.interviewStatus = new InterviewStatus();
+<<<<<<< HEAD
+=======
+        this.id = new Id(Objects.hash(nric) & 0x7fffffff);
+>>>>>>> e2b503fb5ba8ad3d0a12beeffe19516c4a8355f4
     }
 
     public Name getName() {
@@ -114,6 +122,13 @@ public class Applicant {
     }
 
 
+<<<<<<< HEAD
+=======
+    public Id getId() {
+        return id;
+    }
+
+>>>>>>> e2b503fb5ba8ad3d0a12beeffe19516c4a8355f4
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
