@@ -66,7 +66,7 @@ public class ApplicantCard extends UiPart<Region> {
         email.setText(applicant.getEmail().value);
         dateApplied.setText(applicant.getDateApplied().toString());
         nric.setText(applicant.getNric().toString());
-        job.setText(applicant.getJob());
+        job.setText(applicant.getJobId().toString());
         interviewDate.setText(applicant.getInterviewDate().toString());
         qualification.setText(applicant.getQualification().toString());
         applicant.getTags().stream()
