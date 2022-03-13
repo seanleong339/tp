@@ -175,7 +175,7 @@ public class Applicant {
                 .append("; Date of interview: ")
                 .append(getInterviewDate())
                 .append("; Job: ")
-                .append(getJob())
+                .append(getJobId())
                 .append(" [")
                 .append(getApplicantStatus())
                 .append("]; Qualification: ")
