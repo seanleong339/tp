@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
@@ -191,8 +192,6 @@ class JsonAdaptedApplicantTest {
         assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
 
-    /**
-     * Todo add this in when JobId class is added
     @Test
     public void toModelType_invalidJob_throwsIllegalValueException() {
         JsonAdaptedApplicant applicant =
@@ -210,7 +209,6 @@ class JsonAdaptedApplicantTest {
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, JobId.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, applicant::toModelType);
     }
-    */
 
     @Test
     public void toModelType_invalidQualification_throwsIllegalValueException() {
