@@ -27,7 +27,7 @@ public class Applicant {
     private final InterviewDate interviewDate;
     private final JobId job;
     private final Qualification qualification;
-    private final ApplicantStatus applicantStatus;
+    private ApplicantStatus applicantStatus;
 
     /**
      * Creates an Applicant object with all attributes for use by Edit method
@@ -130,6 +130,11 @@ public class Applicant {
 
         return otherApplicant != null
                 && otherApplicant.getName().equals(getName());
+    }
+
+    public Applicant updateApplicantStatus(ApplicantStatus applicantStatus) {
+        this.applicantStatus = applicantStatus;
+        return this;
     }
 
     //todo may have to do a hard equal function to compare all the properties of Applicant
