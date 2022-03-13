@@ -3,7 +3,6 @@ package seedu.address.storage;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -14,6 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
@@ -31,7 +31,6 @@ public class JsonAdaptedApplicant {
     private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
-    private final String id;
     private final String nric;
     private final String dateApplied;
     private final String interviewDate;
@@ -61,7 +60,6 @@ public class JsonAdaptedApplicant {
         this.interviewDate = interviewDate;
         this.job = job;
         this.qualification = qualification;
-        this.id = ((Integer) (Objects.hash(nric))).toString();
     }
 
     /**
@@ -78,9 +76,8 @@ public class JsonAdaptedApplicant {
         nric = source.getNric().value;
         dateApplied = source.getDateApplied().toString();
         interviewDate = source.getInterviewDate().toString();
-        job = source.getJob();
+        job = source.getJobId().toString();
         qualification = source.getQualification().highestQualification;
-        id = source.getId().uid.toString();
     }
 
     /**
@@ -157,17 +154,14 @@ public class JsonAdaptedApplicant {
         }
         final InterviewDate modelInterviewDate = new InterviewDate(interviewDate);
 
-        //
-        // Include this when JobId class is created
-        //
-        // if (job == null) {
-        //     throw new IllegalValueException(String.format(JobId.MESSAGE_CONSTRAINTS, JobId.class.getSimpleName()));
-        // }
+        if (job == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, JobId.class.getSimpleName()));
+        }
 
-        // if (!JobId.isValidJobId(job)) {
-        //     throw new IllegalValueException(JobId.MESSAGE_CONSTRAINTS);
-        // }
-        final String modelJobId = job;
+        if (!JobId.isValidJobId(job)) {
+            throw new IllegalValueException(JobId.MESSAGE_CONSTRAINTS);
+        }
+        final JobId modelJobId = new JobId(job);
 
         if (qualification == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,

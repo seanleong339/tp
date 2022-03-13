@@ -44,11 +44,12 @@ class JsonAdaptedApplicantTest {
     private static final String VALID_NRIC = BENSON.getNric().toString();
     private static final String VALID_INTERVIEWDATE = BENSON.getInterviewDate().toString();
     private static final String VALID_DATEAPPLIED = BENSON.getDateApplied().toString();
-    private static final String VALID_JOB = BENSON.getJob().toString();
+    private static final String VALID_JOB = BENSON.getJobId().toString();
     private static final String VALID_QUALIFICATION = BENSON.getQualification().toString();
 
     @Test
     public void toModelType_validApplicantDetails_returnsApplicant() throws Exception {
+        System.out.println(VALID_JOB);
         JsonAdaptedApplicant applicant = new JsonAdaptedApplicant(TypicalApplicants.BENSON);
         assertEquals(TypicalApplicants.BENSON, applicant.toModelType());
     }
