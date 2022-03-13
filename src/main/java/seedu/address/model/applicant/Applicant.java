@@ -28,6 +28,8 @@ public class Applicant {
     private final JobId job;
     private final Qualification qualification;
 
+
+
     /**
      * Creates an Applicant object with all attributes for use by Edit method
      */

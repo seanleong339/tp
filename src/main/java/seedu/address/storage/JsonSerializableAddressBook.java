@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.applicant.Applicant;
 import seedu.address.model.person.Person;
 
 /**
@@ -20,15 +21,19 @@ import seedu.address.model.person.Person;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_APPLICANT = "Applicants list contains duplicate applicant(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedApplicant> applicants = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableAddressBook} with the given persons and applicants.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
+                                       @JsonProperty("applicants") List<JsonAdaptedApplicant> applicants) {
         this.persons.addAll(persons);
+        this.applicants.addAll(applicants);
     }
 
     /**
@@ -38,6 +43,8 @@ class JsonSerializableAddressBook {
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        applicants.addAll(source.getApplicantList().stream()
+                .map(JsonAdaptedApplicant::new).collect(Collectors.toList()));
     }
 
     /**
@@ -53,6 +60,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
             addressBook.addPerson(person);
+        }
+        for (JsonAdaptedApplicant jsonAdaptedApplicant : applicants) {
+            Applicant applicant = jsonAdaptedApplicant.toModelType();
+            if (addressBook.hasApplicant(applicant)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_APPLICANT);
+            }
+            addressBook.addApplicant(applicant);
         }
         return addressBook;
     }

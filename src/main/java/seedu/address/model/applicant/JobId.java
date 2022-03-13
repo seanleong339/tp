@@ -53,7 +53,7 @@ public class JobId {
     @Override
     public String toString() {
         if (isInit) {
-            return "Job #" + this.jobId;
+            return this.jobId.toString();
         } else {
             return "PENDING";
         }
