@@ -130,12 +130,12 @@ public class MainWindow extends UiPart<Stage> {
         testPanel = new TestPanel();
         testPanelPlaceholder.getChildren().add(testPanel.getRoot());
 
+        // Todo: get Applicantlist in applicantListPane
         personListPanel = new PersonListPanel(logic.getFilteredPersonList(), testPanel);
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         testListPanelPlaceholder.getChildren().add(testList);
         personListPanel.handlePersonClicks();
-        //
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
