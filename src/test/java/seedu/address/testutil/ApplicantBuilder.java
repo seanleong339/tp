@@ -6,6 +6,7 @@ import java.util.Set;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
@@ -40,9 +41,7 @@ public class ApplicantBuilder {
     private DateApplied dateApplied;
     private InterviewDate interviewDate;
     private Qualification qualification;
-
-    // TODO: Change this to Job class once it is ready.
-    private String job;
+    private JobId job;
 
 
     /**
@@ -58,9 +57,7 @@ public class ApplicantBuilder {
         interviewDate = new InterviewDate(DEFAULT_INTERVIEWDATE);
         qualification = new Qualification(DEFAULT_QUALIFICATION);
         tags = new HashSet<>();
-
-        // TODO: change this to the Job class once Job class is done.
-        job = DEFAULT_JOB;
+        job = new JobId(DEFAULT_JOB);
     }
 
     /**
@@ -77,9 +74,7 @@ public class ApplicantBuilder {
         dateApplied = applicantToCopy.getDateApplied();
         interviewDate = applicantToCopy.getInterviewDate();
         qualification = applicantToCopy.getQualification();
-
-        // TODO: change this to the Job class once the Job class is done.
-        job = applicantToCopy.getJob();
+        job = applicantToCopy.getJobId();
     }
 
     /**
@@ -142,9 +137,7 @@ public class ApplicantBuilder {
      * Sets the {@code Job} of the {@code Applicant} that we are building.
      */
     public ApplicantBuilder withJob(String job) {
-        // TODO: remove comment when completed
-        // this.job = new Job(job);
-        this.job = job;
+        this.job = new JobId(job);
         return this;
     }
 

@@ -25,6 +25,7 @@ public class ModelManager implements Model {
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Applicant> filteredApplicants;
 
+
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
@@ -121,11 +122,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteApplicant(Applicant target) {
-        addressBook.removeApplicant(target);
-    }
-
-    @Override
     public void addApplicant(Applicant applicant) {
         addressBook.addApplicant(applicant);
         updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
@@ -191,4 +187,9 @@ public class ModelManager implements Model {
                 && filteredApplicants.equals(other.filteredApplicants);
     }
 
+    @Override
+    public void deleteApplicant(Applicant target) {
+        addressBook.removeApplicant(target);
+    }
 }
+

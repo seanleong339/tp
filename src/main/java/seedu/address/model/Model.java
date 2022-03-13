@@ -109,12 +109,10 @@ public interface Model {
 
     /**
      * Adds a given Applicant to filteredList
->>>>>>> master
      */
     void addApplicant(Applicant applicant);
 
     /**
-<<<<<<< HEAD
      * Replaces the given applicant {@code target} with {@code editedApplicant}.
      * {@code target} must exist in the address book.
      * The applicant identity of {@code editedApplicant} must not be the same as another existing applicant
@@ -130,5 +128,5 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredApplicantList(Predicate<Applicant> predicate);
-
 }
+

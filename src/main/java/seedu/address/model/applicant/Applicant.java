@@ -4,7 +4,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
@@ -16,7 +15,6 @@ import seedu.address.model.tag.Tag;
 public class Applicant {
 
     // Identity fields
-    private final Id id;
     private final Name name;
     private final Phone phone;
     private final Email email;
@@ -27,16 +25,16 @@ public class Applicant {
     private final Set<Tag> tags = new HashSet<>();
     private final DateApplied dateApplied;
     private final InterviewDate interviewDate;
-    private final String job;
+    private final JobId job;
     private final Qualification qualification;
 
 
 
     /**
-     * Creates an Applicant object with all attributes and generates Id
+     * Creates an Applicant object with all attributes for use by Edit method
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
+                     DateApplied dateApplied, Nric nric, JobId job, InterviewDate interviewDate,
                      Qualification qualification) {
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
@@ -49,16 +47,14 @@ public class Applicant {
         this.interviewDate = interviewDate;
         this.job = job;
         this.qualification = qualification;
-        this.id = new Id(Objects.hash(nric) & 0x7fffffff);
     }
 
     /**
-     * Creates an Applicant object with all attributes without generating Id
+     * Creates an Applicant object with minimum required attributes for use by Add method
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     DateApplied dateApplied, Nric nric, String job, InterviewDate interviewDate,
-                     Qualification qualification, Id id) {
-        requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification, id);
+                     DateApplied dateApplied, Nric nric) {
+        requireAllNonNull(name, phone, email, address, tags, dateApplied, nric);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -66,28 +62,9 @@ public class Applicant {
         this.tags.addAll(tags);
         this.nric = nric;
         this.dateApplied = dateApplied;
-        this.interviewDate = interviewDate;
-        this.job = job;
-        this.qualification = qualification;
-        this.id = id;
-    }
-    /**
-     * Creates an Applicant object with minimum required attributes
-     */
-    public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                     DateApplied dateApplied, Nric nric, String job) {
-        requireAllNonNull(name, phone, email, address, tags, dateApplied, nric, job);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
-        this.nric = nric;
-        this.dateApplied = dateApplied;
-        this.job = job;
+        this.job = new JobId();
         this.interviewDate = new InterviewDate();
         this.qualification = null;
-        this.id = new Id(Objects.hash(nric) & 0x7fffffff);
     }
 
     public Name getName() {
@@ -118,7 +95,7 @@ public class Applicant {
         return interviewDate;
     }
 
-    public String getJob() {
+    public JobId getJobId() {
         return job;
     }
 
@@ -127,10 +104,6 @@ public class Applicant {
             return new Qualification("null");
         }
         return qualification;
-    }
-
-    public Id getId() {
-        return id;
     }
 
     /**
@@ -177,15 +150,13 @@ public class Applicant {
                 && otherApplicant.getTags().equals(getTags())
                 && otherApplicant.getDateApplied().equals(getDateApplied())
                 && otherApplicant.getNric().equals(getNric())
-                && otherApplicant.getJob().equals(getJob());
+                && otherApplicant.getJobId().equals(getJobId());
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append("; Id: ")
-                .append(getId())
                 .append("; Phone: ")
                 .append(getPhone())
                 .append("; Email: ")
@@ -199,7 +170,7 @@ public class Applicant {
                 .append("; Date of interview: ")
                 .append(getInterviewDate())
                 .append("; Job: ")
-                .append(getJob())
+                .append(getJobId())
                 .append("; Qualification: ")
                 .append(getQualification());
 
