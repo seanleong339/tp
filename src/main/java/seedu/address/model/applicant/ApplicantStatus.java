@@ -7,10 +7,11 @@ import static java.util.Objects.requireNonNull;
  */
 public class ApplicantStatus {
     private static final int APPLICANTSTATUS_REJECTED = 0;
-    private static final int APPLICANTSTATUS_ACCEPTED = 1;
+    private static final int APPLICANTSTATUS_TO_BE_INTERVIEWED = 1;
     private static final int APPLICANTSTATUS_PENDING = 2;
+    private static final int APPLICANTSTATUS_ACCEPTED = 3;
 
-    private static final String[] STATUSES = {"rejected", "accepted", "pending"};
+    private static final String[] STATUSES = {"rejected", "to be interviewed", "pending", "accepted"};
 
     public final Integer applicantStatus;
 
