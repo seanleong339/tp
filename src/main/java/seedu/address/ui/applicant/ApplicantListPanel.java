@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.ui.applicant;
 
 import java.util.logging.Logger;
 
@@ -9,17 +9,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.applicant.Applicant;
-import seedu.address.model.person.Person;
-import seedu.address.ui.applicant.ApplicantCard;
+import seedu.address.ui.UiPart;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of Applicants.
  */
 public class ApplicantListPanel extends UiPart<Region> {
-
+    // Todo: Create ApplicantListPanel
     private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
-    private TestPanel testPanel;
+    private final Logger logger = LogsCenter.getLogger(ApplicantListPanel.class);
+    private ApplicantInfoPanel applicantInfoPanel;
 
     @FXML
     private ListView<Applicant> applicantListView;
@@ -28,22 +27,22 @@ public class ApplicantListPanel extends UiPart<Region> {
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public ApplicantListPanel(ObservableList<Applicant> applicantList, TestPanel testPanel) {
+    public ApplicantListPanel(ObservableList<Applicant> applicantList, ApplicantInfoPanel applicantInfoPanel) {
         super(FXML);
         applicantListView.setItems(applicantList);
         applicantListView.setCellFactory(listView -> new ApplicantListViewCell());
-        this.testPanel = testPanel;
+        this.applicantInfoPanel = applicantInfoPanel;
     }
 
     /**
      * Displays ListView item clicked on the ListView on the {@code testPanel}
      */
-    /* public void handlePersonClicks() {
+    public void handleApplicantClicks() {
         applicantListView.setOnMouseClicked(event -> {
-            Person person = applicantListView.getSelectionModel().getSelectedItem();
-            testPanel.setPersonText(person);
+            Applicant applicant = applicantListView.getSelectionModel().getSelectedItem();
+            applicantInfoPanel.setApplicantText(applicant);
         });
-    } */
+    }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.

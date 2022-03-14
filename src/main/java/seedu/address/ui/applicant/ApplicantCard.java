@@ -11,10 +11,10 @@ import seedu.address.model.applicant.Applicant;
 import seedu.address.ui.UiPart;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays information of a {@code Applicant} in the list.
  */
 public class ApplicantCard extends UiPart<Region> {
-
+    // Todo: create ApplicantListCard.fxml
     private static final String FXML = "PersonListCard.fxml";
 
     /**
@@ -30,26 +30,13 @@ public class ApplicantCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
-    @FXML
     private Label id;
     @FXML
-    private Label phone;
-    @FXML
-    private Label address;
-    @FXML
-    private Label email;
-    @FXML
-    private Label dateApplied;
-    @FXML
-    private Label nric;
+    private Label name;
     @FXML
     private Label job;
     @FXML
-    private Label interviewDate;
-    @FXML
-    private Label qualification;
-    // TODO: Add Label status;
+    private Label email;
     @FXML
     private FlowPane tags;
 
@@ -61,14 +48,8 @@ public class ApplicantCard extends UiPart<Region> {
         this.applicant = applicant;
         id.setText(displayedIndex + ". ");
         name.setText(applicant.getName().fullName);
-        phone.setText(applicant.getPhone().value);
-        address.setText(applicant.getAddress().value);
-        email.setText(applicant.getEmail().value);
-        dateApplied.setText(applicant.getDateApplied().toString());
-        nric.setText(applicant.getNric().toString());
         job.setText(applicant.getJobId().toString());
-        interviewDate.setText(applicant.getInterviewDate().toString());
-        qualification.setText(applicant.getQualification().toString());
+        email.setText(applicant.getEmail().value);
         applicant.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
