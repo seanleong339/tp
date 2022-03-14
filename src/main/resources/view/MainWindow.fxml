@@ -51,14 +51,14 @@
               <items>
                 <TabPane tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab text="person list">
-                        <content>
-                          <StackPane fx:id="personListPanelPlaceholder"/>
-                        </content>
-                      </Tab>
                       <Tab text="applicant list" styleClass="tabTest">
                         <content>
                           <StackPane fx:id="applicantListPanelPlaceholder"/>
+                        </content>
+                      </Tab>
+                      <Tab text="person list">
+                        <content>
+                          <StackPane fx:id="personListPanelPlaceholder"/>
                         </content>
                       </Tab>
                     </tabs>

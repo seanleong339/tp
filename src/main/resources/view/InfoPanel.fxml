@@ -26,13 +26,14 @@
                     </font></Label>
             </HBox>
             <FlowPane fx:id="tags" prefHeight="30.0" prefWidth="130.0" />
-            <Label fx:id="phone" style="-fx-text-fill: white;" styleClass="cell_small_label" text="phone number: " />
-            <Label fx:id="address" style="-fx-text-fill: white;" styleClass="cell_small_label" text="address: " />
-            <Label fx:id="email" style="-fx-text-fill: white;" styleClass="cell_small_label" text="email: "/>
-            <Label fx:id="dateApplied" style="-fx-text-fill: white;" styleClass="cell_small_label" text="date applied: "/>
-            <Label fx:id="nric" style="-fx-text-fill: white;" styleClass="cell_small_label" text="nric: "/>
-            <Label fx:id="interviewDate" style="-fx-text-fill: white;" styleClass="cell_small_label" text="interview date: "/>
-            <Label fx:id="qualification" style="-fx-text-fill: white;" styleClass="cell_small_label" text="qualification: "/>
+            <Label fx:id="nric" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Nric: "/>
+            <Label fx:id="job" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Job ID: "/>
+            <Label fx:id="phone" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Phone number: " />
+            <Label fx:id="address" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Address: " />
+            <Label fx:id="email" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Email: "/>
+            <Label fx:id="dateApplied" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Date applied: "/>
+            <Label fx:id="interviewDate" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Interview date: "/>
+            <Label fx:id="qualification" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Qualification: "/>
         </VBox>
         <rowConstraints>
             <RowConstraints />
