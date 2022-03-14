@@ -48,7 +48,6 @@ public class ApplicantCard extends UiPart<Region> {
         this.applicant = applicant;
         id.setText(displayedIndex + ". ");
         name.setText(applicant.getName().fullName);
-        job.setText(applicant.getJobId().toString());
         email.setText(applicant.getEmail().value);
         applicant.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

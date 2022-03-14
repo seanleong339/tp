@@ -33,6 +33,8 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private Label dateApplied;
     @FXML
+    private Label job;
+    @FXML
     private Label nric;
     @FXML
     private Label interviewDate;
@@ -41,7 +43,6 @@ public class InfoPanel extends UiPart<Region> {
     // TODO: Add Label status;
     @FXML
     private FlowPane tags;
-
 
     /**
      * Creates a {@code ApplicantInfoPanel}
@@ -53,15 +54,16 @@ public class InfoPanel extends UiPart<Region> {
     public void setApplicantText(Applicant applicant) {
         tags.getChildren().clear();
         name.setText(applicant.getName().fullName);
-        phone.setText("phone number: " + applicant.getPhone().value);
-        address.setText("address: " + applicant.getAddress().value);
-        email.setText("email: " + applicant.getEmail().value);
+        phone.setText("Phone number: " + applicant.getPhone().value);
+        address.setText("Address: " + applicant.getAddress().value);
+        email.setText("Email: " + applicant.getEmail().value);
         applicant.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        dateApplied.setText(applicant.getDateApplied().toString());
-        nric.setText(applicant.getNric().toString());
-        interviewDate.setText(applicant.getInterviewDate().toString());
-        qualification.setText(applicant.getQualification().toString());
+        job.setText("Job ID: " + applicant.getJobId().toString());
+        dateApplied.setText("Date applied: " + applicant.getDateApplied().toString());
+        nric.setText("Nric: " + applicant.getNric().toString());
+        interviewDate.setText("Interview date: " + applicant.getInterviewDate().toString());
+        qualification.setText("Qualification: " + applicant.getQualification().toString());
     }
 }
