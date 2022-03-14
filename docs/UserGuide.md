@@ -150,17 +150,16 @@ Examples:
 
 * Deletes the specialisation, education and location attribute from job with ID 132.
 
-### Mark an Applicant: `applicant mark`
+### Mark an Applicant: `markapplicant`
 
-Mark interview and application status of the applicant.
+Mark applicant status.
 
-**Fields:** ID, interview status, application status
+**Fields:** ID, applicant status
 
-Format: `applicant mark [ID*] i/ st/[STATUS]`
+Format: `markapplicant [ID*] st/[STATUS]`
 
 *flag/[Attribute]*
 
-`i/`: Flag to represent interview status of the applicant
 `s/[STATUS]`: Flag to mark the application status of the applicant. [STATUS] must be either 
 pending, accepted, or rejected
 
@@ -171,11 +170,11 @@ Example:
 `applicant mark 104 s/rejected`
 - Marks the status of the applicant with ID 104 as rejected.
 
-`applicant mark 105 ss/pending`
+`applicant mark 105 s/pending`
 - Marks the status of the applicant with ID 105 as pending.
 
-`applicant mark 106 st/offered`
-- Marks the status of the applicant with ID 106 as offered.
+`applicant mark 106 s/accepted`
+- Marks the status of the applicant with ID 106 as accepted.
 
 ### Listing all applicants : `list list applicant`
 
