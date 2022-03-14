@@ -17,9 +17,9 @@ public class Qualification {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    private final boolean isInit;
-
     public final String highestQualification;
+
+    private final boolean isInit;
 
     /**
      * Constructs a {@code Qualification}.
@@ -38,6 +38,9 @@ public class Qualification {
         }
     }
 
+    /**
+     * Constructs an instance of Qualification that is not initialised
+     */
     public Qualification() {
         isInit = false;
         highestQualification = "PENDING";
