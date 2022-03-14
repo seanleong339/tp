@@ -67,6 +67,9 @@ public class SampleDataUtil {
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
         }
+        for (Applicant sampleApplicant : getSampleApplicants()) {
+            sampleAb.addApplicant(sampleApplicant);
+        }
         return sampleAb;
     }
 
