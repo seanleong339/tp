@@ -42,7 +42,6 @@ class AddApplicantParserTest {
                 new Address("311, Clementi Ave 2"), tagSet, new DateApplied("2022-12-12"),
                 new Nric("S1234567D")
         );
-        System.out.println();
         assertParseSuccess(parser, arg, new AddApplicant(app));
     }
 
