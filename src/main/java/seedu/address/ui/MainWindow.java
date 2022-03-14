@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -17,6 +16,8 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.applicant.InfoPanel;
+import seedu.address.ui.applicant.ApplicantListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -32,9 +33,10 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private TestPanel testPanel;
     private PersonListPanel personListPanel;
-    private PersonListPanel secondPersonListPanel;
+
+    private ApplicantListPanel applicantListPanel;
+    private InfoPanel infoPanel;
 
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -46,13 +48,13 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane testPanelPlaceholder;
-
-    @FXML
     private StackPane personListPanelPlaceholder;
 
     @FXML
-    private StackPane testListPanelPlaceholder;
+    private StackPane applicantListPanelPlaceholder;
+
+    @FXML
+    private StackPane infoPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -120,22 +122,15 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        // For testing purpose
-        ListView<String> testList = new ListView<>();
-        testList.getItems().add("test 1");
-        testList.getItems().add("test 2");
-        testList.getItems().add("test 3");
-        testList.setStyle("-fx-font-size: 24px; -fx-text-fill: white;");
-
-        testPanel = new TestPanel();
-        testPanelPlaceholder.getChildren().add(testPanel.getRoot());
-
-        // Todo: get Applicantlist in applicantListPane
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList(), testPanel);
+        // Displays person list
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        testListPanelPlaceholder.getChildren().add(testList);
-        personListPanel.handlePersonClicks();
+        // Displays applicant list
+        infoPanel = new InfoPanel();
+        applicantListPanel = new ApplicantListPanel(logic.getFilteredApplicantList(), infoPanel);
+        infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
+        applicantListPanel.handleApplicantClicks();
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -146,7 +141,6 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
-
 
 
     /**

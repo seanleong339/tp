@@ -16,9 +16,9 @@ import seedu.address.ui.UiPart;
  */
 public class ApplicantListPanel extends UiPart<Region> {
     // Todo: Create ApplicantListPanel
-    private static final String FXML = "PersonListPanel.fxml";
+    private static final String FXML = "ApplicantListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ApplicantListPanel.class);
-    private ApplicantInfoPanel applicantInfoPanel;
+    private InfoPanel infoPanel;
 
     @FXML
     private ListView<Applicant> applicantListView;
@@ -27,11 +27,11 @@ public class ApplicantListPanel extends UiPart<Region> {
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public ApplicantListPanel(ObservableList<Applicant> applicantList, ApplicantInfoPanel applicantInfoPanel) {
+    public ApplicantListPanel(ObservableList<Applicant> applicantList, InfoPanel applicantInfoPanel) {
         super(FXML);
         applicantListView.setItems(applicantList);
         applicantListView.setCellFactory(listView -> new ApplicantListViewCell());
-        this.applicantInfoPanel = applicantInfoPanel;
+        this.infoPanel = applicantInfoPanel;
     }
 
     /**
@@ -40,7 +40,7 @@ public class ApplicantListPanel extends UiPart<Region> {
     public void handleApplicantClicks() {
         applicantListView.setOnMouseClicked(event -> {
             Applicant applicant = applicantListView.getSelectionModel().getSelectedItem();
-            applicantInfoPanel.setApplicantText(applicant);
+            infoPanel.setApplicantText(applicant);
         });
     }
 

@@ -17,7 +17,6 @@ public class PersonListPanel extends UiPart<Region> {
 
     private static final String FXML = "PersonListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
-    private TestPanel testPanel;
 
     @FXML
     private ListView<Person> personListView;
@@ -26,21 +25,10 @@ public class PersonListPanel extends UiPart<Region> {
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Person> personList, TestPanel testPanel) {
+    public PersonListPanel(ObservableList<Person> personList) {
         super(FXML);
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
-        this.testPanel = testPanel;
-    }
-
-    /**
-     * Displays ListView item clicked on the ListView on the {@code testPanel}
-     */
-    public void handlePersonClicks() {
-        personListView.setOnMouseClicked(event -> {
-            Person person = personListView.getSelectionModel().getSelectedItem();
-            testPanel.setPersonText(person);
-        });
     }
 
     /**

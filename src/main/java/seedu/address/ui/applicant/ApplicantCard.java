@@ -15,7 +15,7 @@ import seedu.address.ui.UiPart;
  */
 public class ApplicantCard extends UiPart<Region> {
     // Todo: create ApplicantListCard.fxml
-    private static final String FXML = "PersonListCard.fxml";
+    private static final String FXML = "ApplicantListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.

@@ -15,17 +15,15 @@ import seedu.address.ui.UiPart;
 /**
  * Panel containing all the information of the Applicant that has been selected in the list.
  */
-public class ApplicantInfoPanel extends UiPart<Region> {
-    // Todo: create ApplicantPanel.fxml
-    private static final String FXML = "TestPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(ApplicantInfoPanel.class);
+public class InfoPanel extends UiPart<Region> {
+    // Todo: create InfoPanel.fxml
+    private static final String FXML = "InfoPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(InfoPanel.class);
 
     @FXML
     private HBox cardPane;
     @FXML
     private Label name;
-    @FXML
-    private Label id;
     @FXML
     private Label phone;
     @FXML
@@ -48,7 +46,7 @@ public class ApplicantInfoPanel extends UiPart<Region> {
     /**
      * Creates a {@code ApplicantInfoPanel}
      */
-    public ApplicantInfoPanel() {
+    public InfoPanel() {
         super(FXML);
     }
 

@@ -56,18 +56,18 @@
                           <StackPane fx:id="personListPanelPlaceholder"/>
                         </content>
                       </Tab>
-                      <Tab text="test list" styleClass="tabTest">
+                      <Tab text="applicant list" styleClass="tabTest">
                         <content>
-                          <StackPane fx:id="testListPanelPlaceholder"/>
+                          <StackPane fx:id="applicantListPanelPlaceholder"/>
                         </content>
                       </Tab>
                     </tabs>
                 </TabPane>
-                <VBox fx:id="testPanel"  styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <VBox fx:id="infoPanel"  styleClass="pane-with-border" VBox.vgrow="ALWAYS">
                   <padding>
                     <Insets bottom="10" left="10" right="10" top="10" />
                   </padding>
-                  <StackPane fx:id="testPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                  <StackPane fx:id="infoPanelPlaceholder" VBox.vgrow="ALWAYS" />
                 </VBox>
               </items>
         </SplitPane>
