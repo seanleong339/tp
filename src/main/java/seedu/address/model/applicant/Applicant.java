@@ -68,6 +68,25 @@ public class Applicant {
         this.applicantStatus = null;
     }
 
+    /**
+     * Creates an Applicant object with old unmarked Applicant descriptors
+     * for use by Mark method
+     */
+    public Applicant(Applicant unmarkedApplicant, ApplicantStatus applicantStatus) {
+        requireAllNonNull(unmarkedApplicant, applicantStatus);
+        this.name = unmarkedApplicant.getName();
+        this.phone = unmarkedApplicant.getPhone();
+        this.email = unmarkedApplicant.getEmail();
+        this.address = unmarkedApplicant.getAddress();
+        this.tags.addAll(unmarkedApplicant.getTags());
+        this.nric = unmarkedApplicant.getNric();
+        this.dateApplied = unmarkedApplicant.getDateApplied();
+        this.interviewDate = unmarkedApplicant.getInterviewDate();
+        this.job = unmarkedApplicant.getJobId();
+        this.qualification = unmarkedApplicant.getQualification();
+        this.applicantStatus = applicantStatus;
+    }
+
     public Name getName() {
         return name;
     }
@@ -130,11 +149,6 @@ public class Applicant {
 
         return otherApplicant != null
                 && otherApplicant.getName().equals(getName());
-    }
-
-    public Applicant updateApplicantStatus(ApplicantStatus applicantStatus) {
-        this.applicantStatus = applicantStatus;
-        return this;
     }
 
     //todo may have to do a hard equal function to compare all the properties of Applicant

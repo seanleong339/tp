@@ -1,5 +1,12 @@
 package seedu.address.logic.commands.applicant;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICANTS;
+
+import java.util.List;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
@@ -9,37 +16,20 @@ import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.ApplicantStatus;
 
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICANTS;
-
 public class MarkApplicant extends Command {
     public static final String COMMAND_WORD = "markapplicant";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing Applicant's status. "
             + "Parameters: "
-            + PREFIX_NAME + "NAME "
-            + PREFIX_NRIC + "NRIC "
-            + PREFIX_PHONE + "PHONE "
-            + PREFIX_EMAIL + "EMAIL "
-            + PREFIX_ADDRESS + "ADDRESS "
-            + PREFIX_DATEAPPLIED + "DATE APPLIED "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "INDEX "
+            + PREFIX_STATUS + "STATUS\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
-            + PREFIX_NRIC + "S12345678D "
-            + PREFIX_PHONE + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
-            + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_DATEAPPLIED + "21-3-2022 "
-            + PREFIX_TAG + "new applicant "
-            + PREFIX_TAG + "owesMoney";
+            + "2 "
+            + PREFIX_STATUS + "3";
 
-    private static final String MESSAGE_SUCCESS = "Updated Applicant %1$s's status to: %2$s";
+    public static final String MESSAGE_SUCCESS = "Updated Applicant %1$s's status to: %2$s";
+    public static final String MESSAGE_INDEX_OUT_OF_BOUNDS = "Applicant index %1$s does not exist.";
+    public static final String MESSAGE_INVALID_APPLICANT_STATUS = "Applicant status %1$s does not correspond to index.";
 
     private final Index index;
     private final ApplicantStatus applicantStatus;
@@ -56,6 +46,7 @@ public class MarkApplicant extends Command {
         this.applicantStatus = applicantStatus;
     }
 
+    @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Applicant> lastShownList = model.getFilteredApplicantList();
@@ -65,7 +56,7 @@ public class MarkApplicant extends Command {
         }
 
         Applicant applicantToMark = lastShownList.get(index.getZeroBased());
-        Applicant markedApplicant = applicantToMark.updateApplicantStatus(applicantStatus);
+        Applicant markedApplicant = new Applicant(applicantToMark, applicantStatus);
 
         model.setApplicant(applicantToMark, markedApplicant);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
