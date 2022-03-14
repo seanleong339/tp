@@ -29,6 +29,7 @@ public class Qualification {
     public Qualification(String qualification) {
         requireNonNull(qualification);
         checkArgument(isValidQualification(qualification), MESSAGE_CONSTRAINTS);
+
         if (qualification.equals("PENDING")) {
             isInit = false;
             highestQualification = "PENDING";
@@ -39,24 +40,19 @@ public class Qualification {
     }
 
     /**
-     * Constructs an instance of Qualification that is not initialised
-     */
-    public Qualification() {
-        isInit = false;
-        highestQualification = "PENDING";
-    }
-
-    /**
      * Returns true if a given string is a valid qualification.
      */
     public static boolean isValidQualification(String test) {
         return test.matches(VALIDATION_REGEX) || test.equals("PENDING");
     }
 
-
     @Override
     public String toString() {
-        return "PENDING";
+        if (isInit) {
+            return highestQualification;
+        } else {
+            return "PENDING";
+        }
     }
 
     @Override
