@@ -122,9 +122,6 @@ public class Applicant {
     }
 
     public Qualification getQualification() {
-        if (qualification == null) {
-            return new Qualification("null");
-        }
         return qualification;
     }
 
