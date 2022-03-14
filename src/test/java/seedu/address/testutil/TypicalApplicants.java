@@ -10,6 +10,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.testutil.TypicalPersons.getTypicalPersons;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.person.Person;
 
 public class TypicalApplicants {
     public static final Applicant ALICE = new ApplicantBuilder().withName("Alice Pauline")
@@ -55,6 +57,7 @@ public class TypicalApplicants {
             .withJob("7").withQualification("degree in Political Science")
             .build();
 
+
     // Manually added - Applicant's details found in {@code CommandTestUtil}
     public static final Applicant AMY = new ApplicantBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
             .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
@@ -69,6 +72,9 @@ public class TypicalApplicants {
      */
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
+        for (Person person : getTypicalPersons()) {
+            ab.addPerson(person);
+        }
         for (Applicant applicant: getTypicalApplicants()) {
             ab.addApplicant(applicant);
         }

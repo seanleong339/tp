@@ -18,17 +18,17 @@ public class Id {
      *
      * @param id A valid Id int
      */
-    public Id(int id) {
+    public Id(Integer id) {
         requireNonNull(id);
-        checkArgument(isValidId(id), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidId(id.toString()), MESSAGE_CONSTRAINTS);
         uid = id;
     }
 
     /**
      * Returns true if the input integer is a valid Id.
      */
-    public static boolean isValidId(int test) {
-        return test > 0;
+    public static boolean isValidId(String test) {
+        return Integer.parseInt(test) > 0;
     }
 
     @Override

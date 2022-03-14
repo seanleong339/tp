@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Objects;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.applicant.Applicant;
@@ -34,7 +35,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public AddressBook() {}
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an AddressBook using the Persons and Applicants in the {@code toBeCopied}
      */
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
         this();
@@ -52,6 +53,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the applicant list with {@code applicants}.
+     * {@code applicants} must not contain duplicate applicants.
+     */
+    public void setApplicants(List<Applicant> applicants) {
+        this.applicants.setApplicants(applicants);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
@@ -60,15 +69,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPersons(newData.getPersonList());
         setApplicants(newData.getApplicantList());
     }
-
-    /**
-     * Replaces the contents of the applicant list with {@code applicants}.
-     * {@code applicants} must not contain duplicate applicants.
-     */
-    public void setApplicants(List<Applicant> applicants) {
-        this.applicants.setApplicants(applicants);
-    }
-
 
     //// person-level operations
 
@@ -128,7 +128,6 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Replaces the given applicant {@code target} in the list with {@code editedApplicant}.
-     * {@code target} must exist in the address book.
      * The applicant identity of {@code editedApplicant} must not be the same as another existing applicant
      * in the address book.
      */
@@ -176,6 +175,6 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return Objects.hash(persons, applicants);
     }
 }

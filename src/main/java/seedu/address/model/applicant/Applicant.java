@@ -29,6 +29,8 @@ public class Applicant {
     private final Qualification qualification;
     private ApplicantStatus applicantStatus;
 
+
+
     /**
      * Creates an Applicant object with all attributes for use by Edit method
      */
