@@ -19,6 +19,9 @@ public class Qualification {
 
     public final String highestQualification;
 
+    private final boolean isInit;
+
+
     /**
      * Constructs a {@code Qualification}.
      *
@@ -28,6 +31,16 @@ public class Qualification {
         requireNonNull(qualification);
         checkArgument(isValidQualification(qualification), MESSAGE_CONSTRAINTS);
         highestQualification = qualification;
+        isInit = true;
+    }
+
+    /**
+     * Constructor to create {@code Qualification} that is not initialized
+     *
+     */
+    public Qualification() {
+        highestQualification = null;
+        isInit = false;
     }
 
     /**
@@ -40,7 +53,11 @@ public class Qualification {
 
     @Override
     public String toString() {
-        return highestQualification;
+        if (isInit) {
+            return highestQualification;
+        } else {
+            return "null";
+        }
     }
 
     @Override

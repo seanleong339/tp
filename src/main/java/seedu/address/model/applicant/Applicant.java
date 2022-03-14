@@ -64,7 +64,7 @@ public class Applicant {
         this.dateApplied = dateApplied;
         this.job = new JobId();
         this.interviewDate = new InterviewDate();
-        this.qualification = null;
+        this.qualification = new Qualification();
     }
 
     public Name getName() {
@@ -100,9 +100,6 @@ public class Applicant {
     }
 
     public Qualification getQualification() {
-        if (qualification == null) {
-            return new Qualification("null");
-        }
         return qualification;
     }
 
