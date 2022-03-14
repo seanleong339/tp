@@ -26,8 +26,13 @@ public class JobId {
     public JobId(String jobId) {
         requireNonNull(jobId);
         checkArgument(isValidJobId(jobId), MESSAGE_CONSTRAINTS);
-        isInit = true;
-        this.jobId = Integer.parseInt(jobId);
+        if (jobId.equals("PENDING")) {
+            isInit = false;
+            this.jobId = 0;
+        } else {
+            isInit = true;
+            this.jobId = Integer.parseInt(jobId);
+        }
     }
 
     /**
@@ -42,6 +47,9 @@ public class JobId {
      * Returns true if the input integer is a valid Id.
      */
     public static boolean isValidJobId(String test) {
+        if (test.equals("PENDING")) {
+            return true;
+        }
         try {
             int testing = Integer.parseInt(test);
             return testing > 0;

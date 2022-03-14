@@ -17,6 +17,8 @@ public class Qualification {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
+    private final boolean isInit;
+
     public final String highestQualification;
 
     /**
@@ -27,20 +29,31 @@ public class Qualification {
     public Qualification(String qualification) {
         requireNonNull(qualification);
         checkArgument(isValidQualification(qualification), MESSAGE_CONSTRAINTS);
-        highestQualification = qualification;
+        if (qualification.equals("PENDING")) {
+            isInit = false;
+            highestQualification = "PENDING";
+        } else {
+            isInit = true;
+            highestQualification = qualification;
+        }
+    }
+
+    public Qualification() {
+        isInit = false;
+        highestQualification = "PENDING";
     }
 
     /**
      * Returns true if a given string is a valid qualification.
      */
     public static boolean isValidQualification(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) || test.equals("PENDING");
     }
 
 
     @Override
     public String toString() {
-        return highestQualification;
+        return "PENDING";
     }
 
     @Override
