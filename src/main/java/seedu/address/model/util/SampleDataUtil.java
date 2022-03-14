@@ -48,17 +48,17 @@ public class SampleDataUtil {
 
     public static Applicant[] getSampleApplicants() {
         return new Applicant[] {
-                new Applicant(new Name("Alice Tan"), new Phone("98567843"), new Email("alicetan@example.com"),
+            new Applicant(new Name("Alice Tan"), new Phone("98567843"), new Email("alicetan@example.com"),
                         new Address("123, Jurong West Ave 6, #08-111"), getTagSet("Applicant"),
                         new DateApplied("2022-02-12"), new Nric("S9920202A"), new JobId("1"),
                         new InterviewDate("2022-03-18"), new Qualification("Degree in Sociology")),
-                new Applicant(new Name("Benson Goh"), new Phone("98184343"), new Email("bensongoh@example.com"),
-                        new Address("311, Clementi Ave 2, #02-25"), getTagSet("Applicant"),
-                        new DateApplied("2022-01-22"), new Nric("S9920202A")),
-                new Applicant(new Name("Carl Teo"), new Phone("83127843"), new Email("carlteo@example.com"),
-                        new Address("456, Hougang North Street 6, #03-21"), getTagSet("Applicant"),
-                        new DateApplied("2022-01-19"), new Nric("S9920202A"), new JobId("1"),
-                        new InterviewDate("2022-02-10"), new Qualification("Degree in Psychology")),
+            new Applicant(new Name("Benson Goh"), new Phone("98184343"), new Email("bensongoh@example.com"),
+                    new Address("311, Clementi Ave 2, #02-25"), getTagSet("Applicant"),
+                    new DateApplied("2022-01-22"), new Nric("S9920202A")),
+            new Applicant(new Name("Carl Teo"), new Phone("83127843"), new Email("carlteo@example.com"),
+                    new Address("456, Hougang North Street 6, #03-21"), getTagSet("Applicant"),
+                    new DateApplied("2022-01-19"), new Nric("S9920202A"), new JobId("1"),
+                    new InterviewDate("2022-02-10"), new Qualification("Degree in Psychology")),
         };
     }
 
