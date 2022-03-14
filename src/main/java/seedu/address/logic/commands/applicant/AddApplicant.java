@@ -35,7 +35,7 @@ public class AddApplicant extends Command {
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_DATEAPPLIED + "21-3-2022 "
-            + PREFIX_TAG + "new applicant "
+            + PREFIX_TAG + "applicant "
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New applicant added: %1$s";
