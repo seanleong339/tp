@@ -35,7 +35,7 @@ public class JobId {
      */
     public JobId() {
         isInit = false;
-        this.jobId = null;
+        this.jobId = 0;
     }
 
     /**
