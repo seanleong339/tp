@@ -16,8 +16,8 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.applicant.InfoPanel;
 import seedu.address.ui.applicant.ApplicantListPanel;
+import seedu.address.ui.applicant.InfoPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -34,7 +34,6 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
-
     private ApplicantListPanel applicantListPanel;
     private InfoPanel infoPanel;
 
@@ -129,6 +128,7 @@ public class MainWindow extends UiPart<Stage> {
         // Displays applicant list
         infoPanel = new InfoPanel();
         applicantListPanel = new ApplicantListPanel(logic.getFilteredApplicantList(), infoPanel);
+        applicantListPanelPlaceholder.getChildren().add(applicantListPanel.getRoot());
         infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
         applicantListPanel.handleApplicantClicks();
 
