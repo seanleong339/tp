@@ -150,68 +150,6 @@ Examples:
 
 * Deletes the specialisation, education and location attribute from job with ID 132.
 
-###Adding Applicant attribute: `applicant add`
-
-Adds attributes to a specified applicant.
-
-Format: `applicant add [ID*] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEW] nric/[NRIC]`
-
-Tip: Fill in fields in the stipulated order. Since all the fields are optional except `[ID*]`. Just enter the flag of the attributes you want to add, followed by the details related to that flag.
-
-*flag/[ATTRIBUTE]*
-
-`[ID*]` : Id of the applicant
-
-`q/[QUALIFICATION]` : Applicant’s qualification
-
-`d/[DATE APPLIED]` : Date Applicant applied for job. Format: yymmdd
-
-`j/[JOB ID]` : Unique ID of the job Applicant is applying for
-
-`i/[INTERVIEW]` : Applicant’s upcoming job interview date. Format: yymmdd hhMM
-
-`nric/[NRIC]`: Flag to represent the NRIC number
-
-Examples:
-
-`applicant add 110 q/diploma d/220216 1800`
-- Adds a diploma attribute and date applied attribute to the applicant with ID 110.
-
-`applicant add 112 j/1 in/220226`
-- Adds a job id attribute and interview date attribute to the applicant with ID 112.
-
-### Delete Applicant attribute: `applicant delete`
-
-Delete attributes of an applicant corresponding to the flags.
-
-**Fields:** ID, Name, Contact Number, Qualification, Date applied, Job ID, upcoming interview
-
-Format: `applicant delete [ID*] qual/ d/ j/ i/ nric/`
-
-**Tip:** Fill in fields in the stipulated order. Since all the fields are optional except `[ID*]`. Just enter the flag of the attributes you want to delete.
-
-`[ID*]`: Unique ID of the applicant. The ID must be a positive integer 1, 2, 3,...
-
-*flag/*
-
-`q/`: Flag to represent the qualification
-`d/`: Flag to represent the date the applicant applied for a job
-`j/`: Flag to represent the job id
-`i/`: Flag to represent the date of an upcoming interview
-nric/: Flag to represent the NRIC number
-
-Example:
-
-`applicant delete 101 nric/`
-- Deletes NRIC attribute of the applicant with an ID 101.
-
-`applicant delete 102 nric/ qual/ i/`
-- Deletes NRIC, qualification, date of the interview attribute of the applicant with an ID 102.
-
-`applicant delete 103 da/ j/ delete`
-- The date the applicant applied for a job, and job attribute of the applicant with an ID 103.
-
-
 ### Mark an Applicant: `applicant mark`
 
 Mark interview and application status of the applicant.
@@ -277,42 +215,35 @@ Shows a list of all employers in the address book.
 
 Format: `list list employer`
 
-### Adding an Applicant to the ApplicantList: `list add applicant`
+### Adding an Applicant to the ApplicantList: `addapplicant`
 
 Adds an applicant to the applicant list in the address book.
 
-Format: `list add applicant n/[NAME] p/[PHONE] nric/[NRIC]
-            q/[QUALIFICATIONS] d/[DATE] i/[INTERVIEW DATE] j/[JOB ID]`
+Format: `addapplicant n/[NAME] p/[PHONE] nric/[NRIC] a/[ADDRESS] e/[EMAIL]
+            d/[DATEAPPLIED]`
 
-Tip: Fill in fields in the stipulated order. Since all the fields are optional.
-Just enter the flag of the attributes followed by the details you want to add.
+Tip: Fill in fields in any order. All fields are compulsory.
 
 *flag/[ATTRIBUTE]:*
 
-`n/[NAME]`: Applicant name
+`n/[NAME]`: Applicant's name
 
-`p/[PHONE]`: Applicant phone number
+`p/[PHONE]`: Applicant's phone number
 
-`nric/[NRIC]`: Applicant NRIC
+`nric/[NRIC]`: Applicant's NRIC
 
-`q/[QUALIFICATION]`: Applicant highest qualification
+`a/[ADDRESS]` : Applicant's address
 
-`i/[INTERVIEW DATE]`: Date of applicant's interview. `INTERVIEW DATE` should
-be in the following format: yymmdd hhMM ie i/220328 1800
+`e/[EMAIL]` : Applicant's email address
 
-`j/[JOB ID]`: Job ID applicant is applying for. `JOB ID` must be a positive integer 1,2,3,...
+`d/[DATEAPPLIED]` : Date that Applicant applied for the job
+
 
 Examples:
 
-`list add applicant n/Jaden Ho p/92812192 nric/S1234567A q/A Level i/220528 1900 j/4`
+`addapplicant n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12`
 
-* Adds an applicant with name-Jaden Ho, phone number-92812191, nric-S1234567A, highest qualification-A Level,
-interview date-28 May 2022 at 7:00pm, Job ID-4 to the applicant list in the address book.
-
-`list add applicant n/Cheryl Tan p/81728194`
-
-* Adds an applicant with name-Cheryl Tan, phone number-81728194 to the
-applicant list in the address book.
+* Adds an applicant with name-Jaden Ho, phone number-92812191, nric-S1234567A, address-Tampines St 96 Block 312 email-jadenho@email.com, date applied- 2022-03-12 to the applicant list in the address book.
 
 ### Adding a Job to the JobList: `list add job`
 

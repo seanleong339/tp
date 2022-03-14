@@ -60,6 +60,15 @@ public class JsonAddressBookStorageTest {
         assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidPersonAddressBook.json"));
     }
 
+    //Use to create JSON test file with applicants
+    // @Test
+    // public void saveAddressBook_withApplicants() throws Exception {
+    //     Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableAddressBookTest");
+    //     JsonAddressBookStorage j =
+    //             new JsonAddressBookStorage(TEST_DATA_FOLDER.resolve("duplicateApplicantsAddressBook.json"));
+    //     j.saveAddressBook(TypicalApplicants.getTypicalAddressBook());
+    // }
+
     @Test
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");

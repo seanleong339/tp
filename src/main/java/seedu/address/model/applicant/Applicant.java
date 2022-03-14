@@ -29,6 +29,8 @@ public class Applicant {
     private final Qualification qualification;
     private ApplicantStatus applicantStatus;
 
+
+
     /**
      * Creates an Applicant object with all attributes for use by Edit method
      */
@@ -120,9 +122,6 @@ public class Applicant {
     }
 
     public Qualification getQualification() {
-        if (qualification == null) {
-            return new Qualification("null");
-        }
         return qualification;
     }
 
