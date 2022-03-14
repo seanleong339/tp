@@ -21,7 +21,6 @@ public class Qualification {
 
     private final boolean isInit;
 
-
     /**
      * Constructs a {@code Qualification}.
      *
@@ -30,33 +29,29 @@ public class Qualification {
     public Qualification(String qualification) {
         requireNonNull(qualification);
         checkArgument(isValidQualification(qualification), MESSAGE_CONSTRAINTS);
-        highestQualification = qualification;
-        isInit = true;
-    }
 
-    /**
-     * Constructor to create {@code Qualification} that is not initialized
-     *
-     */
-    public Qualification() {
-        highestQualification = null;
-        isInit = false;
+        if (qualification.equals("PENDING")) {
+            isInit = false;
+            highestQualification = "PENDING";
+        } else {
+            isInit = true;
+            highestQualification = qualification;
+        }
     }
 
     /**
      * Returns true if a given string is a valid qualification.
      */
     public static boolean isValidQualification(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) || test.equals("PENDING");
     }
-
 
     @Override
     public String toString() {
         if (isInit) {
             return highestQualification;
         } else {
-            return "null";
+            return "PENDING";
         }
     }
 

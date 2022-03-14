@@ -64,7 +64,7 @@ public class Applicant {
         this.dateApplied = dateApplied;
         this.job = new JobId();
         this.interviewDate = new InterviewDate();
-        this.qualification = new Qualification();
+        this.qualification = new Qualification("PENDING");
     }
 
     public Name getName() {

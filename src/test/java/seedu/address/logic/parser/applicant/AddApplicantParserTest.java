@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.applicant.AddApplicant;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
-import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
