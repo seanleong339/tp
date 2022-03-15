@@ -156,7 +156,7 @@ Mark applicant status.
 
 **Fields:** ID, applicant status
 
-Format: `markapplicant [ID*] st/[STATUS]`
+Format: `markapplicant [ID*] s/[STATUS]`
 
 *flag/[Attribute]*
 
