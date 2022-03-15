@@ -29,13 +29,11 @@ If you can type fast, ReCLIne can get your contact management tasks done faster 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`list`** : Lists all contacts.
+   * **`addapplicant`**`n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` : Adds a contact named `Jaden Ho` to the Address Book.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * **`deleteapplicant`**`3` : Deletes the 3rd contact shown in the current list.
 
-   * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
-
-   * **`clear`** : Deletes all contacts.
+   * **`editapplicant`**`1  e/jadenho@email.com q/Degree in Computer Science i/2022-03-18` : Edits Applicant 3 changing the email, qualification and interview date.
 
    * **`exit`** : Exits the app.
 
@@ -79,7 +77,126 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
-### Adding a Job: `job add`
+### Adding an Applicant to the ApplicantList: `addapplicant`
+
+Adds an applicant to the applicant list of the address book.
+
+Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
+            *d/[DATEAPPLIED]`
+
+Tip: Fill in fields in any order. All fields are compulsory.
+
+*flag/[ATTRIBUTE]:*
+
+`n/[NAME]`: Applicant's name
+
+`p/[PHONE]`: Applicant's phone number
+
+`nric/[NRIC]`: Applicant's NRIC
+
+`a/[ADDRESS]` : Applicant's address
+
+`e/[EMAIL]` : Applicant's email address
+
+`d/[DATEAPPLIED]` : Date that Applicant applied for the job
+
+
+Examples:
+
+`addapplicant n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12`
+
+* Adds an applicant with name-Jaden Ho, phone number-92812191, nric-S1234567A, address-Tampines St 96 Block 312 
+  email-jadenho@email.com, date applied- 2022-03-12 to the applicant list in the address book.
+
+
+### Editing an Applicant in the ApplicantList: `editapplicant`
+
+Edits an applicant in the applicant list of the address book.
+
+Format: `editApplicant *[ID] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] 
+nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] 
+i/[INTERVIEWDATE] s/[STATUS] t/[TAG]`
+
+Tip: Fill in fields in any order. Just input the fields that you would like to change for the specific index number.
+To leave out fields, skip the flag and attribute completely.
+
+*flag/[ATTRIBUTE]:*
+
+`[ID*]` : Index number of the applicant that is displayed in the List
+
+`n/[NAME]`: Updated Applicant's name
+
+`p/[PHONE]`: Updated Applicant's phone number
+
+`nric/[NRIC]`: Updated Applicant's NRIC
+
+`a/[ADDRESS]` : Updated Applicant's address
+
+`e/[EMAIL]` : Updated Applicant's email address
+
+`nric/[NRIC]` : Updated Applicant's NRIC
+
+`d/[DATEAPPLIED]` : Updated Applicant's application date
+
+`q/[QUALIFICATION]` : Updated Applicant's qualification
+
+`j/[JOB ID]` : Updated unique ID of the job applicant is applying for
+
+`i/[INTERVIEW]` : Updated Applicant’s upcoming job interview date
+
+`t/[TAG]` :  Updated Applicant's Tag
+
+Examples:
+
+`editapplicant 1 n/Jaden Ho a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12 q/Degree in Computer Science
+i/2022-03-18`
+
+* Edits an applicant with index number 1 with name - Jaden Ho, address - Tampines St 96 Block 312
+  email - jadenho@email.com, date applied - 2022-03-12, qualification - Degree of Computer Science, 
+  interview date - 2022-03-18.
+  
+### Saving the data
+
+ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+### Editing the data file
+
+ReCLIne data are saved as a JSON file `[JAR file location]/data/recline.json`. Advanced users are welcome to update data directly by editing that data file.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+If your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
+</div>
+
+### Mark an Applicant: `markapplicant`
+ [coming soon]
+>>>>>>> master
+
+Mark applicant status.
+
+**Fields:** ID, applicant status
+
+Format: `markapplicant [ID*] s/[STATUS]`
+
+*flag/[Attribute]*
+
+`s/[STATUS]`: Flag to mark the application status of the applicant. [STATUS] must be either 
+pending, accepted, or rejected
+
+**Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
+
+Example:
+
+`applicant mark 104 s/rejected`
+- Marks the status of the applicant with ID 104 as rejected.
+
+`applicant mark 105 s/pending`
+- Marks the status of the applicant with ID 105 as pending.
+
+`applicant mark 106 s/accepted`
+- Marks the status of the applicant with ID 106 as accepted.
+
+
+### Adding a Job: `job add` [coming soon]
 Adds a job attribute
 
 Format: `job add [ID*] ed/[EDUCATION] l/[LOCATION] s/[SALARY] sp/[SPECIALISATION] d/[DURATION]`
@@ -116,9 +233,9 @@ Example:
 `job add 32 l/OCBC s/5000 sp/Accountancy d/3`
 
 * Add details to Job ID 32, that location of job is at OCBC, salary is 5000 a month, looking for someone with
-    specialisation in Accountancy and a contract of 3 years.
+  specialisation in Accountancy and a contract of 3 years.
 
-### Deleting a Job attribute: `job delete`
+### Deleting a Job attribute: `job delete` [coming soon]
 
 * Deletes attributes from the specified job id. Command should include at least 1 flag.
 
@@ -149,218 +266,6 @@ Examples:
 `job delete 132 sp/ ed/ l/`
 
 * Deletes the specialisation, education and location attribute from job with ID 132.
-
-### Mark an Applicant: `markapplicant`
-
-Mark applicant status.
-
-**Fields:** ID, applicant status
-
-Format: `markapplicant [ID*] s/[STATUS]`
-
-*flag/[Attribute]*
-
-`s/[STATUS]`: Flag to mark the application status of the applicant. [STATUS] must be either 
-pending, accepted, or rejected
-
-**Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
-
-Example:
-
-`applicant mark 104 s/rejected`
-- Marks the status of the applicant with ID 104 as rejected.
-
-`applicant mark 105 s/pending`
-- Marks the status of the applicant with ID 105 as pending.
-
-`applicant mark 106 s/accepted`
-- Marks the status of the applicant with ID 106 as accepted.
-
-### Listing all applicants : `list list applicant`
-
-Shows a list of all applicants in the address book.
-
-Format: `list list applicant`
-
-### Listing all jobs : `list list job`
-
-Shows a list of all jobs in the address book.
-
-Format: `list list job`
-
-### Listing all employers : `list list employer`
-
-Shows a list of all employers in the address book.
-
-Format: `list list employer`
-
-### Adding an Applicant to the ApplicantList: `addapplicant`
-
-Adds an applicant to the applicant list in the address book.
-
-Format: `addapplicant n/[NAME] p/[PHONE] nric/[NRIC] a/[ADDRESS] e/[EMAIL]
-            d/[DATEAPPLIED]`
-
-Tip: Fill in fields in any order. All fields are compulsory.
-
-*flag/[ATTRIBUTE]:*
-
-`n/[NAME]`: Applicant's name
-
-`p/[PHONE]`: Applicant's phone number
-
-`nric/[NRIC]`: Applicant's NRIC
-
-`a/[ADDRESS]` : Applicant's address
-
-`e/[EMAIL]` : Applicant's email address
-
-`d/[DATEAPPLIED]` : Date that Applicant applied for the job
-
-
-Examples:
-
-`addapplicant n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12`
-
-* Adds an applicant with name-Jaden Ho, phone number-92812191, nric-S1234567A, address-Tampines St 96 Block 312 email-jadenho@email.com, date applied- 2022-03-12 to the applicant list in the address book.
-
-### Adding a Job to the JobList: `list add job`
-
-Adds a job to the job list in the address book.
-
-Format: `list add job t/[TITLE] v/[VACANCY] e/[EMPLOYER ID] ed/[EDUCATION] s/[SALARY]
-l/[LOCATION] sp/[SPECIALISATION] d/[DURATION] ti/[TIME]`
-
-Tip: Fill in fields in the stipulated order. Since all the fields are optional.
-Just enter the flag of the attributes followed by the details you want to add.
-
-*flag/[ATTRIBUTE]:*
-
-`t/[TITLE]`: Job title
-
-`v/[VACANCY]`: Number of vacancies for the job. The `VACANCY` must be a positive integer 1,2,3,...
-
-`e/[EMPLOYER ID]`: Unique ID of the employer. `EMPLOYER ID` must be a positive integer 1,2,3,...
-
-`ed/[EDUCATION]` : Education requirement of job
-
-`s/[SALARY]` : Salary of job, based on how much the job pays per month. The `SALARY` must be a positive integer 1000,2000,3000,...
-
-`l/[LOCATION]` : Location of Job
-
-`sp/[SPECIALISATION]` : Field of specialisation of job
-
-`d/[DURATION]` : Duration of job in months. ie d/8
-
-`t/[TIME]` : time of interview. `TIME` should be in the following format: yymmdd hhMM. ie t/220329 1800
-
-Examples:
-`list add job t/Software Engineer Intern v/5 e/1 ed/Undergraduate s/4000
-l/Tiong Bahru sp/Software Engineer d/3 ti/220329 1800`
-
-* Adds the job with name-Software Engineer Intern,
-number of vacancies-5, employer ID-1, education requirement-Undergraduate, salary-$4000 per month, location-
-Tiong Bahru, specialisation-Software Engineer, duration-3 months, time of interview-29 Mar 2022 at 6:00pm to the
-job list in the address book
-
-`list add job t/Admin Administrator v/4 e/2`
-
-* Adds a job with name-Admin Administrator, number of vacancies-5, employer ID-2 to the job list in the address book.
-
-### Adding an Employer to the EmployerList: `list add employer`
-
-Adds an employer to the employer list in the address book.
-
-Format: `list add employer n/[NAME] c/[COMPANY] p/[PHONE]`
-
-*flag/[ATTRIBUTE]:*
-
-`n/[NAME]`: Employer name
-
-`c/[COMPANY]`: Employer company
-
-`p/[PHONE]`: Employer phone number
-
-Tip: Fill in fields in the stipulated order. Since all the fields are optional.
-Just enter the flag of the attributes followed by the details you want to add.
-
-Examples:
-
-`list add employer n/John Tan c/Mircrosoft p/92023951`
-
-* Adds the employer with name-John Tan,
-company name-Microsoft, phone number-92023951 to the employer list in the address book.
-
-`list add employer n/Rachel Solanda c/Facebook`
-
-* Adds the employer with name-Rachel Solanda,
-company name-Facebook to the employer list in the address book.
-
-### Deleting an Applicant : `list delete applicant`
-
-Deletes the specified applicant from the applicant list in the address book.
-
-Format: `list delete applicant [ID*]`
-
-`[ID*]`: Unique ID of the applicant. `ID` must be a positive integer 1,2,3,...
-
-Examples:
-
-`list delete 4`
-
-* Deletes an applicant with ID 4 from the applicant list in the address book.
-
-`list delete 5`
-
-* Deletes an applicant with ID 5 from the applicant list in the address book.
-
-### Deleting a Job : `list delete job`
-
-Deletes the specified job from the job list in the address book.
-
-Format: `list delete job [ID*]`
-
-`[ID*]`: Unique ID of the job. `ID` must be a positive integer 1,2,3,...
-
-Examples:
-
-`list delete job 4`
-
-* Deletes a job with ID 4 from the job list in the address book.
-
-`list delete job 5`
-
-* Deletes a job with ID 5 from the job list in the address book.
-
-### Deleting an employer: `list delete employer`
-
-Deletes the specified employer from the employer list in the address book.
-
-Format: `list delete employer [ID*]`
-
-`[ID*]`: Unique ID of the employer. `ID` must be a positive integer 1,2,3,...
-
-Examples:
-
-`list delete employer 4`
-
-* Deletes an employer with ID 4 from the employer list in the address book.
-
-`list delete employer 5`
-
-* Deletes an employer with ID 5 from the employer list in the address book.
-
-### Saving the data
-
-ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-ReCLIne data are saved as a JSON file `[JAR file location]/data/recline.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
-</div>
 
 ### Editing a person : `edit` [coming soon]
 
@@ -426,10 +331,7 @@ _Details coming soon ..._
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
+**Add Applicant** | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`
+**Delete Applicant** | `deleteapplicant INDEX`<br> e.g., `deleteapplicant 3`
+**Edit Appplicant** | `editApplicant *[ID] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com`
 **Help** | `help`
