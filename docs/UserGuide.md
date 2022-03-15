@@ -167,52 +167,34 @@ ReCLIne data are saved as a JSON file `[JAR file location]/data/recline.json`. A
 If your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
 </div>
 
-### Mark an Applicant: `applicant mark` [coming soon]
+### Mark an Applicant: `markapplicant`
+ [coming soon]
+>>>>>>> master
 
-Mark interview and application status of the applicant.
+Mark applicant status.
 
-**Fields:** ID, interview status, application status
+**Fields:** ID, applicant status
 
-Format: `applicant mark [ID*] i/ st/[STATUS]`
+Format: `markapplicant [ID*] s/[STATUS]`
 
 *flag/[Attribute]*
 
-`i/`: Flag to represent interview status of the applicant
-`st/[STATUS]`: Flag to mark the application status of the applicant. [STATUS] must be either pending, offered
+`s/[STATUS]`: Flag to mark the applicant status of the applicant. [STATUS] must be either 
+pending, accepted, or rejected
 
 **Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
 
 Example:
 
-`applicant mark 104 i/`
-- Marks the applicant as interviewed
+`markapplicant 104 s/rejected`
+- Marks the status of the applicant with ID 104 as rejected.
 
-`applicant mark 105 st/pending`
-- Marks the status of application of the applicant with ID 105 as pending.
+`markapplicant 105 s/pending`
+- Marks the status of the applicant with ID 105 as pending.
 
-`applicant delete 106 st/offered`
-- Marks the status of application of the applicant with ID 106 as offered.
+`markapplicant 106 s/accepted`
+- Marks the status of the applicant with ID 106 as accepted.
 
-###Unmark an Applicant: `applicant unmark` [coming soon]
-Unmark the interview and application status of the applicant.
-
-**Fields:** ID, interview status, application status
-
-Format: `applicant unmark [ID*] i/ st/`
-
-*flag/*
-
-`i/`: Flag to represent interview status of the applicant
-`st/`: Flag to represent the application status of the applicant
-
-**Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
-
-Example:
-
-`applicant unmark 107 i/`
-- Unmarks the applicant as interviewed.
-  `applicant mark 108 st/`
-- -Unmarks the status of application of the applicant with ID 108. The application status will no longer be either pending or offered.
 
 ### Adding a Job: `job add` [coming soon]
 Adds a job attribute
