@@ -179,20 +179,20 @@ Format: `markapplicant [ID*] s/[STATUS]`
 
 *flag/[Attribute]*
 
-`s/[STATUS]`: Flag to mark the application status of the applicant. [STATUS] must be either 
+`s/[STATUS]`: Flag to mark the applicant status of the applicant. [STATUS] must be either 
 pending, accepted, or rejected
 
 **Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
 
 Example:
 
-`applicant mark 104 s/rejected`
+`markapplicant 104 s/rejected`
 - Marks the status of the applicant with ID 104 as rejected.
 
-`applicant mark 105 s/pending`
+`markapplicant 105 s/pending`
 - Marks the status of the applicant with ID 105 as pending.
 
-`applicant mark 106 s/accepted`
+`markapplicant 106 s/accepted`
 - Marks the status of the applicant with ID 106 as accepted.
 
 
