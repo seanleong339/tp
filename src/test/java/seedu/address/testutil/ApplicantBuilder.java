@@ -79,6 +79,7 @@ public class ApplicantBuilder {
         interviewDate = applicantToCopy.getInterviewDate();
         qualification = applicantToCopy.getQualification();
         job = applicantToCopy.getJobId();
+        applicantStatus = applicantToCopy.getApplicantStatus();
     }
 
     /**
