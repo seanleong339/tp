@@ -127,7 +127,7 @@ public class Applicant {
     //todo may have to do a hard equal function to compare all the properties of Applicant
     /**
      * Returns true if both applicants have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * This defines a stronger notion of equality between two applicants.
      */
     @Override
     public boolean equals(Object other) {
