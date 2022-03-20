@@ -21,4 +21,8 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Applicant> getApplicantList();
 
+    /**
+     * Returns the current idCount;
+     */
+    int getIdCount();
 }

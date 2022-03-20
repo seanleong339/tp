@@ -19,6 +19,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniqueApplicantList applicants;
+    private int idCount;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -68,6 +69,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         setPersons(newData.getPersonList());
         setApplicants(newData.getApplicantList());
+        this.idCount = newData.getIdCount();
+
     }
 
     //// person-level operations
@@ -144,6 +147,23 @@ public class AddressBook implements ReadOnlyAddressBook {
         applicants.remove(key);
     }
 
+    //// job methods
+
+    /**
+     * Sets the idCount of this AddressBook
+     */
+    public void setIdCount(int idCount) {
+        this.idCount = idCount;
+    }
+
+    /**
+     * Increments the IdCount by 1, after a new Job Id has been designated.
+     * To be used only in ModelManager
+     */
+    public void incrementIdCount() {
+        this.idCount += 1;
+    }
+
     //// util methods
 
     @Override
@@ -165,12 +185,18 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
+    public int getIdCount() {
+        return this.idCount;
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
                 // TODO: change back if there is error
                 && persons.equals(((AddressBook) other).persons)
-                && applicants.equals(((AddressBook) other).applicants));
+                && applicants.equals(((AddressBook) other).applicants))
+                && idCount == (((AddressBook) other).idCount);
     }
 
     @Override

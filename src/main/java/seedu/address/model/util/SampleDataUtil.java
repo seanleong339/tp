@@ -70,6 +70,7 @@ public class SampleDataUtil {
         for (Applicant sampleApplicant : getSampleApplicants()) {
             sampleAb.addApplicant(sampleApplicant);
         }
+        sampleAb.setIdCount(9);
         return sampleAb;
     }
 

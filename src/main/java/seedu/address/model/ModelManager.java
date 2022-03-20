@@ -191,5 +191,12 @@ public class ModelManager implements Model {
     public void deleteApplicant(Applicant target) {
         addressBook.removeApplicant(target);
     }
+
+    //Todo use this in addJob command and constructor of Job
+    public int getIdCount() {
+        int ans = addressBook.getIdCount();
+        addressBook.incrementIdCount();
+        return ans;
+    }
 }
 
