@@ -1,6 +1,16 @@
 package seedu.address.logic.commands.applicant;
 
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.showApplicantAtIndex;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICANT;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICANT;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
@@ -9,10 +19,6 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.testutil.TypicalApplicants;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.logic.commands.CommandTestUtil.*;
-import static seedu.address.testutil.TypicalIndexes.*;
 
 public class MarkApplicantTest {
     private Model model = new ModelManager(TypicalApplicants.getTypicalAddressBook(), new UserPrefs());
@@ -25,7 +31,8 @@ public class MarkApplicantTest {
         String expectedMessage = String.format(MarkApplicant.MESSAGE_SUCCESS, applicantToMark, new ApplicantStatus(1));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.setApplicant(model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased()), applicantToMark);
+        expectedModel.setApplicant(model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased()),
+                applicantToMark);
 
         assertCommandSuccess(markApplicant, model, expectedMessage, expectedModel);
     }
@@ -40,7 +47,8 @@ public class MarkApplicantTest {
         MarkApplicant markApplicant = new MarkApplicant(indexOutOfBounds, new ApplicantStatus(3));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.setApplicant(model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased()), applicantToMark);
+        expectedModel.setApplicant(model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased()),
+                applicantToMark);
 
         assertCommandFailure(markApplicant, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
     }

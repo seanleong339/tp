@@ -161,7 +161,13 @@ public class ApplicantBuilder {
         return this;
     }
 
+    /**
+     * Builds an applicant object for testing
+     *
+     * @return the applicant object
+     */
     public Applicant build() {
-        return new Applicant(name, phone, email, address, tags, dateApplied, nric, job, interviewDate, qualification, applicantStatus);
+        return new Applicant(name, phone, email, address, tags, dateApplied,
+                nric, job, interviewDate, qualification, applicantStatus);
     }
 }
