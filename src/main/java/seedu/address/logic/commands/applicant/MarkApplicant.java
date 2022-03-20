@@ -28,7 +28,6 @@ public class MarkApplicant extends Command {
             + PREFIX_STATUS + "3";
 
     public static final String MESSAGE_SUCCESS = "Updated Applicant %1$s's status to: %2$s";
-    public static final String MESSAGE_INDEX_OUT_OF_BOUNDS = "Applicant index %1$s does not exist.";
     public static final String MESSAGE_INVALID_APPLICANT_STATUS = "Applicant status %1$s does not correspond to index.";
 
     private final Index index;
@@ -67,6 +66,7 @@ public class MarkApplicant extends Command {
     public boolean equals(Object other) {
         return other == this
                 || (other instanceof MarkApplicant)
-                && applicantStatus.equals(((MarkApplicant) other).applicantStatus);
+                && (index.equals(((MarkApplicant) other).index)
+                    && applicantStatus.equals(((MarkApplicant) other).applicantStatus));
     }
 }

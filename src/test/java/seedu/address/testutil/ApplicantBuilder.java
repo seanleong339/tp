@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
@@ -31,6 +32,7 @@ public class ApplicantBuilder {
     public static final String DEFAULT_INTERVIEWDATE = "2022-03-15";
     public static final String DEFAULT_JOB = "2";
     public static final String DEFAULT_QUALIFICATION = "degree in computing";
+    public static final Integer DEFAULT_APPLICANTSTATUS = 2;
 
     private Name name;
     private Phone phone;
@@ -42,6 +44,7 @@ public class ApplicantBuilder {
     private InterviewDate interviewDate;
     private Qualification qualification;
     private JobId job;
+    private ApplicantStatus applicantStatus;
 
 
     /**
@@ -58,6 +61,7 @@ public class ApplicantBuilder {
         qualification = new Qualification(DEFAULT_QUALIFICATION);
         tags = new HashSet<>();
         job = new JobId(DEFAULT_JOB);
+        applicantStatus = new ApplicantStatus(DEFAULT_APPLICANTSTATUS);
     }
 
     /**
@@ -158,6 +162,6 @@ public class ApplicantBuilder {
     }
 
     public Applicant build() {
-        return new Applicant(name, phone, email, address, tags, dateApplied, nric, job, interviewDate, qualification);
+        return new Applicant(name, phone, email, address, tags, dateApplied, nric, job, interviewDate, qualification, applicantStatus);
     }
 }

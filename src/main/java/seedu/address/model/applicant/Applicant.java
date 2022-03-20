@@ -27,7 +27,7 @@ public class Applicant {
     private final InterviewDate interviewDate;
     private final JobId job;
     private final Qualification qualification;
-    private ApplicantStatus applicantStatus;
+    private final ApplicantStatus applicantStatus;
 
 
 
@@ -36,7 +36,7 @@ public class Applicant {
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, JobId job, InterviewDate interviewDate,
-                     Qualification qualification) {
+                     Qualification qualification, ApplicantStatus applicantStatus) {
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
         this.phone = phone;
@@ -48,7 +48,7 @@ public class Applicant {
         this.interviewDate = interviewDate;
         this.job = job;
         this.qualification = qualification;
-        this.applicantStatus = new ApplicantStatus(2);
+        this.applicantStatus = applicantStatus;
     }
 
     /**
@@ -67,7 +67,7 @@ public class Applicant {
         this.job = new JobId();
         this.interviewDate = new InterviewDate();
         this.qualification = null;
-        this.applicantStatus = null;
+        this.applicantStatus = new ApplicantStatus(2);
     }
 
     /**
@@ -126,7 +126,7 @@ public class Applicant {
     }
 
     public ApplicantStatus getApplicantStatus() {
-        return this.applicantStatus;
+        return applicantStatus;
     }
 
     /**
