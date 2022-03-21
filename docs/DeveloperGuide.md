@@ -196,6 +196,8 @@ Step 4. Lastly, the new Applicant object will replace the current Applicant obje
 
 The following sequence diagram shows how the `editapplicant` command works:
 
+![EditApplicantSequenceDiagram](images/EditApplicantSequenceDiagram.png)
+
 The following activity diagram summarizes what happens when a user executes a new `editapplicant` command:
 
 ### \[Proposed\] Undo/redo feature
