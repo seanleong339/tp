@@ -29,6 +29,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
@@ -132,9 +133,10 @@ public class EditApplicant extends Command {
                 .orElse(applicantToEdit.getInterviewDate());
         // TODO: Add Job update method as well
         JobId updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJobId());
+        ApplicantStatus applicantStatus = applicantToEdit.getApplicantStatus();
 
         return new Applicant(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedDateApplied,
-                updatedNric, updatedJob, updatedInterviewDate, updatedQualification);
+                updatedNric, updatedJob, updatedInterviewDate, updatedQualification, applicantStatus);
     }
 
     @Override
