@@ -78,6 +78,7 @@ public class TypicalApplicants {
         for (Applicant applicant: getTypicalApplicants()) {
             ab.addApplicant(applicant);
         }
+        ab.setIdCount(9);
         return ab;
     }
 

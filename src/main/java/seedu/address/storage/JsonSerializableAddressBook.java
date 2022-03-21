@@ -33,7 +33,7 @@ class JsonSerializableAddressBook {
     @JsonCreator
     public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
                                        @JsonProperty("applicants") List<JsonAdaptedApplicant> applicants,
-                                       @JsonProperty("index") Integer idCount) {
+                                       @JsonProperty("idCount") Integer idCount) {
         this.persons.addAll(persons);
         this.applicants.addAll(applicants);
         this.idCount = idCount;

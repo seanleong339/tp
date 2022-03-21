@@ -142,6 +142,7 @@ public class AddressBookTest {
     private static class AddressBookStub implements ReadOnlyAddressBook {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
         private final ObservableList<Applicant> applicants = FXCollections.observableArrayList();
+        private final int idCount = 9;
 
         // Added Person as a second parameter to avoid same type erasure between 2 Constructors
         AddressBookStub(Collection<Person> persons, Person person) {
@@ -161,6 +162,11 @@ public class AddressBookTest {
         @Override
         public ObservableList<Applicant> getApplicantList() {
             return applicants;
+        }
+
+        @Override
+        public int getIdCount() {
+            return idCount;
         }
     }
 
