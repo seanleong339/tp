@@ -161,10 +161,38 @@ it has a nested class `EditApplicantDescriptor` that is used to store the update
 to create a new Applicant object. This new Applicant object will replace the current Applicant object that is in the AddressBook.
 
 When the user wants to edit an applicant, the user will input `editapplicant` along with the index number of Applicant 
-and prefix of any attributes that the user wants to change followed by the new value of the attribute. 
+and prefix of any attributes that the user wants to change followed by the new value of the attribute. The user only
+needs to include the prefixes of attributes that he wants to change for a particular Applicant.
 
-For example, `editapplicant 1 n/Alice Yeoh` will change the name of Applicant 1
-to "Alice Yeoh". 
+For example, `editapplicant 1 n/Alice Yeoh` will change the name of Applicant 1 to "Alice Yeoh". 
+
+Given below is an example usage scenario, and her the editapplicant mechanism behaves at each step.
+
+Step 1. The user inputs `editapplicant 1 n/Alice Yeoh` into ReCLIne. `AddressBookParser#parseCommand()` and `EditApplicantParser#parse()`
+is executed, which will return a `EditApplicant` object. 
+
+Step 2. `EditApplcant#execute()` is executed. Firstly, getting the current Applicant object that is in the 
+indicated index in the `UniqueApplicantList`. In this case, Applicant 1 in the `UniqueApplicantList` is stored in the
+`applicantToEdit` variable.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** When the user inputs `1` as the index, 
+it is referring to element 0 in the `UniqueApplicantList`.
+
+</div>
+
+Step 3. Next, a new Applicant object that is going to replace `applicantToEdit` is created. This is done with 
+`createEditedApplicant`. Information that is indicated to change will replace the current information. All other 
+information will be obtained from the current Applicant object.
+
+Step 4. After that, a check between the new Applicant object and current Applicant object occurs. If both Applicant
+objects are the same, a `CommandException` is thrown. 
+
+Step 5. Lastly, the new Applicant object will replace the current Applicant object of the indicated index number in the
+`AddressBook`.
+
+The following sequence diagram shows how the `editapplicant` command works:
+
+The following activity diagram summarizes what happens when a user executes a new `editapplicant` command:
 
 ### \[Proposed\] Undo/redo feature
 
