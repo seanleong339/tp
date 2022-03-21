@@ -200,6 +200,8 @@ The following sequence diagram shows how the `editapplicant` command works:
 
 The following activity diagram summarizes what happens when a user executes a new `editapplicant` command:
 
+![EditApplicantActivityDiagram](images/EditApplicantActivityDiagram.png)
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
