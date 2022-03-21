@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
@@ -174,9 +175,11 @@ public class JsonAdaptedApplicant {
         final Qualification modelQualification = new Qualification(qualification);
 
         //todo add Status for applicant
+        // currently a placeholder applicant status
+        ApplicantStatus applicantStatus = new ApplicantStatus(2);
 
         return new Applicant(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelDateApplied,
-                modelNric, modelJobId, modelInterviewDate, modelQualification);
+                modelNric, modelJobId, modelInterviewDate, modelQualification, applicantStatus);
     }
 
 }

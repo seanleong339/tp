@@ -29,6 +29,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
@@ -86,8 +87,6 @@ public class EditApplicant extends Command {
     }
 
     @Override
-    // todo edit if there is going to be a Applicant class
-    // todo figure out how the getFilterApplicantList will go
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Applicant> lastShownList = model.getFilteredApplicantList();
@@ -112,7 +111,6 @@ public class EditApplicant extends Command {
      * Creates and returns a {@code Applicant} with the details of {@code applicantToEdit}
      * edited with {@code editApplicantDescriptor}.
      */
-    // todo edit change this to an Applicant class
     private static Applicant createEditedApplicant(Applicant applicantToEdit,
                                                 EditApplicantDescriptor editApplicantDescriptor) {
         assert applicantToEdit != null;
@@ -132,9 +130,10 @@ public class EditApplicant extends Command {
                 .orElse(applicantToEdit.getInterviewDate());
         // TODO: Add Job update method as well
         JobId updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJobId());
+        ApplicantStatus applicantStatus = applicantToEdit.getApplicantStatus();
 
         return new Applicant(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedDateApplied,
-                updatedNric, updatedJob, updatedInterviewDate, updatedQualification);
+                updatedNric, updatedJob, updatedInterviewDate, updatedQualification, applicantStatus);
     }
 
     @Override
@@ -197,7 +196,7 @@ public class EditApplicant extends Command {
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(
                     name, phone, email, address, interviewDate, qualification, dateApplied, tags, jobId);
-        } //Todo Add job id
+        }
 
         public void setName(Name name) {
             this.name = name;
