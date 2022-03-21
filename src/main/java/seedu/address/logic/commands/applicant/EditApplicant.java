@@ -194,7 +194,7 @@ public class EditApplicant extends Command {
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(
                     name, phone, email, address, interviewDate, qualification, dateApplied, tags, jobId);
-        } //Todo Add job id
+        }
 
         public void setName(Name name) {
             this.name = name;

@@ -156,7 +156,15 @@ This section describes some noteworthy details on how certain features are imple
 
 ### EditApplicant feature
 
-The editapplicant mechanism is facilitated by `AddressBook`
+The editapplicant mechanism is facilitated by `AddressBook`. EditApplicant extends Command class. Within the EditApplicant class,
+it has a nested class `EditApplicantDescriptor` that is used to store the updated Applicant details that will then be used 
+to create a new Applicant object. This new Applicant object will replace the current Applicant object that is in the AddressBook.
+
+When the user wants to edit an applicant, the user will input `editapplicant` along with the index number of Applicant 
+and prefix of any attributes that the user wants to change followed by the new value of the attribute. 
+
+For example, `editapplicant 1 n/Alice Yeoh` will change the name of Applicant 1
+to "Alice Yeoh". 
 
 ### \[Proposed\] Undo/redo feature
 
