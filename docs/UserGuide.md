@@ -105,7 +105,7 @@ Examples:
 
 `addapplicant n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12`
 
-* Adds an applicant with name-Jaden Ho, phone number-92812191, nric-S1234567A, address-Tampines St 96 Block 312 
+* Adds an applicant with name-Jaden Ho, phone number-92812191, nric-S1234567A, address-Tampines St 96 Block 312
   email-jadenho@email.com, date applied- 2022-03-12 to the applicant list in the address book.
 
 
@@ -113,8 +113,8 @@ Examples:
 
 Edits an applicant in the applicant list of the address book.
 
-Format: `editApplicant *[ID] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] 
-nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] 
+Format: `editApplicant *[ID] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS]
+nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] s/[STATUS] t/[TAG]`
 
 Tip: Fill in fields in any order. Just input the fields that you would like to change for the specific index number.

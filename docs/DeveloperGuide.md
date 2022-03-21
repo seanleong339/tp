@@ -157,22 +157,22 @@ This section describes some noteworthy details on how certain features are imple
 ### EditApplicant feature
 
 The `editapplicant` mechanism is facilitated by `AddressBook`. `EditApplicant` extends `Command` class. Within the `EditApplicant` class,
-it has a nested class `EditApplicantDescriptor` that is used to store the updated Applicant details that will then be used 
+it has a nested class `EditApplicantDescriptor` that is used to store the updated Applicant details that will then be used
 to create a new Applicant object. This new Applicant object will replace the current Applicant object that is in the `AddressBook`.
 
-When the user wants to edit an applicant, the user will input `editapplicant` along with the index number of Applicant 
+When the user wants to edit an applicant, the user will input `editapplicant` along with the index number of Applicant
 and prefix of any attributes that the user wants to change followed by the new value of the attribute. The user only
 needs to include the prefixes of attributes that he wants to change for a particular Applicant.
 
-For example, `editapplicant 1 n/Alice Yeoh` will change the name of Applicant 1 to "Alice Yeoh". 
+For example, `editapplicant 1 n/Alice Yeoh` will change the name of Applicant 1 to "Alice Yeoh".
 
 Given below is an example usage scenario, and how the `editapplicant` mechanism behaves at each step.
 
 Step 1. The user inputs `editapplicant 1 n/Alice Yeoh` into ReCLIne. `AddressBookParser#parseCommand()` and `EditApplicantParser#parse()`
-is executed, which will return a `EditApplicant` object. 
+is executed, which will return a `EditApplicant` object.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is greater than the 
-size of the current `UniqueApplicantList` the execution of the command will fail. A `CommandException` will be thrown 
+size of the current `UniqueApplicantList` the execution of the command will fail. A `CommandException` will be thrown
 and displayed for the user. This ensures that inputted `index` is not out of bound.
 
 </div>
@@ -183,13 +183,13 @@ indicated index in the `UniqueApplicantList`. In this case, Applicant 1 in the `
 
 ![EditApplicantState1](images/EditApplicantState1.png)
 
-Step 3. Next, a new Applicant object, `editedApplicant`, that is going to replace `applicantToEdit` is created. This is done with 
-`createEditedApplicant`. Updated information will replace the current Applicant attributes in `applicantToEdit`. All other 
+Step 3. Next, a new Applicant object, `editedApplicant`, that is going to replace `applicantToEdit` is created. This is done with
+`createEditedApplicant`. Updated information will replace the current Applicant attributes in `applicantToEdit`. All other
 attributes will be obtained from the current Applicant object.
 
 ![EditApplicantState2](images/EditApplicantState2.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** A check between the new Applicant object 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** A check between the new Applicant object
 and current Applicant object occurs. If both Applicant objects are the same, a `CommandException` is thrown. This ensures
 that there is no duplicate Applicants in the `UniqueApplicantList` and `AddressBook`
 
