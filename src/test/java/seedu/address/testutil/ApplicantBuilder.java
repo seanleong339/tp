@@ -7,6 +7,7 @@ import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
+import seedu.address.model.applicant.InterviewStatus;
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
@@ -33,6 +34,7 @@ public class ApplicantBuilder {
     public static final String DEFAULT_JOB = "2";
     public static final String DEFAULT_QUALIFICATION = "degree in computing";
     public static final Integer DEFAULT_APPLICANTSTATUS = 2;
+    public static final boolean DEFAULT_INTERVIEW_STATUS = false;
 
     private Name name;
     private Phone phone;
@@ -43,6 +45,7 @@ public class ApplicantBuilder {
     private DateApplied dateApplied;
     private InterviewDate interviewDate;
     private Qualification qualification;
+    private InterviewStatus interviewStatus;
     private JobId job;
     private ApplicantStatus applicantStatus;
 
@@ -59,6 +62,7 @@ public class ApplicantBuilder {
         dateApplied = new DateApplied(DEFAULT_DATEAPPLIED);
         interviewDate = new InterviewDate(DEFAULT_INTERVIEWDATE);
         qualification = new Qualification(DEFAULT_QUALIFICATION);
+        interviewStatus = new InterviewStatus(DEFAULT_INTERVIEW_STATUS);
         tags = new HashSet<>();
         job = new JobId(DEFAULT_JOB);
         applicantStatus = new ApplicantStatus(DEFAULT_APPLICANTSTATUS);

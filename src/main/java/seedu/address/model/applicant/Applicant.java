@@ -198,7 +198,6 @@ public class Applicant {
                 .append(getApplicantStatus())
                 .append("]; Qualification: ")
                 .append(getQualification());
-
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
             builder.append("; Tags: ");
