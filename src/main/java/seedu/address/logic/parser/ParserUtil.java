@@ -239,4 +239,31 @@ public class ParserUtil {
         }
         return Integer.parseInt(trimmedId);
     }
+
+    public static JobStatus parseJobStatus(String jobStatus) throws ParseException {
+        requireNonNull(jobStatus);
+        String trimmedJobStatus = jobStatus.trim();
+        if (!JobStatus.isValidJobStatus(jobStatus)) {
+            throw new ParseException(JobStatus.MESSAGE_CONSTRAINTS);
+        }
+        return new JobStatus(trimmedJobStatus);
+    }
+
+    public static Position parsePosition(String position) throws ParseException {
+        requireNonNull(position);
+        String trimmedPosition = position.trim();
+        if (!Position.isValidPosition(position)) {
+            throw new ParseException(Position.MESSAGE_CONSTRAINTS);
+        }
+        return new Position(trimmedPosition);
+    }
+
+    public static Salary parseSalary(String salary) throws ParseException {
+        requireNonNull(salary);
+        String trimmedSalary = salary.trim();
+        if (!Salary.isValidSalary(salary)) {
+            throw new ParseException(Salary.MESSAGE_CONSTRAINTS);
+        }
+        return new Salary(trimmedSalary);
+    }
 }

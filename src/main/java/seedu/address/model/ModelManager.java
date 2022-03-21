@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -12,6 +14,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.job.Job;
 import seedu.address.model.person.Person;
 
 /**
@@ -24,6 +27,9 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Applicant> filteredApplicants;
+    //Todo add this when UniqueJobList and methods are done
+    //private final FilteredList<Job> filteredJobs;
+    private final List<Job> filteredJobs;
 
 
     /**
@@ -38,6 +44,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredApplicants = new FilteredList<>(this.addressBook.getApplicantList());
+        filteredJobs = new ArrayList<Job>();
     }
 
     public ModelManager() {
@@ -132,6 +139,18 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedApplicant);
 
         addressBook.setApplicant(target, editedApplicant);
+    }
+
+    @Override
+    public boolean hasJob(Job job) {
+        requireNonNull(job);
+        return filteredJobs.contains(job);
+        //return addressBook.hasJob(job);
+    }
+
+    @Override
+    public void addJob(Job job) {
+        filteredJobs.add(job);
     }
 
     //=========== Filtered Person List Accessors =============================================================
