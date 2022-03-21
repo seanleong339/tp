@@ -270,31 +270,62 @@ _{Explain here how the data archiving feature will be implemented}_
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new recruiter                              | see usage instructions         | refer to instructions when I forget how to use the App                 |
-|  `* * *` | recruiter                                  | add a Job that the Applicant is applying for | know the Job he is applying for            |
-|  `* * *` | recruiter                                  | add the Employer's contact details | keep track of the employer’s contact details. |
-|  `* * *` | recruiter                                  | add the date of Applicants upcoming interview| know when to contact the Applicant |
-|  `* * *` | recruiter                                  | add the qualification requirement that an Employer is looking for | know what type of Applicants the Employer is looking for|
-|  `* * *` | recruiter                                  | add a education requirement for a Job posting |know what education level is required for this Job |
-|  `* * *` | recruiter                                  | add a skill requirement to a Job posting  | know what skill is required for this Job|
-|  `* * *` | recruiter                                  | add a duration for the Job posting| match applicants with compatible availabilities to the Job posting|
-|  `* * *` | recruiter                                  | add a location for the Job posting| match applicants with compatible locations to the Job posting |
-|  `* * *` | recruiter                                  | edit Employer’s details| keep the details up to date|
-|  `* * *` | recruiter                                  | edit a Applicant’s details after an interview|keep the contact details updated during the recruitment process |
-|  `* * *` | recruiter                                  | edit a field of an Applicant | make sure that all Applicant's details are up to date|
-|  `* * *` | recruiter                                  | edit the date of the Interview| keep an updated records of Interview date/time |
-|  `* * *` | recruiter                                  | mark a contact as accepted for a Job posting| keep track of who is accepted for a Job posting|
-|  `* * *` | recruiter                                  | mark a contact as pending for a Job posting| keep track of Applicants who are pending|
-|  `* * *` | recruiter                                  | mark whether an Applicant has been interviewed |  make sure not to contact him twice |
-|  `* * *` | recruiter                                  | list out all Job postings in my database| view all Job postings and also |
-|  `* * *` | recruiter                                  | list out all Applicants in my database| view all Applicants in the database |
-|  `* * *` | recruiter                                  | view the number of Applicants that a Job has| decide whether to contact more Applicants|
-|  `* * *` | recruiter                                  | delete an Applicant contact|keep the database neat |
-|  `* * *` | recruiter                                  | create a new Job posting | find suitable Applicants for a Job opening |
-|  `* * *` | recruiter                                  | record down that replies from the interviewee during the interview| have a centralized location for all interviewees’ answers |
-|  `* * *` | recruiter                                  | save the questions that need to be asked during the interview| ask important questions during the interview|
-|  `* * *` | recruiter                                  | know if the job opening a contact applied for has been filled| know to whether to submit his Portfolio for other Jobs|
+| -------- | ----------------------------------------| ------------------------------ | ---------------------------------------------------------------------- |
+| `* * *`  | new recruiter                           | see usage instructions         | refer to instructions when I forget how to use the App                 |
+|  `* * *` | recruiter                               | add an Applicant that is applying for a Job | save the Applicant’s details into the database            |
+|  `* * *` | recruiter                               | add the name of Applicant that applied | know the name of the Applicant |
+|  `* * *` | recruiter                               | add the phone number of Applicant that applied | know how to contact the Applicant |
+|  `* * *` | recruiter                               | add the email of Applicant that applied | know an alternative method to contact the Applicant |
+|  `* * *` | recruiter                               | add the home address of Applicant that applied | match Jobs that are closer to the Applicant’s home|
+|  `* * *` | recruiter                               | add the date the Applicant that applied | know and sort the Applicant list by the date applied |
+|  `* * *` | recruiter                               | add the NRIC of Applicant that applied | know the NRIC of the Applicant |
+|  `* * *` | recruiter                               | add tags that are associated with the  Applicant | add additional information associated with the Applicant |
+|  `* * *` | recruiter                               | edit an Applicant’s details  | keep the contact details updated during the recruitment process |
+|  `* * *` | recruiter                               | edit the name of Applicant that applied | update the name of the Applicant |
+|  `* * *` | recruiter                               | edit the phone number of Applicant that applied | update how to contact the Applicant |
+|  `* * *` | recruiter                               | edit the email of Applicant that applied | update an alternative method to contact the Applicant |
+|  `* * *` | recruiter                               | edit the home address of Applicant that applied | update the address of an Applicant |
+|  `* * *` | recruiter                               | edit the date the Applicant that applied | update and keep track of the date applied|
+|  `* * *` | recruiter                               | edit the NRIC of Applicant that applied | update the NRIC of the Applicant in case of any error |
+|  `* * *` | recruiter                               | edit tags that are associated with the  Applicant | update additional information associated with the Applicant |
+|  `* * *` | recruiter                               | edit the Job ID of the Job that the Applicant that applied | keep track and sort the list of Applicants by Job ID |
+|  `* * *` | recruiter                               | edit the Qualification the Applicant has | match the Applicant’s qualification to the Job qualification requirement |
+|  `* * *` | recruiter                               | edit the Interview Date of the Applicant | know when to contact the Applicant again for an interview reminder |
+|  `* * *` | recruiter                               | delete an Applicant contact| keep the database neat |
+|  `* * *` | recruiter                               | mark status of the Applicant’s interview status | keep track of the status of all Applicants |
+|  `* * *` | recruiter                               | mark whether an Applicant has been interviewed |  make sure not to contact him twice |
+|  `* * *` | recruiter                               | mark a contact as pending for a Job posting| keep track of Applicants who are pending|
+|  `* * *` | recruiter                               | create a new Job posting | add the Job into the database and find suitable Applicants for a Job opening |
+|  `* * *` | recruiter                               | add the Job Title of a new Job posting | know the name of the job |
+|  `* * *` | recruiter                               | add the company name that is providing the new Job posting | know which company the Job Posting is for |
+|  `* * *` | recruiter                               | add the ID of the Job posting | assign the Applicant to a Job |
+|  `* * *` | recruiter                               | add the address of where the Job is at | match Applicant to Jobs that are near their home address |
+|  `* * *` | recruiter                               | add the Salary of a new Job posting | provide the Salary information to Applicants |
+|  `* * *` | recruiter                               | add the position (Part time, Contract, Permanent) of a new Job posting | provide the position information to Applicants |
+|  `* * *` | recruiter                               | add the Qualifications required for the Job posting | match the Applicant’s qualification to the Job qualification requirement |
+|  `* * *` | recruiter                               | edit a current Job posting | update the Job in the database and find suitable Applicants for a Job opening |
+|  `* * *` | recruiter                               | edit the Job Title of a new Job posting | update the name of the job |
+|  `* * *` | recruiter                               | edit the company name that is providing the new Job posting | edit which company the Job Posting is for |
+|  `* * *` | recruiter                               | edit the ID of the Job posting | edit which job is assigned to the Applicant |
+|  `* * *` | recruiter                               | edit the address of where the Job is at | better match Applicant to Jobs that are near their home address |
+|  `* * *` | recruiter                               | edit the Salary of a new Job posting | provide updated Salary information to Applicants |
+|  `* * *` | recruiter                               | edit the position (Part time, Contract, Permanent) of a new Job posting | provide the updated position information to Applicants |
+|  `* * *` | recruiter                               | edit the qualifications required for the Job posting | better match the Applicant’s qualification to the Job qualification requirement |
+|  `* * *` | recruiter                               | delete a Job posting contact| keep the database neat |
+|  `* * *` | recruiter                               | mark whether the Job is filled or not | know which Job posting is currently still hiring |
+|  `* * *` | recruiter                               | list out all Applicants in my database| view all Applicants in the database |
+|  `* * *` | recruiter                               | list out all Job postings in my database| view all Job postings and also |
+|  `* * *` | recruiter                               |  Sort all Applicants in my database by the date applied | prioritise which Applicants to Job match for |
+|  `* * *` | recruiter                               |  Sort all Applicants in my database by the interview date | check whose interviews are coming up and send them a reminder |
+|  `* * *` | recruiter                               |  Sort all Applicants in my database by the Job ID | check which Job I have applied for which Applicant |
+|  `* * *` | recruiter                               |  Sort all Jobs in my database by whether the Job is filled or not | prioritise on Jobs that are not filled yet |
+|  `* * *` | recruiter                               |  Search the Applicant database for a particular Applicant | quickly search for the Applicant when needed |
+|  `* * *` | recruiter                               |  Search the Jobs database for a particular Job | quickly search for the Job when needed |
+|  `* *` | recruiter                               | record down that replies from the interviewee during the interview| have a centralized location for all interviewees’ answers |
+|  `* *` | recruiter                               | save the questions that need to be asked during the interview| ask important questions during the interview|
+|  `*` | recruiter                               | add the Employer's contact details | keep track of the employer’s contact details. |
+|  `*` | recruiter                               | add the qualification requirement that an Employer is looking for | know what type of Applicants the Employer is looking for|
+|  `*` | recruiter                               | edit Employer’s details| keep the details up to date|
 
 
 *{More to be added}*
