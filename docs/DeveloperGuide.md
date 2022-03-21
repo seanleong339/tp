@@ -171,13 +171,13 @@ Given below is an example usage scenario, and how the `editapplicant` mechanism 
 Step 1. The user inputs `editapplicant 1 n/Alice Yeoh` into ReCLIne. `AddressBookParser#parseCommand()` and `EditApplicantParser#parse()`
 is executed, which will return a `EditApplicant` object.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is greater than the 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is greater than the
 size of the current `UniqueApplicantList` the execution of the command will fail. A `CommandException` will be thrown
 and displayed for the user. This ensures that inputted `index` is not out of bound.
 
 </div>
 
-Step 2. `EditApplcant#execute()` is executed. Firstly, get the current Applicant object that is in the 
+Step 2. `EditApplcant#execute()` is executed. Firstly, get the current Applicant object that is in the
 indicated index in the `UniqueApplicantList`. In this case, Applicant 1 in the `UniqueApplicantList` is stored in the
 `applicantToEdit` variable.
 
@@ -404,7 +404,7 @@ Precondition: Recruiter knows the applicant contact ID
 
     * 1a1. ReCLIne shows an error message.
     * 1a2. Recruiter enters the command with a valid ID
-      
+
        Use case resumes from step 2.
 
 * 1b. The given ID is invalid.
@@ -428,8 +428,8 @@ Guarantees:
 **MSS**
 
 1.  Recruiter indicates that he wants to delete a contact.
-6.  ReCLine deletes indicated contact from database and shows a success message. 
-    
+6.  ReCLine deletes indicated contact from database and shows a success message.
+
     Use case ends
 
 **Extensions**

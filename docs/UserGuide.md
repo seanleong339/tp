@@ -152,9 +152,9 @@ Examples:
 i/2022-03-18`
 
 * Edits an applicant with index number 1 with name - Jaden Ho, address - Tampines St 96 Block 312
-  email - jadenho@email.com, date applied - 2022-03-12, qualification - Degree of Computer Science, 
+  email - jadenho@email.com, date applied - 2022-03-12, qualification - Degree of Computer Science,
   interview date - 2022-03-18.
-  
+
 ### Saving the data
 
 ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -179,7 +179,7 @@ Format: `markapplicant [ID*] s/[STATUS]`
 
 *flag/[Attribute]*
 
-`s/[STATUS]`: Flag to mark the applicant status of the applicant. [STATUS] must be either 
+`s/[STATUS]`: Flag to mark the applicant status of the applicant. [STATUS] must be either
 pending, accepted, or rejected
 
 **Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
