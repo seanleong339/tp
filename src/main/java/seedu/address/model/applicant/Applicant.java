@@ -170,7 +170,6 @@ public class Applicant {
                 .append(getJobId())
                 .append("; Qualification: ")
                 .append(getQualification());
-
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
             builder.append("; Tags: ");
