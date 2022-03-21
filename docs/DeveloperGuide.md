@@ -156,9 +156,9 @@ This section describes some noteworthy details on how certain features are imple
 
 ### EditApplicant feature
 
-The editapplicant mechanism is facilitated by `AddressBook`. EditApplicant extends Command class. Within the EditApplicant class,
+The `editapplicant` mechanism is facilitated by `AddressBook`. `EditApplicant` extends `Command` class. Within the `EditApplicant` class,
 it has a nested class `EditApplicantDescriptor` that is used to store the updated Applicant details that will then be used 
-to create a new Applicant object. This new Applicant object will replace the current Applicant object that is in the AddressBook.
+to create a new Applicant object. This new Applicant object will replace the current Applicant object that is in the `AddressBook`.
 
 When the user wants to edit an applicant, the user will input `editapplicant` along with the index number of Applicant 
 and prefix of any attributes that the user wants to change followed by the new value of the attribute. The user only
@@ -166,26 +166,26 @@ needs to include the prefixes of attributes that he wants to change for a partic
 
 For example, `editapplicant 1 n/Alice Yeoh` will change the name of Applicant 1 to "Alice Yeoh". 
 
-Given below is an example usage scenario, and her the `editapplicant` mechanism behaves at each step.
+Given below is an example usage scenario, and how the `editapplicant` mechanism behaves at each step.
 
 Step 1. The user inputs `editapplicant 1 n/Alice Yeoh` into ReCLIne. `AddressBookParser#parseCommand()` and `EditApplicantParser#parse()`
 is executed, which will return a `EditApplicant` object. 
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is greater than the 
-size of the current `UniqueApplicantList` the execution of the Command will fail. A `CommandException` will be thrown 
+size of the current `UniqueApplicantList` the execution of the command will fail. A `CommandException` will be thrown 
 and displayed for the user. This ensures that inputted `index` is not out of bound.
 
 </div>
 
-Step 2. `EditApplcant#execute()` is executed. Firstly, getting the current Applicant object that is in the 
+Step 2. `EditApplcant#execute()` is executed. Firstly, get the current Applicant object that is in the 
 indicated index in the `UniqueApplicantList`. In this case, Applicant 1 in the `UniqueApplicantList` is stored in the
 `applicantToEdit` variable.
 
 ![EditApplicantState1](images/EditApplicantState1.png)
 
-Step 3. Next, a new Applicant object that is going to replace `applicantToEdit` is created. This is done with 
-`createEditedApplicant`. Information that needs to change will replace the current information. All other 
-information will be obtained from the current Applicant object.
+Step 3. Next, a new Applicant object, `editedApplicant`, that is going to replace `applicantToEdit` is created. This is done with 
+`createEditedApplicant`. Updated information will replace the current Applicant attributes in `applicantToEdit`. All other 
+attributes will be obtained from the current Applicant object.
 
 ![EditApplicantState2](images/EditApplicantState2.png)
 
