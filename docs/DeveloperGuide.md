@@ -166,28 +166,32 @@ needs to include the prefixes of attributes that he wants to change for a partic
 
 For example, `editapplicant 1 n/Alice Yeoh` will change the name of Applicant 1 to "Alice Yeoh". 
 
-Given below is an example usage scenario, and her the editapplicant mechanism behaves at each step.
+Given below is an example usage scenario, and her the `editapplicant` mechanism behaves at each step.
 
 Step 1. The user inputs `editapplicant 1 n/Alice Yeoh` into ReCLIne. `AddressBookParser#parseCommand()` and `EditApplicantParser#parse()`
 is executed, which will return a `EditApplicant` object. 
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is greater than the 
+size of the current `UniqueApplicantList` the execution of the Command will fail. A `CommandException` will be thrown 
+and displayed for the user. This ensures that inputted `index` is not out of bound.
+
+</div>
 
 Step 2. `EditApplcant#execute()` is executed. Firstly, getting the current Applicant object that is in the 
 indicated index in the `UniqueApplicantList`. In this case, Applicant 1 in the `UniqueApplicantList` is stored in the
 `applicantToEdit` variable.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** When the user inputs `1` as the index, 
-it is referring to element 0 in the `UniqueApplicantList`.
-
-</div>
-
 Step 3. Next, a new Applicant object that is going to replace `applicantToEdit` is created. This is done with 
 `createEditedApplicant`. Information that is indicated to change will replace the current information. All other 
 information will be obtained from the current Applicant object.
 
-Step 4. After that, a check between the new Applicant object and current Applicant object occurs. If both Applicant
-objects are the same, a `CommandException` is thrown. 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** A check between the new Applicant object 
+and current Applicant object occurs. If both Applicant objects are the same, a `CommandException` is thrown. This ensures
+that there is no duplicate Applicants in the `UniqueApplicantList` and `AddressBook`
 
-Step 5. Lastly, the new Applicant object will replace the current Applicant object of the indicated index number in the
+</div>
+
+Step 4. Lastly, the new Applicant object will replace the current Applicant object of the indicated index number in the
 `AddressBook`.
 
 The following sequence diagram shows how the `editapplicant` command works:
