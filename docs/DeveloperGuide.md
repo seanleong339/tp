@@ -181,9 +181,13 @@ Step 2. `EditApplcant#execute()` is executed. Firstly, getting the current Appli
 indicated index in the `UniqueApplicantList`. In this case, Applicant 1 in the `UniqueApplicantList` is stored in the
 `applicantToEdit` variable.
 
+![EditApplicantState1](images/EditApplicantState1.png)
+
 Step 3. Next, a new Applicant object that is going to replace `applicantToEdit` is created. This is done with 
-`createEditedApplicant`. Information that is indicated to change will replace the current information. All other 
+`createEditedApplicant`. Information that needs to change will replace the current information. All other 
 information will be obtained from the current Applicant object.
+
+![EditApplicantState2](images/EditApplicantState2.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** A check between the new Applicant object 
 and current Applicant object occurs. If both Applicant objects are the same, a `CommandException` is thrown. This ensures
@@ -193,6 +197,8 @@ that there is no duplicate Applicants in the `UniqueApplicantList` and `AddressB
 
 Step 4. Lastly, the new Applicant object will replace the current Applicant object of the indicated index number in the
 `AddressBook`.
+
+![EditApplicantState3](images/EditApplicantState3.png)
 
 The following sequence diagram shows how the `editapplicant` command works:
 
