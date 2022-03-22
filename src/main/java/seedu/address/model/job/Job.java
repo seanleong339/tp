@@ -1,10 +1,10 @@
 package seedu.address.model.job;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
-
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 public class Job {
 
