@@ -1,14 +1,5 @@
 package seedu.address.testutil;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.applicant.Applicant;
-import seedu.address.model.job.Job;
-import seedu.address.model.person.Person;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_DATA_ANALYSIS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_PROJECT_MANAGER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_DATA_ANALYSIS;
@@ -30,7 +21,15 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_LOW_PROJ
 import static seedu.address.testutil.TypicalApplicants.getTypicalApplicants;
 import static seedu.address.testutil.TypicalPersons.getTypicalPersons;
 
-@SuppressWarnings("checkstyle:CommentsIndentation")
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import seedu.address.model.AddressBook;
+import seedu.address.model.applicant.Applicant;
+import seedu.address.model.job.Job;
+import seedu.address.model.person.Person;
+
 public class TypicalJobs {
     public static final Job SOFTWARE_ENGINEER = new JobBuilder().withJobTitle("Software Engineer")
             .withCompanyName("Google").withJobId("12332").withJobAddress("123 Google Road")
