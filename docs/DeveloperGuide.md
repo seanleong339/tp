@@ -208,6 +208,40 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ![EditApplicantActivityDiagram](images/EditApplicantActivityDiagram.png)
 
+### DeleteApplicant feature
+
+The `deleteapplicant` mechanism is facilitated by `AddressBook`. `DeleteApplicant` extends `Command` class. 
+
+When the user wants to delete an applicant from the address book, the user will input `deleteapplicant` along with the
+index number of the applicant. Note that this index is the same as the index that is displayed to the user under the
+applicant list tab in the ReCLIne application. 
+
+Given below is an example usage scenario and how the `deleteapplicant` mechanism behaves at each step.
+
+Step 1. The user inputs `deleteapplicant 1` into ReCLIne. `LogicManager#execute()` is executed, inside this method,
+`LogicManager#execute()` is executed which will return a DeleteApplicant object. 
+
+Step 2. Inside `LogicManager#execute()`, `DeleteApplicant#execute()` is executed. Inside this method, we obtained the last
+shown applicant list by calling `Model#getFilteredApplicantList()`. We also check if the index is invalid in `DeleteApplicant#execute()`.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is invalid, meaning 
+that it is greater than the size of the current `UnqiueApplicantList` or it is a negative integer or 0, the execution of 
+the command will fail and `AddressBookParser#parseCommand()` will throw a `CommandException` and the 
+`MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX` will be displayed to the user. This ensures that the inputted `index` is not out of bound.
+
+</div>
+
+Step 3. Next, we obtain the zero base of the target index by calling `Index#getZeroBased()`. This is because the index displayed in the applicant
+list tab in the application list is in one based eg 1,2,3,4... We obtained the zero based of the target index so that we are able to get the
+true index of the applicant in the last shown applicant list. We then obtain the applicant to delete from the last shown list via the zero based index
+
+Step 4. Lastly, We then call `Model#deleteApplicant()` which will delete the targeted applicant from the applicant list.
+The applicant will display the new applicant list without the deleted applicant and a MESSAGE_DELETE_APPLICANT_SUCCESS is shown.
+
+The following sequence diagram shows how the `deleteapplicant` command works:
+
+![DeleteApplicantSequenceDiagram](images/DeleteApplicantSequenceDiagram.png)
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
