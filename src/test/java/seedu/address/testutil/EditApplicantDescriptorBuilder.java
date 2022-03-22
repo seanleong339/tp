@@ -45,6 +45,7 @@ public class EditApplicantDescriptorBuilder {
         descriptor.setDateApplied(applicant.getDateApplied());
         descriptor.setQualification(applicant.getQualification());
         descriptor.setJobId(applicant.getJobId());
+
     }
 
     /**
