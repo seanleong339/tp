@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.job.exception.DuplicateJobException;
 import seedu.address.model.job.exception.JobNotFoundException;
 
-public class UniqueJobList {
+public class UniqueJobList implements Iterable<Job> {
     private final ObservableList<Job> internalList =
             FXCollections.observableArrayList();
     private final ObservableList<Job> internalUnmodifiableList =
