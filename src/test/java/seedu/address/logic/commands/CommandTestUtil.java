@@ -97,7 +97,7 @@ public class CommandTestUtil {
     public static final String VALID_COMPANY_NAME_PROJECT_MANAGER = "OCBC";
     public static final String VALID_JOB_ID_DATA_ANALYSIS = "10101";
     public static final String VALID_JOB_ID_PROJECT_MANAGER = "12345";
-    public static final String VALID_ADDRESS_DATA_ANALYSIS = " 9 Straits View, Marina One";
+    public static final String VALID_ADDRESS_DATA_ANALYSIS = "9 Straits View, Marina One";
     public static final String VALID_ADDRESS_PROJECT_MANAGER = "65 Chulia Street, OCBC Centre";
     public static final String VALID_QUALIFICATION_DATA_ANALYSIS = "Degree in Data Science";
     public static final String VALID_QUALIFICATION_PROJECT_MANAGER = "Degree in Business Management";
@@ -105,8 +105,8 @@ public class CommandTestUtil {
     public static final String VALID_JOB_STATUS_DATA_ANALYSIS = "vacant";
     public static final String VALID_JOB_STATUS_PROJECT_MANAGER = "filled";
 
-    public static final String VALID_POSITION_DATA_ANALYSIS = "Permanent";
-    public static final String VALID_POSITION_PROJECT_MANAGER = "Permanent";
+    public static final String VALID_POSITION_DATA_ANALYSIS = "ft";
+    public static final String VALID_POSITION_PROJECT_MANAGER = "ft";
     public static final String VALID_SALARY_LOW_DATA_ANALYSIS = "6000";
     public static final String VALID_SALARY_HIGH_DATA_ANALYSIS = "8000";
     public static final String VALID_SALARY_LOW_PROJECT_MANAGER = "4000";

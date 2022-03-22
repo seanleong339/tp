@@ -36,13 +36,13 @@ public class TypicalJobs {
             .withJobQualification("Degree in Computer Science").withJobStatus("filled")
             .withJobPosition("ft").withJobSalary("5000", "6000").build();
     public static final Job ENGINEER = new JobBuilder().withJobTitle("Engineer")
-            .withCompanyName("").withJobId("1432").withJobAddress("123 Google Road")
-            .withJobQualification("Degree in Computer Science").withJobStatus("filled")
-            .withJobPosition("ft").withJobSalary("5000", "6000").build();
+            .withCompanyName("Visa").withJobId("1432").withJobAddress("123 Visa Road")
+            .withJobQualification("Degree in Engineering").withJobStatus("filled")
+            .withJobPosition("ft").withJobSalary("4000", "6000").build();
     // TODO: 6 MORE JOBS
 
 
-    // Manually added - Applicant's details found in {@code CommandTestUtil}
+    // Manually added - Job's details found in {@code CommandTestUtil}
     public static final Job DATA_ANALYSIS = new JobBuilder().withJobTitle(VALID_JOB_TITLE_DATA_ANALYSIS)
         .withCompanyName(VALID_COMPANY_NAME_DATA_ANALYSIS).withJobId(VALID_JOB_ID_DATA_ANALYSIS)
         .withJobAddress(VALID_ADDRESS_DATA_ANALYSIS).withJobQualification(VALID_QUALIFICATION_DATA_ANALYSIS)

@@ -21,7 +21,7 @@ public class JobBuilder {
     public static final String DEFAULT_ADDRESS = "168 Robinson Rd, Capital Tower";
     public static final String DEFAULT_QUALIFICATION = "Degree in Project Management";
     public static final String DEFAULT_JOB_STATUS = "filled";
-    public static final String DEFAULT_POSITION = "Permanent";
+    public static final String DEFAULT_POSITION = "ft";
     public static final String DEFAULT_SALARY_LOW = "4000";
     public static final String DEFAULT_SALARY_HIGH = "5000";
 
@@ -114,7 +114,7 @@ public class JobBuilder {
      * Sets the {@code Position} of the {@code Job} that we are building.
      */
     public JobBuilder withJobPosition(String jobPosition) {
-        this.position= new Position(jobPosition);
+        this.position = new Position(jobPosition);
         return this;
     }
 
