@@ -14,6 +14,8 @@ import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
+import seedu.address.model.job.JobTitle;
+import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -204,6 +206,38 @@ public class ParserUtil {
         return new Qualification(trimmedQualification);
     }
 
+    /**
+     * Parses a {@code String salary} into a {@code Salary}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Salary} is invalid.
+     */
+    public static Salary parseSalary(String salary) throws ParseException {
+        requireNonNull(salary);
+        String trimmedSalary = salary.trim();
+        int index = trimmedSalary.indexOf("-");
+        String startingSalary = trimmedSalary.substring(0, index);
+        String endSalary = trimmedSalary.substring(index + 1);
+        if (!Salary.isValidSalary(startingSalary, endSalary, trimmedSalary)) {
+            throw new ParseException(Salary.MESSAGE_CONSTRAINTS);
+        }
+        return new Salary(startingSalary, endSalary);
+    }
+
+    /**
+     * Parses a {@code String jobTitle} into a {@code JobTitle}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code JobTitle} is invalid.
+     */
+    public static JobTitle parseJobTitle(String jobTitle) throws ParseException {
+        requireNonNull(jobTitle);
+        String trimmedJobTitle = jobTitle.trim();
+        if (!JobTitle.isValidJobTitle(trimmedJobTitle)) {
+            throw new ParseException(JobTitle.MESSAGE_CONSTRAINTS);
+        }
+        return new JobTitle(trimmedJobTitle);
+    }
     /**
      * Parses a {@code String applicationStatus} into a {@code ApplicationStatus}.
      * Leading and trailing whitespaces will be trimmed.
