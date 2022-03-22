@@ -116,8 +116,8 @@ public class JobBuilder {
     /**
      * Sets the {@code JobSalary} of the {@code Job} that we are building.
      */
-    public JobBuilder withJobSalary(String jobSalary) {
-        this.salary = new Salary(jobSalary);
+    public JobBuilder withJobSalary(String jobSalaryLow, String jobSalaryHigh) {
+        this.salary = new Salary(jobSalaryLow, jobSalaryHigh);
         return this;
     }
 
