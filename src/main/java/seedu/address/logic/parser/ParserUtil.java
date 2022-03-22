@@ -26,6 +26,7 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_ID = "ID is not a non-zero unsigned integer.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -201,5 +202,41 @@ public class ParserUtil {
             throw new ParseException(Qualification.MESSAGE_CONSTRAINTS);
         }
         return new Qualification(trimmedQualification);
+    }
+
+    /**
+     * Parses a {@code String applicationStatus} into a {@code ApplicationStatus}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Qualification} is invalid.
+     */
+    // TODO: - Add status not interviewed and interviewed
+    //       - return Applicant once the class Application Status is merged
+    public static int parseApplicantStatus(String applicationStatus) throws ParseException {
+        requireNonNull(applicationStatus);
+        String trimmedQualification = applicationStatus.trim();
+        int status = -1;
+        if (applicationStatus.equals("rejected")) {
+            status = 0;
+        } else if (applicationStatus.equals("accepted")) {
+            status = 1;
+        } else if (applicationStatus.equals("pending")) {
+            status = 2;
+        }
+        return status;
+    }
+
+    /**
+     * Parses {@code String id} into an {@code Integer} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
+     */
+    public static Integer parseId(String id) throws ParseException {
+        String trimmedId = id.trim();
+        // TODO: check if the ID is valid (there is applicant associated with the ID)
+        if (!StringUtil.isNonZeroUnsignedInteger(trimmedId)) {
+            throw new ParseException(MESSAGE_INVALID_INDEX);
+        }
+        return Integer.parseInt(trimmedId);
     }
 }

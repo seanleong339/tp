@@ -27,6 +27,7 @@ public class Applicant {
     private final InterviewDate interviewDate;
     private final JobId job;
     private final Qualification qualification;
+    private final ApplicantStatus applicantStatus;
 
 
 
@@ -35,7 +36,7 @@ public class Applicant {
      */
     public Applicant(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                      DateApplied dateApplied, Nric nric, JobId job, InterviewDate interviewDate,
-                     Qualification qualification) {
+                     Qualification qualification, ApplicantStatus applicantStatus) {
         requireAllNonNull(name, phone, email, address, tags, dateApplied, interviewDate, nric, job, qualification);
         this.name = name;
         this.phone = phone;
@@ -47,6 +48,7 @@ public class Applicant {
         this.interviewDate = interviewDate;
         this.job = job;
         this.qualification = qualification;
+        this.applicantStatus = applicantStatus;
     }
 
     /**
@@ -64,7 +66,27 @@ public class Applicant {
         this.dateApplied = dateApplied;
         this.job = new JobId();
         this.interviewDate = new InterviewDate();
-        this.qualification = new Qualification("PENDING");
+        this.qualification = null;
+        this.applicantStatus = new ApplicantStatus(2);
+    }
+
+    /**
+     * Creates an Applicant object with old unmarked Applicant descriptors
+     * for use by Mark method
+     */
+    public Applicant(Applicant unmarkedApplicant, ApplicantStatus applicantStatus) {
+        requireAllNonNull(unmarkedApplicant, applicantStatus);
+        this.name = unmarkedApplicant.getName();
+        this.phone = unmarkedApplicant.getPhone();
+        this.email = unmarkedApplicant.getEmail();
+        this.address = unmarkedApplicant.getAddress();
+        this.tags.addAll(unmarkedApplicant.getTags());
+        this.nric = unmarkedApplicant.getNric();
+        this.dateApplied = unmarkedApplicant.getDateApplied();
+        this.interviewDate = unmarkedApplicant.getInterviewDate();
+        this.job = unmarkedApplicant.getJobId();
+        this.qualification = unmarkedApplicant.getQualification();
+        this.applicantStatus = applicantStatus;
     }
 
     public Name getName() {
@@ -101,6 +123,10 @@ public class Applicant {
 
     public Qualification getQualification() {
         return qualification;
+    }
+
+    public ApplicantStatus getApplicantStatus() {
+        return applicantStatus;
     }
 
     /**
@@ -168,9 +194,10 @@ public class Applicant {
                 .append(getInterviewDate())
                 .append("; Job: ")
                 .append(getJobId())
-                .append("; Qualification: ")
+                .append(" [")
+                .append(getApplicantStatus())
+                .append("]; Qualification: ")
                 .append(getQualification());
-
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
             builder.append("; Tags: ");

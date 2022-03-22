@@ -11,6 +11,14 @@ public class InterviewStatus {
 
     /**
      * Constructs an Interview Status
+     * isInterviewed is initialized to false.
+     */
+    public InterviewStatus() {
+        isInterviewed = false;
+    }
+
+    /**
+     * Constructs an Interview Status
      *
      * @param status An interview status
      */
