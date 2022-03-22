@@ -40,7 +40,8 @@ public class InfoPanel extends UiPart<Region> {
     private Label interviewDate;
     @FXML
     private Label qualification;
-    // TODO: Add Label status;
+    @FXML
+    private Label status;
     @FXML
     private FlowPane tags;
 
@@ -65,5 +66,6 @@ public class InfoPanel extends UiPart<Region> {
         nric.setText("Nric: " + applicant.getNric().toString());
         interviewDate.setText("Interview date: " + applicant.getInterviewDate().toString());
         qualification.setText("Qualification: " + applicant.getQualification().toString());
+        status.setText("Application status: " + applicant.getApplicantStatus().toString());
     }
 }

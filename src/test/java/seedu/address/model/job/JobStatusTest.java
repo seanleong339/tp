@@ -6,8 +6,8 @@ import static seedu.address.testutil.Assert.assertThrows;
 import org.junit.jupiter.api.Test;
 
 public class JobStatusTest {
-    private static final JobStatus JOBSTATUS_FILLED = new JobStatus(true);
-    private static final JobStatus JOBSTATUS_VACANT = new JobStatus(false);
+    private static final JobStatus JOBSTATUS_FILLED = new JobStatus("filled");
+    private static final JobStatus JOBSTATUS_VACANT = new JobStatus("vacant");
 
     @Test
     public void checkJobStatusValidity() {
@@ -15,13 +15,13 @@ public class JobStatusTest {
         assertThrows(NullPointerException.class, () -> new JobStatus(null));
 
         // valid job status
-        assertEquals(JOBSTATUS_FILLED, new JobStatus(true));
-        assertEquals(JOBSTATUS_VACANT, new JobStatus(false));
+        assertEquals(JOBSTATUS_FILLED, new JobStatus("FILLED"));
+        assertEquals(JOBSTATUS_VACANT, new JobStatus("VACANT"));
     }
 
     @Test
     public void jobStatus_toString() {
-        assertEquals(new JobStatus(true).toString(), "filled");
-        assertEquals(new JobStatus(false).toString(), "vacant");
+        assertEquals("filled", new JobStatus("filled").toString());
+        assertEquals("vacant", new JobStatus("vacant").toString());
     }
 }
