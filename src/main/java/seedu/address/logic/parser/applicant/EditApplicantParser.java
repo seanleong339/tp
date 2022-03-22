@@ -74,7 +74,6 @@ public class EditApplicantParser implements Parser<EditApplicant> {
             editApplicantDescriptor.setJobId(ParserUtil
                     .parseJob(argMultimap.getValue(PREFIX_JOB).get()));
         }
-
         if (argMultimap.getValue(PREFIX_DATEINTERVIEW).isPresent()) {
             editApplicantDescriptor.setInterviewDate(ParserUtil
                     .parseInterviewDate(argMultimap.getValue(PREFIX_DATEINTERVIEW).get()));
