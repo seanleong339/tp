@@ -9,11 +9,14 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
+import seedu.address.model.job.JobTitle;
+import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -205,6 +208,38 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String salary} into a {@code Salary}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Salary} is invalid.
+     */
+    public static Salary parseSalary(String salary) throws ParseException {
+        requireNonNull(salary);
+        String trimmedSalary = salary.trim();
+        int index = trimmedSalary.indexOf("-");
+        String startingSalary = trimmedSalary.substring(0, index);
+        String endSalary = trimmedSalary.substring(index + 1);
+        if (!Salary.isValidSalary(startingSalary, endSalary, trimmedSalary)) {
+            throw new ParseException(Salary.MESSAGE_CONSTRAINTS);
+        }
+        return new Salary(startingSalary, endSalary);
+    }
+
+    /**
+     * Parses a {@code String jobTitle} into a {@code JobTitle}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code JobTitle} is invalid.
+     */
+    public static JobTitle parseJobTitle(String jobTitle) throws ParseException {
+        requireNonNull(jobTitle);
+        String trimmedJobTitle = jobTitle.trim();
+        if (!JobTitle.isValidJobTitle(trimmedJobTitle)) {
+            throw new ParseException(JobTitle.MESSAGE_CONSTRAINTS);
+        }
+        return new JobTitle(trimmedJobTitle);
+    }
+    /**
      * Parses a {@code String applicationStatus} into a {@code ApplicationStatus}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -212,16 +247,28 @@ public class ParserUtil {
      */
     // TODO: - Add status not interviewed and interviewed
     //       - return Applicant once the class Application Status is merged
-    public static int parseApplicantStatus(String applicationStatus) throws ParseException {
+    public static String parseApplicantStatus(String applicationStatus) throws ParseException {
         requireNonNull(applicationStatus);
-        String trimmedQualification = applicationStatus.trim();
-        int status = -1;
-        if (applicationStatus.equals("rejected")) {
-            status = 0;
-        } else if (applicationStatus.equals("accepted")) {
-            status = 1;
-        } else if (applicationStatus.equals("pending")) {
-            status = 2;
+        String trimmedApplicationStatus = applicationStatus.trim();
+        if (!ApplicantStatus.isValidStatus(trimmedApplicationStatus)) {
+            throw new ParseException(ApplicantStatus.MESSAGE_CONSTRAINTS);
+        }
+        String status;
+        switch(applicationStatus) {
+        case "rejected":
+            status = "0";
+            break;
+        case "pending":
+            status = "1";
+            break;
+        case "interviewed":
+            status = "2";
+            break;
+        case "accepted":
+            status = "3";
+            break;
+        default:
+            status = "1";
         }
         return status;
     }

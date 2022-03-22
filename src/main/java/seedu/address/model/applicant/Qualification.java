@@ -40,6 +40,15 @@ public class Qualification {
     }
 
     /**
+     * Constructs an instance of Qualification that is not initialised
+     */
+    public Qualification() {
+        isInit = false;
+        highestQualification = "PENDING";
+    }
+
+
+    /**
      * Returns true if a given string is a valid qualification.
      */
     public static boolean isValidQualification(String test) {
