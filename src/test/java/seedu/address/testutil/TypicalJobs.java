@@ -41,7 +41,6 @@ public class TypicalJobs {
             .withJobPosition("ft").withJobSalary("4000", "6000").build();
     // TODO: 6 MORE JOBS
 
-
     // Manually added - Job's details found in {@code CommandTestUtil}
     public static final Job DATA_ANALYSIS = new JobBuilder().withJobTitle(VALID_JOB_TITLE_DATA_ANALYSIS)
         .withCompanyName(VALID_COMPANY_NAME_DATA_ANALYSIS).withJobId(VALID_JOB_ID_DATA_ANALYSIS)
