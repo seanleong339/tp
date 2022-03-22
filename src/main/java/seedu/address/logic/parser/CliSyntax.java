@@ -21,6 +21,8 @@ public class CliSyntax {
     public static final Prefix PREFIX_NRIC = new Prefix("nric/");
     public static final Prefix PREFIX_STATUS = new Prefix("s/");
 
+
     /* Prefix for job */
+    public static final Prefix PREFIX_JOBTITLE = new Prefix("jt/");
     public static final Prefix PREFIX_COMPANY_NAME = new Prefix("c/");
 }
