@@ -31,14 +31,14 @@ activate EditApplicant
 EditApplicant --> EditApplicantParser
 deactivate EditApplicant
 
-EditApplicantParser -> EditApplicant : parse(arguments)
-activate EditApplicant
-
-EditApplicant --> EditApplicantParser
-deactivate EditApplicant
-
 EditApplicantParser --> AddressBookParser
 deactivate EditApplicantParser
+
+AddressBookParser -> EditApplicant : parse(arguments)
+activate EditApplicant
+
+EditApplicant --> AddressBookParser
+deactivate EditApplicant
 
 AddressBookParser --> LogicManager
 deactivate AddressBookParser
