@@ -42,6 +42,8 @@ class SalaryTest {
                 "abc-4000")); // only starting salary alphabets
         assertFalse(Salary.isValidSalary("5000", "abc",
                 "5000-abc")); // only end salary alphabets
+        assertFalse(Salary.isValidSalary("-4000", "-3000",
+                "-4000-5000")); // only end salary alphabets
 
         // valid Salary
         assertTrue(Salary.isValidSalary(
