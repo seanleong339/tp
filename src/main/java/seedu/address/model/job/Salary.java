@@ -25,8 +25,7 @@ public class Salary {
      * @param endSalary The right bound of salary.
      */
     public Salary(String startingSalary, String endSalary) {
-        requireNonNull(startingSalary);
-        requireNonNull(endSalary);
+        requireNonNull(startingSalary, endSalary);
         this.salaryRange = startingSalary + "-" + endSalary;
         checkArgument(isValidSalary(startingSalary, endSalary, salaryRange), MESSAGE_CONSTRAINTS);
         this.startingSalary = startingSalary;
