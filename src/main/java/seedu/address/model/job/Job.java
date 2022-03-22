@@ -1,14 +1,16 @@
 package seedu.address.model.job;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Name;
 
 public class Job {
+
     // Identity fields
-    private final Name jobTitle;
-    private final Name company;
+    private final JobTitle jobTitle;
+    private final CompanyName companyName;
     private final JobId id;
 
     // Data fields
@@ -23,12 +25,12 @@ public class Job {
     /**
      * Creates a Job object with all attributes for use by Edit method
      */
-    public Job(Name title, Name company, JobId id,
+    public Job(JobTitle title, CompanyName companyName, JobId id,
                Address address, Qualification qualification, JobStatus jobStatus,
                Position position, Salary salary) {
-        requireAllNonNull(title, company, id, address, qualification, jobStatus, position, salary);
+        requireAllNonNull(title, companyName, id, address, qualification, jobStatus, position, salary);
         this.jobTitle = title;
-        this.company = company;
+        this.companyName = companyName;
         this.id = id;
         this.address = address;
         this.qualification = qualification;
@@ -40,26 +42,26 @@ public class Job {
     /**
      * Creates a Job object with minimum required attributes for use by Add method
      */
-    public Job(Name title, Name company, Address address,
-               Qualification qualification, JobStatus jobStatus,
+    public Job(JobTitle title, CompanyName company, JobId id,
+               Address address, Qualification qualification,
                Position position, Salary salary) {
-        requireAllNonNull(title, company, address, qualification, jobStatus, position, salary);
+        requireAllNonNull(title, company, id, address, qualification, position, salary);
         this.jobTitle = title;
-        this.company = company;
+        this.companyName = company;
         this.id = new JobId();
         this.address = address;
         this.qualification = qualification;
-        this.jobStatus = jobStatus;
+        this.jobStatus = new JobStatus("vacant");
         this.position = position;
         this.salary = salary;
     }
 
-    public Name getJobTitle() {
+    public JobTitle getJobTitle() {
         return jobTitle;
     }
 
-    public Name getCompany() {
-        return company;
+    public CompanyName getCompany() {
+        return companyName;
     }
 
     public JobId getJobId() {
