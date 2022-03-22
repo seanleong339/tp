@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
@@ -36,19 +37,23 @@ public class JsonAdaptedApplicant {
     private final String interviewDate;
     private final String job;
     private final String qualification;
+    private final String applicationStatus;
 
     /**
      * Constructs a {@code JsonAdaptedApplicant} with the given person details.
      * todo add applicant status
      */
     @JsonCreator
-    public JsonAdaptedApplicant(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-                             @JsonProperty("email") String email, @JsonProperty("address") String address,
+    public JsonAdaptedApplicant(@JsonProperty("name") String name,
+                             @JsonProperty("phone") String phone, @JsonProperty("email") String email,
+                             @JsonProperty("address") String address,
                              @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
                              @JsonProperty("nric") String nric, @JsonProperty("dateapplied") String dateApplied,
                              @JsonProperty("interviewdate") String interviewDate, @JsonProperty("job") String job,
-                             @JsonProperty("qualification") String qualification) {
+                             @JsonProperty("qualification") String qualification,
+                             @JsonProperty("status") String status) {
         this.name = name;
+        this.applicationStatus = status;
         this.phone = phone;
         this.email = email;
         this.address = address;
@@ -67,6 +72,7 @@ public class JsonAdaptedApplicant {
      */
     public JsonAdaptedApplicant(Applicant source) {
         name = source.getName().fullName;
+        applicationStatus = source.getApplicantStatus().applicantStatus.toString();
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
@@ -173,10 +179,19 @@ public class JsonAdaptedApplicant {
         }
         final Qualification modelQualification = new Qualification(qualification);
 
-        //todo add Status for applicant
+        if (applicationStatus == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApplicantStatus.class.getSimpleName()));
+        }
+
+        if (!ApplicantStatus.isValidStatus(applicationStatus)) {
+            throw new IllegalValueException(ApplicantStatus.MESSAGE_CONSTRAINTS);
+        }
+
+        final ApplicantStatus modelApplicantStatus = new ApplicantStatus(applicationStatus);
 
         return new Applicant(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelDateApplied,
-                modelNric, modelJobId, modelInterviewDate, modelQualification);
+                modelNric, modelJobId, modelInterviewDate, modelQualification, modelApplicantStatus);
     }
 
 }

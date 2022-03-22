@@ -11,6 +11,7 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.applicant.ApplicantStatus;
 
 public class MarkApplicantParser implements Parser<MarkApplicant> {
     @Override
@@ -24,7 +25,7 @@ public class MarkApplicantParser implements Parser<MarkApplicant> {
         }
 
         Index index;
-        int status;
+        String status;
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
@@ -33,6 +34,6 @@ public class MarkApplicantParser implements Parser<MarkApplicant> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MarkApplicant.MESSAGE_USAGE), pe);
         }
 
-        return new MarkApplicant(index, status);
+        return new MarkApplicant(index, new ApplicantStatus(status));
     }
 }
