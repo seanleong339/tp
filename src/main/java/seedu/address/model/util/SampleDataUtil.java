@@ -53,7 +53,7 @@ public class SampleDataUtil {
                         new Address("123, Jurong West Ave 6, #08-111"), getTagSet("Applicant"),
                         new DateApplied("2022-02-12"), new Nric("S9920202A"), new JobId("1"),
                         new InterviewDate("2022-03-18"), new Qualification("Degree in Sociology"),
-                        new ApplicantStatus(2)),
+                        new ApplicantStatus("1")),
             new Applicant(new Name("Benson Goh"), new Phone("98184343"), new Email("bensongoh@example.com"),
                     new Address("311, Clementi Ave 2, #02-25"), getTagSet("Applicant"),
                     new DateApplied("2022-01-22"), new Nric("S9920202A")),
@@ -61,7 +61,7 @@ public class SampleDataUtil {
                     new Address("456, Hougang North Street 6, #03-21"), getTagSet("Applicant"),
                     new DateApplied("2022-01-19"), new Nric("S9920202A"), new JobId("1"),
                     new InterviewDate("2022-02-10"), new Qualification("Degree in Psychology"),
-                    new ApplicantStatus(2)),
+                    new ApplicantStatus("3")),
         };
     }
 

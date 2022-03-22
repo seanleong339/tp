@@ -51,9 +51,9 @@
     "nric" : "S9920202A",
     "job" : "1",
     "qualification" : "degree in Computing",
-    "id" : "1386502365",
     "dateApplied" : "2022-01-21",
-    "interviewDate" : "2022-01-28"
+    "interviewDate" : "2022-01-28",
+    "applicationStatus" : "1"
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
@@ -63,9 +63,9 @@
     "nric" : "S9930303B",
     "job" : "2",
     "qualification" : "degree in Computer Engineering",
-    "id" : "1415161339",
     "dateApplied" : "2022-01-22",
-    "interviewDate" : "2022-01-29"
+    "interviewDate" : "2022-01-29",
+    "applicationStatus" : "3"
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
@@ -75,9 +75,9 @@
     "nric" : "S9940404C",
     "job" : "3",
     "qualification" : "degree in Economics",
-    "id" : "1443820313",
     "dateApplied" : "2022-01-23",
-    "interviewDate" : "2022-01-30"
+    "interviewDate" : "2022-01-30",
+    "applicationStatus" : "1"
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
@@ -87,9 +87,9 @@
     "nric" : "S9950505D",
     "job" : "4",
     "qualification" : "degree in Business",
-    "id" : "1472479287",
     "dateApplied" : "2022-01-24",
-    "interviewDate" : "2022-01-31"
+    "interviewDate" : "2022-01-31",
+    "applicationStatus" : "2"
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
@@ -99,9 +99,9 @@
     "nric" : "S9960606E",
     "job" : "5",
     "qualification" : "degree in Data Science",
-    "id" : "1501138261",
     "dateApplied" : "2022-01-25",
-    "interviewDate" : "2022-02-01"
+    "interviewDate" : "2022-02-01",
+    "applicationStatus" : "2"
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
@@ -111,9 +111,9 @@
     "nric" : "S9970707F",
     "job" : "6",
     "qualification" : "degree in Real Estate",
-    "id" : "1529797235",
     "dateApplied" : "2022-01-26",
-    "interviewDate" : "2022-02-02"
+    "interviewDate" : "2022-02-02",
+    "applicationStatus" : "3"
   }, {
     "name" : "George Best",
     "phone" : "9482442",
@@ -123,8 +123,8 @@
     "nric" : "S9980808G",
     "job" : "7",
     "qualification" : "degree in Political Science",
-    "id" : "1558456209",
     "dateApplied" : "2022-01-27",
-    "interviewDate" : "2022-02-03"
+    "interviewDate" : "2022-02-03",
+    "applicationStatus" : "0"
   } ]
 }

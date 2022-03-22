@@ -25,7 +25,7 @@ public class MarkApplicantParser implements Parser<MarkApplicant> {
         }
 
         Index index;
-        int status;
+        String status;
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());

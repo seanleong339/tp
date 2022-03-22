@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
@@ -212,16 +213,28 @@ public class ParserUtil {
      */
     // TODO: - Add status not interviewed and interviewed
     //       - return Applicant once the class Application Status is merged
-    public static int parseApplicantStatus(String applicationStatus) throws ParseException {
+    public static String parseApplicantStatus(String applicationStatus) throws ParseException {
         requireNonNull(applicationStatus);
-        String trimmedQualification = applicationStatus.trim();
-        int status = -1;
-        if (applicationStatus.equals("rejected")) {
-            status = 0;
-        } else if (applicationStatus.equals("accepted")) {
-            status = 1;
-        } else if (applicationStatus.equals("pending")) {
-            status = 2;
+        String trimmedApplicationStatus = applicationStatus.trim();
+        if (!ApplicantStatus.isValidStatus(trimmedApplicationStatus)) {
+            throw new ParseException(ApplicantStatus.MESSAGE_CONSTRAINTS);
+        }
+        String status;
+        switch(applicationStatus) {
+        case "rejected":
+            status = "0";
+            break;
+        case "pending":
+            status = "1";
+            break;
+        case "interviewed":
+            status = "2";
+            break;
+        case "accepted":
+            status = "3";
+            break;
+        default:
+            status = "1";
         }
         return status;
     }

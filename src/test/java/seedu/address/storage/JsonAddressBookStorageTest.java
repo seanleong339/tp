@@ -65,7 +65,7 @@ public class JsonAddressBookStorageTest {
     // public void saveAddressBook_withApplicants() throws Exception {
     //     Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableAddressBookTest");
     //     JsonAddressBookStorage j =
-    //             new JsonAddressBookStorage(TEST_DATA_FOLDER.resolve("duplicateApplicantsAddressBook.json"));
+    //             new JsonAddressBookStorage(TEST_DATA_FOLDER.resolve("typicalApplicantsAddressBook.json"));
     //     j.saveAddressBook(TypicalApplicants.getTypicalAddressBook());
     // }
 
