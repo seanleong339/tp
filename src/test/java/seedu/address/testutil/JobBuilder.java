@@ -2,7 +2,12 @@ package seedu.address.testutil;
 
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Qualification;
+import seedu.address.model.job.CompanyName;
+import seedu.address.model.job.Job;
 import seedu.address.model.job.JobStatus;
+import seedu.address.model.job.JobTitle;
+import seedu.address.model.job.Position;
+import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
 
 
@@ -21,7 +26,7 @@ public class JobBuilder {
     public static final String DEFAULT_SALARY_HIGH = "5000";
 
     private JobTitle jobTitle;
-    private  CompanyName companyName;
+    private CompanyName companyName;
     private JobId jobId;
     private Address address;
     private Qualification qualification;
@@ -48,7 +53,7 @@ public class JobBuilder {
      */
     public JobBuilder(Job jobToCopy) {
         jobTitle = jobToCopy.getJobTitle();
-        companyName = jobToCopy.getCompanyName();
+        companyName = jobToCopy.getCompany();
         jobId = jobToCopy.getJobId();
         address = jobToCopy.getAddress();
         qualification = jobToCopy.getQualification();
