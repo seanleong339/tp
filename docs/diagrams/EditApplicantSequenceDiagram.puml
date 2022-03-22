@@ -24,14 +24,14 @@ create EditApplicantParser
 AddressBookParser -> EditApplicantParser
 activate EditApplicantParser
 
+EditApplicantParser --> AddressBookParser
+deactivate EditApplicantParser
+
+AddressBookParser -> EditApplicantParser : parse(arguments)
+activate EditApplicantParser
+
 create EditApplicant
 EditApplicantParser -> EditApplicant
-activate EditApplicant
-
-EditApplicant --> EditApplicantParser
-deactivate EditApplicant
-
-EditApplicantParser -> EditApplicant : parse(arguments)
 activate EditApplicant
 
 EditApplicant --> EditApplicantParser
@@ -42,7 +42,6 @@ deactivate EditApplicantParser
 
 AddressBookParser --> LogicManager
 deactivate AddressBookParser
-
 
 LogicManager -> EditApplicant : execute()
 activate EditApplicant

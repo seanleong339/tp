@@ -66,8 +66,8 @@ public class Applicant {
         this.dateApplied = dateApplied;
         this.job = new JobId();
         this.interviewDate = new InterviewDate();
-        this.qualification = null;
-        this.applicantStatus = new ApplicantStatus(2);
+        this.qualification = new Qualification();
+        this.applicantStatus = new ApplicantStatus("1");
     }
 
     /**
@@ -153,7 +153,7 @@ public class Applicant {
     //todo may have to do a hard equal function to compare all the properties of Applicant
     /**
      * Returns true if both applicants have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * This defines a stronger notion of equality between two applicants.
      */
     @Override
     public boolean equals(Object other) {
@@ -173,13 +173,16 @@ public class Applicant {
                 && otherApplicant.getTags().equals(getTags())
                 && otherApplicant.getDateApplied().equals(getDateApplied())
                 && otherApplicant.getNric().equals(getNric())
-                && otherApplicant.getJobId().equals(getJobId());
+                && otherApplicant.getJobId().equals(getJobId())
+                && otherApplicant.getApplicantStatus().equals((getApplicantStatus()));
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
+                .append("; Application status: ")
+                .append(getApplicantStatus())
                 .append("; Phone: ")
                 .append(getPhone())
                 .append("; Email: ")

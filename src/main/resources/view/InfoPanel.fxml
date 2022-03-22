@@ -34,6 +34,7 @@
             <Label fx:id="dateApplied" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Date applied: "/>
             <Label fx:id="interviewDate" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Interview date: "/>
             <Label fx:id="qualification" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Qualification: "/>
+            <Label fx:id="status" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Application status: "/>
         </VBox>
         <rowConstraints>
             <RowConstraints />

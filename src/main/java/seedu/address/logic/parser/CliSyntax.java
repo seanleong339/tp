@@ -12,9 +12,20 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
     public static final Prefix PREFIX_QUALIFICATION = new Prefix("q/");
+
+
+    /* Prefix for applicant */
     public static final Prefix PREFIX_DATEAPPLIED = new Prefix("d/");
     public static final Prefix PREFIX_JOB = new Prefix("j/");
     public static final Prefix PREFIX_DATEINTERVIEW = new Prefix("i/");
     public static final Prefix PREFIX_NRIC = new Prefix("nric/");
     public static final Prefix PREFIX_STATUS = new Prefix("s/");
+
+
+    /* Prefix for job */
+    public static final Prefix PREFIX_JOBTITLE = new Prefix("jt/");
+    public static final Prefix PREFIX_SALARY = new Prefix("sal/");
+    public static final Prefix PREFIX_COMPANY_NAME = new Prefix("c/");
+    public static final Prefix PREFIX_JOBSTATUS = new Prefix("js/");
+    public static final Prefix PREFIX_JOB_POSITION = new Prefix("pos/");
 }

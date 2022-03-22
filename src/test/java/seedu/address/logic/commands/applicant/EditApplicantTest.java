@@ -30,7 +30,6 @@ import seedu.address.testutil.TypicalApplicants;
 
 class EditApplicantTest {
     private Model model = new ModelManager(TypicalApplicants.getTypicalAddressBook(), new UserPrefs());
-
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Applicant editedApplicant = new ApplicantBuilder().build();
