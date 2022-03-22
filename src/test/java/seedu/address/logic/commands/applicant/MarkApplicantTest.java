@@ -26,9 +26,10 @@ public class MarkApplicantTest {
     @Test
     void execute_validIndexValidStatus_success() {
         Applicant applicantToMark = model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased());
-        MarkApplicant markApplicant = new MarkApplicant(INDEX_FIRST_APPLICANT, new ApplicantStatus(1));
+        MarkApplicant markApplicant = new MarkApplicant(INDEX_FIRST_APPLICANT, new ApplicantStatus("1"));
 
-        String expectedMessage = String.format(MarkApplicant.MESSAGE_SUCCESS, applicantToMark, new ApplicantStatus(1));
+        String expectedMessage = String.format(MarkApplicant.MESSAGE_SUCCESS, applicantToMark,
+                new ApplicantStatus("1"));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.setApplicant(model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased()),
@@ -44,7 +45,7 @@ public class MarkApplicantTest {
         Index indexOutOfBounds = Index.fromOneBased(model.getFilteredApplicantList().size() + 1);
 
         Applicant applicantToMark = model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased());
-        MarkApplicant markApplicant = new MarkApplicant(indexOutOfBounds, new ApplicantStatus(3));
+        MarkApplicant markApplicant = new MarkApplicant(indexOutOfBounds, new ApplicantStatus("3"));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.setApplicant(model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased()),
@@ -55,16 +56,16 @@ public class MarkApplicantTest {
 
     @Test
     void equals_differentIndex_failure() {
-        MarkApplicant markApplicant = new MarkApplicant(INDEX_FIRST_APPLICANT, new ApplicantStatus(1));
+        MarkApplicant markApplicant = new MarkApplicant(INDEX_FIRST_APPLICANT, new ApplicantStatus("1"));
         assertTrue(INDEX_SECOND_APPLICANT.getZeroBased() < model.getAddressBook().getApplicantList().size());
-        assertNotEquals(markApplicant, new MarkApplicant(INDEX_SECOND_APPLICANT, new ApplicantStatus(1)));
+        assertNotEquals(markApplicant, new MarkApplicant(INDEX_SECOND_APPLICANT, new ApplicantStatus("1")));
     }
 
     @Test
     void equals_differentApplicantStatus_failure() {
-        MarkApplicant markApplicant = new MarkApplicant(INDEX_FIRST_APPLICANT, new ApplicantStatus(1));
+        MarkApplicant markApplicant = new MarkApplicant(INDEX_FIRST_APPLICANT, new ApplicantStatus("1"));
 
-        assertNotEquals(markApplicant, new MarkApplicant(INDEX_FIRST_APPLICANT, new ApplicantStatus(2)));
+        assertNotEquals(markApplicant, new MarkApplicant(INDEX_FIRST_APPLICANT, new ApplicantStatus("2")));
     }
 
 }
