@@ -154,6 +154,36 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### AddApplicant feature
+The `addapplicant` mechanism is facilitated by `AddApplicantParser` and `AddApplicant` command. It extends `AddressBook` with the capability to 
+create new applicants, and store them in the `UniqueApplicantList` of the `AddressBook`. Following the command pattern of the 
+application, the `parse()` method will parse the user input, use the arguments parsed to create a new `Applicant`, and then
+the `Applicant` will be used to create an `AddApplicant` command.
+The command will then be executed to add the new `Applicant` to the `AddressBook`.
+
+Given below is an example usage scenario, and how the `addapplicant` mechanism behaves at each step. The scenario assumes that
+the application is already launched.
+
+Step 1. The user inputs the command `addapplicant n/John Tan nric/S1374678D p/98765432 e/johntan@hotmail.com a/311, Clementi Ave 2, #02-25 d/21-3-2022`.
+The `AddressBookParser#parseCommand()` is called in `LogicManager` and it uses the `BASIC_COMMAND_FORMAT` to separate the `commandWord` and `arguments`.
+The `commandWord` will then cause a new `AddApplicantParser` to be created.
+
+![AddApplicantStep1](images/AddApplicantStep1.png)
+
+Step 2. The `AddApplicantParser#parse()` method is then called with `arguments` as the argument. The `arguments` will then be
+further parsed using their respective class parser methods in `ParserUtil` to create their respective attribute classes, 
+and then used to create a new `Applicant` object. The `Applicant` object will be used to create a new `AddApplicant` command.
+
+![AddApplicantStep2](images/AddApplicantStep2.png)
+
+Step 3. The `AddApplicant` command is executed, and it will call the `Model#addApplicant()`, which calls the 
+`AddressBook#addApplicant()`, to store the `Applicant` in the `UniqueApplicantList`. 
+
+![AddApplicantStep3](images/AddApplicantStep3.png)
+
+The following sequence diagram shows the full sequence when a user adds a new Applicant
+![AddApplicantFullSequence](images/AddApplicantFullSequence.png)
+
 ### EditApplicant feature
 
 The `editapplicant` mechanism is facilitated by `AddressBook`. `EditApplicant` extends `Command` class. Within the `EditApplicant` class,
