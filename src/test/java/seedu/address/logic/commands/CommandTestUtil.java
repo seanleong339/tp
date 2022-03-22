@@ -108,7 +108,7 @@ public class CommandTestUtil {
     public static final String VALID_POSITION_DATA_ANALYSIS = "Permanent";
     public static final String VALID_POSITION_PROJECT_MANAGER = "Permanent";
     public static final String VALID_SALARY_LOW_DATA_ANALYSIS = "6000";
-    public static final String VALID_SALARY_DATA_HIGH_ANALYSIS = "8000";
+    public static final String VALID_SALARY_HIGH_DATA_ANALYSIS = "8000";
     public static final String VALID_SALARY_LOW_PROJECT_MANAGER = "4000";
     public static final String VALID_SALARY_HIGH_PROJECT_MANAGER = "5000";
 
@@ -122,8 +122,8 @@ public class CommandTestUtil {
     public static final EditApplicant.EditApplicantDescriptor DESC_DON;
     // ===================== Job ===============================
     // TODO THIS IS FOR THE EDITJOB COMMAND;
-//    public static final EditJob.EditJobDescripter DESC_DATA_ANALYSIS;
-//    public static final EditJob.EditJobDescripter DESC_PROJECT_MANAGER;
+    // public static final EditJob.EditJobDescripter DESC_DATA_ANALYSIS;
+    // public static final EditJob.EditJobDescripter DESC_PROJECT_MANAGER;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
