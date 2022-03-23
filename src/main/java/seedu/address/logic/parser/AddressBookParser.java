@@ -18,7 +18,9 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.applicant.AddApplicant;
 import seedu.address.logic.commands.applicant.DeleteApplicant;
 import seedu.address.logic.commands.applicant.EditApplicant;
+import seedu.address.logic.commands.applicant.ListApplicant;
 import seedu.address.logic.commands.applicant.MarkApplicant;
+import seedu.address.logic.commands.job.ListJob;
 import seedu.address.logic.parser.applicant.AddApplicantParser;
 import seedu.address.logic.parser.applicant.DeleteApplicantParser;
 import seedu.address.logic.parser.applicant.EditApplicantParser;
@@ -87,6 +89,12 @@ public class AddressBookParser {
 
         case DeleteApplicant.COMMAND_WORD:
             return new DeleteApplicantParser().parse(arguments);
+
+        case ListApplicant.COMMAND_WORD:
+            return new ListApplicant();
+
+        case ListJob.COMMAND_WORD:
+            return new ListJob();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
