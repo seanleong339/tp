@@ -14,7 +14,7 @@ public class Position {
     private static final String POSITION_FULLTIME = "full-time";
     private static final String POSITION_PARTTIME = "part-time";
 
-    private static final String POSITION_INVALID = "Job position should be 'ft' (full-time) or 'pt' (part-time).";
+    public static final String MESSAGE_CONSTRAINTS = "Job position should be 'ft' (full-time) or 'pt' (part-time).";
     private final String position;
 
     /**
@@ -24,7 +24,7 @@ public class Position {
      */
     public Position(String position) {
         requireNonNull(position);
-        checkArgument(validPosition(position), POSITION_INVALID);
+        checkArgument(validPosition(position), MESSAGE_CONSTRAINTS);
         this.position = position.toLowerCase();
     }
 

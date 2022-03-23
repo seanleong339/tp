@@ -10,7 +10,7 @@ public class JobStatus {
     private static final String JOBSTATUS_FILLED = "filled";
     private static final String JOBSTATUS_VACANT = "vacant";
 
-    private static final String MESSAGE_CONSTRAINTS = "Job status should be denoted as either 'filled' or 'vacant'";
+    public static final String MESSAGE_CONSTRAINTS = "Job status should be denoted as either 'filled' or 'vacant'";
 
     private final String jobStatus;
 

@@ -2,16 +2,16 @@ package seedu.address.logic.commands.job;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.applicant.AddApplicant;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.applicant.JobId;
 import seedu.address.model.job.Job;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_TITLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
 
@@ -20,18 +20,18 @@ public class AddJob extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a Job to ReCLIne. "
             + "Parameters: "
-            + PREFIX_JOB_TITLE + "JOB TITLE "
-            + PREFIX_COMPANY + "COMPANY "
+            + PREFIX_JOBTITLE + "JOB TITLE "
+            + PREFIX_COMPANY_NAME + "COMPANY "
             + PREFIX_ADDRESS + "ADDRESS "
             + PREFIX_QUALIFICATION + "QUALIFICATION "
-            + PREFIX_POSITION + "POSITION "
+            + PREFIX_JOB_POSITION + "POSITION "
             + PREFIX_SALARY + "SALARY "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_JOB_TITLE + "Software Developer "
-            + PREFIX_COMPANY + "Ebiz Pte Ltd "
+            + PREFIX_JOBTITLE + "Software Developer "
+            + PREFIX_COMPANY_NAME + "Ebiz Pte Ltd "
             + PREFIX_ADDRESS + "59 Hougang Road Blk 38 "
             + PREFIX_QUALIFICATION + "Bachelors in Computer Science "
-            + PREFIX_POSITION + "ft "
+            + PREFIX_JOB_POSITION + "ft "
             + PREFIX_SALARY + "4000 ";
 
     public static final String MESSAGE_SUCCESS = "New job added: %1$s";
@@ -55,8 +55,8 @@ public class AddJob extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_JOB);
         }
 
-        // The getIdCount() increments the idCount in addressbook
-        Job jobWithId = new Job(toAdd.getJobTitle(), toAdd.getCompany(), model.getIdCount(), toAdd.getAddress(),
+        // Todo Use getIdCount() from ModelManager instead of new JobID after idCount is implemented
+        Job jobWithId = new Job(toAdd.getJobTitle(), toAdd.getCompany(), new JobId("1"), toAdd.getAddress(),
                 toAdd.getQualification(), toAdd.getJobStatus(), toAdd.getPosition(), toAdd.getSalary());
         model.addJob(jobWithId);
         return new CommandResult(String.format(MESSAGE_SUCCESS, jobWithId));

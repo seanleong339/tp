@@ -15,7 +15,10 @@ import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
+import seedu.address.model.job.CompanyName;
+import seedu.address.model.job.JobStatus;
 import seedu.address.model.job.JobTitle;
+import seedu.address.model.job.Position;
 import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -290,7 +293,7 @@ public class ParserUtil {
     public static JobStatus parseJobStatus(String jobStatus) throws ParseException {
         requireNonNull(jobStatus);
         String trimmedJobStatus = jobStatus.trim();
-        if (!JobStatus.isValidJobStatus(jobStatus)) {
+        if (!JobStatus.isValid(jobStatus)) {
             throw new ParseException(JobStatus.MESSAGE_CONSTRAINTS);
         }
         return new JobStatus(trimmedJobStatus);
@@ -299,18 +302,19 @@ public class ParserUtil {
     public static Position parsePosition(String position) throws ParseException {
         requireNonNull(position);
         String trimmedPosition = position.trim();
-        if (!Position.isValidPosition(position)) {
+        if (!Position.validPosition(position)) {
             throw new ParseException(Position.MESSAGE_CONSTRAINTS);
         }
         return new Position(trimmedPosition);
     }
 
-    public static Salary parseSalary(String salary) throws ParseException {
-        requireNonNull(salary);
-        String trimmedSalary = salary.trim();
-        if (!Salary.isValidSalary(salary)) {
-            throw new ParseException(Salary.MESSAGE_CONSTRAINTS);
+    public static CompanyName parseCompanyName(String companyName) throws ParseException {
+        requireNonNull(companyName);
+        String trimmedCompanyName = companyName.trim();
+        if (!Nric.isValidNric(trimmedCompanyName)) {
+            throw new ParseException(CompanyName.MESSAGE_CONSTRAINTS);
         }
-        return new Salary(trimmedSalary);
+        return new CompanyName(trimmedCompanyName);
     }
+
 }
