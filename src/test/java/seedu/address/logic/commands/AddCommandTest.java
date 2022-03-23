@@ -171,6 +171,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public String getIdCount() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addApplicant(Applicant applicant) {
             throw new AssertionError("This method should not be called.");
         }

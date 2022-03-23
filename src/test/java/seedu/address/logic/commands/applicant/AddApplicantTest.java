@@ -157,6 +157,11 @@ class AddApplicantTest {
         public boolean hasJob(Job job) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public String getIdCount() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

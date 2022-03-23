@@ -145,7 +145,8 @@ public class ModelManager implements Model {
 
     @Override
     public void addJob(Job job) {
-        filteredJobs.add(job);
+        requireNonNull(job);
+        addressBook.addJob(job);
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -206,11 +207,11 @@ public class ModelManager implements Model {
         addressBook.removeApplicant(target);
     }
 
-    //Todo use this in addJob command and constructor of Job
-    public int getIdCount() {
-        int ans = addressBook.getIdCount();
+    @Override
+    public String getIdCount() {
+        int id = addressBook.getIdCount();
         addressBook.incrementIdCount();
-        return ans;
+        return Integer.toString(id);
     }
 }
 

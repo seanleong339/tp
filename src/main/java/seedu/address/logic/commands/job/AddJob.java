@@ -56,8 +56,9 @@ public class AddJob extends Command {
         }
 
         // Todo Use getIdCount() from ModelManager instead of new JobID after idCount is implemented
-        Job jobWithId = new Job(toAdd.getJobTitle(), toAdd.getCompany(), new JobId("1"), toAdd.getAddress(),
-                toAdd.getQualification(), toAdd.getJobStatus(), toAdd.getPosition(), toAdd.getSalary());
+        Job jobWithId = new Job(toAdd.getJobTitle(), toAdd.getCompany(), new JobId(model.getIdCount()),
+                toAdd.getAddress(), toAdd.getQualification(), toAdd.getJobStatus(), toAdd.getPosition(),
+                toAdd.getSalary());
         model.addJob(jobWithId);
         return new CommandResult(String.format(MESSAGE_SUCCESS, jobWithId));
     }

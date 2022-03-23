@@ -114,6 +114,11 @@ public interface Model {
      */
     boolean hasJob(Job job);
 
+    /**
+     * Returns the current IdCount()
+     */
+    String getIdCount();
+
     //--------------ReCLIne------------------------------
 
     /**

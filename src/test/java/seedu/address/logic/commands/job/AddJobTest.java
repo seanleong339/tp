@@ -41,6 +41,7 @@ class AddJobTest {
         assertTrue((Arrays.asList(test).get(0)).isSameJob(modelStub.jobsAdded.get(0)));
     }
 
+
     /**
      * A default model stub that have all of the methods failing.
      */
@@ -154,6 +155,11 @@ class AddJobTest {
         public boolean hasJob(Job job) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public String getIdCount() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
@@ -161,6 +167,7 @@ class AddJobTest {
      */
     private class ModelStubAcceptingJobAdded extends AddJobTest.ModelStub {
         final ArrayList<Job> jobsAdded = new ArrayList<>();
+        final AddressBook addressBook = new AddressBook();
 
         @Override
         public boolean hasJob(Job job) {
@@ -172,6 +179,11 @@ class AddJobTest {
         public void addJob(Job job) {
             requireNonNull(job);
             jobsAdded.add(job);
+        }
+
+        @Override
+        public String getIdCount() {
+            return Integer.toString(addressBook.getIdCount());
         }
 
         @Override
