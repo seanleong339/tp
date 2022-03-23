@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.ui.UiPart;
 
@@ -34,6 +36,8 @@ public class ApplicantCard extends UiPart<Region> {
     @FXML
     private Label name;
     @FXML
+    private Circle status;
+    @FXML
     private Label job;
     @FXML
     private Label email;
@@ -52,7 +56,20 @@ public class ApplicantCard extends UiPart<Region> {
         applicant.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+
+        String stat = applicant.getApplicantStatus().toString();
+        if (stat.equals("Rejected")) {
+            status.setFill(Color.rgb(189, 94, 94));
+        } else if (stat.equals("Accepted")) {
+            status.setFill(Color.rgb(66, 128, 83));
+        } else if (stat.equals("Interviewed")) {
+            status.setFill(Color.rgb(237, 196, 114));
+        } else {
+            status.setFill(Color.GREY);
+        }
     }
+
+
 
     @Override
     public boolean equals(Object other) {

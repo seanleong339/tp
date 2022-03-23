@@ -10,7 +10,6 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -122,15 +121,17 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        // Displays person list
+        // TODO: Display Job List
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        // Displays applicant list
+        // Displays info panel
         infoPanel = new InfoPanel();
+        infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
+
+        // Displays applicant list
         applicantListPanel = new ApplicantListPanel(logic.getFilteredApplicantList(), infoPanel);
         applicantListPanelPlaceholder.getChildren().add(applicantListPanel.getRoot());
-        infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
         applicantListPanel.handleApplicantClicks();
 
         resultDisplay = new ResultDisplay();

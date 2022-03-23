@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox id="infoPanel" fx:id="infoPanel" style="-fx-background-color: #697d96; -fx-padding: 30 0 0 0; -fx-background-insets: 32 0 0 0; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="infoPanel" fx:id="infoPanel" style="-fx-background-color: grey; -fx-padding: 30 0 0 0; -fx-background-insets: 32 0 0 0; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
@@ -19,21 +19,21 @@
             <padding>
                 <Insets bottom="5" left="15" right="5" top="5" />
             </padding>
-             <Label fx:id="name" style="-fx-text-fill: white; -fx-padding: 10 0 5 0;" styleClass="cell_big_label" text="name holder" textFill="WHITE">
+             <Label fx:id="name" style="-fx-text-fill: white; -fx-padding: 10 0 5 0;" styleClass="cell_big_label" text="Click the list item to view more information" textFill="WHITE">
                  <font>
                      <Font size="24.0" />
                  </font>
          </Label>
             <FlowPane fx:id="tags" prefHeight="30.0" prefWidth="130.0" />
-            <Label fx:id="nric" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Nric: " />
-            <Label fx:id="job" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Job ID: " />
-            <Label fx:id="phone" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Phone number: " />
-            <Label fx:id="address" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Address: " />
-            <Label fx:id="email" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Email: " />
-            <Label fx:id="dateApplied" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Date applied: " />
-            <Label fx:id="interviewDate" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Interview date: " />
-            <Label fx:id="qualification" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Qualification: " />
-            <Label fx:id="status" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Application status: " />
+            <Label fx:id="nric" style="-fx-text-fill: white;" styleClass="cell_small_label" />
+            <Label fx:id="phone" style="-fx-text-fill: white;" styleClass="cell_small_label" />
+            <Label fx:id="address" style="-fx-text-fill: white;" styleClass="cell_small_label"/>
+            <Label fx:id="email" style="-fx-text-fill: white;" styleClass="cell_small_label"/>
+            <Label fx:id="qualification" style="-fx-text-fill: white;" styleClass="cell_small_label"/>
+            <Label fx:id="job" style="-fx-text-fill: white;" styleClass="cell_small_label"/>
+            <Label fx:id="dateApplied" style="-fx-text-fill: white;" styleClass="cell_small_label"/>
+            <Label fx:id="interviewDate" style="-fx-text-fill: white;" styleClass="cell_small_label"/>
+            <Label fx:id="status" style="-fx-text-fill: white;" styleClass="cell_small_label"/>
         </VBox>
         <rowConstraints>
             <RowConstraints />

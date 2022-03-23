@@ -68,4 +68,7 @@ public class InfoPanel extends UiPart<Region> {
         qualification.setText("Qualification: " + applicant.getQualification().toString());
         status.setText("Application status: " + applicant.getApplicantStatus().toString());
     }
+
+    //TODO: create a method setJobText
+
 }

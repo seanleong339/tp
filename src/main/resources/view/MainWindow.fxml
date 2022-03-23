@@ -68,7 +68,7 @@
                   <StackPane fx:id="applicantListPanelPlaceholder"/>
                 </content>
               </Tab>
-              <Tab styleClass="tabPerson" text="person list">
+              <Tab styleClass="tabPerson" text="job list">
                  <content>
                    <StackPane fx:id="personListPanelPlaceholder" />
                  </content>
