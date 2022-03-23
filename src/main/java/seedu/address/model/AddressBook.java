@@ -31,6 +31,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         applicants = new UniqueApplicantList();
+        idCount = 9;
     }
 
     public AddressBook() {}
