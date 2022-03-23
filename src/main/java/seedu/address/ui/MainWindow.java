@@ -62,6 +62,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane statusbarPlaceholder;
 
+    @FXML
+    private TabPane tabs;
+
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -187,12 +190,10 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void handleListApplicant() {
-        TabPane tabs = (TabPane) primaryStage.getScene().lookup("#tabs");
         tabs.getSelectionModel().select(0);
     }
 
     private void handleListJob() {
-        TabPane tabs = (TabPane) primaryStage.getScene().lookup("#tabs");
         tabs.getSelectionModel().select(1);
     }
 
