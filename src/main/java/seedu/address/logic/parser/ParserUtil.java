@@ -250,27 +250,30 @@ public class ParserUtil {
     public static String parseApplicantStatus(String applicationStatus) throws ParseException {
         requireNonNull(applicationStatus);
         String trimmedApplicationStatus = applicationStatus.trim();
-        if (!ApplicantStatus.isValidStatus(trimmedApplicationStatus)) {
-            throw new ParseException(ApplicantStatus.MESSAGE_CONSTRAINTS);
-        }
-        String status;
-        switch(applicationStatus) {
+
+        String numericStatus;
+
+        switch(trimmedApplicationStatus) {
         case "rejected":
-            status = "0";
+            numericStatus = "0";
             break;
         case "pending":
-            status = "1";
+            numericStatus = "1";
             break;
         case "interviewed":
-            status = "2";
+            numericStatus = "2";
             break;
         case "accepted":
-            status = "3";
+            numericStatus = "3";
             break;
         default:
-            status = "1";
+            numericStatus = "-1";
         }
-        return status;
+
+        if (!ApplicantStatus.isValidStatus(numericStatus)) {
+            throw new ParseException(ApplicantStatus.MESSAGE_CONSTRAINTS);
+        }
+        return numericStatus;
     }
 
     /**
