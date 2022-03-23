@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -60,6 +61,10 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private TabPane tabs;
+
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -132,6 +137,7 @@ public class MainWindow extends UiPart<Stage> {
         infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
         applicantListPanel.handleApplicantClicks();
 
+        // displays command result
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -183,8 +189,12 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    private void handleListApplicant() {
+        tabs.getSelectionModel().select(0);
+    }
+
+    private void handleListJob() {
+        tabs.getSelectionModel().select(1);
     }
 
     /**
@@ -204,6 +214,14 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isListApplicant()) {
+                handleListApplicant();
+            }
+
+            if (commandResult.isListJob()) {
+                handleListJob();
             }
 
             return commandResult;

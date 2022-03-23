@@ -49,14 +49,14 @@
 
         <SplitPane dividerPositions="0.3" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
               <items>
-                <TabPane tabClosingPolicy="UNAVAILABLE">
+                <TabPane fx:id="tabs" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab text="applicant list" styleClass="tabTest">
+                      <Tab text="applicant list" styleClass="tabTest" >
                         <content>
                           <StackPane fx:id="applicantListPanelPlaceholder"/>
                         </content>
                       </Tab>
-                      <Tab text="person list">
+                      <Tab  text="job list">
                         <content>
                           <StackPane fx:id="personListPanelPlaceholder"/>
                         </content>
