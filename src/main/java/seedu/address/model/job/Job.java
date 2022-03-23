@@ -147,5 +147,4 @@ public class Job {
                 .append(getSalary());
         return builder.toString();
     }
-
 }
