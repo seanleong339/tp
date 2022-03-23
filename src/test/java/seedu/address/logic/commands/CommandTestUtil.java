@@ -90,6 +90,27 @@ public class CommandTestUtil {
     public static final String INVALID_QUALIFICATION = " " + PREFIX_QUALIFICATION + " **degree in science";
     public static final String INVALID_JOB = " " + PREFIX_JOB + "a12345"; // job id must be all numbers
 
+    // ========================== Jobs ====================================
+    public static final String VALID_JOB_TITLE_DATA_ANALYSIS = "Data Analyst";
+    public static final String VALID_JOB_TITLE_PROJECT_MANAGER = "Project Manager";
+    public static final String VALID_COMPANY_NAME_DATA_ANALYSIS = "Facebook";
+    public static final String VALID_COMPANY_NAME_PROJECT_MANAGER = "OCBC";
+    public static final String VALID_JOB_ID_DATA_ANALYSIS = "10101";
+    public static final String VALID_JOB_ID_PROJECT_MANAGER = "12345";
+    public static final String VALID_ADDRESS_DATA_ANALYSIS = "9 Straits View, Marina One";
+    public static final String VALID_ADDRESS_PROJECT_MANAGER = "65 Chulia Street, OCBC Centre";
+    public static final String VALID_QUALIFICATION_DATA_ANALYSIS = "Degree in Data Science";
+    public static final String VALID_QUALIFICATION_PROJECT_MANAGER = "Degree in Business Management";
+    // TODO: MAY NEED TO CAHNGE THIS DEPENDING ON HOW JOB STATUS IS IMPLEMENTED
+    public static final String VALID_JOB_STATUS_DATA_ANALYSIS = "vacant";
+    public static final String VALID_JOB_STATUS_PROJECT_MANAGER = "filled";
+
+    public static final String VALID_POSITION_DATA_ANALYSIS = "ft";
+    public static final String VALID_POSITION_PROJECT_MANAGER = "ft";
+    public static final String VALID_SALARY_LOW_DATA_ANALYSIS = "6000";
+    public static final String VALID_SALARY_HIGH_DATA_ANALYSIS = "8000";
+    public static final String VALID_SALARY_LOW_PROJECT_MANAGER = "4000";
+    public static final String VALID_SALARY_HIGH_PROJECT_MANAGER = "5000";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -99,6 +120,10 @@ public class CommandTestUtil {
     // ==================== Applicant =================================
     public static final EditApplicant.EditApplicantDescriptor DESC_CHARLIE;
     public static final EditApplicant.EditApplicantDescriptor DESC_DON;
+    // ===================== Job ===============================
+    // TODO THIS IS FOR THE EDITJOB COMMAND;
+    // public static final EditJob.EditJobDescripter DESC_DATA_ANALYSIS;
+    // public static final EditJob.EditJobDescripter DESC_PROJECT_MANAGER;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -115,6 +140,7 @@ public class CommandTestUtil {
                 .withPhone(VALID_PHONE_DON).withEmail(VALID_EMAIL_DON).withAddress(VALID_ADDRESS_DON)
                 .withNric(VALID_NRIC).withDateApplied(VALID_DATE).withInterviewDate(VALID_DATE)
                 .withQualification(VALID_QUALIFICATION).build();
+        // TODO ADD DESC_DATAANALYSIS AND PROJECT MANAGER
     }
 
     /**
@@ -186,6 +212,8 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredApplicantList().size());
     }
+
+    // TODO: Add showJobAtIndex
 
 
 }
