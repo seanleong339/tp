@@ -144,6 +144,7 @@ public class AddressBookTest {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
         private final ObservableList<Applicant> applicants = FXCollections.observableArrayList();
         private final ObservableList<Job> jobs = FXCollections.observableArrayList();
+        private final int idCount = 9;
 
         // Added Person as a second parameter to avoid same type erasure between 2 Constructors
         AddressBookStub(Collection<Person> persons, Person person) {
@@ -171,6 +172,11 @@ public class AddressBookTest {
         @Override
         public ObservableList<Job> getJobList() {
             return jobs;
+        }
+
+        @Override
+        public int getIdCount() {
+            return idCount;
         }
     }
 

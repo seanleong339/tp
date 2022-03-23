@@ -27,4 +27,9 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate jobs.
      */
     ObservableList<Job> getJobList();
+
+    /**
+     * Returns the current idCount;
+     */
+    int getIdCount();
 }
