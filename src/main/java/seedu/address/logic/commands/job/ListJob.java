@@ -7,10 +7,10 @@ import seedu.address.model.Model;
 public class ListJob extends Command {
     public static final String COMMAND_WORD = "listjob";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches to the Applicant tab.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches to Job Tab.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String SHOWING_HELP_MESSAGE = "Switched to Applicant tab.";
+    public static final String SHOWING_HELP_MESSAGE = "Switched to Job Tab.";
 
     @Override
     public CommandResult execute(Model model) {
