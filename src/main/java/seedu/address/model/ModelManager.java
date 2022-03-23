@@ -4,8 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -27,9 +25,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Applicant> filteredApplicants;
-    //Todo add this when UniqueJobList and methods are done
-    //private final FilteredList<Job> filteredJobs;
-    private final List<Job> filteredJobs;
+    private final FilteredList<Job> filteredJobs;
 
 
     /**
@@ -44,7 +40,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredApplicants = new FilteredList<>(this.addressBook.getApplicantList());
-        filteredJobs = new ArrayList<Job>();
+        filteredJobs = new FilteredList<>(this.addressBook.getJobList());
     }
 
     public ModelManager() {
@@ -144,8 +140,7 @@ public class ModelManager implements Model {
     @Override
     public boolean hasJob(Job job) {
         requireNonNull(job);
-        return filteredJobs.contains(job);
-        //return addressBook.hasJob(job);
+        return addressBook.hasJob(job);
     }
 
     @Override

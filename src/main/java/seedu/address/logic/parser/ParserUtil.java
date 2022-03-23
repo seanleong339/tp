@@ -290,6 +290,10 @@ public class ParserUtil {
         return Integer.parseInt(trimmedId);
     }
 
+    /**
+     * Parses {@code String jobstatus} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
     public static JobStatus parseJobStatus(String jobStatus) throws ParseException {
         requireNonNull(jobStatus);
         String trimmedJobStatus = jobStatus.trim();
@@ -299,6 +303,10 @@ public class ParserUtil {
         return new JobStatus(trimmedJobStatus);
     }
 
+    /**
+     * Parses {@code String Position} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
     public static Position parsePosition(String position) throws ParseException {
         requireNonNull(position);
         String trimmedPosition = position.trim();
@@ -308,10 +316,14 @@ public class ParserUtil {
         return new Position(trimmedPosition);
     }
 
+    /**
+     * Parses {@code String companyName} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
     public static CompanyName parseCompanyName(String companyName) throws ParseException {
         requireNonNull(companyName);
         String trimmedCompanyName = companyName.trim();
-        if (!Nric.isValidNric(trimmedCompanyName)) {
+        if (!CompanyName.isValidCompanyName(trimmedCompanyName)) {
             throw new ParseException(CompanyName.MESSAGE_CONSTRAINTS);
         }
         return new CompanyName(trimmedCompanyName);

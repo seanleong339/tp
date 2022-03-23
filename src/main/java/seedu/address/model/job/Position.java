@@ -8,13 +8,14 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #validPosition(String)}
  */
 public class Position {
+    public static final String MESSAGE_CONSTRAINTS = "Job position should be 'ft' (full-time) or 'pt' (part-time).";
+
     private static final String PREFIX_POSITION_FULLTIME = "ft";
     private static final String PREFIX_POSITION_PARTTIME = "pt";
 
     private static final String POSITION_FULLTIME = "full-time";
     private static final String POSITION_PARTTIME = "part-time";
 
-    public static final String MESSAGE_CONSTRAINTS = "Job position should be 'ft' (full-time) or 'pt' (part-time).";
     private final String position;
 
     /**
@@ -43,5 +44,12 @@ public class Position {
         return position.equals(PREFIX_POSITION_FULLTIME)
                 ? POSITION_FULLTIME
                 : POSITION_PARTTIME;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof seedu.address.model.job.Position // instanceof handles nulls
+                && position.equals(((seedu.address.model.job.Position) other).position)); // state check
     }
 }

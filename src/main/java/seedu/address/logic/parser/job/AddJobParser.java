@@ -1,5 +1,15 @@
 package seedu.address.logic.parser.job;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
+
+import java.util.stream.Stream;
+
 import seedu.address.logic.commands.job.AddJob;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
@@ -14,17 +24,6 @@ import seedu.address.model.job.JobTitle;
 import seedu.address.model.job.Position;
 import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
-
-import java.util.stream.Stream;
-
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_POSITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
 
 public class AddJobParser implements Parser<AddJob> {
 
@@ -42,7 +41,7 @@ public class AddJobParser implements Parser<AddJob> {
                 );
 
         if (!arePrefixesPresent(argMultimap, PREFIX_JOBTITLE, PREFIX_COMPANY_NAME, PREFIX_ADDRESS, PREFIX_QUALIFICATION,
-                PREFIX_JOBSTATUS, PREFIX_JOB_POSITION, PREFIX_SALARY)
+                PREFIX_JOB_POSITION, PREFIX_SALARY)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddJob.MESSAGE_USAGE));
         }

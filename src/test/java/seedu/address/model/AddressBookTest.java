@@ -20,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.exceptions.DuplicateApplicantException;
+import seedu.address.model.job.Job;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.testutil.ApplicantBuilder;
@@ -142,6 +143,7 @@ public class AddressBookTest {
     private static class AddressBookStub implements ReadOnlyAddressBook {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
         private final ObservableList<Applicant> applicants = FXCollections.observableArrayList();
+        private final ObservableList<Job> jobs = FXCollections.observableArrayList();
 
         // Added Person as a second parameter to avoid same type erasure between 2 Constructors
         AddressBookStub(Collection<Person> persons, Person person) {
@@ -152,15 +154,23 @@ public class AddressBookTest {
             this.applicants.setAll(applicants);
         }
 
+        AddressBookStub(Collection<Job> jobs, Job job) {
+            this.jobs.setAll(jobs);
+        }
+
         @Override
         public ObservableList<Person> getPersonList() {
             return persons;
         }
 
-        // TODO : Change to return actual "applicants".
         @Override
         public ObservableList<Applicant> getApplicantList() {
             return applicants;
+        }
+
+        @Override
+        public ObservableList<Job> getJobList() {
+            return jobs;
         }
     }
 
