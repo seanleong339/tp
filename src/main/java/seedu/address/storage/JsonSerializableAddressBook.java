@@ -12,7 +12,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.applicant.Applicant;
-import seedu.address.model.person.Person;
+import seedu.address.model.job.Job;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -20,22 +20,22 @@ import seedu.address.model.person.Person;
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_APPLICANT = "Applicants list contains duplicate applicant(s).";
+    public static final String MESSAGE_DUPLICATE_JOB = "Jobs list contains duplicate job(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedApplicant> applicants = new ArrayList<>();
+    private final List<JsonAdaptedJob> jobs = new ArrayList<>();
     private final int idCount;
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons and applicants and idCount
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
-                                       @JsonProperty("applicants") List<JsonAdaptedApplicant> applicants,
+    public JsonSerializableAddressBook(@JsonProperty("applicants") List<JsonAdaptedApplicant> applicants,
+                                       @JsonProperty("jobs") List<JsonAdaptedJob> jobs,
                                        @JsonProperty("idCount") Integer idCount) {
-        this.persons.addAll(persons);
         this.applicants.addAll(applicants);
+        this.jobs.addAll(jobs);
         this.idCount = idCount;
     }
 
@@ -45,9 +45,10 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         applicants.addAll(source.getApplicantList().stream()
                 .map(JsonAdaptedApplicant::new).collect(Collectors.toList()));
+        jobs.addAll(source.getJobList().stream()
+                .map(JsonAdaptedJob::new).collect(Collectors.toList()));
         this.idCount = source.getIdCount();
     }
 
@@ -58,12 +59,12 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Person person = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasPerson(person)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+        for (JsonAdaptedJob jsonAdaptedJob : jobs) {
+            Job job = jsonAdaptedJob.toModelType();
+            if (addressBook.hasJob(job)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_JOB);
             }
-            addressBook.addPerson(person);
+            addressBook.addJob(job);
         }
         for (JsonAdaptedApplicant jsonAdaptedApplicant : applicants) {
             Applicant applicant = jsonAdaptedApplicant.toModelType();
