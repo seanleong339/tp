@@ -53,8 +53,8 @@ class EditJobTest {
         Index indexLastJob = Index.fromOneBased(model.getFilteredJobList().size());
         Job lastJob = model.getFilteredJobList().get(indexLastJob.getZeroBased());
 
-        JobBuilder JobInList = new JobBuilder(lastJob);
-        Job editedJob = JobInList.withJobTitle(VALID_JOB_TITLE_DATA_ANALYSIS)
+        JobBuilder jobInList = new JobBuilder(lastJob);
+        Job editedJob = jobInList.withJobTitle(VALID_JOB_TITLE_DATA_ANALYSIS)
                 .withJobAddress(VALID_ADDRESS_DATA_ANALYSIS).build();
 
         EditJob.EditJobDescriptor descriptor = new EditJobDescriptorBuilder()
