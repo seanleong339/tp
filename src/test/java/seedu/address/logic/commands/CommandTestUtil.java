@@ -21,13 +21,17 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.applicant.EditApplicant;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.job.EditJob;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.NameApplicantContainsKeywordsPredicate;
+import seedu.address.model.job.Job;
+import seedu.address.model.job.NameJobContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditApplicantDescriptorBuilder;
+import seedu.address.testutil.EditJobDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -101,12 +105,12 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_PROJECT_MANAGER = "65 Chulia Street, OCBC Centre";
     public static final String VALID_QUALIFICATION_DATA_ANALYSIS = "Degree in Data Science";
     public static final String VALID_QUALIFICATION_PROJECT_MANAGER = "Degree in Business Management";
-    // TODO: MAY NEED TO CAHNGE THIS DEPENDING ON HOW JOB STATUS IS IMPLEMENTED
-    public static final String VALID_JOB_STATUS_DATA_ANALYSIS = "vacant";
-    public static final String VALID_JOB_STATUS_PROJECT_MANAGER = "filled";
 
-    public static final String VALID_POSITION_DATA_ANALYSIS = "ft";
-    public static final String VALID_POSITION_PROJECT_MANAGER = "ft";
+    public static final String VALID_JOB_STATUS_PROJECT_MANAGER = "vacant";
+    public static final String VALID_JOB_STATUS_DATA_ANALYSIS = "filled";
+
+    public static final String VALID_POSITION_FULL_TIME = "ft";
+    public static final String VALID_POSITION_PART_TIME = "pt";
     public static final String VALID_SALARY_LOW_DATA_ANALYSIS = "6000";
     public static final String VALID_SALARY_HIGH_DATA_ANALYSIS = "8000";
     public static final String VALID_SALARY_LOW_PROJECT_MANAGER = "4000";
@@ -122,8 +126,8 @@ public class CommandTestUtil {
     public static final EditApplicant.EditApplicantDescriptor DESC_DON;
     // ===================== Job ===============================
     // TODO THIS IS FOR THE EDITJOB COMMAND;
-    // public static final EditJob.EditJobDescripter DESC_DATA_ANALYSIS;
-    // public static final EditJob.EditJobDescripter DESC_PROJECT_MANAGER;
+    public static final EditJob.EditJobDescriptor DESC_DATA_ANALYSIS;
+    public static final EditJob.EditJobDescriptor DESC_PROJECT_MANAGER;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -140,7 +144,14 @@ public class CommandTestUtil {
                 .withPhone(VALID_PHONE_DON).withEmail(VALID_EMAIL_DON).withAddress(VALID_ADDRESS_DON)
                 .withNric(VALID_NRIC).withDateApplied(VALID_DATE).withInterviewDate(VALID_DATE)
                 .withQualification(VALID_QUALIFICATION).build();
-        // TODO ADD DESC_DATAANALYSIS AND PROJECT MANAGER
+        DESC_DATA_ANALYSIS = new EditJobDescriptorBuilder().withJobTitle(VALID_JOB_TITLE_DATA_ANALYSIS)
+                .withCompanyName(VALID_COMPANY_NAME_DATA_ANALYSIS).withAddress(VALID_ADDRESS_DATA_ANALYSIS)
+                .withQualification(VALID_QUALIFICATION_DATA_ANALYSIS).withPosition(VALID_POSITION_FULL_TIME)
+                .withSalary(VALID_SALARY_LOW_DATA_ANALYSIS, VALID_SALARY_HIGH_DATA_ANALYSIS).build();
+        DESC_PROJECT_MANAGER = new EditJobDescriptorBuilder().withJobTitle(VALID_JOB_TITLE_PROJECT_MANAGER)
+                .withCompanyName(VALID_COMPANY_NAME_PROJECT_MANAGER).withAddress(VALID_ADDRESS_PROJECT_MANAGER)
+                .withQualification(VALID_QUALIFICATION_DATA_ANALYSIS).withPosition(VALID_POSITION_FULL_TIME)
+                .withSalary(VALID_SALARY_LOW_PROJECT_MANAGER, VALID_SALARY_HIGH_PROJECT_MANAGER).build();
     }
 
     /**
@@ -213,7 +224,19 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredApplicantList().size());
     }
 
-    // TODO: Add showJobAtIndex
+    /**
+     * Updates {@code model}'s filtered list to show only the job at the given {@code targetIndex} in the
+     * {@code model}'s address book.
+     */
+    public static void showJobAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredJobList().size());
+
+        Job job = model.getFilteredJobList().get(targetIndex.getZeroBased());
+        final String[] splitName = job.getJobTitle().jobTitle.split("\\s+");
+        model.updateFilteredJobList(new NameJobContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredJobList().size());
+    }
 
 
 }

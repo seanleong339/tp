@@ -10,8 +10,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_JOB_STATUS_DATA
 import static seedu.address.logic.commands.CommandTestUtil.VALID_JOB_STATUS_PROJECT_MANAGER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_JOB_TITLE_DATA_ANALYSIS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_JOB_TITLE_PROJECT_MANAGER;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_DATA_ANALYSIS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_PROJECT_MANAGER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_FULL_TIME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_QUALIFICATION_DATA_ANALYSIS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_QUALIFICATION_PROJECT_MANAGER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_HIGH_DATA_ANALYSIS;
@@ -64,12 +63,12 @@ public class TypicalJobs {
     public static final Job DATA_ANALYSIS = new JobBuilder().withJobTitle(VALID_JOB_TITLE_DATA_ANALYSIS)
         .withCompanyName(VALID_COMPANY_NAME_DATA_ANALYSIS).withJobId(VALID_JOB_ID_DATA_ANALYSIS)
         .withJobAddress(VALID_ADDRESS_DATA_ANALYSIS).withJobQualification(VALID_QUALIFICATION_DATA_ANALYSIS)
-        .withJobStatus(VALID_JOB_STATUS_DATA_ANALYSIS).withJobPosition(VALID_POSITION_DATA_ANALYSIS)
+        .withJobStatus(VALID_JOB_STATUS_DATA_ANALYSIS).withJobPosition(VALID_POSITION_FULL_TIME)
         .withJobSalary(VALID_SALARY_LOW_DATA_ANALYSIS, VALID_SALARY_HIGH_DATA_ANALYSIS).build();
     public static final Job PROJECT_MANAGER = new JobBuilder().withJobTitle(VALID_JOB_TITLE_PROJECT_MANAGER)
             .withCompanyName(VALID_COMPANY_NAME_PROJECT_MANAGER).withJobId(VALID_JOB_ID_PROJECT_MANAGER)
             .withJobAddress(VALID_ADDRESS_PROJECT_MANAGER).withJobQualification(VALID_QUALIFICATION_PROJECT_MANAGER)
-            .withJobStatus(VALID_JOB_STATUS_PROJECT_MANAGER).withJobPosition(VALID_POSITION_PROJECT_MANAGER)
+            .withJobStatus(VALID_JOB_STATUS_PROJECT_MANAGER).withJobPosition(VALID_POSITION_FULL_TIME)
             .withJobSalary(VALID_SALARY_LOW_PROJECT_MANAGER, VALID_SALARY_HIGH_PROJECT_MANAGER).build();
 
     private TypicalJobs() {} // prevents instantiation
