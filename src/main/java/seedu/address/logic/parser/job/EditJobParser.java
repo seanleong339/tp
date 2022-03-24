@@ -54,7 +54,7 @@ public class EditJobParser implements Parser<EditJob> {
             editJobDescriptor.setPosition(ParserUtil.parsePosition(argMultimap.getValue(PREFIX_JOB_POSITION).get()));
         }
         if (argMultimap.getValue(PREFIX_SALARY).isPresent()) {
-            editJobDescriptor.setPosition(ParserUtil.parsePosition(argMultimap.getValue(PREFIX_SALARY).get()));
+            editJobDescriptor.setSalary(ParserUtil.parseSalary(argMultimap.getValue(PREFIX_SALARY).get()));
         }
         if (!editJobDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditJob.MESSAGE_NOT_EDITED);

@@ -3,14 +3,18 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEAPPLIED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -115,6 +119,28 @@ public class CommandTestUtil {
     public static final String VALID_SALARY_HIGH_DATA_ANALYSIS = "8000";
     public static final String VALID_SALARY_LOW_PROJECT_MANAGER = "4000";
     public static final String VALID_SALARY_HIGH_PROJECT_MANAGER = "5000";
+
+    // First character in Job Title cannot be a whitespace.
+    public static final String INVALID_JOB_TITLE_DESC = " " + PREFIX_JOBTITLE + " Degree in Chemistry#";
+    // First character in Company name cannot be a whitespace.
+    public static final String INVALID_COMPANY_NAME_DESC = " " + PREFIX_COMPANY_NAME + " ";
+    // Only 'ft' and 'pt' are valid inputs.
+    public static final String INVALID_POSITION_DESC = " " + PREFIX_JOB_POSITION + "something";
+    // First value of the range must be lower than the second value of the range.
+    public static final String INVALID_SALARY_DESC = " " + PREFIX_SALARY + "4000-3000";
+
+    public static final String JOB_TITLE_DESC_DATA_ANALYSIS = " " + PREFIX_JOBTITLE + VALID_JOB_TITLE_DATA_ANALYSIS;
+    public static final String JOB_TITLE_DESC_PROJECT_MANAGER = " " + PREFIX_JOBTITLE + VALID_JOB_TITLE_PROJECT_MANAGER;
+    public static final String COMPANY_NAME_DESC_DATA_ANALYSIS = " " + PREFIX_COMPANY_NAME
+            + VALID_COMPANY_NAME_DATA_ANALYSIS;
+    public static final String COMPANY_NAME_DESC_PROJECT_MANAGER = " " + PREFIX_COMPANY_NAME
+            + VALID_COMPANY_NAME_PROJECT_MANAGER;
+    public static final String POSITION_DESC_DATA_ANALYSIS = " " + PREFIX_JOB_POSITION + VALID_POSITION_FULL_TIME;
+    public static final String POSITION_DESC_PROJECT_MANAGER = " " + PREFIX_JOB_POSITION + VALID_POSITION_FULL_TIME;
+    public static final String SALARY_DESC_DATA_ANALYSIS = " " + PREFIX_SALARY + VALID_SALARY_LOW_DATA_ANALYSIS + "-"
+            + VALID_SALARY_HIGH_DATA_ANALYSIS;
+    public static final String SALARY_DESC_PROJECT_MANAGER = " " + PREFIX_SALARY + VALID_SALARY_LOW_PROJECT_MANAGER
+            + "-" + VALID_SALARY_HIGH_PROJECT_MANAGER;
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
