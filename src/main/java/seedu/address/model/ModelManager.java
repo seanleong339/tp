@@ -237,24 +237,8 @@ public class ModelManager implements Model {
         return Integer.toString(id);
     }
 
-    /**
-     * Returns an unmodifiable view of the list of {@code Job} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public ObservableList<Job> getFilteredJobList() {
-        return filteredJobs;
-    }
-
     @Override
     public void deleteJob(Job target) {
         addressBook.removeJob(target);
     }
-
-    @Override
-    public void updateFilteredJobList(Predicate<Job> predicate) {
-        requireNonNull(predicate);
-        filteredJobs.setPredicate(predicate);
-    }
 }
-

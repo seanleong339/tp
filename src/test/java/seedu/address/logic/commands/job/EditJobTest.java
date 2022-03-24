@@ -87,8 +87,8 @@ class EditJobTest {
     public void execute_filteredList_success() {
         showJobAtIndex(model, INDEX_FIRST_PERSON);
 
-        Job JobInFilteredList = model.getFilteredJobList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Job editedJob = new JobBuilder(JobInFilteredList).withJobTitle(VALID_JOB_TITLE_PROJECT_MANAGER).build();
+        Job jobInFilteredList = model.getFilteredJobList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Job editedJob = new JobBuilder(jobInFilteredList).withJobTitle(VALID_JOB_TITLE_PROJECT_MANAGER).build();
         EditJob editJob = new EditJob(INDEX_FIRST_PERSON,
                 new EditJobDescriptorBuilder().withJobTitle(VALID_JOB_TITLE_PROJECT_MANAGER).build());
 
@@ -114,9 +114,9 @@ class EditJobTest {
         showJobAtIndex(model, INDEX_FIRST_PERSON);
 
         // edit Job in filtered list into a duplicate in address book
-        Job JobInList = model.getAddressBook().getJobList().get(INDEX_SECOND_PERSON.getZeroBased());
+        Job jobInList = model.getAddressBook().getJobList().get(INDEX_SECOND_PERSON.getZeroBased());
         EditJob editCommand = new EditJob(INDEX_FIRST_PERSON,
-                new EditJobDescriptorBuilder(JobInList).build());
+                new EditJobDescriptorBuilder(jobInList).build());
 
         assertCommandFailure(editCommand, model, EditJob.MESSAGE_DUPLICATE_JOB);
     }
