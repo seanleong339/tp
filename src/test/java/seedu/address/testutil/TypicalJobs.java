@@ -75,6 +75,6 @@ public class TypicalJobs {
     }
 
     public static List<Job> getTypicalJobs() {
-        return new ArrayList<>(Arrays.asList(SOFTWARE_ENGINEER, ENGINEER));
+        return new ArrayList<>(Arrays.asList(DATA_ANALYSIS, PROJECT_MANAGER));
     }
 }
