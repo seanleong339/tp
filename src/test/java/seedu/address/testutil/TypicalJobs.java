@@ -19,7 +19,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_HIGH_PRO
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_LOW_DATA_ANALYSIS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_LOW_PROJECT_MANAGER;
 import static seedu.address.testutil.TypicalApplicants.getTypicalApplicants;
-import static seedu.address.testutil.TypicalPersons.getTypicalPersons;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,15 +27,14 @@ import java.util.List;
 import seedu.address.model.AddressBook;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.job.Job;
-import seedu.address.model.person.Person;
 
 public class TypicalJobs {
     public static final Job SOFTWARE_ENGINEER = new JobBuilder().withJobTitle("Software Engineer")
-            .withCompanyName("Google").withJobId("12332").withJobAddress("123 Google Road")
+            .withCompanyName("Google").withJobId("3").withJobAddress("123 Google Road")
             .withJobQualification("Degree in Computer Science").withJobStatus("filled")
             .withJobPosition("ft").withJobSalary("5000", "6000").build();
     public static final Job ENGINEER = new JobBuilder().withJobTitle("Engineer")
-            .withCompanyName("Visa").withJobId("1432").withJobAddress("123 Visa Road")
+            .withCompanyName("Visa").withJobId("4").withJobAddress("123 Visa Road")
             .withJobQualification("Degree in Engineering").withJobStatus("filled")
             .withJobPosition("ft").withJobSalary("4000", "6000").build();
     // TODO: 6 MORE JOBS
@@ -60,21 +58,17 @@ public class TypicalJobs {
      */
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
-        for (Person person : getTypicalPersons()) {
-            ab.addPerson(person);
-        }
         for (Applicant applicant: getTypicalApplicants()) {
             ab.addApplicant(applicant);
         }
-
         for (Job job : getTypicalJobs()) {
-            // TODO CHANGE THIS ONCE ADDRESSBOOK IS CHANGED
-            // ab.addJob(job);
+            ab.addJob(job);
         }
+        ab.setIdCount(9);
         return ab;
     }
 
     public static List<Job> getTypicalJobs() {
-        return new ArrayList<>(Arrays.asList());
+        return new ArrayList<>(Arrays.asList(DATA_ANALYSIS, PROJECT_MANAGER));
     }
 }

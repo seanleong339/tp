@@ -95,13 +95,12 @@ public class CommandTestUtil {
     public static final String VALID_JOB_TITLE_PROJECT_MANAGER = "Project Manager";
     public static final String VALID_COMPANY_NAME_DATA_ANALYSIS = "Facebook";
     public static final String VALID_COMPANY_NAME_PROJECT_MANAGER = "OCBC";
-    public static final String VALID_JOB_ID_DATA_ANALYSIS = "10101";
-    public static final String VALID_JOB_ID_PROJECT_MANAGER = "12345";
+    public static final String VALID_JOB_ID_DATA_ANALYSIS = "1";
+    public static final String VALID_JOB_ID_PROJECT_MANAGER = "2";
     public static final String VALID_ADDRESS_DATA_ANALYSIS = "9 Straits View, Marina One";
     public static final String VALID_ADDRESS_PROJECT_MANAGER = "65 Chulia Street, OCBC Centre";
     public static final String VALID_QUALIFICATION_DATA_ANALYSIS = "Degree in Data Science";
     public static final String VALID_QUALIFICATION_PROJECT_MANAGER = "Degree in Business Management";
-    // TODO: MAY NEED TO CAHNGE THIS DEPENDING ON HOW JOB STATUS IS IMPLEMENTED
     public static final String VALID_JOB_STATUS_DATA_ANALYSIS = "vacant";
     public static final String VALID_JOB_STATUS_PROJECT_MANAGER = "filled";
 

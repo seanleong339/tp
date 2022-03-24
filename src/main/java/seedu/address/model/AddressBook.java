@@ -74,6 +74,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         setPersons(newData.getPersonList());
         setApplicants(newData.getApplicantList());
+        setJobs(newData.getJobList());
         this.idCount = newData.getIdCount();
 
     }
@@ -170,6 +171,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         jobs.add(job);
     }
 
+    /**
+     * Replaces the contents of the job list with {@code jobs}.
+     * {@code jobs} must not contain duplicate jobs.
+     */
+    public void setJobs(List<Job> jobs) {
+        this.jobs.setJobs(jobs);
+    }
     //// IdCount methods
 
     /**
@@ -192,8 +200,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public String toString() {
         // TODO: change this back if there is an error
-        return persons.asUnmodifiableObservableList().size() + " persons "
-                + applicants.asUnmodifiableObservableList().size() + " applicants";
+        return applicants.asUnmodifiableObservableList().size() + " applicants"
+                + jobs.asUnmodifiableObservableList().size() + " jobs";
         // TODO: refine later
     }
 
