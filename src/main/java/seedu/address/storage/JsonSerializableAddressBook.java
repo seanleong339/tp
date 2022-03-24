@@ -25,15 +25,18 @@ class JsonSerializableAddressBook {
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedApplicant> applicants = new ArrayList<>();
+    private final int idCount;
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons and applicants.
+     * Constructs a {@code JsonSerializableAddressBook} with the given persons and applicants and idCount
      */
     @JsonCreator
     public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
-                                       @JsonProperty("applicants") List<JsonAdaptedApplicant> applicants) {
+                                       @JsonProperty("applicants") List<JsonAdaptedApplicant> applicants,
+                                       @JsonProperty("idCount") Integer idCount) {
         this.persons.addAll(persons);
         this.applicants.addAll(applicants);
+        this.idCount = idCount;
     }
 
     /**
@@ -45,6 +48,7 @@ class JsonSerializableAddressBook {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         applicants.addAll(source.getApplicantList().stream()
                 .map(JsonAdaptedApplicant::new).collect(Collectors.toList()));
+        this.idCount = source.getIdCount();
     }
 
     /**
@@ -68,6 +72,7 @@ class JsonSerializableAddressBook {
             }
             addressBook.addApplicant(applicant);
         }
+        addressBook.setIdCount(this.idCount);
         return addressBook;
     }
 

@@ -15,7 +15,10 @@ import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
+import seedu.address.model.job.CompanyName;
+import seedu.address.model.job.JobStatus;
 import seedu.address.model.job.JobTitle;
+import seedu.address.model.job.Position;
 import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -250,27 +253,30 @@ public class ParserUtil {
     public static String parseApplicantStatus(String applicationStatus) throws ParseException {
         requireNonNull(applicationStatus);
         String trimmedApplicationStatus = applicationStatus.trim();
-        if (!ApplicantStatus.isValidStatus(trimmedApplicationStatus)) {
-            throw new ParseException(ApplicantStatus.MESSAGE_CONSTRAINTS);
-        }
-        String status;
-        switch(applicationStatus) {
+
+        String numericStatus;
+
+        switch(trimmedApplicationStatus) {
         case "rejected":
-            status = "0";
+            numericStatus = "0";
             break;
         case "pending":
-            status = "1";
+            numericStatus = "1";
             break;
         case "interviewed":
-            status = "2";
+            numericStatus = "2";
             break;
         case "accepted":
-            status = "3";
+            numericStatus = "3";
             break;
         default:
-            status = "1";
+            numericStatus = "-1";
         }
-        return status;
+
+        if (!ApplicantStatus.isValidStatus(numericStatus)) {
+            throw new ParseException(ApplicantStatus.MESSAGE_CONSTRAINTS);
+        }
+        return numericStatus;
     }
 
     /**
@@ -286,4 +292,44 @@ public class ParserUtil {
         }
         return Integer.parseInt(trimmedId);
     }
+
+    /**
+     * Parses {@code String jobstatus} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
+    public static JobStatus parseJobStatus(String jobStatus) throws ParseException {
+        requireNonNull(jobStatus);
+        String trimmedJobStatus = jobStatus.trim();
+        if (!JobStatus.isValid(jobStatus)) {
+            throw new ParseException(JobStatus.MESSAGE_CONSTRAINTS);
+        }
+        return new JobStatus(trimmedJobStatus);
+    }
+
+    /**
+     * Parses {@code String Position} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
+    public static Position parsePosition(String position) throws ParseException {
+        requireNonNull(position);
+        String trimmedPosition = position.trim();
+        if (!Position.validPosition(position)) {
+            throw new ParseException(Position.MESSAGE_CONSTRAINTS);
+        }
+        return new Position(trimmedPosition);
+    }
+
+    /**
+     * Parses {@code String companyName} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
+    public static CompanyName parseCompanyName(String companyName) throws ParseException {
+        requireNonNull(companyName);
+        String trimmedCompanyName = companyName.trim();
+        if (!CompanyName.isValidCompanyName(trimmedCompanyName)) {
+            throw new ParseException(CompanyName.MESSAGE_CONSTRAINTS);
+        }
+        return new CompanyName(trimmedCompanyName);
+    }
+
 }

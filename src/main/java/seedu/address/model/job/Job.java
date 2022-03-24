@@ -42,10 +42,10 @@ public class Job {
     /**
      * Creates a Job object with minimum required attributes for use by Add method
      */
-    public Job(JobTitle title, CompanyName company, JobId id,
+    public Job(JobTitle title, CompanyName company,
                Address address, Qualification qualification,
                Position position, Salary salary) {
-        requireAllNonNull(title, company, id, address, qualification, position, salary);
+        requireAllNonNull(title, company, address, qualification, position, salary);
         this.jobTitle = title;
         this.companyName = company;
         this.id = new JobId();
