@@ -2,6 +2,7 @@ package seedu.address.logic.commands.job;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.applicant.EditApplicant;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -13,13 +14,20 @@ import seedu.address.model.applicant.InterviewDate;
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
+import seedu.address.model.job.CompanyName;
+import seedu.address.model.job.JobTitle;
+import seedu.address.model.job.Position;
+import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static java.util.Objects.requireNonNull;
@@ -73,11 +81,11 @@ public class EditJob {
      * @param index of the job in the filtered job list to edit
      * @param editJobDescriptor details to edit the job with
      */
-    public EditJob(Index index, EditApplicantDescriptor editApplicantDescriptor) {
-        requireAllNonNull(index, editApplicantDescriptor);
+    public EditJob(Index index, EditJobDescriptor editJobDescriptor) {
+        requireAllNonNull(index, editJobDescriptor);
 
         this.index = index;
-        this.editApplicantDescriptor = new EditApplicant.EditApplicantDescriptor(editApplicantDescriptor);
+        this.editJobDescriptor = new EditApplicantDescriptor(editJobDescriptor);
     }
 
     @Override
@@ -147,4 +155,158 @@ public class EditJob {
         return index.equals(e.index)
                 && editApplicantDescriptor.equals(e.editApplicantDescriptor);
     }
+
+
+    /**
+     * Stores the details to edit the job with. Each non-empty field value will replace the
+     * corresponding field value of the job.
+     */
+    public static class EditJobDescriptor {
+        private JobTitle jobTitle;
+        private CompanyName companyName;
+        private Address address;
+        private Qualification qualification;
+        private Position position;
+        private Salary salary;
+
+        public EditJobDescriptor() {}
+
+        /**
+         * Copy constructor.
+         * A defensive copy of {@code tags} is used internally.
+         */
+        public EditJobDescriptor(EditJobDescriptor toCopy) {
+            setJobTitle(toCopy.jobTitle);
+            setCompanyName(toCopy.companyName);
+            setAddress(toCopy.address);
+            setQualification(toCopy.qualification);
+
+            setTags(toCopy.tags);
+        }
+
+        /**
+         * Returns true if at least one field is edited.
+         */
+        public boolean isAnyFieldEdited() {
+            return CollectionUtil.isAnyNonNull(
+                    name, phone, nric, email, address, interviewDate, qualification, dateApplied, tags, jobId);
+        }
+
+        public void setName(Name name) {
+            this.name = name;
+        }
+
+        public Optional<Name> getName() {
+            return Optional.ofNullable(name);
+        }
+
+        public void setPhone(Phone phone) {
+            this.phone = phone;
+        }
+
+        public Optional<Phone> getPhone() {
+            return Optional.ofNullable(phone);
+        }
+
+        public void setEmail(Email email) {
+            this.email = email;
+        }
+
+        public Optional<Email> getEmail() {
+            return Optional.ofNullable(email);
+        }
+
+        public void setAddress(Address address) {
+            this.address = address;
+        }
+
+        public Optional<Address> getAddress() {
+            return Optional.ofNullable(address);
+        }
+
+        public void setNric(Nric nric) {
+            this.nric = nric;
+        }
+
+        public Optional<Nric> getNric() {
+            return Optional.ofNullable(nric);
+        }
+
+        public void setQualification(Qualification qualification) {
+            this.qualification = qualification;
+        }
+
+        public Optional<Qualification> getQualification() {
+            return Optional.ofNullable(qualification);
+        }
+
+        public void setDateApplied(DateApplied dateApplied) {
+            this.dateApplied = dateApplied;
+        }
+
+        public Optional<DateApplied> getDateApplied() {
+            return Optional.ofNullable(dateApplied);
+        }
+
+        public void setJobId(JobId jobId) {
+            this.jobId = jobId;
+        }
+
+        public Optional<JobId> getJobId() {
+            return Optional.ofNullable(jobId);
+        }
+
+        public void setInterviewDate(InterviewDate interviewDate) {
+            this.interviewDate = interviewDate;
+        }
+
+        public Optional<InterviewDate> getInterviewDate() {
+            return Optional.ofNullable(interviewDate);
+        }
+
+        /**
+         * Sets {@code tags} to this object's {@code tags}.
+         * A defensive copy of {@code tags} is used internally.
+         */
+        public void setTags(Set<Tag> tags) {
+            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        }
+
+        /**
+         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code tags} is null.
+         */
+        public Optional<Set<Tag>> getTags() {
+            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            // short circuit if same object
+            if (other == this) {
+                return true;
+            }
+
+            // instanceof handles nulls
+            if (!(other instanceof EditJobDescriptor)) {
+                return false;
+            }
+
+            // state check
+            EditJobDescriptor e = (EditJobDescriptor) other;
+
+            return getName().equals(e.getName())
+                    && getPhone().equals(e.getPhone())
+                    && getEmail().equals(e.getEmail())
+                    && getAddress().equals(e.getAddress())
+                    && getNric().equals(e.getNric())
+                    && getDateApplied().equals(e.getDateApplied())
+                    && getInterviewDate().equals(e.getInterviewDate())
+                    && getQualification().equals(e.getQualification())
+                    && getJobId().equals(e.getJobId())
+                    && getTags().equals(e.getTags());
+        }
+    }
+
 }
