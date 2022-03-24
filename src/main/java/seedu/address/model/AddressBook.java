@@ -212,7 +212,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public String toString() {
         // TODO: change this back if there is an error
         return persons.asUnmodifiableObservableList().size() + " persons "
-                + applicants.asUnmodifiableObservableList().size() + " applicants"
+                + applicants.asUnmodifiableObservableList().size() + " applicants "
                 + jobs.asUnmodifiableObservableList().size() + " jobs";
         // TODO: refine later
     }
@@ -243,7 +243,8 @@ public class AddressBook implements ReadOnlyAddressBook {
                 || (other instanceof AddressBook // instanceof handles nulls
                 // TODO: change back if there is error
                 && persons.equals(((AddressBook) other).persons)
-                && applicants.equals(((AddressBook) other).applicants))
+                && applicants.equals(((AddressBook) other).applicants)
+                && jobs.equals(((AddressBook) other).jobs))
                 && idCount == (((AddressBook) other).idCount);
     }
 

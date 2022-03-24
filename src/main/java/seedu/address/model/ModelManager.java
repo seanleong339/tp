@@ -193,6 +193,10 @@ public class ModelManager implements Model {
         filteredApplicants.setPredicate(predicate);
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Job} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
     @Override
     public ObservableList<Job> getFilteredJobList() {
         return filteredJobs;

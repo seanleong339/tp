@@ -105,6 +105,7 @@ public class EditJob extends Command {
         Position updatedPosition = editJobDescriptor.getPosition().orElse(jobToEdit.getPosition());
         Salary updatedSalary = editJobDescriptor.getSalary().orElse((jobToEdit.getSalary()));
 
+        // Get the old values
         JobId updatedJobId = jobToEdit.getJobId();
         JobStatus updatedJobStatus = jobToEdit.getJobStatus();
 

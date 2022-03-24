@@ -58,7 +58,6 @@ public class EditApplicant extends Command {
             + "[" + PREFIX_DATEAPPLIED + "DATE APPLIED] "
             + "[" + PREFIX_JOB + "JOB ID] "
             + "[" + PREFIX_DATEINTERVIEW + "DATE OF INTERVIEW] "
-            + "[" + PREFIX_STATUS + "APPLICATION STATUS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
