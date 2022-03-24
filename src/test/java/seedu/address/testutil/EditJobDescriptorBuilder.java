@@ -32,7 +32,6 @@ public class EditJobDescriptorBuilder {
         descriptor.setQualification(job.getQualification());
         descriptor.setPosition(job.getPosition());
         descriptor.setSalary(job.getSalary());
-
     }
 
     /**

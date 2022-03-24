@@ -46,7 +46,8 @@ class EditJobDescriptorTest {
         assertFalse(DESC_PROJECT_MANAGER.equals(editedProjectManager));
 
         // different address -> returns false
-        editedProjectManager = new EditJobDescriptorBuilder(DESC_PROJECT_MANAGER).withAddress(VALID_ADDRESS_BOB).build();
+        editedProjectManager = new EditJobDescriptorBuilder(DESC_PROJECT_MANAGER)
+                .withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(DESC_PROJECT_MANAGER.equals(editedProjectManager));
 
         // different qualification -> returns false
