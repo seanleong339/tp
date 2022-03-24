@@ -15,7 +15,21 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.applicant.AddApplicant;
+import seedu.address.logic.commands.applicant.DeleteApplicant;
+import seedu.address.logic.commands.applicant.EditApplicant;
+import seedu.address.logic.commands.applicant.ListApplicant;
+import seedu.address.logic.commands.applicant.MarkApplicant;
+import seedu.address.logic.commands.job.AddJob;
+import seedu.address.logic.commands.job.DeleteJob;
+import seedu.address.logic.commands.job.ListJob;
+import seedu.address.logic.parser.applicant.AddApplicantParser;
+import seedu.address.logic.parser.applicant.DeleteApplicantParser;
+import seedu.address.logic.parser.applicant.EditApplicantParser;
+import seedu.address.logic.parser.applicant.MarkApplicantParser;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.job.AddJobParser;
+import seedu.address.logic.parser.job.DeleteJobParser;
 
 /**
  * Parses user input.
@@ -68,6 +82,28 @@ public class AddressBookParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
+        case EditApplicant.COMMAND_WORD:
+            return new EditApplicantParser().parse(arguments);
+
+        case AddApplicant.COMMAND_WORD:
+            return new AddApplicantParser().parse(arguments);
+
+        case MarkApplicant.COMMAND_WORD:
+            return new MarkApplicantParser().parse(arguments);
+
+        case DeleteApplicant.COMMAND_WORD:
+            return new DeleteApplicantParser().parse(arguments);
+
+        case AddJob.COMMAND_WORD:
+            return new AddJobParser().parse(arguments);
+        case ListApplicant.COMMAND_WORD:
+            return new ListApplicant();
+
+        case ListJob.COMMAND_WORD:
+            return new ListJob();
+
+        case DeleteJob.COMMAND_WORD:
+            return new DeleteJobParser().parse(arguments);
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

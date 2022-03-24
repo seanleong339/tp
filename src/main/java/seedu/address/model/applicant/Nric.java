@@ -8,13 +8,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Nric {
 
-    public static final String MESSAGE_CONSTRAINTS = "Nric can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Nric must be a string with the format "
+            + "[Char][7 numeric digits][Char]";
 
     /*
-     * The first character of the Nric must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * The Nric must be in the format [Char][7 numeric digits][Char].
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "^[a-zA-z]\\d{7}[a-zA-Z]$";
 
     public final String value;
 
@@ -45,13 +45,12 @@ public class Nric {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof seedu.address.model.applicant.Nric
-                && value.equals(((seedu.address.model.applicant.Nric) other).value));
+                && value.toLowerCase().equals(((seedu.address.model.applicant.Nric) other).value.toLowerCase()));
     }
 
     @Override
     public int hashCode() {
         return value.hashCode();
     }
-
 }
 

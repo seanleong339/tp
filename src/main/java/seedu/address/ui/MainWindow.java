@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -16,6 +17,8 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.applicant.ApplicantListPanel;
+import seedu.address.ui.applicant.InfoPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -32,6 +35,9 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private ApplicantListPanel applicantListPanel;
+    private InfoPanel infoPanel;
+
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -45,10 +51,20 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane personListPanelPlaceholder;
 
     @FXML
+    private StackPane applicantListPanelPlaceholder;
+
+    @FXML
+    private StackPane infoPanelPlaceholder;
+
+    @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private TabPane tabs;
+
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -110,9 +126,18 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        // Displays person list
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
+        // Displays applicant list
+        infoPanel = new InfoPanel();
+        applicantListPanel = new ApplicantListPanel(logic.getFilteredApplicantList(), infoPanel);
+        applicantListPanelPlaceholder.getChildren().add(applicantListPanel.getRoot());
+        infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
+        applicantListPanel.handleApplicantClicks();
+
+        // displays command result
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -122,6 +147,7 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
+
 
     /**
      * Sets the default size based on {@code guiSettings}.
@@ -163,8 +189,12 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    private void handleListApplicant() {
+        tabs.getSelectionModel().select(0);
+    }
+
+    private void handleListJob() {
+        tabs.getSelectionModel().select(1);
     }
 
     /**
@@ -184,6 +214,14 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isListApplicant()) {
+                handleListApplicant();
+            }
+
+            if (commandResult.isListJob()) {
+                handleListJob();
             }
 
             return commandResult;
