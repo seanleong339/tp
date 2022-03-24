@@ -171,6 +171,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Job> getFilteredJobList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public String getIdCount() {
             throw new AssertionError("This method should not be called.");
         }

@@ -158,17 +158,17 @@ public class InfoPanel extends UiPart<Region> {
     private void setApplicantStatusStyle(String status) {
         ninthLabel.setText(status);
         if (status.equals("REJECTED")) {
-            ninthLabel.setStyle("-fx-background-color:rgb(189, 94, 94); -fx-background-radius: 10; " +
-                    "-fx-padding: 3; -fx-text-fill: white;");
+            ninthLabel.setStyle("-fx-background-color:rgb(189, 94, 94); -fx-background-radius: 10; "
+                    + "-fx-padding: 3; -fx-text-fill: white;");
         } else if (status.equals("ACCEPTED")) {
-            ninthLabel.setStyle("-fx-background-color:rgb(66, 128, 83); -fx-background-radius: 10; " +
-                    "-fx-padding: 3; -fx-text-fill: white;");
+            ninthLabel.setStyle("-fx-background-color:rgb(66, 128, 83); -fx-background-radius: 10; "
+                    + "-fx-padding: 3; -fx-text-fill: white;");
         } else if (status.equals("INTERVIEWED")) {
-            ninthLabel.setStyle("-fx-background-color:rgb(237, 196, 114); -fx-background-radius: 10; " +
-                    "-fx-padding: 3; -fx-text-fill: #707070;");
+            ninthLabel.setStyle("-fx-background-color:rgb(237, 196, 114); -fx-background-radius: 10; "
+                    + "-fx-padding: 3; -fx-text-fill: #707070;");
         } else {
-            ninthLabel.setStyle("-fx-background-color:rgb(61, 61, 61);-fx-background-radius: 10; " +
-                    "-fx-padding: 3; -fx-text-fill: white;");
+            ninthLabel.setStyle("-fx-background-color:rgb(61, 61, 61);-fx-background-radius: 10; "
+                    + "-fx-padding: 3; -fx-text-fill: white;");
         }
     }
 
@@ -232,11 +232,11 @@ public class InfoPanel extends UiPart<Region> {
     private void setJobPositionStyle(String position) {
         secondLabel.setText(position);
         if (position.equals("part-time")) {
-            secondLabel.setStyle("-fx-background-color:rgb(237, 196, 114); -fx-background-radius: 10; " +
-                    "-fx-padding: 3; -fx-text-fill: #707070;");
+            secondLabel.setStyle("-fx-background-color:rgb(237, 196, 114); -fx-background-radius: 10; "
+                    + "-fx-padding: 3; -fx-text-fill: #707070;");
         } else if (position.equals("full-time")) {
-            secondLabel.setStyle("-fx-background-color:rgb(78, 96, 145); -fx-background-radius: 10; " +
-                    "-fx-padding: 3; -fx-text-fill: white;");
+            secondLabel.setStyle("-fx-background-color:rgb(78, 96, 145); -fx-background-radius: 10; "
+                    + "-fx-padding: 3; -fx-text-fill: white;");
         }
     }
 
@@ -248,11 +248,11 @@ public class InfoPanel extends UiPart<Region> {
     private void setJobStatusStyle(String status) {
         fifthLabel.setText(status);
         if (status.equals("vacant")) {
-            fifthLabel.setStyle("-fx-background-color: rgb(66, 128, 83); -fx-background-radius: 10; " +
-                    "-fx-padding: 3; -fx-text-fill: white");
+            fifthLabel.setStyle("-fx-background-color: rgb(66, 128, 83); -fx-background-radius: 10; "
+                    + "-fx-padding: 3; -fx-text-fill: white");
         } else if (status.equals("filled")) {
-            fifthLabel.setStyle("-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 10; " +
-                    "-fx-padding: 3; -fx-text-fill: white;");
+            fifthLabel.setStyle("-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 10; "
+                    + "-fx-padding: 3; -fx-text-fill: white;");
         }
     }
 

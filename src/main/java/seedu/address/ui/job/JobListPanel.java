@@ -40,7 +40,7 @@ public class JobListPanel extends UiPart<Region> {
     public void handleJobClicks() {
         jobListView.setOnMouseClicked(event -> {
             Job job = jobListView.getSelectionModel().getSelectedItem();
-            if(job != null) {
+            if (job != null) {
                 infoPanel.setJobInfo(job);
             }
         });
