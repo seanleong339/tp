@@ -31,7 +31,7 @@ import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.NameApplicantContainsKeywordsPredicate;
 import seedu.address.model.job.Job;
-import seedu.address.model.job.NameJobContainsKeywordsPredicate;
+import seedu.address.model.job.JobTitleContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditApplicantDescriptorBuilder;
@@ -262,6 +262,7 @@ public class CommandTestUtil {
         model.updateFilteredJobList(new NameJobContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredJobList().size());
+
     }
 
 
