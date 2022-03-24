@@ -67,6 +67,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the applicant list with {@code applicants}.
+     * {@code applicants} must not contain duplicate applicants.
+     */
+    public void setJobs(List<Job> jobs) {
+        this.jobs.setJobs(jobs);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
 
@@ -154,7 +162,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         applicants.remove(key);
     }
 
-    // Job methods
+    // job-level operations
 
     /**
      * Returns true if a job with the same identity as {@code job} exists in the address book.
@@ -170,14 +178,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addJob(Job job) {
         jobs.add(job);
-    }
-
-    /**
-     * Replaces the contents of the job list with {@code jobs}.
-     * {@code jobs} must not contain duplicate jobs.
-     */
-    public void setJobs(List<Job> jobs) {
-        this.jobs.setJobs(jobs);
     }
 
     //// IdCount methods

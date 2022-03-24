@@ -137,16 +137,12 @@ public class ModelManager implements Model {
         addressBook.setApplicant(target, editedApplicant);
     }
 
+
+
     @Override
     public boolean hasJob(Job job) {
         requireNonNull(job);
         return addressBook.hasJob(job);
-    }
-
-    @Override
-    public void addJob(Job job) {
-        requireNonNull(job);
-        addressBook.addJob(job);
     }
 
     @Override
@@ -156,6 +152,11 @@ public class ModelManager implements Model {
         addressBook.setJob(target, editedJob);
     }
 
+    @Override
+    public void addJob(Job job) {
+        requireNonNull(job);
+        addressBook.addJob(job);
+    }
 
     //=========== Filtered Person List Accessors =============================================================
 
@@ -188,7 +189,6 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredApplicants.setPredicate(predicate);
     }
-
 
     @Override
     public boolean equals(Object obj) {

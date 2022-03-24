@@ -105,26 +105,6 @@ public interface Model {
      */
     void deleteApplicant(Applicant target);
 
-    // ============================= Job ================================
-
-    /**
-     * Add a given job to filteredlist
-     */
-    void addJob(Job job);
-
-    /**
-     * Returns true if a job with the same identity as {@code job} exists in the address book.
-     */
-    boolean hasJob(Job job);
-
-
-    /**
-     * Returns the current IdCount()
-     */
-    String getIdCount();
-
-    //--------------ReCLIne------------------------------
-
     /**
      * Adds a given Applicant to filteredList
      */
@@ -141,14 +121,40 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Applicant> getFilteredApplicantList();
 
+
     /**
      * Updates the filter of the filtered applicant list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredApplicantList(Predicate<Applicant> predicate);
 
-    /** Returns an unmodifiable view of the filtered job list */
+    // ============================= Job ================================
+
+    /**
+     * Add a given job to filteredlist
+     */
+    void addJob(Job job);
+
+    /**
+     * Returns true if a job with the same identity as {@code job} exists in the address book.
+     */
+    boolean hasJob(Job job);
+
+    /**
+     * Replaces the given job {@code target} with {@code editedJob}.
+     * {@code target} must exist in the address book.
+     * The job identity of {@code editedJob} must not be the same as another existing job
+     * in the address book.
+     */
+    void setJob(Job target, Job editedJob);
+
+    /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Job> getFilteredJobList();
+
+    /**
+     * Returns the current IdCount()
+     */
+    String getIdCount();
 
     /**
      * Deletes the given job.
@@ -161,13 +167,5 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredJobList(Predicate<Job> predicate);
-
-    /**
-     * Replaces the given job {@code target} with {@code editedJob}.
-     * {@code target} must exist in the address book.
-     * The job identity of {@code editedJob} must not be the same as another existing job
-     * in the address book.
-     */
-    void setJob(Job target, Job editedJob);
 }
 
