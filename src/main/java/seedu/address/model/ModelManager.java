@@ -138,9 +138,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteApplicant(Applicant target) {
+        addressBook.removeApplicant(target);
+    }
+
+    @Override
     public boolean hasJob(Job job) {
         requireNonNull(job);
         return addressBook.hasJob(job);
+    }
+
+    @Override
+    public void setJob(Job target, Job editedJob) {
+        requireAllNonNull(target, editedJob);
+
+        addressBook.setJob(target, editedJob);
     }
 
     @Override
@@ -181,6 +193,17 @@ public class ModelManager implements Model {
         filteredApplicants.setPredicate(predicate);
     }
 
+    @Override
+    public ObservableList<Job> getFilteredJobList() {
+        return filteredJobs;
+    }
+
+    @Override
+    public void updateFilteredJobList(Predicate<Job> predicate) {
+        requireNonNull(predicate);
+        filteredJobs.setPredicate(predicate);
+
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -198,13 +221,9 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && userPrefs.equals(other.userPrefs)
-                 && filteredPersons.equals(other.filteredPersons)
-                && filteredApplicants.equals(other.filteredApplicants);
-    }
-
-    @Override
-    public void deleteApplicant(Applicant target) {
-        addressBook.removeApplicant(target);
+                && filteredPersons.equals(other.filteredPersons)
+                && filteredApplicants.equals(other.filteredApplicants)
+                && filteredJobs.equals(other.filteredJobs);
     }
 
     @Override

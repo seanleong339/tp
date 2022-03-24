@@ -1,56 +1,37 @@
 package seedu.address.logic.commands.job;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.applicant.EditApplicant;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.applicant.Applicant;
-import seedu.address.model.applicant.ApplicantStatus;
-import seedu.address.model.applicant.DateApplied;
-import seedu.address.model.applicant.InterviewDate;
-import seedu.address.model.applicant.JobId;
-import seedu.address.model.applicant.Nric;
-import seedu.address.model.applicant.Qualification;
-import seedu.address.model.job.CompanyName;
-import seedu.address.model.job.JobTitle;
-import seedu.address.model.job.Position;
-import seedu.address.model.job.Salary;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
-
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEAPPLIED;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_POSITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICANTS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_JOBS;
 
-public class EditJob {
+import java.util.List;
+import java.util.Optional;
+
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.applicant.JobId;
+import seedu.address.model.applicant.Qualification;
+import seedu.address.model.job.CompanyName;
+import seedu.address.model.job.Job;
+import seedu.address.model.job.JobStatus;
+import seedu.address.model.job.JobTitle;
+import seedu.address.model.job.Position;
+import seedu.address.model.job.Salary;
+import seedu.address.model.person.Address;
+
+public class EditJob extends Command {
     public static final String COMMAND_WORD = "editjob";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the job identified "
@@ -68,7 +49,7 @@ public class EditJob {
             + PREFIX_QUALIFICATION + "Bachelor in Computing "
             + PREFIX_JOB + "1234";
 
-    public static final String MESSAGE_JOB_SUCCESS = "Edited Job: %1$s";
+    public static final String MESSAGE_EDIT_JOB_SUCCESS = "Edited Job: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_JOB = "This Job already exists in the address book.";
 
@@ -85,57 +66,50 @@ public class EditJob {
         requireAllNonNull(index, editJobDescriptor);
 
         this.index = index;
-        this.editJobDescriptor = new EditApplicantDescriptor(editJobDescriptor);
+        this.editJobDescriptor = new EditJobDescriptor(editJobDescriptor);
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Applicant> lastShownList = model.getFilteredApplicantList();
+        List<Job> lastShownList = model.getFilteredJobList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
         }
 
-        Applicant applicantToEdit = lastShownList.get(index.getZeroBased());
-        Applicant editedApplicant = createEditedApplicant(applicantToEdit, editApplicantDescriptor);
+        Job jobToEdit = lastShownList.get(index.getZeroBased());
+        Job editedJob = createEditedJob(jobToEdit, editJobDescriptor);
 
-        if (!applicantToEdit.isSameApplicant(editedApplicant) && model.hasApplicant(editedApplicant)) {
-            throw new CommandException(MESSAGE_DUPLICATE_APPLICANT);
+        if (!jobToEdit.isSameJob(editedJob) && model.hasJob(editedJob)) {
+            throw new CommandException(MESSAGE_DUPLICATE_JOB);
         }
 
-        model.setApplicant(applicantToEdit, editedApplicant);
-        model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
-        return new CommandResult(String.format(MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant));
+        model.setJob(jobToEdit, editedJob);
+        model.updateFilteredJobList(PREDICATE_SHOW_ALL_JOBS);
+        return new CommandResult(String.format(MESSAGE_EDIT_JOB_SUCCESS, editedJob));
     }
 
     /**
-     * Creates and returns a {@code Applicant} with the details of {@code applicantToEdit}
-     * edited with {@code editApplicantDescriptor}.
+     * Creates and returns a {@code Job} with the details of {@code jobToEdit}
+     * edited with {@code editJobDescriptor}.
      */
-    private static Applicant createEditedApplicant(Applicant applicantToEdit,
-                                                   EditApplicant.EditApplicantDescriptor editApplicantDescriptor) {
-        assert applicantToEdit != null;
+    private static Job createEditedJob(Job jobToEdit,
+                                                   EditJobDescriptor editJobDescriptor) {
+        assert jobToEdit != null;
 
-        Name updatedName = editApplicantDescriptor.getName().orElse(applicantToEdit.getName());
-        Phone updatedPhone = editApplicantDescriptor.getPhone().orElse(applicantToEdit.getPhone());
-        Email updatedEmail = editApplicantDescriptor.getEmail().orElse(applicantToEdit.getEmail());
-        Address updatedAddress = editApplicantDescriptor.getAddress().orElse(applicantToEdit.getAddress());
-        Set<Tag> updatedTags = editApplicantDescriptor.getTags().orElse(applicantToEdit.getTags());
+        JobTitle updatedJobTitle = editJobDescriptor.getJobTitle().orElse(jobToEdit.getJobTitle());
+        CompanyName updatedCompanyName = editJobDescriptor.getCompanyName().orElse(jobToEdit.getCompany());
+        Address updatedAddress = editJobDescriptor.getAddress().orElse(jobToEdit.getAddress());
+        Qualification updatedQualification = editJobDescriptor.getQualification().orElse(jobToEdit.getQualification());
+        Position updatedPosition = editJobDescriptor.getPosition().orElse(jobToEdit.getPosition());
+        Salary updatedSalary = editJobDescriptor.getSalary().orElse((jobToEdit.getSalary()));
 
-        DateApplied updatedDateApplied = editApplicantDescriptor.getDateApplied()
-                .orElse(applicantToEdit.getDateApplied());
-        Nric updatedNric = editApplicantDescriptor.getNric().orElse(applicantToEdit.getNric());
-        Qualification updatedQualification = editApplicantDescriptor.getQualification()
-                .orElse(applicantToEdit.getQualification());
-        InterviewDate updatedInterviewDate = editApplicantDescriptor.getInterviewDate()
-                .orElse(applicantToEdit.getInterviewDate());
-        // TODO: Add Job update method as well
-        JobId updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJobId());
-        ApplicantStatus applicantStatus = applicantToEdit.getApplicantStatus();
+        JobId updatedJobId = jobToEdit.getJobId();
+        JobStatus updatedJobStatus = jobToEdit.getJobStatus();
 
-        return new Applicant(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedDateApplied,
-                updatedNric, updatedJob, updatedInterviewDate, updatedQualification, applicantStatus);
+        return new Job(updatedJobTitle, updatedCompanyName, updatedJobId, updatedAddress, updatedQualification,
+                updatedJobStatus, updatedPosition, updatedSalary);
     }
 
     @Override
@@ -146,14 +120,14 @@ public class EditJob {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditApplicant)) {
+        if (!(other instanceof EditJob)) {
             return false;
         }
 
         // state check
-        EditApplicant e = (EditApplicant) other;
+        EditJob e = (EditJob) other;
         return index.equals(e.index)
-                && editApplicantDescriptor.equals(e.editApplicantDescriptor);
+                && editJobDescriptor.equals(e.editJobDescriptor);
     }
 
 
@@ -180,8 +154,8 @@ public class EditJob {
             setCompanyName(toCopy.companyName);
             setAddress(toCopy.address);
             setQualification(toCopy.qualification);
-
-            setTags(toCopy.tags);
+            setPosition(toCopy.position);
+            setSalary(toCopy.salary);
         }
 
         /**
@@ -189,31 +163,23 @@ public class EditJob {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(
-                    name, phone, nric, email, address, interviewDate, qualification, dateApplied, tags, jobId);
+                    jobTitle, companyName, address, qualification, position, salary);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public void setJobTitle(JobTitle jobTitle) {
+            this.jobTitle = jobTitle;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<JobTitle> getJobTitle() {
+            return Optional.ofNullable(jobTitle);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setCompanyName(CompanyName companyName) {
+            this.companyName = companyName;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
-        }
-
-        public void setEmail(Email email) {
-            this.email = email;
-        }
-
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<CompanyName> getCompanyName() {
+            return Optional.ofNullable(companyName);
         }
 
         public void setAddress(Address address) {
@@ -224,14 +190,6 @@ public class EditJob {
             return Optional.ofNullable(address);
         }
 
-        public void setNric(Nric nric) {
-            this.nric = nric;
-        }
-
-        public Optional<Nric> getNric() {
-            return Optional.ofNullable(nric);
-        }
-
         public void setQualification(Qualification qualification) {
             this.qualification = qualification;
         }
@@ -240,45 +198,20 @@ public class EditJob {
             return Optional.ofNullable(qualification);
         }
 
-        public void setDateApplied(DateApplied dateApplied) {
-            this.dateApplied = dateApplied;
+        public void setPosition(Position position) {
+            this.position = position;
         }
 
-        public Optional<DateApplied> getDateApplied() {
-            return Optional.ofNullable(dateApplied);
+        public Optional<Position> getPosition() {
+            return Optional.ofNullable(position);
         }
 
-        public void setJobId(JobId jobId) {
-            this.jobId = jobId;
+        public void setSalary(Salary salary) {
+            this.salary = salary;
         }
 
-        public Optional<JobId> getJobId() {
-            return Optional.ofNullable(jobId);
-        }
-
-        public void setInterviewDate(InterviewDate interviewDate) {
-            this.interviewDate = interviewDate;
-        }
-
-        public Optional<InterviewDate> getInterviewDate() {
-            return Optional.ofNullable(interviewDate);
-        }
-
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        }
-
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        public Optional<Salary> getSalary() {
+            return Optional.ofNullable(salary);
         }
 
         @Override
@@ -296,16 +229,12 @@ public class EditJob {
             // state check
             EditJobDescriptor e = (EditJobDescriptor) other;
 
-            return getName().equals(e.getName())
-                    && getPhone().equals(e.getPhone())
-                    && getEmail().equals(e.getEmail())
+            return getJobTitle().equals(e.getJobTitle())
+                    && getCompanyName().equals(e.getCompanyName())
                     && getAddress().equals(e.getAddress())
-                    && getNric().equals(e.getNric())
-                    && getDateApplied().equals(e.getDateApplied())
-                    && getInterviewDate().equals(e.getInterviewDate())
                     && getQualification().equals(e.getQualification())
-                    && getJobId().equals(e.getJobId())
-                    && getTags().equals(e.getTags());
+                    && getPosition().equals(e.getPosition())
+                    && getSalary().equals(e.getSalary());
         }
     }
 

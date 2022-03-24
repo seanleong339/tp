@@ -186,7 +186,6 @@ public class EditApplicant extends Command {
             setQualification(toCopy.qualification);
             setDateApplied(toCopy.dateApplied);
             setJobId(toCopy.jobId);
-            setJobId(toCopy.jobId);
             setTags(toCopy.tags);
         }
 
