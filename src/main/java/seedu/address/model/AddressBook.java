@@ -8,6 +8,8 @@ import java.util.Objects;
 import javafx.collections.ObservableList;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.UniqueApplicantList;
+import seedu.address.model.job.Job;
+import seedu.address.model.job.UniqueJobList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -19,6 +21,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniqueApplicantList applicants;
+    private final UniqueJobList jobs;
+    private int idCount;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -30,6 +34,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         applicants = new UniqueApplicantList();
+        jobs = new UniqueJobList();
+        idCount = 9;
     }
 
     public AddressBook() {}
@@ -68,6 +74,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         setPersons(newData.getPersonList());
         setApplicants(newData.getApplicantList());
+        this.idCount = newData.getIdCount();
+
     }
 
     //// person-level operations
@@ -144,6 +152,41 @@ public class AddressBook implements ReadOnlyAddressBook {
         applicants.remove(key);
     }
 
+    // Job methods
+
+    /**
+     * Returns true if a job with the same identity as {@code job} exists in the address book.
+     */
+    public boolean hasJob(Job job) {
+        requireNonNull(job);
+        return jobs.contains(job);
+    }
+
+    /**
+     * Adds a job to the address book.
+     * The job must not already exist in the address book.
+     */
+    public void addJob(Job job) {
+        jobs.add(job);
+    }
+
+    //// IdCount methods
+
+    /**
+     * Sets the idCount of this AddressBook
+     */
+    public void setIdCount(int idCount) {
+        this.idCount = idCount;
+    }
+
+    /**
+     * Increments the IdCount by 1, after a new Job Id has been designated.
+     * To be used only in ModelManager
+     */
+    public void incrementIdCount() {
+        this.idCount += 1;
+    }
+
     //// util methods
 
     @Override
@@ -165,12 +208,23 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
+    public ObservableList<Job> getJobList() {
+        return jobs.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public int getIdCount() {
+        return this.idCount;
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
                 // TODO: change back if there is error
                 && persons.equals(((AddressBook) other).persons)
-                && applicants.equals(((AddressBook) other).applicants));
+                && applicants.equals(((AddressBook) other).applicants))
+                && idCount == (((AddressBook) other).idCount);
     }
 
     @Override

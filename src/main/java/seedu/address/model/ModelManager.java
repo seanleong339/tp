@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.job.Job;
 import seedu.address.model.person.Person;
 
 /**
@@ -24,6 +25,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Applicant> filteredApplicants;
+    private final FilteredList<Job> filteredJobs;
 
 
     /**
@@ -38,6 +40,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredApplicants = new FilteredList<>(this.addressBook.getApplicantList());
+        filteredJobs = new FilteredList<>(this.addressBook.getJobList());
     }
 
     public ModelManager() {
@@ -134,6 +137,18 @@ public class ModelManager implements Model {
         addressBook.setApplicant(target, editedApplicant);
     }
 
+    @Override
+    public boolean hasJob(Job job) {
+        requireNonNull(job);
+        return addressBook.hasJob(job);
+    }
+
+    @Override
+    public void addJob(Job job) {
+        requireNonNull(job);
+        addressBook.addJob(job);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -190,6 +205,13 @@ public class ModelManager implements Model {
     @Override
     public void deleteApplicant(Applicant target) {
         addressBook.removeApplicant(target);
+    }
+
+    @Override
+    public String getIdCount() {
+        int id = addressBook.getIdCount();
+        addressBook.incrementIdCount();
+        return Integer.toString(id);
     }
 }
 

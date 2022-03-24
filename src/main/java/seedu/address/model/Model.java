@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.job.Job;
 import seedu.address.model.person.Person;
 
 /**
@@ -101,10 +102,23 @@ public interface Model {
      */
     void deleteApplicant(Applicant target);
 
+    // ============================= Job ================================
+
     /**
-     * Adds the given applicant.
-     * {@code applicant} must not already exist in the address book.
-=======
+     * Add a given job to filteredlist
+     */
+    void addJob(Job job);
+
+    /**
+     * Returns true if a job with the same identity as {@code job} exists in the address book.
+     */
+    boolean hasJob(Job job);
+
+    /**
+     * Returns the current IdCount()
+     */
+    String getIdCount();
+
     //--------------ReCLIne------------------------------
 
     /**
@@ -128,5 +142,6 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredApplicantList(Predicate<Applicant> predicate);
+
 }
 
