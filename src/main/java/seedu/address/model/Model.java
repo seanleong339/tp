@@ -119,6 +119,9 @@ public interface Model {
      */
     String getIdCount();
 
+    /** Returns an unmodifiable view of the filtered person list */
+    ObservableList<Job> getFilteredJobList();
+
     //--------------ReCLIne------------------------------
 
     /**
@@ -142,6 +145,8 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredApplicantList(Predicate<Applicant> predicate);
+
+
 
 }
 
