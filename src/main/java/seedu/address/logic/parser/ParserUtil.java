@@ -257,20 +257,20 @@ public class ParserUtil {
         String numericStatus;
 
         switch(trimmedApplicationStatus) {
-            case "rejected":
-                numericStatus = "0";
-                break;
-            case "pending":
-                numericStatus = "1";
-                break;
-            case "interviewed":
-                numericStatus = "2";
-                break;
-            case "accepted":
-                numericStatus = "3";
-                break;
-            default:
-                numericStatus = "-1";
+        case "rejected":
+            numericStatus = "0";
+            break;
+        case "pending":
+            numericStatus = "1";
+            break;
+        case "interviewed":
+            numericStatus = "2";
+            break;
+        case "accepted":
+            numericStatus = "3";
+            break;
+        default:
+            numericStatus = "-1";
         }
 
         if (!ApplicantStatus.isValidStatus(numericStatus)) {
@@ -278,7 +278,6 @@ public class ParserUtil {
         }
         return numericStatus;
     }
-
 
     /**
      * Parses {@code String id} into an {@code Integer} and returns it. Leading and trailing whitespaces will be

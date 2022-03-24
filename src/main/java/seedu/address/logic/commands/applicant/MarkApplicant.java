@@ -25,7 +25,7 @@ public class MarkApplicant extends Command {
             + PREFIX_STATUS + "STATUS\n"
             + "Example: " + COMMAND_WORD + " "
             + "2 "
-            + PREFIX_STATUS + "3";
+            + PREFIX_STATUS + "accepted";
 
     public static final String MESSAGE_SUCCESS = "Updated Applicant %1$s's status to: %2$s";
     public static final String MESSAGE_INVALID_APPLICANT_STATUS = "Applicant status %1$s does not correspond to index.";
