@@ -17,13 +17,29 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The application should switch to applicant tab. */
+    private final boolean listApplicant;
+
+    /** The application should switch to job tab. */
+    private final boolean listJob;
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
+                         boolean listApplicant, boolean listJob) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.exit = exit;
+        this.listApplicant = listApplicant;
+        this.listJob = listJob;
+    }
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
-        this.feedbackToUser = requireNonNull(feedbackToUser);
-        this.showHelp = showHelp;
-        this.exit = exit;
+        this(feedbackToUser, showHelp, exit, false, false);
     }
 
     /**
@@ -46,6 +62,14 @@ public class CommandResult {
         return exit;
     }
 
+    public boolean isListApplicant() {
+        return listApplicant;
+    }
+
+    public boolean isListJob() {
+        return listJob;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -60,12 +84,14 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && exit == otherCommandResult.exit
+                && listApplicant == otherCommandResult.listApplicant
+                && listJob == otherCommandResult.listJob;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, exit, listApplicant, listJob);
     }
 
 }

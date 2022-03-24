@@ -18,6 +18,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.applicant.AddApplicant;
 import seedu.address.logic.commands.applicant.DeleteApplicant;
 import seedu.address.logic.commands.applicant.EditApplicant;
+import seedu.address.logic.commands.applicant.ListApplicant;
 import seedu.address.logic.commands.applicant.MarkApplicant;
 import seedu.address.logic.commands.job.AddJob;
 import seedu.address.logic.commands.job.ListJob;
