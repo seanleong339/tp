@@ -32,7 +32,7 @@ public class AddJob extends Command {
             + PREFIX_ADDRESS + "59 Hougang Road Blk 38 "
             + PREFIX_QUALIFICATION + "Bachelors in Computer Science "
             + PREFIX_JOB_POSITION + "ft "
-            + PREFIX_SALARY + "4000 ";
+            + PREFIX_SALARY + "3000-4000 ";
 
     public static final String MESSAGE_SUCCESS = "New job added: %1$s";
     public static final String MESSAGE_DUPLICATE_JOB = "This job already exists in the ReCLIne";
