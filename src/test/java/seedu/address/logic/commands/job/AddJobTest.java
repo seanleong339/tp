@@ -1,13 +1,11 @@
-package seedu.address.logic.commands.applicant;
+package seedu.address.logic.commands.job;
 
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -19,30 +17,30 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.applicant.Applicant;
-import seedu.address.model.applicant.DateApplied;
-import seedu.address.model.applicant.Nric;
+import seedu.address.model.applicant.Qualification;
+import seedu.address.model.job.CompanyName;
 import seedu.address.model.job.Job;
+import seedu.address.model.job.JobTitle;
+import seedu.address.model.job.Position;
+import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 
-class AddApplicantTest {
+class AddJobTest {
 
     @Test
     void execute() throws Exception {
-        Set<Tag> tagSet = new HashSet<>();
-        tagSet.add(new Tag("testtag"));
-        Applicant test = new Applicant(new Name("John"), new Phone("1234567"), new Email("johnd@example.com"),
-                new Address("311, Clementi Ave 2"), tagSet, new DateApplied("2022-12-12"),
-                new Nric("S1234567D"));
-        AddApplicant testCommand = new AddApplicant(test);
-        ModelStubAcceptingApplicantAdded modelStub = new ModelStubAcceptingApplicantAdded();
+        Job test = new Job(new JobTitle("Software Engineer"), new CompanyName("BitService Pte Ltd"),
+                new Address("311, Clementi Ave 2"),
+                new Qualification("Bachelors Degree"), new Position("ft"),
+                new Salary("3000", "4000")
+        );
+        AddJob testCommand = new AddJob(test);
+        ModelStubAcceptingJobAdded modelStub = new ModelStubAcceptingJobAdded();
         testCommand.execute(modelStub);
-        assertEquals(Arrays.asList(test), modelStub.applicantsAdded);
+        assertTrue((Arrays.asList(test).get(0)).isSameJob(modelStub.jobsAdded.get(0)));
     }
+
 
     /**
      * A default model stub that have all of the methods failing.
@@ -165,21 +163,27 @@ class AddApplicantTest {
     }
 
     /**
-     * A Model stub that always accept the applicant being added.
+     * A Model stub that always accept the Job being added.
      */
-    private class ModelStubAcceptingApplicantAdded extends AddApplicantTest.ModelStub {
-        final ArrayList<Applicant> applicantsAdded = new ArrayList<>();
+    private class ModelStubAcceptingJobAdded extends AddJobTest.ModelStub {
+        final ArrayList<Job> jobsAdded = new ArrayList<>();
+        final AddressBook addressBook = new AddressBook();
 
         @Override
-        public boolean hasApplicant(Applicant applicant) {
-            requireNonNull(applicant);
-            return applicantsAdded.stream().anyMatch(applicant::isSameApplicant);
+        public boolean hasJob(Job job) {
+            requireNonNull(job);
+            return jobsAdded.stream().anyMatch(job::isSameJob);
         }
 
         @Override
-        public void addApplicant(Applicant applicant) {
-            requireNonNull(applicant);
-            applicantsAdded.add(applicant);
+        public void addJob(Job job) {
+            requireNonNull(job);
+            jobsAdded.add(job);
+        }
+
+        @Override
+        public String getIdCount() {
+            return Integer.toString(addressBook.getIdCount());
         }
 
         @Override
