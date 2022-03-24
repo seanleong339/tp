@@ -143,5 +143,19 @@ public interface Model {
      */
     void updateFilteredApplicantList(Predicate<Applicant> predicate);
 
+    /** Returns an unmodifiable view of the filtered job list */
+    ObservableList<Job> getFilteredJobList();
+
+    /**
+     * Deletes the given job.
+     * The job must exist in the address book.
+     */
+    void deleteJob(Job target);
+
+    /**
+     * Updates the filter of the filtered job list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredJobList(Predicate<Job> predicate);
 }
 

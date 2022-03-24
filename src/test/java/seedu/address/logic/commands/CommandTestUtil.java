@@ -25,6 +25,8 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.NameApplicantContainsKeywordsPredicate;
+import seedu.address.model.job.Job;
+import seedu.address.model.job.JobTitleContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditApplicantDescriptorBuilder;
@@ -214,6 +216,19 @@ public class CommandTestUtil {
     }
 
     // TODO: Add showJobAtIndex
+    /**
+     * Updates {@code model}'s filtered list to show only the applicant at the given {@code targetIndex} in the
+     * {@code model}'s address book.
+     */
+    public static void showJobAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredJobList().size());
+
+        Job job = model.getFilteredJobList().get(targetIndex.getZeroBased());
+        final String[] splitJobTitle = job.getJobTitle().jobTitle.split("\\s+");
+        model.updateFilteredJobList(new JobTitleContainsKeywordsPredicate(Arrays.asList(splitJobTitle[0])));
+
+        assertEquals(1, model.getFilteredApplicantList().size());
+    }
 
 
 }

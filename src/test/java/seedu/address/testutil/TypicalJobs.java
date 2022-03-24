@@ -69,12 +69,12 @@ public class TypicalJobs {
 
         for (Job job : getTypicalJobs()) {
             // TODO CHANGE THIS ONCE ADDRESSBOOK IS CHANGED
-            // ab.addJob(job);
+            ab.addJob(job);
         }
         return ab;
     }
 
     public static List<Job> getTypicalJobs() {
-        return new ArrayList<>(Arrays.asList());
+        return new ArrayList<>(Arrays.asList(SOFTWARE_ENGINEER, ENGINEER));
     }
 }
