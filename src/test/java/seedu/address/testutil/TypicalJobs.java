@@ -39,8 +39,26 @@ public class TypicalJobs {
             .withCompanyName("Visa").withJobId("1432").withJobAddress("123 Visa Road")
             .withJobQualification("Degree in Engineering").withJobStatus("filled")
             .withJobPosition("ft").withJobSalary("4000", "6000").build();
-    // TODO: 6 MORE JOBS
-
+    public static final Job ACCOUNTANT = new JobBuilder().withJobTitle("Accountant")
+            .withCompanyName("DBS").withJobId("143241").withJobAddress("194 DBS Road")
+            .withJobQualification("Degree in Accounting").withJobStatus("vacant")
+            .withJobPosition("ft").withJobSalary("5000", "8000").build();
+    public static final Job CASHIER = new JobBuilder().withJobTitle("Cashier")
+            .withCompanyName("NTUC").withJobId("1234").withJobAddress("194 NTUC Fairprice Road")
+            .withJobQualification("No Requirement").withJobStatus("filled")
+            .withJobPosition("ft").withJobSalary("2000", "3000").build();
+    public static final Job SAFE_DISTANCING_AMBASSADOR = new JobBuilder().withJobTitle("Safe Distancing Ambassador")
+            .withCompanyName("Ministry of Sustainability and Environment").withJobId("145")
+            .withJobAddress("1 Safe Distance Road").withJobQualification("No Requirement").withJobStatus("vacant")
+            .withJobPosition("pt").withJobSalary("10", "13").build();
+    public static final Job FOOD_PACKER = new JobBuilder().withJobTitle("Food Packer")
+            .withCompanyName("FitThree").withJobId("923").withJobAddress("194 Packing Road")
+            .withJobQualification("No Requirement").withJobStatus("filled")
+            .withJobPosition("pt").withJobSalary("10", "10").build();
+    public static final Job WAITER = new JobBuilder().withJobTitle("Waiter")
+            .withCompanyName("Ichiban").withJobId("3").withJobAddress("14 Waiting Table Road")
+            .withJobQualification("No Requirement").withJobStatus("filled")
+            .withJobPosition("pt").withJobSalary("8", "10").build();
     // Manually added - Job's details found in {@code CommandTestUtil}
     public static final Job DATA_ANALYSIS = new JobBuilder().withJobTitle(VALID_JOB_TITLE_DATA_ANALYSIS)
         .withCompanyName(VALID_COMPANY_NAME_DATA_ANALYSIS).withJobId(VALID_JOB_ID_DATA_ANALYSIS)

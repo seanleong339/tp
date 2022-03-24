@@ -26,6 +26,7 @@ import seedu.address.model.Model;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.NameApplicantContainsKeywordsPredicate;
 import seedu.address.model.job.Job;
+//import seedu.address.logic.commands.job.EditJob;
 import seedu.address.model.job.JobTitleContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -107,6 +108,8 @@ public class CommandTestUtil {
     public static final String VALID_JOB_STATUS_DATA_ANALYSIS = "vacant";
     public static final String VALID_JOB_STATUS_PROJECT_MANAGER = "filled";
 
+    public static final String VALID_POSITION_FULL_TIME = "ft";
+    public static final String VALID_POSITION_PART_TIME = "pt";
     public static final String VALID_POSITION_DATA_ANALYSIS = "ft";
     public static final String VALID_POSITION_PROJECT_MANAGER = "ft";
     public static final String VALID_SALARY_LOW_DATA_ANALYSIS = "6000";
@@ -124,8 +127,8 @@ public class CommandTestUtil {
     public static final EditApplicant.EditApplicantDescriptor DESC_DON;
     // ===================== Job ===============================
     // TODO THIS IS FOR THE EDITJOB COMMAND;
-    // public static final EditJob.EditJobDescripter DESC_DATA_ANALYSIS;
-    // public static final EditJob.EditJobDescripter DESC_PROJECT_MANAGER;
+    //public static final EditJob.EditJobDescripter DESC_DATA_ANALYSIS;
+    //public static final EditJob.EditJobDescripter DESC_PROJECT_MANAGER;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -143,6 +146,16 @@ public class CommandTestUtil {
                 .withNric(VALID_NRIC).withDateApplied(VALID_DATE).withInterviewDate(VALID_DATE)
                 .withQualification(VALID_QUALIFICATION).build();
         // TODO ADD DESC_DATAANALYSIS AND PROJECT MANAGER
+        /*
+        DESC_DATA_ANALYSIS = new EditJobDescriptorBuilder().withJobTitle(VALID_JOB_TITLE_DATA_ANALYSIS)
+                .withCompanyName(VALID_COMPANY_NAME_DATA_ANALYSIS).withAddress(VALID_ADDRESS_DATA_ANALYSIS)
+                .withQualification(VALID_QUALIFICATION_DATA_ANALYSIS).withPosition(VALID_POSITION_FULL_TIME)
+                .withSalary(VALID_SALARY_LOW_DATA_ANALYSIS, VALID_SALARY_HIGH_DATA_ANALYSIS).build();
+        DESC_PROJECT_MANAGER = new EditJobDescriptorBuilder().withJobTitle(VALID_JOB_TITLE_PROJECT_MANAGER)
+                .withCompanyName(VALID_COMPANY_NAME_PROJECT_MANAGER).withAddress(VALID_ADDRESS_PROJECT_MANAGER)
+                .withQualification(VALID_QUALIFICATION_DATA_ANALYSIS).withPosition(VALID_POSITION_FULL_TIME)
+                .withSalary(VALID_SALARY_LOW_PROJECT_MANAGER, VALID_SALARY_HIGH_PROJECT_MANAGER).build();
+         */
     }
 
     /**
