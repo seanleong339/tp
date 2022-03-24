@@ -20,6 +20,7 @@ import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.job.CompanyName;
 import seedu.address.model.job.Job;
+import seedu.address.model.job.JobStatus;
 import seedu.address.model.job.JobTitle;
 import seedu.address.model.job.Position;
 import seedu.address.model.job.Salary;
@@ -157,7 +158,17 @@ class AddJobTest {
         }
 
         @Override
+        public boolean jobStatusUpToDate(Job job, JobStatus jobStatus) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public String getIdCount() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Job> getFilteredJobList() {
             throw new AssertionError("This method should not be called.");
         }
     }

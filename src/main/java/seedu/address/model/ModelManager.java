@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.job.Job;
+import seedu.address.model.job.JobStatus;
 import seedu.address.model.person.Person;
 
 /**
@@ -144,6 +145,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean jobStatusUpToDate(Job job, JobStatus jobStatus) {
+        requireAllNonNull(job, jobStatus);
+        return job.getJobStatus().equals(jobStatus);
+    }
+
+    @Override
     public void addJob(Job job) {
         requireNonNull(job);
         addressBook.addJob(job);
@@ -212,6 +219,11 @@ public class ModelManager implements Model {
         int id = addressBook.getIdCount();
         addressBook.incrementIdCount();
         return Integer.toString(id);
+    }
+
+    @Override
+    public ObservableList<Job> getFilteredJobList() {
+        return filteredJobs;
     }
 }
 

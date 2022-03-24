@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.job.Job;
+import seedu.address.model.job.JobStatus;
 import seedu.address.model.person.Person;
 
 /**
@@ -115,9 +116,16 @@ public interface Model {
     boolean hasJob(Job job);
 
     /**
+     * Returns true if a given {@code job} is has a given {@code jobStatus}.
+     */
+    boolean jobStatusUpToDate(Job job, JobStatus jobStatus);
+
+    /**
      * Returns the current IdCount()
      */
     String getIdCount();
+
+    ObservableList<Job> getFilteredJobList();
 
     //--------------ReCLIne------------------------------
 

@@ -22,6 +22,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.job.Job;
+import seedu.address.model.job.JobStatus;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -171,7 +172,17 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean jobStatusUpToDate(Job job, JobStatus jobStatus) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public String getIdCount() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Job> getFilteredJobList() {
             throw new AssertionError("This method should not be called.");
         }
 
