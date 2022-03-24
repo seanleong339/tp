@@ -19,7 +19,7 @@ public class ApplicantStatus {
     private static final int APPLICANTSTATUS_INTERVIEWED = 2;
     private static final int APPLICANTSTATUS_ACCEPTED = 3;
 
-    private static final String[] STATUSES = {"Rejected", "Pending", "Interviewed", "Accepted"};
+    private static final String[] STATUSES = {"REJECTED", "PENDING", "INTERVIEWED", "ACCEPTED"};
     private static final String STATUS_OUT_OF_RANGE = "Applicant status should be within range 0 to 3.";
 
     public final Integer applicantStatus;
