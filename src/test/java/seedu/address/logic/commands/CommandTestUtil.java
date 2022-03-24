@@ -215,9 +215,8 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredApplicantList().size());
     }
 
-    // TODO: Add showJobAtIndex
     /**
-     * Updates {@code model}'s filtered list to show only the applicant at the given {@code targetIndex} in the
+     * Updates {@code model}'s filtered list to show only the job at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
     public static void showJobAtIndex(Model model, Index targetIndex) {
