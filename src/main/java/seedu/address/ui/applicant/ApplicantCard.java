@@ -38,8 +38,6 @@ public class ApplicantCard extends UiPart<Region> {
     @FXML
     private Circle status;
     @FXML
-    private Label job;
-    @FXML
     private Label email;
     @FXML
     private FlowPane tags;
@@ -58,11 +56,11 @@ public class ApplicantCard extends UiPart<Region> {
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
 
         String stat = applicant.getApplicantStatus().toString();
-        if (stat.equals("Rejected")) {
+        if (stat.equals("REJECTED")) {
             status.setFill(Color.rgb(189, 94, 94));
-        } else if (stat.equals("Accepted")) {
+        } else if (stat.equals("ACCEPTED")) {
             status.setFill(Color.rgb(66, 128, 83));
-        } else if (stat.equals("Interviewed")) {
+        } else if (stat.equals("INTERVIEWED")) {
             status.setFill(Color.rgb(237, 196, 114));
         } else {
             status.setFill(Color.GREY);
