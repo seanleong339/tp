@@ -28,6 +28,7 @@ import seedu.address.logic.commands.job.ListJob;
 import seedu.address.logic.parser.applicant.AddApplicantParser;
 import seedu.address.logic.parser.applicant.DeleteApplicantParser;
 import seedu.address.logic.parser.applicant.EditApplicantParser;
+import seedu.address.logic.parser.applicant.FindApplicantParser;
 import seedu.address.logic.parser.applicant.MarkApplicantParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.job.AddJobParser;
@@ -97,8 +98,8 @@ public class AddressBookParser {
         case DeleteApplicant.COMMAND_WORD:
             return new DeleteApplicantParser().parse(arguments);
 
-        // case FindApplicant.COMMAND_WORD:
-        //     return new FindApplicantParser().parse(arguments);
+        case FindApplicant.COMMAND_WORD:
+            return new FindApplicantParser().parse(arguments);
 
         case AddJob.COMMAND_WORD:
             return new AddJobParser().parse(arguments);
