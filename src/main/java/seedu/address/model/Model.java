@@ -135,6 +135,7 @@ public interface Model {
      */
     ObservableList<Applicant> getFilteredApplicantList();
 
+
     /**
      * Updates the filter of the filtered applicant list to filter by the given {@code predicate}.
      *
@@ -167,18 +168,12 @@ public interface Model {
 
     //--------------ReCLIne------------------------------
 
-    /**
-     * Updates the filter of the filtered job list to filter by the given {@code predicate}.
-     *
-     * @throws NullPointerException if {@code predicate} is null.
-     */
     void updateFilteredJobList(Predicate<Job> predicate);
 
     /**
      * Returns the current IdCount()
      */
     String getIdCount();
-
 
     /**
      * Deletes the given job.

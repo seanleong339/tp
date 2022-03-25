@@ -110,11 +110,13 @@ public class CommandTestUtil {
     public static final String VALID_QUALIFICATION_DATA_ANALYSIS = "Degree in Data Science";
     public static final String VALID_QUALIFICATION_PROJECT_MANAGER = "Degree in Business Management";
 
+
     public static final String VALID_JOB_STATUS_PROJECT_MANAGER = "vacant";
     public static final String VALID_JOB_STATUS_DATA_ANALYSIS = "filled";
 
     public static final String VALID_POSITION_FULL_TIME = "ft";
     public static final String VALID_POSITION_PART_TIME = "pt";
+
     public static final String VALID_SALARY_LOW_DATA_ANALYSIS = "6000";
     public static final String VALID_SALARY_HIGH_DATA_ANALYSIS = "8000";
     public static final String VALID_SALARY_LOW_PROJECT_MANAGER = "4000";
@@ -154,6 +156,7 @@ public class CommandTestUtil {
     // TODO THIS IS FOR THE EDITJOB COMMAND;
     public static final EditJob.EditJobDescriptor DESC_DATA_ANALYSIS;
     public static final EditJob.EditJobDescriptor DESC_PROJECT_MANAGER;
+
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)

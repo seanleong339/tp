@@ -180,7 +180,6 @@ class AddJobTest {
         public String getIdCount() {
             throw new AssertionError("This method should not be called.");
         }
-
     }
 
     /**

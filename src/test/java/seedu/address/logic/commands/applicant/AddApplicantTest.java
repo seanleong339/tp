@@ -182,7 +182,6 @@ class AddApplicantTest {
         public String getIdCount() {
             throw new AssertionError("This method should not be called.");
         }
-
     }
 
     /**

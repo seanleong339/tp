@@ -77,6 +77,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
+
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
@@ -179,6 +180,15 @@ public class AddressBook implements ReadOnlyAddressBook {
         jobs.add(job);
     }
 
+    //// IdCount methods
+
+    /**
+     * Sets the idCount of this AddressBook
+     */
+    public void setIdCount(int idCount) {
+        this.idCount = idCount;
+    }
+
     /**
      * Replaces the given job {@code target} in the list with {@code editedJob}.
      * The job identity of {@code editedJob} must not be the same as another existing job
@@ -187,15 +197,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setJob(Job target, Job editedJob) {
         requireNonNull(editedJob);
         jobs.setJob(target, editedJob);
-    }
-
-    //// IdCount methods
-
-    /**
-     * Sets the idCount of this AddressBook
-     */
-    public void setIdCount(int idCount) {
-        this.idCount = idCount;
     }
 
     /**
@@ -212,7 +213,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public String toString() {
         // TODO: change this back if there is an error
         return persons.asUnmodifiableObservableList().size() + " persons "
-                + applicants.asUnmodifiableObservableList().size() + " applicants "
+                + applicants.asUnmodifiableObservableList().size() + " applicants"
                 + jobs.asUnmodifiableObservableList().size() + " jobs";
         // TODO: refine later
     }
