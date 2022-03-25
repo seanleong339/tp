@@ -134,9 +134,9 @@ public class ModelManagerTest {
     public void getIdCountReturnsAndIncrements() {
         AddressBook addressBook = new AddressBook();
         ModelManager modelManager = new ModelManager();
-        String nine = modelManager.getIdCount();
         String ten = modelManager.getIdCount();
-        assertEquals("9", nine);
+        String eleven = modelManager.getIdCount();
         assertEquals("10", ten);
+        assertEquals("11", eleven);
     }
 }

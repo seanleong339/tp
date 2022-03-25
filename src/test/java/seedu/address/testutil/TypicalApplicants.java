@@ -35,26 +35,26 @@ public class TypicalApplicants {
     public static final Applicant CARL = new ApplicantBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withAddress("wall street")
             .withDateApplied("2022-01-23").withNric("S9940404C").withInterviewDate("2022-01-30")
-            .withJob("3").withQualification("degree in Economics").withApplicationStatus("1")
+            .withJob("1").withQualification("degree in Economics").withApplicationStatus("1")
             .build();
     public static final Applicant DANIEL = new ApplicantBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withAddress("10th street")
             .withDateApplied("2022-01-24").withNric("S9950505D").withInterviewDate("2022-01-31")
-            .withJob("4").withQualification("degree in Business").withApplicationStatus("2")
+            .withJob("1").withQualification("degree in Business").withApplicationStatus("2")
             .withTags("friends").build();
     public static final Applicant ELLE = new ApplicantBuilder().withName("Elle Meyer").withPhone("9482224")
             .withEmail("werner@example.com").withAddress("michegan ave").withApplicationStatus("2")
             .withDateApplied("2022-01-25").withNric("S9960606E").withInterviewDate("2022-02-01")
-            .withJob("5").withQualification("degree in Data Science").build();
+            .withJob("2").withQualification("degree in Data Science").build();
     public static final Applicant FIONA = new ApplicantBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withEmail("lydia@example.com").withAddress("little tokyo").withApplicationStatus("3")
             .withDateApplied("2022-01-26").withNric("S9970707F").withInterviewDate("2022-02-02")
-            .withJob("6").withQualification("degree in Real Estate")
+            .withJob("1").withQualification("degree in Real Estate")
             .build();
     public static final Applicant GEORGE = new ApplicantBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withAddress("4th street").withApplicationStatus("0")
             .withDateApplied("2022-01-27").withNric("S9980808G").withInterviewDate("2022-02-03")
-            .withJob("7").withQualification("degree in Political Science")
+            .withJob("1").withQualification("degree in Political Science")
             .build();
 
 

@@ -1,5 +1,4 @@
 {
-  "persons" : [ ],
   "applicants" : [ {
     "name" : "George Best",
     "phone" : "9482442",
@@ -14,5 +13,6 @@
     "interviewDate" : "2022-02-03",
     "applicationStatus" : "3"
   } ],
-  "idCount": 0
+  "jobs" : [],
+  "idCount": 9
 }
