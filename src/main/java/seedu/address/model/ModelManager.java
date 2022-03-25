@@ -190,6 +190,22 @@ public class ModelManager implements Model {
         filteredApplicants.setPredicate(predicate);
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Applicant} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Job> getFilteredJobList() {
+        return filteredJobs;
+    }
+
+    @Override
+    public void updateFilteredJobList(Predicate<Job> predicate) {
+        requireNonNull(predicate);
+        filteredJobs.setPredicate(predicate);
+
+    }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
@@ -223,24 +239,8 @@ public class ModelManager implements Model {
         return Integer.toString(id);
     }
 
-    /**
-     * Returns an unmodifiable view of the list of {@code Job} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public ObservableList<Job> getFilteredJobList() {
-        return filteredJobs;
-    }
-
     @Override
     public void deleteJob(Job target) {
         addressBook.removeJob(target);
     }
-
-    @Override
-    public void updateFilteredJobList(Predicate<Job> predicate) {
-        requireNonNull(predicate);
-        filteredJobs.setPredicate(predicate);
-    }
 }
-

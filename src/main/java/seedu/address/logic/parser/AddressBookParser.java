@@ -33,7 +33,6 @@ import seedu.address.logic.parser.job.AddJobParser;
 import seedu.address.logic.parser.job.DeleteJobParser;
 import seedu.address.logic.parser.job.EditJobParser;
 
-
 /**
  * Parses user input.
  */

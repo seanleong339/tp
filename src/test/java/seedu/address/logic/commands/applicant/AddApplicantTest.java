@@ -129,22 +129,22 @@ class AddApplicantTest {
         }
 
         @Override
-        public ObservableList<Applicant> getFilteredApplicantList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void updateFilteredApplicantList(Predicate<Applicant> predicate) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public boolean hasApplicant(Applicant applicant) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void deleteApplicant(Applicant target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Applicant> getFilteredApplicantList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredApplicantList(Predicate<Applicant> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -159,12 +159,7 @@ class AddApplicantTest {
         }
 
         @Override
-        public String getIdCount() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void updateFilteredJobList(Predicate<Job> predicate) {
+        public void setJob(Job target, Job editedJob) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -179,7 +174,12 @@ class AddApplicantTest {
         }
 
         @Override
-        public void setJob(Job target, Job editedJob) {
+        public void updateFilteredJobList(Predicate<Job> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String getIdCount() {
             throw new AssertionError("This method should not be called.");
         }
     }
