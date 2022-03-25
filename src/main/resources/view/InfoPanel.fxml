@@ -2,15 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<HBox id="infoPanel" fx:id="infoPanel" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="infoPanel" fx:id="infoPanel" style="-fx-background-color: grey; -fx-padding: 30 0 0 0; -fx-background-insets: 32 0 0 0; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
@@ -19,22 +19,76 @@
             <padding>
                 <Insets bottom="5" left="15" right="5" top="5" />
             </padding>
-            <HBox alignment="CENTER_LEFT" prefWidth="103.0" spacing="5">
-                <Label fx:id="name" style="-fx-text-fill: white;" styleClass="cell_big_label" text="name holder" textFill="WHITE">
-                    <font>
-                        <Font size="24.0" />
-                    </font></Label>
+            <!-- Set name and ID if applicable -->
+            <HBox style="-fx-padding: 10 0 0 0;">
+            <ImageView fx:id="image" fitHeight="30.0" fitWidth="30.0" pickOnBounds="false" preserveRatio="false"/>
+            <Label fx:id="name" style="-fx-text-fill: white; -fx-padding: 5 0 5 10;" styleClass="cell_title_label" textFill="WHITE" wrapText="true" />
+            <Label fx:id="id" style="-fx-text-fill: white; -fx-padding: 5 0 5 0;" styleClass="cell_title_label" />
             </HBox>
-            <FlowPane fx:id="tags" prefHeight="30.0" prefWidth="130.0" />
-            <Label fx:id="nric" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Nric: "/>
-            <Label fx:id="job" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Job ID: "/>
-            <Label fx:id="phone" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Phone number: " />
-            <Label fx:id="address" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Address: " />
-            <Label fx:id="email" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Email: "/>
-            <Label fx:id="dateApplied" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Date applied: "/>
-            <Label fx:id="interviewDate" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Interview date: "/>
-            <Label fx:id="qualification" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Qualification: "/>
-            <Label fx:id="status" style="-fx-text-fill: white;" styleClass="cell_small_label" text="Application status: "/>
+            <FlowPane fx:id="tags" prefHeight="20.0" prefWidth="130.0" style="-fx-padding: 0;"/>
+            <!-- Set NRIC or Company name -->
+            <HBox style="-fx-padding: 0 3 3 0;">
+                <children>
+                    <Label fx:id="firstSubHeader" style="-fx-text-fill: white; -fx-padding: 0 5 0 0;" styleClass=".cell_medium_label" text="Click the list item to view more information" wrapText="true" />
+                    <Label fx:id="firstLabel" style="-fx-text-fill: white;" styleClass=".cell_medium_label" wrapText="true" />
+                </children>
+            </HBox>
+            <!-- Set Phone Number or Position -->
+             <HBox style="-fx-padding: 0 3 3 0;">
+                <children>
+                    <Label fx:id="secondSubHeader" style="-fx-text-fill: white; -fx-padding: 0 5 0 0" styleClass=".cell_medium_label" wrapText="true"/>
+                    <Label fx:id="secondLabel" style="-fx-text-fill: white;" styleClass=".cell_medium_label" wrapText="true" />
+                </children>
+             </HBox>
+            <!-- Set Email or Salary -->
+            <HBox style="-fx-padding: 0 3 3 0;">
+                <children>
+                    <Label fx:id="thirdSubHeader" style="-fx-text-fill: white; -fx-padding: 0 5 0 0" styleClass=".cell_medium_label" wrapText="true"/>
+                    <Label fx:id="thirdLabel" style="-fx-text-fill: white;" styleClass=".cell_medium_label" wrapText="true" />
+                </children>
+            </HBox>
+            <!-- Address -->
+            <HBox style="-fx-padding: 0 3 3 0;">
+                <children>
+                    <Label fx:id="fourthSubHeader" style="-fx-text-fill: white; -fx-padding: 0 5 0 0" styleClass=".cell_medium_label" wrapText="true"/>
+                    <Label fx:id="fourthLabel" style="-fx-text-fill: white;" styleClass=".cell_medium_label" wrapText="true" />
+                </children>
+            </HBox>
+            <!-- JobID or Job Status -->
+            <HBox style="-fx-padding: 0 3 3 0;">
+                <children>
+                    <Label fx:id="fifthSubHeader" style="-fx-text-fill: white; -fx-padding: 0 5 0 0" styleClass=".cell_medium_label" wrapText="true"/>
+                    <Label fx:id="fifthLabel" style="-fx-text-fill: white;" styleClass=".cell_medium_label" wrapText="true" />
+                </children>
+            </HBox>
+            <!-- dateApplied or Job Qualification -->
+            <HBox style="-fx-padding: 0 3 3 0;">
+                <children>
+                    <Label fx:id="sixthSubHeader" style="-fx-text-fill: white; -fx-padding: 0 5 0 0" styleClass=".cell_medium_label" wrapText="true"/>
+                    <Label fx:id="sixthLabel" style="-fx-text-fill: white;" styleClass=".cell_medium_label" wrapText="true" />
+                </children>
+            </HBox>
+            <!-- interviewDate -->
+            <HBox style="-fx-padding: 0 3 3 0;">
+                <children>
+                    <Label fx:id="seventhSubHeader" style="-fx-text-fill: white; -fx-padding: 0 5 0 0" styleClass=".cell_medium_label" wrapText="true"/>
+                    <Label fx:id="seventhLabel" style="-fx-text-fill: white;" styleClass=".cell_medium_label" wrapText="true" />
+                </children>
+            </HBox>
+            <!-- Applicant qualification -->
+            <HBox style="-fx-padding: 0 3 3 0;">
+                <children>
+                    <Label fx:id="eighthSubHeader" style="-fx-text-fill: white; -fx-padding: 0 5 0 0" styleClass=".cell_medium_label" wrapText="true"/>
+                    <Label fx:id="eighthLabel" style="-fx-text-fill: white;" styleClass=".cell_medium_label" wrapText="true" />
+                </children>
+            </HBox>
+            <!-- Applicant status -->
+            <HBox style="-fx-padding: 0 3 3 0;">
+                <children>
+                    <Label fx:id="ninthSubHeader" style="-fx-text-fill: white; -fx-padding: 0 5 0 0" styleClass=".cell_medium_label" wrapText="true"/>
+                    <Label fx:id="ninthLabel" wrapText="true" />
+                </children>
+            </HBox>
         </VBox>
         <rowConstraints>
             <RowConstraints />

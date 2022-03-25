@@ -94,6 +94,7 @@ public class AddressBookParser {
 
         case AddJob.COMMAND_WORD:
             return new AddJobParser().parse(arguments);
+
         case ListApplicant.COMMAND_WORD:
             return new ListApplicant();
 
