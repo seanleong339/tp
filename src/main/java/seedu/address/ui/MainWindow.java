@@ -219,11 +219,11 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandResult.isListApplicant()) {
+            if (commandResult.isTabApplicant()) {
                 handleListApplicant();
             }
 
-            if (commandResult.isListJob()) {
+            if (commandResult.isTabJob()) {
                 handleListJob();
             }
 

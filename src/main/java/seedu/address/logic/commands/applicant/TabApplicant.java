@@ -4,8 +4,8 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 
-public class ListApplicant extends Command {
-    public static final String COMMAND_WORD = "listapplicant";
+public class TabApplicant extends Command {
+    public static final String COMMAND_WORD = "tabapplicant";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches to Applicant Tab.\n"
             + "Example: " + COMMAND_WORD;

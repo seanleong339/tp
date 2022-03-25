@@ -19,12 +19,12 @@ import seedu.address.logic.commands.applicant.AddApplicant;
 import seedu.address.logic.commands.applicant.DeleteApplicant;
 import seedu.address.logic.commands.applicant.EditApplicant;
 import seedu.address.logic.commands.applicant.FindApplicant;
-import seedu.address.logic.commands.applicant.ListApplicant;
 import seedu.address.logic.commands.applicant.MarkApplicant;
+import seedu.address.logic.commands.applicant.TabApplicant;
 import seedu.address.logic.commands.job.AddJob;
 import seedu.address.logic.commands.job.DeleteJob;
 import seedu.address.logic.commands.job.EditJob;
-import seedu.address.logic.commands.job.ListJob;
+import seedu.address.logic.commands.job.TabJob;
 import seedu.address.logic.parser.applicant.AddApplicantParser;
 import seedu.address.logic.parser.applicant.DeleteApplicantParser;
 import seedu.address.logic.parser.applicant.EditApplicantParser;
@@ -107,11 +107,11 @@ public class AddressBookParser {
         case EditJob.COMMAND_WORD:
             return new EditJobParser().parse(arguments);
 
-        case ListApplicant.COMMAND_WORD:
-            return new ListApplicant();
+        case TabApplicant.COMMAND_WORD:
+            return new TabApplicant();
 
-        case ListJob.COMMAND_WORD:
-            return new ListJob();
+        case TabJob.COMMAND_WORD:
+            return new TabJob();
 
         case DeleteJob.COMMAND_WORD:
             return new DeleteJobParser().parse(arguments);

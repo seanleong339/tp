@@ -4,8 +4,8 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 
-public class ListJob extends Command {
-    public static final String COMMAND_WORD = "listjob";
+public class TabJob extends Command {
+    public static final String COMMAND_WORD = "tabjob";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches to Job Tab.\n"
             + "Example: " + COMMAND_WORD;
