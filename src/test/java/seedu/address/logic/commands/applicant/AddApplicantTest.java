@@ -161,6 +161,8 @@ class AddApplicantTest {
 
         @Override
         public boolean jobStatusUpToDate(Job job, JobStatus jobStatus) {
+            throw new AssertionError("This method should not be called.");
+        }
 
         public void setJob(Job target, Job editedJob) {
             throw new AssertionError("This method should not be called.");
@@ -183,11 +185,6 @@ class AddApplicantTest {
 
         @Override
         public String getIdCount() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<Job> getFilteredJobList() {
             throw new AssertionError("This method should not be called.");
         }
     }

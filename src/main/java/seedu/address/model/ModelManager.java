@@ -150,6 +150,7 @@ public class ModelManager implements Model {
     public boolean jobStatusUpToDate(Job job, JobStatus jobStatus) {
         requireAllNonNull(job, jobStatus);
         return job.getJobStatus().equals(jobStatus);
+    }
 
     public void setJob(Job target, Job editedJob) {
         requireAllNonNull(target, editedJob);
@@ -243,12 +244,6 @@ public class ModelManager implements Model {
         addressBook.incrementIdCount();
         return Integer.toString(id);
     }
-
-    @Override
-    public ObservableList<Job> getFilteredJobList() {
-        return filteredJobs;
-    }
-}
 
     @Override
     public void deleteJob(Job target) {

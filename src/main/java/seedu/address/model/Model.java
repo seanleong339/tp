@@ -150,8 +150,6 @@ public interface Model {
      */
     void updateFilteredApplicantList(Predicate<Applicant> predicate);
 
-    ObservableList<Job> getFilteredJobList();
-
     //--------------ReCLIne------------------------------
     // ============================= Job ================================
 
