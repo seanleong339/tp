@@ -16,7 +16,7 @@ public class Position {
     private static final String POSITION_FULLTIME = "full-time";
     private static final String POSITION_PARTTIME = "part-time";
 
-    private final String position;
+    public final String position;
 
     /**
      * Instantiates a new Position.

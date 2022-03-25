@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.ui.InfoPanel;
 import seedu.address.ui.UiPart;
 
 /**
@@ -19,7 +20,6 @@ public class ApplicantListPanel extends UiPart<Region> {
     private static final String FXML = "ApplicantListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ApplicantListPanel.class);
     private InfoPanel infoPanel;
-
     @FXML
     private ListView<Applicant> applicantListView;
 
@@ -40,7 +40,9 @@ public class ApplicantListPanel extends UiPart<Region> {
     public void handleApplicantClicks() {
         applicantListView.setOnMouseClicked(event -> {
             Applicant applicant = applicantListView.getSelectionModel().getSelectedItem();
-            infoPanel.setApplicantText(applicant);
+            if (applicant != null) {
+                infoPanel.setApplicantInfo(applicant);
+            }
         });
     }
 

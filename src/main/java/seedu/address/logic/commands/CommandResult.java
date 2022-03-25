@@ -18,21 +18,21 @@ public class CommandResult {
     private final boolean exit;
 
     /** The application should switch to applicant tab. */
-    private final boolean listApplicant;
+    private final boolean tabApplicant;
 
     /** The application should switch to job tab. */
-    private final boolean listJob;
+    private final boolean tabJob;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
-                         boolean listApplicant, boolean listJob) {
+                         boolean tabApplicant, boolean tabJob) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
-        this.listApplicant = listApplicant;
-        this.listJob = listJob;
+        this.tabApplicant = tabApplicant;
+        this.tabJob = tabJob;
     }
 
     /**
@@ -62,12 +62,12 @@ public class CommandResult {
         return exit;
     }
 
-    public boolean isListApplicant() {
-        return listApplicant;
+    public boolean isTabApplicant() {
+        return tabApplicant;
     }
 
-    public boolean isListJob() {
-        return listJob;
+    public boolean isTabJob() {
+        return tabJob;
     }
 
     @Override
@@ -85,13 +85,12 @@ public class CommandResult {
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit
-                && listApplicant == otherCommandResult.listApplicant
-                && listJob == otherCommandResult.listJob;
+                && tabApplicant == otherCommandResult.tabApplicant
+                && tabJob == otherCommandResult.tabJob;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit, listApplicant, listJob);
+        return Objects.hash(feedbackToUser, showHelp, exit, tabApplicant, tabJob);
     }
-
 }
