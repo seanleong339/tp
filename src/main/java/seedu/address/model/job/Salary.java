@@ -33,6 +33,19 @@ public class Salary {
     }
 
     /**
+     * Constructs a salary object with the salary range
+     * @param salary salary range
+     */
+    public Salary(String salary) {
+        requireNonNull(salary);
+        String trimmedSalary = salary.trim();
+        int index = trimmedSalary.indexOf("-");
+        this.startingSalary = trimmedSalary.substring(0, index);
+        this.endSalary = trimmedSalary.substring(index + 1);
+        this.salaryRange = startingSalary + "-" + endSalary;
+    }
+
+    /**
      * Checks if the Salary is valid.
      * @param startingSalary The left bound of salary.
      * @param endSalary The right bound of salary.
@@ -41,6 +54,25 @@ public class Salary {
      *          and false otherwise.
      */
     public static boolean isValidSalary(String startingSalary, String endSalary, String salaryRange) {
+        return salaryRange.matches(VALIDATION_REGEX)
+                && Integer.parseInt(startingSalary) <= Integer.parseInt(endSalary);
+    }
+
+    /**
+     * checks for valid salary range
+     * @param salary salary range
+     * @return True if salary range is valid, false otherwise
+     */
+    public static boolean isValidSalary(String salary) {
+        requireNonNull(salary);
+        if (!salary.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+        String trimmedSalary = salary.trim();
+        int index = trimmedSalary.indexOf("-");
+        String startingSalary = trimmedSalary.substring(0, index);
+        String endSalary = trimmedSalary.substring(index + 1);
+        String salaryRange = startingSalary + "-" + endSalary;
         return salaryRange.matches(VALIDATION_REGEX)
                 && Integer.parseInt(startingSalary) <= Integer.parseInt(endSalary);
     }

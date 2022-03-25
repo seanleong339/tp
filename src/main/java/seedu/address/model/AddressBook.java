@@ -35,7 +35,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         applicants = new UniqueApplicantList();
         jobs = new UniqueJobList();
-        idCount = 9;
+        idCount = 10;
     }
 
     public AddressBook() {}
@@ -212,8 +212,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public String toString() {
         // TODO: change this back if there is an error
-        return persons.asUnmodifiableObservableList().size() + " persons "
-                + applicants.asUnmodifiableObservableList().size() + " applicants"
+        return applicants.asUnmodifiableObservableList().size() + " applicants"
                 + jobs.asUnmodifiableObservableList().size() + " jobs";
         // TODO: refine later
     }
