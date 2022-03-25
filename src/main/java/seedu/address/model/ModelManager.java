@@ -187,6 +187,15 @@ public class ModelManager implements Model {
         return filteredApplicants;
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Applicant} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Job> getFilteredJobList() {
+        return filteredJobs;
+    }
+
     @Override
     public void updateFilteredApplicantList(Predicate<Applicant> predicate) {
         requireNonNull(predicate);

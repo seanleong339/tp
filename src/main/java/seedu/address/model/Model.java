@@ -162,10 +162,10 @@ public interface Model {
      */
     void setJob(Job target, Job editedJob);
 
-    /**
-     * Returns an unmodifiable view of the filtered person list
-     */
+    /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Job> getFilteredJobList();
+
+    //--------------ReCLIne------------------------------
 
     /**
      * Updates the filter of the filtered job list to filter by the given {@code predicate}.
@@ -185,4 +185,5 @@ public interface Model {
      * The job must exist in the address book.
      */
     void deleteJob(Job target);
+
 }
