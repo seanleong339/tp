@@ -9,6 +9,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.applicant.NameApplicantContainsKeywordsPredicate;
 
+/**
+ * Finds and lists all applicants in address book whose name contains any of the argument keywords.
+ * Keyword matching is case insensitive.
+ */
 public class FindApplicant extends Command {
 
     public static final String COMMAND_WORD = "findapplicant";

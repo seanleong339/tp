@@ -7,6 +7,9 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 
+/**
+ * Lists all applicants in the address book to the user.
+ */
 public class ListApplicant extends Command {
 
     public static final String COMMAND_WORD = "listapplicant";
