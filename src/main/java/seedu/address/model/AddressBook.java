@@ -35,7 +35,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         applicants = new UniqueApplicantList();
         jobs = new UniqueJobList();
-        idCount = 9;
+        idCount = 10;
     }
 
     public AddressBook() {}
@@ -67,8 +67,17 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the applicant list with {@code applicants}.
+     * {@code applicants} must not contain duplicate applicants.
+     */
+    public void setJobs(List<Job> jobs) {
+        this.jobs.setJobs(jobs);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
+
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
@@ -153,7 +162,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         applicants.remove(key);
     }
 
-    // Job methods
+    // job-level operations
 
     /**
      * Returns true if a job with the same identity as {@code job} exists in the address book.
@@ -171,13 +180,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         jobs.add(job);
     }
 
-    /**
-     * Replaces the contents of the job list with {@code jobs}.
-     * {@code jobs} must not contain duplicate jobs.
-     */
-    public void setJobs(List<Job> jobs) {
-        this.jobs.setJobs(jobs);
-    }
     //// IdCount methods
 
     /**
@@ -185,6 +187,16 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setIdCount(int idCount) {
         this.idCount = idCount;
+    }
+
+    /**
+     * Replaces the given job {@code target} in the list with {@code editedJob}.
+     * The job identity of {@code editedJob} must not be the same as another existing job
+     * in the address book.
+     */
+    public void setJob(Job target, Job editedJob) {
+        requireNonNull(editedJob);
+        jobs.setJob(target, editedJob);
     }
 
     /**
@@ -231,12 +243,21 @@ public class AddressBook implements ReadOnlyAddressBook {
                 || (other instanceof AddressBook // instanceof handles nulls
                 // TODO: change back if there is error
                 && persons.equals(((AddressBook) other).persons)
-                && applicants.equals(((AddressBook) other).applicants))
+                && applicants.equals(((AddressBook) other).applicants)
+                && jobs.equals(((AddressBook) other).jobs))
                 && idCount == (((AddressBook) other).idCount);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(persons, applicants);
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the address book.
+     */
+    public void removeJob(Job key) {
+        jobs.remove(key);
     }
 }

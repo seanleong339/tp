@@ -18,7 +18,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.applicant.ApplicantListPanel;
-import seedu.address.ui.applicant.InfoPanel;
+import seedu.address.ui.job.JobListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -34,7 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private JobListPanel jobListPanel;
     private ApplicantListPanel applicantListPanel;
     private InfoPanel infoPanel;
 
@@ -48,7 +48,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane jobListPanelPlaceholder;
 
     @FXML
     private StackPane applicantListPanelPlaceholder;
@@ -126,16 +126,19 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        // Displays person list
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        // Displays info panel
+        infoPanel = new InfoPanel();
+        infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
 
         // Displays applicant list
-        infoPanel = new InfoPanel();
         applicantListPanel = new ApplicantListPanel(logic.getFilteredApplicantList(), infoPanel);
         applicantListPanelPlaceholder.getChildren().add(applicantListPanel.getRoot());
-        infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
         applicantListPanel.handleApplicantClicks();
+
+        // Displays job list
+        jobListPanel = new JobListPanel(logic.getFilteredJobList(), infoPanel);
+        jobListPanelPlaceholder.getChildren().add(jobListPanel.getRoot());
+        jobListPanel.handleJobClicks();
 
         // displays command result
         resultDisplay = new ResultDisplay();
