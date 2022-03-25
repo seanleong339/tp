@@ -85,23 +85,68 @@
     "applicationStatus" : "0"
   } ],
   "jobs" : [ {
-    "jobTitle" : "Data Analyst",
-    "companyName" : "Facebook",
-    "id" : "1",
-    "address" : "9 Straits View, Marina One",
-    "qualification" : "Degree in Data Science",
-    "jobStatus" : "vacant",
-    "position" : "ft",
-    "salary" : "6000-8000"
-  }, {
-    "jobTitle" : "Project Manager",
-    "companyName" : "OCBC",
-    "id" : "2",
-    "address" : "65 Chulia Street, OCBC Centre",
-    "qualification" : "Degree in Business Management",
+    "jobTitle" : "Software Engineer",
+    "companyName" : "Google",
+    "id" : "3",
+    "address" : "123 Google Road",
+    "qualification" : "Degree in Computer Science",
     "jobStatus" : "filled",
     "position" : "ft",
-    "salary" : "4000-5000"
+    "salary" : "5000-6000"
+  }, {
+    "jobTitle" : "Engineer",
+    "companyName" : "Visa",
+    "id" : "4",
+    "address" : "123 Visa Road",
+    "qualification" : "Degree in Engineering",
+    "jobStatus" : "filled",
+    "position" : "ft",
+    "salary" : "4000-6000"
+  }, {
+    "jobTitle" : "Accountant",
+    "companyName" : "DBS",
+    "id" : "5",
+    "address" : "194 DBS Road",
+    "qualification" : "Degree in Accounting",
+    "jobStatus" : "vacant",
+    "position" : "ft",
+    "salary" : "5000-8000"
+  }, {
+    "jobTitle" : "Cashier",
+    "companyName" : "NTUC",
+    "id" : "6",
+    "address" : "194 NTUC Fairprice Road",
+    "qualification" : "No Requirement",
+    "jobStatus" : "filled",
+    "position" : "ft",
+    "salary" : "2000-3000"
+  }, {
+    "jobTitle" : "Safe Distancing Ambassador",
+    "companyName" : "Ministry of Sustainability and Environment",
+    "id" : "7",
+    "address" : "1 Safe Distance Road",
+    "qualification" : "No Requirement",
+    "jobStatus" : "vacant",
+    "position" : "pt",
+    "salary" : "10-13"
+  }, {
+    "jobTitle" : "Food Packer",
+    "companyName" : "FitThree",
+    "id" : "8",
+    "address" : "194 Packing Road",
+    "qualification" : "No Requirement",
+    "jobStatus" : "filled",
+    "position" : "pt",
+    "salary" : "10-10"
+  }, {
+    "jobTitle" : "Waiter",
+    "companyName" : "Ichiban",
+    "id" : "9",
+    "address" : "14 Waiting Table Road",
+    "qualification" : "No Requirement",
+    "jobStatus" : "filled",
+    "position" : "pt",
+    "salary" : "8-10"
   } ],
   "idCount" : 9
 }

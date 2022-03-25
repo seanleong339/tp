@@ -32,6 +32,10 @@ public class Salary {
         this.endSalary = endSalary;
     }
 
+    /**
+     * Constructs a salary object with the salary range
+     * @param salary salary range
+     */
     public Salary(String salary) {
         requireNonNull(salary);
         String trimmedSalary = salary.trim();
@@ -54,9 +58,14 @@ public class Salary {
                 && Integer.parseInt(startingSalary) <= Integer.parseInt(endSalary);
     }
 
+    /**
+     * checks for valid salary range
+     * @param salary salary range
+     * @return True if salary range is valid, false otherwise
+     */
     public static boolean isValidSalary(String salary) {
         requireNonNull(salary);
-        if(!salary.matches(VALIDATION_REGEX)) {
+        if (!salary.matches(VALIDATION_REGEX)) {
             return false;
         }
         String trimmedSalary = salary.trim();

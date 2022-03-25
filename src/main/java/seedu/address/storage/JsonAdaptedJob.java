@@ -13,7 +13,6 @@ import seedu.address.model.job.JobTitle;
 import seedu.address.model.job.Position;
 import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Name;
 
 /**
  * Jackson-friendly version of {@link Job}.
@@ -72,7 +71,8 @@ class JsonAdaptedJob {
     public Job toModelType() throws IllegalValueException {
 
         if (jobTitle == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, JobTitle.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    JobTitle.class.getSimpleName()));
         }
         if (!JobTitle.isValidJobTitle(jobTitle)) {
             throw new IllegalValueException(JobTitle.MESSAGE_CONSTRAINTS);
@@ -109,7 +109,7 @@ class JsonAdaptedJob {
                     Qualification.class.getSimpleName()));
         }
         if (!Qualification.isValidQualification(qualification)) {
-        throw new IllegalValueException(Qualification.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Qualification.MESSAGE_CONSTRAINTS);
         }
 
         final Qualification modelQualification = new Qualification(qualification);

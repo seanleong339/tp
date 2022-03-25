@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.AddressBook;
-import seedu.address.testutil.TypicalApplicants;
 import seedu.address.testutil.TypicalJobs;
 
 public class JsonSerializableAddressBookTest {
@@ -27,12 +26,12 @@ public class JsonSerializableAddressBookTest {
             TEST_DATA_FOLDER.resolve("duplicateJobsReCLIne.json");
 
     @Test
-    public void toModeType_typicalReCLIneFile_success() throws Exception {
+    public void toModeType_typicalReclineFile_success() throws Exception {
         JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_RECLINE_FILE,
                 JsonSerializableAddressBook.class).get();
         AddressBook addressBookFromFile = dataFromFile.toModelType();
-        AddressBook typicalReCLIne = TypicalJobs.getTypicalAddressBook();
-        assertEquals(addressBookFromFile, typicalReCLIne);
+        AddressBook typicalRecline = TypicalJobs.getTypicalAddressBook();
+        assertEquals(addressBookFromFile, typicalRecline);
     }
 
     @Test

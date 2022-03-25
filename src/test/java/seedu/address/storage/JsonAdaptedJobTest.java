@@ -5,6 +5,7 @@ import static seedu.address.storage.JsonAdaptedJob.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Qualification;

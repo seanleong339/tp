@@ -17,6 +17,7 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.testutil.TypicalJobs;
 
 public class JsonAddressBookStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
@@ -64,8 +65,8 @@ public class JsonAddressBookStorageTest {
     // public void saveAddressBook_withApplicants() throws Exception {
     //     Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableAddressBookTest");
     //     JsonAddressBookStorage j =
-    //             new JsonAddressBookStorage(TEST_DATA_FOLDER.resolve("duplicateJobsReCLIne.json"));
-    //     j.saveAddressBook(new AddressBook());
+    //             new JsonAddressBookStorage(TEST_DATA_FOLDER.resolve("typicalReCLIne.json"));
+    //     j.saveAddressBook(TypicalJobs.getTypicalAddressBook());
     // }
 
     @Test
@@ -81,7 +82,6 @@ public class JsonAddressBookStorageTest {
 
         // Modify data, overwrite exiting file, and read back
         original.removeApplicant(ALICE);
-        original.addJob(SOFTWARE_ENGINEER);
         jsonAddressBookStorage.saveAddressBook(original, filePath);
         readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
         assertEquals(original, new AddressBook(readBack));
