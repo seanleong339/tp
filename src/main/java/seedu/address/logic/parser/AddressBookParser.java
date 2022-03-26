@@ -37,7 +37,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.job.AddJobParser;
 import seedu.address.logic.parser.job.DeleteJobParser;
 import seedu.address.logic.parser.job.EditJobParser;
-import seedu.address.logic.parser.job.MarkCommandParser;
+import seedu.address.logic.parser.job.MarkJobParser;
 
 /**
  * Parses user input.
@@ -109,7 +109,7 @@ public class AddressBookParser {
             return new ListApplicant();
 
         case MarkJob.COMMAND_WORD:
-            return new MarkCommandParser().parse(arguments);
+            return new MarkJobParser().parse(arguments);
 
         case AddJob.COMMAND_WORD:
             return new AddJobParser().parse(arguments);
