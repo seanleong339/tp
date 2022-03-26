@@ -202,6 +202,7 @@ public class InfoPanel extends UiPart<Region> {
      */
     private void resetInfoPanelJob() {
         tags.getChildren().clear();
+        id.setVisible(true);
         seventhLabel.setVisible(false);
         eighthLabel.setVisible(false);
         ninthLabel.setVisible(false);
