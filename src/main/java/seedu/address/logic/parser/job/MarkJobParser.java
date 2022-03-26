@@ -13,7 +13,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.job.JobStatus;
 
-public class MarkCommandParser implements Parser<MarkJob> {
+public class MarkJobParser implements Parser<MarkJob> {
 
     @Override
     public MarkJob parse(String userInput) throws ParseException {
