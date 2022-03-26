@@ -132,7 +132,6 @@ public class AddressBookParser {
 
         case SortJob.COMMAND_WORD:
             return new SortJob();
-            
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
