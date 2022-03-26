@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.job.Job;
+import seedu.address.model.job.JobStatus;
 import seedu.address.model.person.Person;
 
 /**
@@ -146,6 +147,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean jobStatusUpToDate(Job job, JobStatus jobStatus) {
+        requireAllNonNull(job, jobStatus);
+        return job.getJobStatus().equals(jobStatus);
+    }
+
     public void setJob(Job target, Job editedJob) {
         requireAllNonNull(target, editedJob);
 

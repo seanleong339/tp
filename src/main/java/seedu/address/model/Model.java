@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.job.Job;
+import seedu.address.model.job.JobStatus;
 import seedu.address.model.person.Person;
 
 /**
@@ -137,12 +138,19 @@ public interface Model {
 
 
     /**
+     * Returns true if a given {@code job} is has a given {@code jobStatus}.
+     */
+    boolean jobStatusUpToDate(Job job, JobStatus jobStatus);
+
+    /**
+     * Returns the current IdCount()
      * Updates the filter of the filtered applicant list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredApplicantList(Predicate<Applicant> predicate);
 
+    //--------------ReCLIne------------------------------
     // ============================= Job ================================
 
     /**

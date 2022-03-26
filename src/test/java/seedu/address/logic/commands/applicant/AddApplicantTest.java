@@ -22,6 +22,7 @@ import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.DateApplied;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.job.Job;
+import seedu.address.model.job.JobStatus;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -159,6 +160,10 @@ class AddApplicantTest {
         }
 
         @Override
+        public boolean jobStatusUpToDate(Job job, JobStatus jobStatus) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         public void setJob(Job target, Job editedJob) {
             throw new AssertionError("This method should not be called.");
         }
