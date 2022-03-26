@@ -24,6 +24,7 @@ import seedu.address.logic.commands.job.AddJob;
 import seedu.address.logic.commands.job.DeleteJob;
 import seedu.address.logic.commands.job.EditJob;
 import seedu.address.logic.commands.job.ListJob;
+import seedu.address.logic.commands.job.SortJob;
 import seedu.address.logic.parser.applicant.AddApplicantParser;
 import seedu.address.logic.parser.applicant.DeleteApplicantParser;
 import seedu.address.logic.parser.applicant.EditApplicantParser;
@@ -110,6 +111,10 @@ public class AddressBookParser {
 
         case DeleteJob.COMMAND_WORD:
             return new DeleteJobParser().parse(arguments);
+
+        case SortJob.COMMAND_WORD:
+            return new SortJob();
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

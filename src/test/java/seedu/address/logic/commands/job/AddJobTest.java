@@ -180,6 +180,11 @@ class AddJobTest {
         public String getIdCount() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void sortJob() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

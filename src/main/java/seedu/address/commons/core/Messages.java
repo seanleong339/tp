@@ -13,4 +13,5 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_INVALID_APPLICANT_STATUS = "Invalid applicant status provided. "
             + "Should be in range 0 to 3.";
+    public static final String MESSAGE_EMPTY_JOB_LIST = "Job list is empty.";
 }

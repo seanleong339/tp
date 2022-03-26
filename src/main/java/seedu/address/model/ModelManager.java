@@ -243,4 +243,9 @@ public class ModelManager implements Model {
     public void deleteJob(Job target) {
         addressBook.removeJob(target);
     }
+
+    @Override
+    public void sortJob() {
+        addressBook.sortJob();
+    }
 }
