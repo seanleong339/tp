@@ -3,6 +3,7 @@ package seedu.address.logic.commands.job;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_JOBS;
 
 import java.util.List;
 
@@ -56,7 +57,8 @@ public class MarkJob extends Command {
         }
 
         Job markedJob = new Job(toMark, jobStatus);
-        model.addJob(markedJob);
+        model.setJob(toMark, markedJob);
+        model.updateFilteredJobList(PREDICATE_SHOW_ALL_JOBS);
         return new CommandResult(String.format(MESSAGE_SUCCESS, markedJob));
     }
 
