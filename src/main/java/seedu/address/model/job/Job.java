@@ -56,6 +56,21 @@ public class Job {
         this.salary = salary;
     }
 
+    /**
+     * Creates a Job object with specified job status for use by Mark method
+     */
+    public Job(Job job, JobStatus jobStatus) {
+        requireAllNonNull(job, jobStatus);
+        this.jobTitle = job.getJobTitle();
+        this.companyName = job.getCompany();
+        this.id = job.getJobId();
+        this.address = job.getAddress();
+        this.qualification = job.getQualification();
+        this.jobStatus = jobStatus;
+        this.position = job.getPosition();
+        this.salary = job.getSalary();
+    }
+
     public JobTitle getJobTitle() {
         return jobTitle;
     }

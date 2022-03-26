@@ -18,7 +18,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_HIGH_PRO
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_LOW_DATA_ANALYSIS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_LOW_PROJECT_MANAGER;
 import static seedu.address.testutil.TypicalApplicants.getTypicalApplicants;
-import static seedu.address.testutil.TypicalPersons.getTypicalPersons;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,35 +26,34 @@ import java.util.List;
 import seedu.address.model.AddressBook;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.job.Job;
-import seedu.address.model.person.Person;
 
 public class TypicalJobs {
     public static final Job SOFTWARE_ENGINEER = new JobBuilder().withJobTitle("Software Engineer")
-            .withCompanyName("Google").withJobId("12332").withJobAddress("123 Google Road")
+            .withCompanyName("Google").withJobId("3").withJobAddress("123 Google Road")
             .withJobQualification("Degree in Computer Science").withJobStatus("filled")
             .withJobPosition("ft").withJobSalary("5000", "6000").build();
     public static final Job ENGINEER = new JobBuilder().withJobTitle("Engineer")
-            .withCompanyName("Visa").withJobId("1432").withJobAddress("123 Visa Road")
+            .withCompanyName("Visa").withJobId("4").withJobAddress("123 Visa Road")
             .withJobQualification("Degree in Engineering").withJobStatus("filled")
             .withJobPosition("ft").withJobSalary("4000", "6000").build();
     public static final Job ACCOUNTANT = new JobBuilder().withJobTitle("Accountant")
-            .withCompanyName("DBS").withJobId("143241").withJobAddress("194 DBS Road")
+            .withCompanyName("DBS").withJobId("5").withJobAddress("194 DBS Road")
             .withJobQualification("Degree in Accounting").withJobStatus("vacant")
             .withJobPosition("ft").withJobSalary("5000", "8000").build();
     public static final Job CASHIER = new JobBuilder().withJobTitle("Cashier")
-            .withCompanyName("NTUC").withJobId("1234").withJobAddress("194 NTUC Fairprice Road")
+            .withCompanyName("NTUC").withJobId("6").withJobAddress("194 NTUC Fairprice Road")
             .withJobQualification("No Requirement").withJobStatus("filled")
             .withJobPosition("ft").withJobSalary("2000", "3000").build();
     public static final Job SAFE_DISTANCING_AMBASSADOR = new JobBuilder().withJobTitle("Safe Distancing Ambassador")
-            .withCompanyName("Ministry of Sustainability and Environment").withJobId("145")
+            .withCompanyName("Ministry of Sustainability and Environment").withJobId("7")
             .withJobAddress("1 Safe Distance Road").withJobQualification("No Requirement").withJobStatus("vacant")
             .withJobPosition("pt").withJobSalary("10", "13").build();
     public static final Job FOOD_PACKER = new JobBuilder().withJobTitle("Food Packer")
-            .withCompanyName("FitThree").withJobId("923").withJobAddress("194 Packing Road")
+            .withCompanyName("FitThree").withJobId("8").withJobAddress("194 Packing Road")
             .withJobQualification("No Requirement").withJobStatus("filled")
             .withJobPosition("pt").withJobSalary("10", "10").build();
     public static final Job WAITER = new JobBuilder().withJobTitle("Waiter")
-            .withCompanyName("Ichiban").withJobId("3").withJobAddress("14 Waiting Table Road")
+            .withCompanyName("Ichiban").withJobId("9").withJobAddress("14 Waiting Table Road")
             .withJobQualification("No Requirement").withJobStatus("filled")
             .withJobPosition("pt").withJobSalary("8", "10").build();
 
@@ -78,18 +76,13 @@ public class TypicalJobs {
      */
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
-        for (Person person : getTypicalPersons()) {
-            ab.addPerson(person);
-        }
         for (Applicant applicant: getTypicalApplicants()) {
             ab.addApplicant(applicant);
         }
-
         for (Job job : getTypicalJobs()) {
-
-            // TODO CHANGE THIS ONCE ADDRESSBOOK IS CHANGED
             ab.addJob(job);
         }
+        ab.setIdCount(9);
         return ab;
     }
 

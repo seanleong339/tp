@@ -23,5 +23,3 @@ public class Main {
         Application.launch(MainApp.class, args);
     }
 }
-
-/*dummy commit*/
