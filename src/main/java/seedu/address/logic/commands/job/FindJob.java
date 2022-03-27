@@ -1,6 +1,8 @@
 package seedu.address.logic.commands.job;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
 
 import java.util.function.Predicate;
 
@@ -22,9 +24,10 @@ public class FindJob extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all job whose job title contains"
             + "the specified keywords (case-insensitive) or finds a job matching the id given.\n"
             + "findjob command will displays them as a list with index numbers.\n"
-            + "Parameters: SEARCH_TYPE KEYWORD [KEYWORD] or JOB ID\n"
-            + "Example: " + COMMAND_WORD + " jobtitle designer\n"
-            + COMMAND_WORD + " id 1234";
+            + "Parameters (search via jobtitle keyword): " + PREFIX_JOBTITLE + "SEARCH_TYPE KEYWORD [KEYWORD]\n"
+            + "Parameters (search via id): " + PREFIX_JOBID + "JOB ID\n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_JOBID + "designer\n"
+            + COMMAND_WORD + " " + PREFIX_JOBID +  "1234";
 
     private final Predicate<Job> predicate;
 
