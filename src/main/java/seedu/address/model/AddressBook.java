@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.applicant.Applicant;
 import seedu.address.model.applicant.UniqueApplicantList;
 import seedu.address.model.job.Job;
+import seedu.address.model.job.JobStatusComparator;
 import seedu.address.model.job.UniqueJobList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
@@ -259,5 +260,13 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeJob(Job key) {
         jobs.remove(key);
+    }
+
+    /**
+     * Sorts the job list by the given comparator.
+     */
+    public void sortJob() {
+        JobStatusComparator comparator = new JobStatusComparator();
+        jobs.sort(comparator);
     }
 }

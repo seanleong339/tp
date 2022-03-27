@@ -3,6 +3,7 @@ package seedu.address.model.job;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -84,6 +85,10 @@ public class UniqueJobList implements Iterable<Job> {
         }
 
         internalList.setAll(jobs);
+    }
+
+    public void sort(Comparator<Job> comparator) {
+        internalList.sort(comparator);
     }
 
     /**
