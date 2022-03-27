@@ -74,12 +74,16 @@ public class SampleDataUtil {
     public static Job[] getSampleJobs() {
         return new Job[] {new Job(new JobTitle("Data Analyst"), new CompanyName("Facebook"), new JobId("1"),
                      new Address("9 Straits View, Marina One"),
-                     new Qualification("Degree in Data Science"), new JobStatus("vacant"),
+                     new Qualification("Degree in Data Science"), new JobStatus("filled"),
                      new Position("ft"), new Salary("6000-8000")), new Job(new JobTitle("Project Manager"),
                      new CompanyName("OCBC"), new JobId("2"),
                      new Address("65 Chulia Street, OCBC Centre"),
                      new Qualification("Degree in Business Management"), new JobStatus("vacant"),
-                     new Position("ft"), new Salary("4000-5000"))
+                     new Position("ft"), new Salary("4000-5000")),
+                     new Job(new JobTitle("Software Engineer"), new CompanyName("Google"), new JobId("3"),
+                     new Address("123 Google Road"), new Qualification("Degree in Computer Science"),
+                     new JobStatus("filled"), new Position("ft"),
+                     new Salary("5000-6000"))
         };
     }
 
