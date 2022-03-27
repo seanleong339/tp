@@ -20,11 +20,12 @@ public class FindJob extends Command {
     public static final String COMMAND_WORD = "findjob";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all job whose job title contains"
-            + "the specified keywords (case-insensitive) or finds a job matching the id given.\n"
+            + "the specified keywords (case-insensitive) or finds a job matching the id given."
+            + "findjob can either search for a job given the keywords in jobtitle or a job id.\n"
             + "findjob command will displays them as a list with index numbers.\n"
             + "Parameters: SEARCH_TYPE KEYWORD [KEYWORD] or JOB ID\n"
-            + "Example: " + COMMAND_WORD + " jobtitle designer\n"
-            + COMMAND_WORD + " id 1234";
+            + "Example: " + COMMAND_WORD + " jt/KEYWORD \n"
+            + COMMAND_WORD + " id/1234";
 
     private final Predicate<Job> predicate;
 
