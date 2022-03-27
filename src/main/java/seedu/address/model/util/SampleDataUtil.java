@@ -79,8 +79,8 @@ public class SampleDataUtil {
                      new CompanyName("OCBC"), new JobId("2"),
                      new Address("65 Chulia Street, OCBC Centre"),
                      new Qualification("Degree in Business Management"), new JobStatus("vacant"),
-                     new Position("ft"), new Salary("4000-5000")),
-                     new Job(new JobTitle("Software Engineer"), new CompanyName("Google"), new JobId("3"),
+                     new Position("ft"), new Salary("4000-5000")), new Job(new JobTitle("Software Engineer"),
+                     new CompanyName("Google"), new JobId("3"),
                      new Address("123 Google Road"), new Qualification("Degree in Computer Science"),
                      new JobStatus("filled"), new Position("ft"),
                      new Salary("5000-6000"))
