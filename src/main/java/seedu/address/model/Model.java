@@ -189,4 +189,8 @@ public interface Model {
      */
     void deleteJob(Job target);
 
+    /**
+     * Sorts the job list by the given comparator.
+     */
+    void sortJob();
 }

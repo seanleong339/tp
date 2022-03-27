@@ -9,10 +9,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class JobStatus {
     public static final String MESSAGE_CONSTRAINTS = "Job status should be denoted as either 'filled' or 'vacant'";
 
-    private static final String JOBSTATUS_FILLED = "filled";
-    private static final String JOBSTATUS_VACANT = "vacant";
+    public static final String JOBSTATUS_FILLED = "filled";
+    public static final String JOBSTATUS_VACANT = "vacant";
 
-    private final String jobStatus;
+    public final String jobStatus;
 
     /**
      * Instantiates a new Job status.
