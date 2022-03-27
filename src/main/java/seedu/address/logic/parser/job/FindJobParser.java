@@ -29,8 +29,11 @@ public class FindJobParser implements Parser<FindJob> {
                 ArgumentTokenizer.tokenize(args, PREFIX_JOBTITLE, PREFIX_JOBID);
         Predicate<Job> predicate;
 
-        if (!anyPrefixesPresent(argMultimap, PREFIX_JOBTITLE, PREFIX_JOBID) || !argMultimap.getPreamble().isEmpty()
-        ||  arePrefixesPresent(argMultimap, PREFIX_JOBTITLE, PREFIX_JOBID)) {
+        if (arePrefixesPresent(argMultimap, PREFIX_JOBTITLE, PREFIX_JOBID)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
+        }
+
+        if (!anyPrefixesPresent(argMultimap, PREFIX_JOBTITLE, PREFIX_JOBID)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
         }
 
