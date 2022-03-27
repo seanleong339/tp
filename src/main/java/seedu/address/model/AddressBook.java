@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -268,5 +269,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void sortJob() {
         JobStatusComparator comparator = new JobStatusComparator();
         jobs.sort(comparator);
+    }
+
+    /**
+     * Sorts the applicant list by a given comparator.
+     */
+    public void sortApplicant(Comparator<Applicant> comparator) {
+        applicants.sort(comparator);
     }
 }

@@ -6,7 +6,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class InterviewDate {
+public class InterviewDate implements Comparable<InterviewDate> {
     public static final String MESSAGE_CONSTRAINTS =
             "Date should be of the format yyyy-mm-dd "
                     + "and adhere to the following constraints:\n"
@@ -75,5 +75,10 @@ public class InterviewDate {
     @Override
     public int hashCode() {
         return date.hashCode();
+    }
+
+    @Override
+    public int compareTo(InterviewDate o) {
+        return date.compareTo(o.date);
     }
 }

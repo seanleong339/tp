@@ -8,6 +8,7 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.commands.applicant.SortApplicant;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
@@ -330,6 +331,19 @@ public class ParserUtil {
             throw new ParseException(CompanyName.MESSAGE_CONSTRAINTS);
         }
         return new CompanyName(trimmedCompanyName);
+    }
+
+    /**
+     * Parse {@code String applicantComparator} and returns it. Leading and trailing whitespaces will
+     * be trimmed.
+     */
+    public static String parseApplicantComparator(String applicantComparator) throws ParseException {
+        requireNonNull(applicantComparator);
+        String trimmedComparator = applicantComparator.trim();
+        if (!SortApplicant.isValid(trimmedComparator)) {
+            throw new ParseException(SortApplicant.MESSAGE_CONSTRAINTS);
+        }
+        return trimmedComparator;
     }
 
 }

@@ -20,6 +20,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_DATEINTERVIEW = new Prefix("i/");
     public static final Prefix PREFIX_NRIC = new Prefix("nric/");
     public static final Prefix PREFIX_STATUS = new Prefix("s/");
+    public static final Prefix PREFIX_SORTAPPLICANT = new Prefix("by/");
 
     /* Prefix for job */
     public static final Prefix PREFIX_JOBTITLE = new Prefix("jt/");

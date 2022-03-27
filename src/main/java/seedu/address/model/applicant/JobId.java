@@ -3,7 +3,7 @@ package seedu.address.model.applicant;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-public class JobId {
+public class JobId implements Comparable<JobId> {
 
     /**
      * The error message for invalid job ID received.
@@ -77,5 +77,10 @@ public class JobId {
     @Override
     public int hashCode() {
         return jobId.hashCode();
+    }
+
+    @Override
+    public int compareTo(JobId o) {
+        return jobId.compareTo(o.jobId);
     }
 }
