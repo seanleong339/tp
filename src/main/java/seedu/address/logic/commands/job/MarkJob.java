@@ -59,6 +59,7 @@ public class MarkJob extends Command {
         Job markedJob = new Job(toMark, jobStatus);
         model.setJob(toMark, markedJob);
         model.updateFilteredJobList(PREDICATE_SHOW_ALL_JOBS);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, markedJob));
     }
 
