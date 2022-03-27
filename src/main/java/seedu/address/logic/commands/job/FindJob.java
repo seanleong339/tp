@@ -27,7 +27,7 @@ public class FindJob extends Command {
             + "Parameters (search via jobtitle keyword): " + PREFIX_JOBTITLE + "SEARCH_TYPE KEYWORD [KEYWORD]\n"
             + "Parameters (search via id): " + PREFIX_JOBID + "JOB ID\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_JOBID + "designer\n"
-            + COMMAND_WORD + " " + PREFIX_JOBID +  "1234";
+            + COMMAND_WORD + " " + PREFIX_JOBID + "1234";
 
 
     private final Predicate<Job> predicate;
