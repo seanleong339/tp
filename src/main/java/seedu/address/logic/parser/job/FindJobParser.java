@@ -29,7 +29,8 @@ public class FindJobParser implements Parser<FindJob> {
                 ArgumentTokenizer.tokenize(args, PREFIX_JOBTITLE, PREFIX_JOBID);
         Predicate<Job> predicate;
 
-        if (!anyPrefixesPresent(argMultimap, PREFIX_JOBTITLE, PREFIX_JOBID) || !argMultimap.getPreamble().isEmpty()) {
+        if (!anyPrefixesPresent(argMultimap, PREFIX_JOBTITLE, PREFIX_JOBID) || !argMultimap.getPreamble().isEmpty()
+        ||  arePrefixesPresent(argMultimap, PREFIX_JOBTITLE, PREFIX_JOBID)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
         }
 
@@ -45,11 +46,19 @@ public class FindJobParser implements Parser<FindJob> {
     }
 
     /**
-     * Returns true if there is a value mapped to  PREFIX_INTERVIEW_STATUS and/or PREFIX_APPLICATION_STATUS
+     * Returns true if there is a value mapped to PREFIX_INTERVIEW_STATUS and/or PREFIX_APPLICATION_STATUS
      * {@code ArgumentMultimap}.
      */
     private static boolean anyPrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).anyMatch(argumentMultimap::containsPrefix);
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
 
