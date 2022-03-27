@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEAPPLIED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -133,8 +134,10 @@ public class CommandTestUtil {
     public static final String JOB_TITLE_DESC_PROJECT_MANAGER = " " + PREFIX_JOBTITLE + VALID_JOB_TITLE_PROJECT_MANAGER;
     public static final String COMPANY_NAME_DESC_DATA_ANALYSIS = " " + PREFIX_COMPANY_NAME
             + VALID_COMPANY_NAME_DATA_ANALYSIS;
+
     public static final String COMPANY_NAME_DESC_PROJECT_MANAGER = " " + PREFIX_COMPANY_NAME
             + VALID_COMPANY_NAME_PROJECT_MANAGER;
+    public static final String JOBID_DESC_PROJECT_MANAGER = " " + PREFIX_JOBID + VALID_JOB_ID_PROJECT_MANAGER;
     public static final String POSITION_DESC_DATA_ANALYSIS = " " + PREFIX_JOB_POSITION + VALID_POSITION_FULL_TIME;
     public static final String POSITION_DESC_PROJECT_MANAGER = " " + PREFIX_JOB_POSITION + VALID_POSITION_FULL_TIME;
     public static final String SALARY_DESC_DATA_ANALYSIS = " " + PREFIX_SALARY + VALID_SALARY_LOW_DATA_ANALYSIS + "-"
