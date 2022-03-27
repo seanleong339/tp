@@ -66,9 +66,12 @@ public class SortApplicant extends Command {
             this.compareBy = COMPARE_BY_INTERVIEWDATE;
             this.attribute = ATTRIBUTE_INTERVIEW;
             break;
-        default:
+        case SORTAPPLICANT_BY_JOB:
             this.compareBy = COMPARE_BY_JOBID;
             this.attribute = ATTRIBUTE_JOB;
+            break;
+        default:
+            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
     }
 

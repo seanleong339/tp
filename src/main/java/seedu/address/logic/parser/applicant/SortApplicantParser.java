@@ -2,7 +2,6 @@ package seedu.address.logic.parser.applicant;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SORTAPPLICANT;
 
 import seedu.address.logic.commands.applicant.SortApplicant;
@@ -17,12 +16,12 @@ public class SortApplicantParser implements Parser<SortApplicant> {
     @Override
     public SortApplicant parse(String userInput) throws ParseException {
         requireNonNull(userInput);
-        ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(userInput.trim(),
+        ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(userInput,
                 PREFIX_SORTAPPLICANT);
 
         String compareBy;
 
-        if (argumentMultimap.getValue(PREFIX_JOBSTATUS).isEmpty()) {
+        if (argumentMultimap.getValue(PREFIX_SORTAPPLICANT).isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortApplicant.MESSAGE_USAGE));
         } else {
 
