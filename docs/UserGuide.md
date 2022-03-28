@@ -196,44 +196,34 @@ Example:
 - Marks the status of the applicant with ID 106 as accepted.
 
 
-### Adding a Job: `job add` [coming soon]
-Adds a job attribute
+### Adding a Job: `addjob`
+Adds a new job posting to ReCLIne
 
-Format: `job add [ID*] ed/[EDUCATION] l/[LOCATION] s/[SALARY] sp/[SPECIALISATION] d/[DURATION]`
+Format: `addjob jt/[JOB TITLE] c/[COMPANY] a/[ADDRESS] q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
 *flag/[Attribute]:*
 
-`[ID*]`: Unique ID for the job instance. The ID must be a positive integer 1, 2, 3..
+`jt/[JOB TITLE]`: Job title of the job
 
-`e/[EDUCATION]`: Education level requirement for the job
+`c/[COMPANY]`: The company for the job opening 
 
-`l/[LOCATION]`: Location of the job
+`a/[ADDRESS]`: Location of the job 
+
+`q/[QUALIFICATION]`: Education qualification required for the job
+
+`pos/[POSITION]`: Type of job, whether part-time or full time.
 
 `s/[SALARY]`:  Salary of job, based on how much the job pays a month. The SALARY must be a positive integer
 1000,2000,3000,...
 
-`sp/[SPECIALIZATION]`: Field of Specialisation required for the job
-
-`d/[DURATION]`: Duration of job in months. ie d/8 represents 8 months
-
-**Tip**: Fill in fields in the stipulated order. Since all the fields are optional except `[ID*]`.
-Just enter the flag of the attributes you want to add, followed by the details related to that flag.
+**Tip**: Fill in fields in the stipulated order.
 
 Example:
 
-`job add 231 e/degree in computer science l/Tiong Bahru s/4000`
+`addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
 
-* Add details to a Job ID 231, a Computer Science degree requirement, adds that location of the job
-  is at Tiong Bahru and salary of the Job is 4000 a month.
-
-`job add 432 sp/Machine Learning`
-
-* Add details to a Job ID 432, a Machine Learning field of specialisation.
-
-`job add 32 l/OCBC s/5000 sp/Accountancy d/3`
-
-* Add details to Job ID 32, that location of job is at OCBC, salary is 5000 a month, looking for someone with
-  specialisation in Accountancy and a contract of 3 years.
+* Adds a job called Software Developer, for a company Ebiz Pte Ltd. The location of the job is at Hougang Road Blk 38,
+and it requires a Bachelors in Computer Science. This is a full time position with a salary between 3000-4000.
 
 ### Deleting a Job attribute: `job delete` [coming soon]
 
