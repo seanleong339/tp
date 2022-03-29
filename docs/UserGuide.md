@@ -169,7 +169,6 @@ If your changes to the data file makes its format invalid, ReCLIne will discard 
 
 ### Mark an Applicant: `markapplicant`
  [coming soon]
->>>>>>> master
 
 Mark applicant status.
 
@@ -194,6 +193,12 @@ Example:
 
 `markapplicant 106 s/accepted`
 - Marks the status of the applicant with ID 106 as accepted.
+
+### Switch to tab containing the ApplicantList: `tabapplicant`
+
+Switch to a tab 'Applicant List' in the GUI (the changes are reflected on the application window)
+
+Format: `tabjob` <br>
 
 
 ### Adding a Job: `addjob`
@@ -318,20 +323,25 @@ Examples:
 
 ### Locating jobs by name: `findjob`
 
-Find jobs whose names contain any of the given keywords.
+Find jobs whose title contain any of the given keywords or id matches given integer.
 
-Format: `findjob KEYWORD [MORE_KEYWORDS]`
+Format (search via job title): `findjob jt/KEYWORD [MORE_KEYWORDS]` or `findjob id/[ID]`
 
+
+***flag/[Attribute]***
+
+`jt/[KEYWORD] KEYWORD`: Search for job title containing the `[KEYWORD]`. 
 * The search is case-insensitive. e.g `engineer` will match `Engineer`
 * The order of the keywords does not matter. e.g. `Software Engineer` will match `Engineer Software`
-* Only the name is searched.
 * Only full words will be matched e.g. `Software` will not match `Soft`
 * Jobs matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Engineer` will return `Software Engineer`, `Chemical Engineer`
 
+`id/[ID]` : Search for job with matching `[ID]`.
+
 Examples:
-* `findjob Engineer` returns `software engineer` and `Mech Engineer`
-* `findjob Engineer Teacher` returns `Software Engineer`, `Engineer`, `Math Teacher` <br>
+* `findjob jt/Engineer` returns `software engineer` and `Mech Engineer`
+* `findjob id/2` returns a job with id 2 <br>
 
 ### Listing all jobs in the JobList: `listjob`
 
@@ -339,6 +349,12 @@ Lists out all the jobs that are in the JobList.
 This will help to display all the jobs in the JobList again, after finding a particular job by `findjob`.
 
 Format: `listjob` <br>
+
+### Switch to tab containing the JobList: `tabjob`
+
+Switch to a tab 'Job List' in the GUI (the changes are reflected on the application window).
+
+Format: `tabjob` <br>
 
 ### Clearing all entries : `clear` [coming soon]
 
