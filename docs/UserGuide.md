@@ -330,10 +330,10 @@ Format: `findjob KEYWORD [MORE_KEYWORDS]`
 * Only the name is searched.
 * Only full words will be matched e.g. `Software` will not match `Soft`
 * Jobs matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Enginner` will return `Software Engineer`, `Chemical Enginner`
+  e.g. `Engineer` will return `Software Engineer`, `Chemical Engineer`
 
 Examples:
-* `findjob Enginner` returns `software enginner` and `Mech Engineer`
+* `findjob Engineer` returns `software engineer` and `Mech Engineer`
 * `findjob Engineer Teacher` returns `Software Engineer`, `Engineer`, `Math Teacher` <br>
 
 ### Listing all jobs in the JobList: `listjob`
