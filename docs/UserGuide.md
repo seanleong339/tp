@@ -271,8 +271,9 @@ else is inputted.
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The inputted `[SALARY]` must be a range. The lower bound of the range cannot be larger than the upper bound 
-of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
-A range where the lower bound is equal to the upper bound is accepted.
+of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
+A range where the lower bound is equal to the upper bound is accepted. For example "4000 - 4000" is allowed. This 
+indicates that the salary is not a range, but rather a fixed amount.
 
 </div>
 
