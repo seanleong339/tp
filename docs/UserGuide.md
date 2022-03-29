@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-ReCLIne is a **desktop app to organize contacts for recruiters to track, optimized for use via a
+ReCLIne is a **desktop app which serves as a centralised location for recruiters to store and track job applicants and jobs, optimized for use via a
 Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, ReCLIne can get your contact management tasks done faster than traditional GUI apps.
 
@@ -79,7 +79,7 @@ Format: `help`
 
 ### Adding an Applicant to the ApplicantList: `addapplicant`
 
-Adds an applicant to the applicant list of the address book.
+Adds an applicant to the applicant list of ReCLIne.
 
 Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
             *d/[DATEAPPLIED]`
@@ -106,12 +106,12 @@ Examples:
 `addapplicant n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12`
 
 * Adds an applicant with name-Jaden Ho, phone number-92812191, nric-S1234567A, address-Tampines St 96 Block 312
-  email-jadenho@email.com, date applied- 2022-03-12 to the applicant list in the address book.
+  email-jadenho@email.com, date applied- 2022-03-12 to the applicant list in the ReCLIne.
 
 
 ### Editing an Applicant in the ApplicantList: `editapplicant`
 
-Edits an applicant in the applicant list of the address book.
+Edits an applicant in the applicant list of ReCLIne.
 
 Format: `editApplicant *[ID] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[ADDRESS]
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
@@ -169,7 +169,7 @@ If your changes to the data file makes its format invalid, ReCLIne will discard 
 
 ### Mark an Applicant: `markapplicant`
  [coming soon]
->>>>>>> master
+
 
 Mark applicant status.
 
@@ -194,6 +194,20 @@ Example:
 
 `markapplicant 106 s/accepted`
 - Marks the status of the applicant with ID 106 as accepted.
+
+### Delete an Applicant: `deleteapplicant`
+
+Deletes an applicant specified by the index from the applicant list in ReCLIne.
+
+Format: `deleteapplicant *[Index]`
+
+`Index` : Index of the applicant displayed in the applicant list of ReCLIne. Index should be a positive integer.
+
+Example:
+
+`deleteapplicant 1`
+
+* Deletes the applicant at index 1 from the applicant list of ReCLIne.
 
 
 ### Adding a Job: `job add` [coming soon]
@@ -237,7 +251,7 @@ Example:
 
 ### Editing a Job in the JobList: `editjob`
 
-Edits a job in the job list of the address book.
+Edits a job in the job list of the ReCLIne.
 This will allow you to be able to keep all the information about a job updated, negating the possibility of sending
 outdated information to applicants.
 
@@ -318,6 +332,19 @@ Examples:
 
 * Deletes the specialisation, education and location attribute from job with ID 132.
 
+### Deleting a job: `deletejob`
+
+Delete a job specified by the index from the job list of ReCLIne.
+
+Format: `deletejob *[Index]`
+
+`Index` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
+
+Example:
+
+`deletejob 1`
+
+*Deletes the job at index 1 from the job list of ReCLIne.
 
 ### Locating jobs by name: `findjob`
 
@@ -342,6 +369,12 @@ Lists out all the jobs that are in the JobList.
 This will help to display all the jobs in the JobList again, after finding a particular job by `findjob`.
 
 Format: `listjob` <br>
+
+### Sorting jobs by Job Status: `sortjob`
+
+Sort the jobs in the job list of ReCLIne by the job status. Job status can be either 'filled' or 'vacant'.
+
+Format and Example: `sortjob`
 
 ### Clearing all entries : `clear` [coming soon]
 
