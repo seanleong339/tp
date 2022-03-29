@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,6 +12,7 @@ import java.util.function.Predicate;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.commands.applicant.SortApplicant;
+import seedu.address.logic.commands.job.FindJob;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
@@ -364,6 +366,10 @@ public class ParserUtil {
     public static Predicate<Job> parsePredicate(String keyword, boolean isName, boolean isID) throws ParseException {
         requireNonNull(keyword);
         String trimmedKeyword = keyword.trim();
+
+        if (trimmedKeyword.isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
+        }
 
         if (isName) {
             String[] jobTitleKeywords = trimmedKeyword.split("\\s+");
