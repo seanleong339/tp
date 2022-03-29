@@ -354,7 +354,11 @@ The following sequence diagram shows how the undo operation works:
 
 The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, 
+pointing to the latest address book state, then there are no undone AddressBook states to restore. 
+The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. 
+If so, it will return an error to the user rather than attempting to perform the redo.
 
 </div>
 
