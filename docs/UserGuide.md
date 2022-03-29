@@ -113,7 +113,7 @@ Examples:
 
 Edits an applicant in the applicant list of the address book.
 
-Format: `editApplicant *[ID] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS]
+Format: `editApplicant *[ID] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[ADDRESS]
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] s/[STATUS] t/[TAG]`
 
@@ -235,6 +235,57 @@ Example:
 * Add details to Job ID 32, that location of job is at OCBC, salary is 5000 a month, looking for someone with
   specialisation in Accountancy and a contract of 3 years.
 
+### Editing a Job in the JobList: `editjob`
+
+Edits a job in the job list of the address book.
+This will allow you to be able to keep all the information about a job updated, negating the possibility of sending
+outdated information to applicants.
+
+Format: `editJob *[ID] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
+q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
+
+Tip: Fill in fields in any order. Just input the fields that you would like to change for the specific job.
+To leave out fields, skip the flag and attribute completely.
+
+*flag/[ATTRIBUTE]:*
+
+`[ID*]` : Unique ID for the job instance. The ID must be a positive integer 1, 2, 3..
+
+`jt/[JOB TITLE]`: Update Job's Title to the mentioned `[JOB TITLE]`
+
+`c/COMPANY NAME]`: Update the Job's Company Name to the inputted`[COMPANY NAME]`
+
+`q/[QUALIFICATION]` : Update the Job's qualification requirement to `[QUALIFICATION]`
+
+`a/[ADDRESS]` : Update the Job's workplace address to `[ADDRESS]`
+
+`pos/[POSITION]` : Update Job's position to `[POSITION]`
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[POSITION]` field only accepts either `ft` or `pt` as an input. ReCLIne will output an error is anything
+else is inputted.
+
+</div>
+
+`sal/[SALARY]` : Update the Job to edit the salary to `[SALARY]`
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The inputted `[SALARY]` must be a range. The lower bound of the range cannot be larger than the upper bound 
+of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
+A range where the lower bound is equal to the upper bound is accepted.
+
+</div>
+
+Examples:
+
+`editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft 
+sal/4000 - 5000`
+
+* Edits a job with index number 1 with job title - Software Engineer UI/UX comapny name - Designer Club,
+  qualification - Degree of Computer Science, address - Block 3 Designer Road, 
+  position - full time, salary range - 4000 - 5000. <br>
+  
+
 ### Deleting a Job attribute: `job delete` [coming soon]
 
 * Deletes attributes from the specified job id. Command should include at least 1 flag.
@@ -267,40 +318,30 @@ Examples:
 
 * Deletes the specialisation, education and location attribute from job with ID 132.
 
-### Editing a person : `edit` [coming soon]
 
-Edits an existing person in the address book.
+### Locating jobs by name: `findjob`
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Find jobs whose names contain any of the given keywords.
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-  specifying any tags after it.
+Format: `findjob KEYWORD [MORE_KEYWORDS]`
 
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-
-### Locating persons by name: `find` [coming soon]
-
-Finds persons whose names contain any of the given keywords.
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* The search is case-insensitive. e.g `engineer` will match `Engineer`
+* The order of the keywords does not matter. e.g. `Software Engineer` will match `Engineer Software`
 * Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Only full words will be matched e.g. `Software` will not match `Soft`
+* Jobs matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `Engineer` will return `Software Engineer`, `Chemical Engineer`
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `findjob Engineer` returns `software engineer` and `Mech Engineer`
+* `findjob Engineer Teacher` returns `Software Engineer`, `Engineer`, `Math Teacher` <br>
+
+### Listing all jobs in the JobList: `listjob`
+
+Lists out all the jobs that are in the JobList.
+This will help to display all the jobs in the JobList again, after finding a particular job by `findjob`.
+
+Format: `listjob` <br>
 
 ### Clearing all entries : `clear` [coming soon]
 
