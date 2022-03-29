@@ -34,7 +34,7 @@ public class AddApplicant extends Command {
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_DATEAPPLIED + "2022-3-21 "
+            + PREFIX_DATEAPPLIED + "2022-03-21 "
             + PREFIX_TAG + "applicant "
             + PREFIX_TAG + "owesMoney";
 
