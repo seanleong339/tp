@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -193,4 +194,9 @@ public interface Model {
      * Sorts the job list by the given comparator.
      */
     void sortJob();
+
+    /**
+     * Sorts the applicant list by a given comparator.
+     */
+    void sortApplicant(Comparator<Applicant> sortBy);
 }
