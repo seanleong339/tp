@@ -212,9 +212,16 @@ Format: `addjob jt/[JOB TITLE] c/[COMPANY] a/[ADDRESS] q/[QUALIFICATION] pos/[PO
 `q/[QUALIFICATION]`: Education qualification required for the job
 
 `pos/[POSITION]`: Type of job, whether part-time or full time.
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[POSITION]` field only accepts either `ft` or `pt` as an input. ReCLIne will output an error is anything
+else is inputted.
 
-`s/[SALARY]`:  Salary of job, based on how much the job pays a month. The SALARY must be a positive integer
+`s/[SALARY]`:  Salary of job, based on how much the job pays a month. The start and end of the SALARY range must be a positive integer
 1000,2000,3000,...
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The inputted `[SALARY]` must be a range. The lower bound of the range cannot be larger than the upper bound 
+of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
+A range where the lower bound is equal to the upper bound is accepted.
 
 **Tip**: Fill in fields in the stipulated order.
 
