@@ -375,6 +375,11 @@ public class ParserUtil {
             String[] jobTitleKeywords = trimmedKeyword.split("\\s+");
             return new NameJobContainsKeywordsPredicate(Arrays.asList(jobTitleKeywords));
         } else if (isID) {
+            try {
+                int id = Integer.parseInt(trimmedKeyword);
+            } catch (NumberFormatException e) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
+            }
             return new JobIdSamePredicate(trimmedKeyword);
         } else {
             throw new ParseException(MESSAGE_INVALID_PREDICATE);
