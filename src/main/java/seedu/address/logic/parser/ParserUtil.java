@@ -2,9 +2,11 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
@@ -17,8 +19,11 @@ import seedu.address.model.applicant.JobId;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.job.CompanyName;
+import seedu.address.model.job.Job;
+import seedu.address.model.job.JobIdSamePredicate;
 import seedu.address.model.job.JobStatus;
 import seedu.address.model.job.JobTitle;
+import seedu.address.model.job.NameJobContainsKeywordsPredicate;
 import seedu.address.model.job.Position;
 import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
@@ -34,6 +39,7 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_ID = "ID is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_PREDICATE = "The predicate has to be either jobtitle or name";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -247,7 +253,7 @@ public class ParserUtil {
      * Parses a {@code String applicationStatus} into a {@code ApplicationStatus}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code Qualification} is invalid.
+     * @throws ParseException if the given {@code Application Status} is invalid.
      */
     // TODO: - Add status not interviewed and interviewed
     //       - return Applicant once the class Application Status is merged
@@ -283,13 +289,13 @@ public class ParserUtil {
     /**
      * Parses {@code String id} into an {@code Integer} and returns it. Leading and trailing whitespaces will be
      * trimmed.
-     * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
+     * @throws ParseException if the given {@code id} is invalid.
      */
     public static Integer parseId(String id) throws ParseException {
         String trimmedId = id.trim();
         // TODO: check if the ID is valid (there is applicant associated with the ID)
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedId)) {
-            throw new ParseException(MESSAGE_INVALID_INDEX);
+            throw new ParseException(MESSAGE_INVALID_ID);
         }
         return Integer.parseInt(trimmedId);
     }
@@ -297,6 +303,7 @@ public class ParserUtil {
     /**
      * Parses {@code String jobstatus} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     * @throws ParseException if the given {@code Job Status} is invalid.
      */
     public static JobStatus parseJobStatus(String jobStatus) throws ParseException {
         requireNonNull(jobStatus);
@@ -310,6 +317,7 @@ public class ParserUtil {
     /**
      * Parses {@code String Position} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     * @throws ParseException if the given {@code position} is invalid.
      */
     public static Position parsePosition(String position) throws ParseException {
         requireNonNull(position);
@@ -323,6 +331,7 @@ public class ParserUtil {
     /**
      * Parses {@code String companyName} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     * @throws ParseException if the given {@code Company Name} is invalid.
      */
     public static CompanyName parseCompanyName(String companyName) throws ParseException {
         requireNonNull(companyName);
@@ -346,4 +355,23 @@ public class ParserUtil {
         return trimmedComparator;
     }
 
+    /**
+     * Based on the value of (@code String keyword, boolean isName, boolean isID}, the method creates an instance of
+     * Predicate
+     *
+     * @throws ParseException if the given {@code predicate} is invalid.
+     */
+    public static Predicate<Job> parsePredicate(String keyword, boolean isName, boolean isID) throws ParseException {
+        requireNonNull(keyword);
+        String trimmedKeyword = keyword.trim();
+
+        if (isName) {
+            String[] jobTitleKeywords = trimmedKeyword.split("\\s+");
+            return new NameJobContainsKeywordsPredicate(Arrays.asList(jobTitleKeywords));
+        } else if (isID) {
+            return new JobIdSamePredicate(trimmedKeyword);
+        } else {
+            throw new ParseException(MESSAGE_INVALID_PREDICATE);
+        }
+    }
 }
