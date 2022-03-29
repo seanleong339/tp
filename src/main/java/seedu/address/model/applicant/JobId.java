@@ -81,6 +81,10 @@ public class JobId implements Comparable<JobId> {
 
     @Override
     public int compareTo(JobId o) {
-        return jobId.compareTo(o.jobId);
+        return !isInit && o.isInit
+                ? 1
+                : isInit && !o.isInit
+                    ? -1
+                    : jobId.compareTo(o.jobId);
     }
 }

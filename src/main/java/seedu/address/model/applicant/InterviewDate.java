@@ -79,6 +79,10 @@ public class InterviewDate implements Comparable<InterviewDate> {
 
     @Override
     public int compareTo(InterviewDate o) {
-        return date.compareTo(o.date);
+        return !isInit && o.isInit
+                ? 1
+                : isInit && !o.isInit
+                    ? -1
+                    : date.compareTo(o.date);
     }
 }
