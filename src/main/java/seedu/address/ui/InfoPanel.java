@@ -112,7 +112,7 @@ public class InfoPanel extends UiPart<Region> {
         // Set qualification
         eighthLabel.setText(applicant.getQualification().toString());
         // Set status
-        setApplicantStatusStyle(applicant.getApplicantStatus().toString());
+        StyleUtil.setApplicantStatusStyle(ninthLabel, applicant.getApplicantStatus().toString());
         // Set tag
         applicant.getTags().stream().sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
@@ -151,28 +151,6 @@ public class InfoPanel extends UiPart<Region> {
     }
 
     /**
-     * Displays the status and Set style of an application status label based on the status value.
-     *
-     * @param status status value to display
-     */
-    private void setApplicantStatusStyle(String status) {
-        ninthLabel.setText(status);
-        if (status.equals("REJECTED")) {
-            ninthLabel.setStyle("-fx-background-color:rgb(189, 94, 94); -fx-background-radius: 10; "
-                    + "-fx-padding: 3; -fx-text-fill: white;");
-        } else if (status.equals("ACCEPTED")) {
-            ninthLabel.setStyle("-fx-background-color:rgb(66, 128, 83); -fx-background-radius: 10; "
-                    + "-fx-padding: 3; -fx-text-fill: white;");
-        } else if (status.equals("INTERVIEWED")) {
-            ninthLabel.setStyle("-fx-background-color:rgb(237, 196, 114); -fx-background-radius: 10; "
-                    + "-fx-padding: 3; -fx-text-fill: #707070;");
-        } else {
-            ninthLabel.setStyle("-fx-background-color:rgb(61, 61, 61);-fx-background-radius: 10; "
-                    + "-fx-padding: 3; -fx-text-fill: white;");
-        }
-    }
-
-    /**
      * Displays a job info.
      *
      * @param job a job selected from the list
@@ -185,13 +163,13 @@ public class InfoPanel extends UiPart<Region> {
         // Set company name
         firstLabel.setText(job.getCompany().toString());
         // Set job position
-        setJobPositionStyle(job.getPosition().toString());
+        StyleUtil.setJobPositionStyle(secondLabel, job.getPosition().toString());
         // Set salary
         thirdLabel.setText(job.getSalary().toString());
         // Set address
         fourthLabel.setText(job.getAddress().toString());
         // Set job status
-        setJobStatusStyle(job.getJobStatus().toString());
+        StyleUtil.setJobStatusStyle(fifthLabel, job.getJobStatus().toString());
         // Set job qualification
         sixthLabel.setText(job.getQualification().toString());
         // Make unused label to invisible
@@ -224,37 +202,4 @@ public class InfoPanel extends UiPart<Region> {
         eighthSubHeader.setVisible(false);
         ninthSubHeader.setVisible(false);
     }
-
-    /**
-     * Displays the position and set style of the job position label based on the position value.
-     *
-     * @param position status value to display
-     */
-    private void setJobPositionStyle(String position) {
-        secondLabel.setText(position);
-        if (position.equals("part-time")) {
-            secondLabel.setStyle("-fx-background-color:rgb(237, 196, 114); -fx-background-radius: 10; "
-                    + "-fx-padding: 3; -fx-text-fill: #707070;");
-        } else if (position.equals("full-time")) {
-            secondLabel.setStyle("-fx-background-color:rgb(78, 96, 145); -fx-background-radius: 10; "
-                    + "-fx-padding: 3; -fx-text-fill: white;");
-        }
-    }
-
-    /**
-     * Displays the job status and set style of the status label based on the position value.
-     *
-     * @param status status value to display
-     */
-    private void setJobStatusStyle(String status) {
-        fifthLabel.setText(status);
-        if (status.equals("vacant")) {
-            fifthLabel.setStyle("-fx-background-color: rgb(66, 128, 83); -fx-background-radius: 10; "
-                    + "-fx-padding: 3; -fx-text-fill: white");
-        } else if (status.equals("filled")) {
-            fifthLabel.setStyle("-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 10; "
-                    + "-fx-padding: 3; -fx-text-fill: white;");
-        }
-    }
-
 }

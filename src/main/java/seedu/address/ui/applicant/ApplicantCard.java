@@ -7,9 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.ui.StyleUtil;
 import seedu.address.ui.UiPart;
 
 /**
@@ -40,7 +40,9 @@ public class ApplicantCard extends UiPart<Region> {
     @FXML
     private Circle status;
     @FXML
-    private Label email;
+    private Label dateapplied;
+    @FXML
+    private Label interviewdate;
     @FXML
     private FlowPane tags;
 
@@ -52,22 +54,13 @@ public class ApplicantCard extends UiPart<Region> {
         this.applicant = applicant;
         id.setText(displayedIndex + ". ");
         name.setText(applicant.getName().fullName);
-        email.setText(applicant.getEmail().value);
+        dateapplied.setText("Date applied: " + applicant.getDateApplied().toString());
+        interviewdate.setText("Interview date: " + applicant.getInterviewDate().toString());
         jobID.setText("Job ID: " + applicant.getJobId().toString());
         applicant.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-
-        String stat = applicant.getApplicantStatus().toString();
-        if (stat.equals("REJECTED")) {
-            status.setFill(Color.rgb(189, 94, 94));
-        } else if (stat.equals("ACCEPTED")) {
-            status.setFill(Color.rgb(66, 128, 83));
-        } else if (stat.equals("INTERVIEWED")) {
-            status.setFill(Color.rgb(237, 196, 114));
-        } else {
-            status.setFill(Color.GREY);
-        }
+        StyleUtil.setApplicantStatusStyle(status, applicant.getApplicantStatus().toString());
     }
 
 
