@@ -167,9 +167,22 @@ ReCLIne data are saved as a JSON file `[JAR file location]/data/recline.json`. A
 If your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
 </div>
 
-### Mark an Applicant: `markapplicant`
- [coming soon]
+### Delete an Applicant: `deleteapplicant`
 
+Deletes an applicant specified by the index from the applicant list in ReCLIne.
+
+Format: `deleteapplicant *[Index]`
+
+`Index` : Index of the applicant displayed in the applicant list of ReCLIne. Index should be a positive integer.
+
+Example:
+
+`deleteapplicant 1`
+
+* Deletes the applicant at index 1 from the applicant list of ReCLIne.
+
+
+### Mark an Applicant: `markapplicant`
 
 Mark applicant status.
 
@@ -178,6 +191,8 @@ Mark applicant status.
 Format: `markapplicant [ID*] s/[STATUS]`
 
 *flag/[Attribute]*
+
+`[ID*]` : Index number of the applicant that is displayed in the List
 
 `s/[STATUS]`: Flag to mark the applicant status of the applicant. [STATUS] must be either
 pending, accepted, or rejected
@@ -195,19 +210,11 @@ Example:
 `markapplicant 106 s/accepted`
 - Marks the status of the applicant with ID 106 as accepted.
 
-### Delete an Applicant: `deleteapplicant`
+### Switch to tab containing the ApplicantList: `tabapplicant`
 
-Deletes an applicant specified by the index from the applicant list in ReCLIne.
+Switches to the `applicant list` tab in the GUI (the changes are reflected on the application window)
 
-Format: `deleteapplicant *[Index]`
-
-`Index` : Index of the applicant displayed in the applicant list of ReCLIne. Index should be a positive integer.
-
-Example:
-
-`deleteapplicant 1`
-
-* Deletes the applicant at index 1 from the applicant list of ReCLIne.
+Format: `tabjob` <br>
 
 
 ### Adding a Job: `addjob`
@@ -297,38 +304,6 @@ sal/4000 - 5000`
   position - full time, salary range - 4000 - 5000. <br>
   
 
-### Deleting a Job attribute: `job delete` [coming soon]
-
-* Deletes attributes from the specified job id. Command should include at least 1 flag.
-
-Format: `job delete [ID] ed/ l/ s/ sp/ d/`
-
-*flag/[Attribute]*
-
-`[ID]` : Unique id for the job instance. The ID must be a positive integer 1, 2, 3,...
-
-`ed/`  : Flag to represent education attribute
-
-`l/` : Flag to represent location attribute
-
-`s/` : Flag to represent salary attribute
-
-`sp/` : Flag to represent specialisation attribute
-
-`d/` : Flag to represent duration attribute
-
-**Tip**: Fill in fields in the stipulated order. Since all the fields are optional except `[ID*]`. Just enter the flag of the attributes you want to delete.
-
-Examples:
-
-`job delete 101 e/ s/ d/`
-
-* Deletes the education history, salary and duration attribute from job with ID 101.
-
-`job delete 132 sp/ ed/ l/`
-
-* Deletes the specialisation, education and location attribute from job with ID 132.
-
 ### Deleting a job: `deletejob`
 
 Delete a job specified by the index from the job list of ReCLIne.
@@ -345,20 +320,25 @@ Example:
 
 ### Locating jobs by name: `findjob`
 
-Find jobs whose names contain any of the given keywords.
+Finds jobs in the job list either by `Job Title` or by `Job ID`. Find jobs by Job Title by matching job titles in `Job List` to the inputted keywords. Find jobs by `Job ID` by matching the job id in `Job List` to the the inputted integer id.
 
-Format: `findjob KEYWORD [MORE_KEYWORDS]`
+Format (search via job title): `findjob jt/KEYWORD [MORE_KEYWORDS]` or `findjob id/[ID]`
 
+
+***flag/[Attribute]***
+
+`jt/[KEYWORD] KEYWORD`: Search for job title containing the `[KEYWORD]`. 
 * The search is case-insensitive. e.g `engineer` will match `Engineer`
 * The order of the keywords does not matter. e.g. `Software Engineer` will match `Engineer Software`
-* Only the name is searched.
 * Only full words will be matched e.g. `Software` will not match `Soft`
 * Jobs matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Engineer` will return `Software Engineer`, `Chemical Engineer`
 
+`id/[ID]` : Search for job with matching `[ID]`.
+
 Examples:
-* `findjob Engineer` returns `software engineer` and `Mech Engineer`
-* `findjob Engineer Teacher` returns `Software Engineer`, `Engineer`, `Math Teacher` <br>
+* `findjob jt/Engineer` returns `software engineer` and `Mech Engineer`
+* `findjob id/2` returns a job with id 2 <br>
 
 ### Listing all jobs in the JobList: `listjob`
 
@@ -366,6 +346,12 @@ Lists out all the jobs that are in the JobList.
 This will help to display all the jobs in the JobList again, after finding a particular job by `findjob`.
 
 Format: `listjob` <br>
+
+### Switch to tab containing the JobList: `tabjob`
+
+Switches to the `job list` tab in the GUI (the changes are reflected on the application window
+
+   Format: `tabjob` <br>
 
 ### Sorting jobs by Job Status: `sortjob`
 
