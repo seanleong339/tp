@@ -196,7 +196,7 @@ Example:
 
 ### Switch to tab containing the ApplicantList: `tabapplicant`
 
-Switch to a tab 'Applicant List' in the GUI (the changes are reflected on the application window)
+Switches to the applicant list tab in the GUI (the changes are reflected on the application window)
 
 Format: `tabjob` <br>
 
@@ -323,7 +323,7 @@ Examples:
 
 ### Locating jobs by name: `findjob`
 
-Find jobs whose title contain any of the given keywords or id matches given integer.
+Finds jobs in the job list either by Job Title or by Job ID. Find jobs by Job Title by matching job titles in Job List to the inputted keywords. Find jobs by Job ID by matching the job id in Job List to the the inputted integer id.
 
 Format (search via job title): `findjob jt/KEYWORD [MORE_KEYWORDS]` or `findjob id/[ID]`
 
@@ -352,8 +352,7 @@ Format: `listjob` <br>
 
 ### Switch to tab containing the JobList: `tabjob`
 
-Switch to a tab 'Job List' in the GUI (the changes are reflected on the application window).
-
+Switches to the job list tab in the GUI (the changes are reflected on the application window
 Format: `tabjob` <br>
 
 ### Clearing all entries : `clear` [coming soon]
