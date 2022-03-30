@@ -48,7 +48,7 @@
             <Insets bottom="10" left="10" right="10" top="5" />
           </padding>
         </StackPane>
-            <GridPane>
+            <GridPane VBox.vgrow="ALWAYS">
               <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
               </padding>

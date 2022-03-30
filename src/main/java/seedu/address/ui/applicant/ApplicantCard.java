@@ -36,6 +36,8 @@ public class ApplicantCard extends UiPart<Region> {
     @FXML
     private Label name;
     @FXML
+    private Label jobID;
+    @FXML
     private Circle status;
     @FXML
     private Label email;
@@ -51,6 +53,7 @@ public class ApplicantCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(applicant.getName().fullName);
         email.setText(applicant.getEmail().value);
+        jobID.setText("Job ID: " + applicant.getJobId().toString());
         applicant.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
