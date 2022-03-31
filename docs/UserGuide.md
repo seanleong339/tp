@@ -122,7 +122,7 @@ To leave out fields, skip the flag and attribute completely.
 
 *flag/[ATTRIBUTE]:*
 
-`[INDEX]` : Index number of the applicant that is displayed in the List
+`[INDEX]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 `n/[NAME]`: Updated Applicant's name
 
@@ -173,7 +173,7 @@ Deletes an applicant specified by the index from the applicant list in ReCLIne.
 
 Format: `deleteapplicant *[INDEX]`
 
-`Index` : Index of the applicant displayed in the applicant list of ReCLIne. Index should be a positive integer.
+`Index` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 Example:
 
@@ -192,7 +192,7 @@ Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 *flag/[Attribute]*
 
-`[INDEX*]` : Index number of the applicant that is displayed in the List
+`[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 `s/[STATUS]`: Flag to mark the applicant status of the applicant. [STATUS] must be either
 pending, accepted, or rejected
@@ -303,7 +303,7 @@ To leave out fields, skip the flag and attribute completely.
 
 *flag/[ATTRIBUTE]:*
 
-`[INDEX]` : Unique index for the job instance. The index must be a positive integer 1, 2, 3...
+`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
 
 `jt/[JOB TITLE]`: Update Job's Title to the mentioned `[JOB TITLE]`
 
@@ -347,7 +347,7 @@ Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
 *flag/[Attribute]:*
 
-`[INDEX]` : Unique index for the job instance. The index must be a positive integer 1, 2, 3...
+`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
 
 `js/[JOB STATUS]`: Job listing position, 
 
