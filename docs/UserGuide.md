@@ -113,7 +113,7 @@ Examples:
 
 Edits an applicant in the applicant list of ReCLIne.
 
-Format: `editApplicant *[ID] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[ADDRESS]
+Format: `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[ADDRESS]
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] s/[STATUS] t/[TAG]`
 
@@ -122,7 +122,7 @@ To leave out fields, skip the flag and attribute completely.
 
 *flag/[ATTRIBUTE]:*
 
-`[ID*]` : Index number of the applicant that is displayed in the List
+`[INDEX]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 `n/[NAME]`: Updated Applicant's name
 
@@ -171,9 +171,9 @@ If your changes to the data file makes its format invalid, ReCLIne will discard 
 
 Deletes an applicant specified by the index from the applicant list in ReCLIne.
 
-Format: `deleteapplicant *[Index]`
+Format: `deleteapplicant *[INDEX]`
 
-`Index` : Index of the applicant displayed in the applicant list of ReCLIne. Index should be a positive integer.
+`Index` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 Example:
 
@@ -188,11 +188,11 @@ Mark applicant status.
 
 **Fields:** ID, applicant status
 
-Format: `markapplicant [ID*] s/[STATUS]`
+Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 *flag/[Attribute]*
 
-`[ID*]` : Index number of the applicant that is displayed in the List
+`[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 `s/[STATUS]`: Flag to mark the applicant status of the applicant. [STATUS] must be either
 pending, accepted, or rejected
@@ -202,13 +202,47 @@ pending, accepted, or rejected
 Example:
 
 `markapplicant 104 s/rejected`
-- Marks the status of the applicant with ID 104 as rejected.
+- Marks the status of the applicant with index 104 on the list of applicants as rejected.
 
 `markapplicant 105 s/pending`
-- Marks the status of the applicant with ID 105 as pending.
+- Marks the status of the applicant with index 105 on the list of applicants as pending.
 
 `markapplicant 106 s/accepted`
-- Marks the status of the applicant with ID 106 as accepted.
+- Marks the status of the applicant with index 106 on the list of applicants as accepted.
+
+`markapplicant 1239 s/interviewed`
+- Marks the status of the applicant with index 1239 on the list of applicants as interviewed.
+
+
+
+### Sort list of Applicants: `sortapplicant`
+
+Sorts the list of applicants by a given attribute.
+
+**Fields:** attribute to sort the list of applicants by
+
+Format: `sortapplicant *by/[ATTRIBUTE]`
+
+*flag/[Attribute]*
+
+`by/[ATTRIBUTE]`: Flag to mark the attribute used to sort the applicant list. [ATTRIBUTE] must be either
+dateapplied, interview, job
+
+**Tip:** All fields for `sortapplicant` are compulsory.
+
+Example:
+
+`sortapplicant by/dateapplied`
+- Sorts the list of applicants by the date they applied for the job listing, in order of earliest to latest.
+
+`sortapplicant by/interview`
+- Sorts the list of applicants by their scheduled interview date, in order of earliest to latest.
+- Applicants who have yet to schedule an interview will be ranked lower.
+
+`sortapplicant by/job`
+- Sorts the list of applicants by the job they have applied, in order of smallest to largest job ID.
+- Applicants who have yet to apply for a specific job listing will be ranked lower.
+
 
 ### Switch to tab containing the ApplicantList: `tabapplicant`
 
@@ -220,7 +254,7 @@ Format: `tabjob` <br>
 ### Adding a Job: `addjob`
 Adds a new job posting to ReCLIne
 
-Format: `addjob jt/[JOB TITLE] c/[COMPANY] a/[ADDRESS] q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
+Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]`
 
 *flag/[Attribute]:*
 
@@ -236,6 +270,7 @@ Format: `addjob jt/[JOB TITLE] c/[COMPANY] a/[ADDRESS] q/[QUALIFICATION] pos/[PO
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The `[POSITION]` field only accepts either `ft` or `pt` as an input. ReCLIne will output an error is anything
 else is inputted.
+</div>
 
 `s/[SALARY]`:  Salary of job, based on how much the job pays a month. The start and end of the SALARY range must be a positive integer
 1000,2000,3000,...
@@ -243,6 +278,7 @@ else is inputted.
 **Note:** The inputted `[SALARY]` must be a range. The lower bound of the range cannot be larger than the upper bound 
 of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
 A range where the lower bound is equal to the upper bound is accepted.
+</div>
 
 **Tip**: Fill in fields in the stipulated order.
 
@@ -259,7 +295,7 @@ Edits a job in the job list of the ReCLIne.
 This will allow you to be able to keep all the information about a job updated, negating the possibility of sending
 outdated information to applicants.
 
-Format: `editJob *[ID] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
+Format: `editJob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
 Tip: Fill in fields in any order. Just input the fields that you would like to change for the specific job.
@@ -267,7 +303,7 @@ To leave out fields, skip the flag and attribute completely.
 
 *flag/[ATTRIBUTE]:*
 
-`[ID*]` : Unique ID for the job instance. The ID must be a positive integer 1, 2, 3..
+`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
 
 `jt/[JOB TITLE]`: Update Job's Title to the mentioned `[JOB TITLE]`
 
@@ -302,13 +338,39 @@ sal/4000 - 5000`
 * Edits a job with index number 1 with job title - Software Engineer UI/UX comapny name - Designer Club,
   qualification - Degree of Computer Science, address - Block 3 Designer Road, 
   position - full time, salary range - 4000 - 5000. <br>
-  
+
+
+### Marking a Job: `markjob`
+Marks an existing job posting as full-time or part-time.
+
+Format: `markjob *[INDEX] *js/[JOBSTATUS]`
+
+*flag/[Attribute]:*
+
+`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
+
+`js/[JOB STATUS]`: Job listing position, 
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[POSITION]` field only accepts either `ft` or `pt` as an input. ReCLIne will output an error if anything
+else is inputted.
+</div>
+
+**Tip**: All fields are compulsory for `markjob` 
+
+Example:
+
+`markjob 23 js/pt`
+* Marks the job listing at index 23 as part-time position type.
+
+`markjob 41 js/ft`
+* Marks the job listing at index 41 as full-time position type.
 
 ### Deleting a job: `deletejob`
 
 Delete a job specified by the index from the job list of ReCLIne.
 
-Format: `deletejob *[Index]`
+Format: `deletejob *[INDEX]`
 
 `Index` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
 
@@ -386,9 +448,10 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Add Applicant** | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`
-**Delete Applicant** | `deleteapplicant INDEX`<br> e.g., `deleteapplicant 3`
-**Edit Appplicant** | `editApplicant *[ID] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com`
-**Help** | `help`
+| Action             | Format, Examples                                                                                                                                                                                                                    |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Applicant**  | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`             |
+| **Delete Applicant** | `deleteapplicant INDEX`<br> e.g., `deleteapplicant 3`                                                                                                                                                                               |
+| **Edit Applicant** | `editApplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com` |
+| **Mark Applicant** | `markApplicant *[INDEX]  s/[STATUS] ​` <br> e.g.,`markapplicant 2 s/rejected`                                                                                                                                                       |
+| **Help**           | `help`                                                                                                                                                                                                                              |
