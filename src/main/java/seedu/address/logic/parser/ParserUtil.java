@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,6 +11,8 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.commands.applicant.SortApplicant;
+import seedu.address.logic.commands.job.FindJob;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.DateApplied;
@@ -342,6 +345,19 @@ public class ParserUtil {
     }
 
     /**
+     * Parse {@code String applicantComparator} and returns it. Leading and trailing whitespaces will
+     * be trimmed.
+     */
+    public static String parseApplicantComparator(String applicantComparator) throws ParseException {
+        requireNonNull(applicantComparator);
+        String trimmedComparator = applicantComparator.trim();
+        if (!SortApplicant.isValid(trimmedComparator)) {
+            throw new ParseException(SortApplicant.MESSAGE_CONSTRAINTS);
+        }
+        return trimmedComparator;
+    }
+
+    /**
      * Based on the value of (@code String keyword, boolean isName, boolean isID}, the method creates an instance of
      * Predicate
      *
@@ -351,10 +367,19 @@ public class ParserUtil {
         requireNonNull(keyword);
         String trimmedKeyword = keyword.trim();
 
+        if (trimmedKeyword.isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
+        }
+
         if (isName) {
             String[] jobTitleKeywords = trimmedKeyword.split("\\s+");
             return new NameJobContainsKeywordsPredicate(Arrays.asList(jobTitleKeywords));
         } else if (isID) {
+            try {
+                int id = Integer.parseInt(trimmedKeyword);
+            } catch (NumberFormatException e) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
+            }
             return new JobIdSamePredicate(trimmedKeyword);
         } else {
             throw new ParseException(MESSAGE_INVALID_PREDICATE);
