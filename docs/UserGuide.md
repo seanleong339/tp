@@ -28,6 +28,28 @@ available on ReCLIne.
 * [Table of Contents](#table-of-contents)  
 * [Quick Start](#quick-start)
 * [Features](#features)
+  * [Help](#viewing-help--help)
+  * [Applicant Commands](#applicant-commands)
+    * [Add Applicant](#adding-an-applicant-to-the-applicantlist-addapplicant)
+    * [Edit Applicant](#editing-an-applicant-in-the-applicantlist-editapplicant)
+    * [Delete Applicant](#delete-an-applicant-deleteapplicant)
+    * [Mark Applicant](#mark-an-applicant-markapplicant)
+    * [Sort Applicant](#sort-list-of-applicants-sortapplicant)
+    * [Find Applicant](#locating-applicants-by-name-findapplicant)
+    * [List Applicant](#listing-all-applicants-in-the-applicant-list-listapplicant)
+    * [Switch to Applicant Tab](#switch-to-tab-containing-the-applicantlist-tabapplicant)
+  * [Job Commands](#job-commands)
+    * [Add Job](#adding-a-job-addjob)
+    * [Edit Job](#editing-a-job-in-the-joblist-editjob)
+    * [Delete Job](#deleting-a-job-deletejob)
+    * [Mark Job](#marking-a-job-markjob)
+    * [Sort Job](#sorting-jobs-by-job-status-sortjob)
+    * [Find Job](#locating-jobs-by-name-findjob)
+    * [List Job](#listing-all-jobs-in-the-joblist-listjob)
+    * [Switch to Job Tab](#switch-to-tab-containing-the-joblist-tabjob)
+  * [Utility Commands](#utility-commands)
+    * [Clear](#clearing-all-entries--clear)
+    * [Exit](#exiting-the-program--exit)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
@@ -451,7 +473,7 @@ Sort the jobs in the job list of ReCLIne by the job status. Job status can be ei
 Format: `sortjob`
 
 
-### Locating jobs by name: `findjob`
+### Locating jobs: `findjob`
 
 Find jobs in the job list either by `Job Title` or by `Job ID`. Find jobs by Job Title by matching job titles in 
 `Job List` to the inputted keywords. Find jobs by `Job ID` by matching the job id in `Job List` to the inputted integer id.
