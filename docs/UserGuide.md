@@ -3,21 +3,61 @@ layout: page
 title: User Guide
 ---
 
-ReCLIne is a **desktop app which serves as a centralised location for recruiters to store and track job applicants and jobs, optimized for use via a
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, ReCLIne can get your contact management tasks done faster than traditional GUI apps.
+## Introduction
 
-* Table of Contents
-    * [Quick Start](#quick-start)
-    * [Features](#features)
-    * [FAQ](#faq)
-    * [Command Summary](#command-summary)
+Being a Job Recruiter means working in a **fast paced environment with long hours**, and a need to have **attention to 
+details**. It is a Job where **time is money** as the number of applicants that sign to a job determines the amount of 
+commission earned.
+
+Hence, introducing **ReCLIne**. ReCLIne is a **desktop app which serves as a centralised location for recruiters to 
+store and track job applicants and jobs, optimized for use via a Command Line Interface** (CLI) while still having 
+the benefits of a Graphical User Interface (GUI). If you can type fast, ReCLIne can get your contact management tasks 
+done faster than traditional GUI apps.
+
+## How to use this guide
+The **goal of this guide** is to help you, the users, to **understand** how to use our application better. 
+If you are a **new user**, we recommend going to the [Quick Start](#quick-start) section, to learn how to install the 
+application onto your device and to have a quick try at some commands that ReCline provides.
+If you are an **experienced user**, we recommend going to the [Features](#features) section to view all the commands
+available on ReCLIne.
+
+## Table of Contents
+
+* [Introduction](#introduction)
+* [How to use this guide](#how-to-use-this-guide)
+* [Table of Contents](#table-of-contents)  
+* [Quick Start](#quick-start)
+* [Features](#features)
+  * [Help](#viewing-help--help)
+  * [Applicant Commands](#applicant-commands)
+    * [Add Applicant](#adding-an-applicant-to-the-applicantlist-addapplicant)
+    * [Edit Applicant](#editing-an-applicant-in-the-applicantlist-editapplicant)
+    * [Delete Applicant](#delete-an-applicant-deleteapplicant)
+    * [Mark Applicant](#mark-an-applicant-markapplicant)
+    * [Sort Applicant](#sort-list-of-applicants-sortapplicant)
+    * [Find Applicant](#locating-applicants-by-name-findapplicant)
+    * [List Applicant](#listing-all-applicants-in-the-applicant-list-listapplicant)
+    * [Switch to Applicant Tab](#switch-to-tab-containing-the-applicantlist-tabapplicant)
+  * [Job Commands](#job-commands)
+    * [Add Job](#adding-a-job-addjob)
+    * [Edit Job](#editing-a-job-in-the-joblist-editjob)
+    * [Delete Job](#deleting-a-job-deletejob)
+    * [Mark Job](#marking-a-job-markjob)
+    * [Sort Job](#sorting-jobs-by-job-status-sortjob)
+    * [Find Job](#locating-jobs-by-name-findjob)
+    * [List Job](#listing-all-jobs-in-the-joblist-listjob)
+    * [Switch to Job Tab](#switch-to-tab-containing-the-joblist-tabjob)
+  * [Utility Commands](#utility-commands)
+    * [Clear](#clearing-all-entries--clear)
+    * [Exit](#exiting-the-program--exit)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start
 
-1. Ensure you have Java `11` or above installed in your Computer.
+1. Ensure you have [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) or above installed in your Computer.
 
 1. Download the latest `ReCLIne.jar` from [here](https://github.com/AY2122S2-CS2103T-W15-1/tp/releases).
 
@@ -29,11 +69,13 @@ If you can type fast, ReCLIne can get your contact management tasks done faster 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`addapplicant`**`n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` : Adds a contact named `Jaden Ho` to the Address Book.
+   * **`addapplicant`**`n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` 
+     : Adds an applicant named `Jaden Ho` with the inputted NRIC, address, email, phone number, and date applied to the Address Book.
 
-   * **`deleteapplicant`**`3` : Deletes the 3rd contact shown in the current list.
+   * **`deleteapplicant`**`3` : Deletes the 3rd applicant shown in the displayed list.
 
-   * **`editapplicant`**`1  e/jadenho@email.com q/Degree in Computer Science i/2022-03-18` : Edits Applicant 3 changing the email, qualification and interview date.
+   * **`editapplicant`**`1  e/jadenho@email.com q/Degree in Computer Science i/2022-03-18` 
+     : Edits the 1st applicant on the displayed list, changing his email, qualification and interview date.
 
    * **`exit`** : Exits the app.
 
@@ -48,43 +90,49 @@ If you can type fast, ReCLIne can get your contact management tasks done faster 
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `addapplicant n/NAME`, `NAME` is a parameter which can be used as `addapplicant n/John Doe`.
 
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+* Items **with** an asterisk before the flag are compulsory.<br>
+  e.g `*n/[NAME] *p/[PHONE]` can only be used as `n/John Doe p/93483747`.
+  
+* Items **without** an asterisk before the flag are optional.<br>
+  e.g `*n/[NAME] t/[TAG]` can be used as `n/John Doe t/Applicant` or `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+* Items with `…​` after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of
+* If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of
   the parameter will be taken.<br>
   e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`)
+* Extraneous parameters for commands that do not take in parameters 
+  (such as `help`, `listapplicant`, `listjob`, `tabapplicant`, `tabjob`, `exit` and `clear`)
   will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 </div>
 
-### Viewing help : `help` [coming soon]
+### Viewing help : `help` 
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
+
+## Applicant Commands
 
 ### Adding an Applicant to the ApplicantList: `addapplicant`
 
 Adds an applicant to the applicant list of ReCLIne.
 
 Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
-            *d/[DATEAPPLIED]`
+            *d/[DATEAPPLIED] t/[TAG]…​`
 
-Tip: Fill in fields in any order. All fields are compulsory.
+Tip: Fill in fields in any order. All fields are compulsory, except for `t/[TAG]…​` field.
 
 *flag/[ATTRIBUTE]:*
 
@@ -100,6 +148,12 @@ Tip: Fill in fields in any order. All fields are compulsory.
 
 `d/[DATEAPPLIED]` : Date that Applicant applied for the job
 
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
+any other format.
+</div>
+
+`t/[TAG]` : Applicant's Tag
 
 Examples:
 
@@ -115,14 +169,14 @@ Edits an applicant in the applicant list of ReCLIne.
 
 Format: `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[ADDRESS]
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
-i/[INTERVIEWDATE] s/[STATUS] t/[TAG]`
+i/[INTERVIEWDATE] s/[STATUS] t/[TAG]…​`
 
-Tip: Fill in fields in any order. Just input the fields that you would like to change for the specific index number.
+**Tip** : Fill in fields in any order. Just input the fields that you would like to change for the specific index number.
 To leave out fields, skip the flag and attribute completely.
 
 *flag/[ATTRIBUTE]:*
 
-`[INDEX]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
+`[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 `n/[NAME]`: Updated Applicant's name
 
@@ -138,11 +192,21 @@ To leave out fields, skip the flag and attribute completely.
 
 `d/[DATEAPPLIED]` : Updated Applicant's application date
 
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
+any other format.
+</div>
+
 `q/[QUALIFICATION]` : Updated Applicant's qualification
 
 `j/[JOB ID]` : Updated unique ID of the job applicant is applying for
 
-`i/[INTERVIEW]` : Updated Applicant’s upcoming job interview date
+`i/[INTERVIEWDATE]` : Updated Applicant’s upcoming job interview date
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[INTERVIEWDATE]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
+any other format.
+</div>
 
 `t/[TAG]` :  Updated Applicant's Tag
 
@@ -151,29 +215,18 @@ Examples:
 `editapplicant 1 n/Jaden Ho a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12 q/Degree in Computer Science
 i/2022-03-18`
 
-* Edits an applicant with index number 1 with name - Jaden Ho, address - Tampines St 96 Block 312
+* Edits an applicant of index 1 with name - Jaden Ho, address - Tampines St 96 Block 312
   email - jadenho@email.com, date applied - 2022-03-12, qualification - Degree of Computer Science,
   interview date - 2022-03-18.
-
-### Saving the data
-
-ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-ReCLIne data are saved as a JSON file `[JAR file location]/data/recline.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
-</div>
+  
 
 ### Delete an Applicant: `deleteapplicant`
 
 Deletes an applicant specified by the index from the applicant list in ReCLIne.
 
-Format: `deleteapplicant *[INDEX]`
+Format: `deleteapplicant [INDEX*]`
 
-`Index` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
+`[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 Example:
 
@@ -194,7 +247,7 @@ Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 `[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
-`s/[STATUS]`: Flag to mark the applicant status of the applicant. [STATUS] must be either
+`s/[STATUS]`: Flag to mark the applicant status of the applicant. `[STATUS]` must be either
 pending, accepted, or rejected
 
 **Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
@@ -244,17 +297,48 @@ Example:
 - Applicants who have yet to apply for a specific job listing will be ranked lower.
 
 
+### Locating applicants by name: `findapplicant`
+
+Finds applicants in the applicant list by their name.
+
+Format: `findapplicant KEYWORD…​`
+
+*flag/[Attribute]*
+
+`KEYWORD…​`: Search for an applicant name containing the `KEYWORD…​`.
+* The search is case-insensitive. e.g `alice` will match `Alice`
+* The order of the keywords does not matter. e.g. `Alice Goh` will match `Goh Alice`
+* Only full words will be matched e.g. `Ali` will not match `Alice`
+* Applicants matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `Alice` will return `Alice Tan Mei Ling`, `Alice Goh Ming Yue`
+
+Examples:
+* `findapplicant Alice` returns anyone in the applicant list that has "Alice" in their name.
+  <br>
+  
+
+### Listing all applicants in the Applicant List: `listapplicant`
+
+Lists out all the applicants that are in the ApplicantList.
+This will help to display all the applicants in the applicant list again, after finding a particular applicant by `findapplicant`.
+
+Format: `listapplicant` <br>
+
+
 ### Switch to tab containing the ApplicantList: `tabapplicant`
 
 Switches to the `applicant list` tab in the GUI (the changes are reflected on the application window)
 
 Format: `tabjob` <br>
 
+## Job Commands
 
 ### Adding a Job: `addjob`
 Adds a new job posting to ReCLIne
 
 Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]`
+
+**Tip**: Fill in fields in any order.
 
 *flag/[Attribute]:*
 
@@ -280,14 +364,13 @@ of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne 
 A range where the lower bound is equal to the upper bound is accepted.
 </div>
 
-**Tip**: Fill in fields in the stipulated order.
-
 Example:
 
 `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
 
 * Adds a job called Software Developer, for a company Ebiz Pte Ltd. The location of the job is at Hougang Road Blk 38,
 and it requires a Bachelors in Computer Science. This is a full time position with a salary between 3000-4000.
+  
 
 ### Editing a Job in the JobList: `editjob`
 
@@ -298,7 +381,7 @@ outdated information to applicants.
 Format: `editJob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
-Tip: Fill in fields in any order. Just input the fields that you would like to change for the specific job.
+**Tip** : Fill in fields in any order. Just input the fields that you would like to change for the specific job.
 To leave out fields, skip the flag and attribute completely.
 
 *flag/[ATTRIBUTE]:*
@@ -325,8 +408,9 @@ else is inputted.
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The inputted `[SALARY]` must be a range. The lower bound of the range cannot be larger than the upper bound 
-of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
-A range where the lower bound is equal to the upper bound is accepted.
+of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
+A range where the lower bound is equal to the upper bound is accepted. For example "4000 - 4000" is allowed. This 
+indicates that the salary is not a range, but rather a fixed amount.
 
 </div>
 
@@ -338,33 +422,7 @@ sal/4000 - 5000`
 * Edits a job with index number 1 with job title - Software Engineer UI/UX comapny name - Designer Club,
   qualification - Degree of Computer Science, address - Block 3 Designer Road, 
   position - full time, salary range - 4000 - 5000. <br>
-
-
-### Marking a Job: `markjob`
-Marks an existing job posting as full-time or part-time.
-
-Format: `markjob *[INDEX] *js/[JOBSTATUS]`
-
-*flag/[Attribute]:*
-
-`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
-
-`js/[JOB STATUS]`: Job listing position, 
-
-<div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The `[POSITION]` field only accepts either `ft` or `pt` as an input. ReCLIne will output an error if anything
-else is inputted.
-</div>
-
-**Tip**: All fields are compulsory for `markjob` 
-
-Example:
-
-`markjob 23 js/pt`
-* Marks the job listing at index 23 as part-time position type.
-
-`markjob 41 js/ft`
-* Marks the job listing at index 41 as full-time position type.
+  
 
 ### Deleting a job: `deletejob`
 
@@ -380,12 +438,48 @@ Example:
 
 *Deletes the job at index 1 from the job list of ReCLIne.
 
-### Locating jobs by name: `findjob`
 
-Finds jobs in the job list either by `Job Title` or by `Job ID`. Find jobs by Job Title by matching job titles in `Job List` to the inputted keywords. Find jobs by `Job ID` by matching the job id in `Job List` to the the inputted integer id.
+### Marking a Job: `markjob`
+Marks an existing job posting as filled or vacant.
 
-Format (search via job title): `findjob jt/KEYWORD [MORE_KEYWORDS]` or `findjob id/[ID]`
+Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
+**Tip**: All fields are compulsory for `markjob`
+
+*flag/[Attribute]:*
+
+`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
+
+`js/[JOB STATUS]`: The new status of the job posting.
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[JOB STATUS]` field only accepts either `filled` or `vacant` as an input. ReCLIne will 
+output an error if anything else is inputted.
+</div>
+
+Example:
+
+`markjob 23 js/filled`
+* Marks the job listing at index 23 as filled.
+
+`markjob 41 js/vacant`
+* Marks the job listing at index 41 as vacant.
+
+
+### Sorting jobs by Job Status: `sortjob`
+
+Sort the jobs in the job list of ReCLIne by the job status. Job status can be either 'filled' or 'vacant'.
+
+Format: `sortjob`
+
+
+### Locating jobs: `findjob`
+
+Find jobs in the job list either by `Job Title` or by `Job ID`. Find jobs by Job Title by matching job titles in 
+`Job List` to the inputted keywords. Find jobs by `Job ID` by matching the job id in `Job List` to the inputted integer id.
+
+Format (search via job title): `findjob jt/KEYWORD [MORE_KEYWORDS]`
+Format (search via job ID): `findjob id/[ID]`
 
 ***flag/[Attribute]***
 
@@ -402,6 +496,7 @@ Examples:
 * `findjob jt/Engineer` returns `software engineer` and `Mech Engineer`
 * `findjob id/2` returns a job with id 2 <br>
 
+
 ### Listing all jobs in the JobList: `listjob`
 
 Lists out all the jobs that are in the JobList.
@@ -409,29 +504,39 @@ This will help to display all the jobs in the JobList again, after finding a par
 
 Format: `listjob` <br>
 
+
 ### Switch to tab containing the JobList: `tabjob`
 
 Switches to the `job list` tab in the GUI (the changes are reflected on the application window
 
-   Format: `tabjob` <br>
+Format: `tabjob` <br>
 
-### Sorting jobs by Job Status: `sortjob`
+## Utility Commands
 
-Sort the jobs in the job list of ReCLIne by the job status. Job status can be either 'filled' or 'vacant'.
-
-Format and Example: `sortjob`
-
-### Clearing all entries : `clear` [coming soon]
+### Clearing all entries : `clear`
 
 Clears all entries from the address book.
 
 Format: `clear`
 
-### Exiting the program : `exit` [coming soon]
+### Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
+
+### Saving the data
+
+ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+### Editing the data file
+
+ReCLIne data are saved as a JSON file `[JAR file location]/data/recline.json`. Advanced users are welcome to update data directly by editing that data file.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+If your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
+</div>
+
 
 ### Archiving data files `[coming in v2.0]`
 
@@ -451,7 +556,21 @@ _Details coming soon ..._
 | Action             | Format, Examples                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add Applicant**  | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`             |
-| **Delete Applicant** | `deleteapplicant INDEX`<br> e.g., `deleteapplicant 3`                                                                                                                                                                               |
 | **Edit Applicant** | `editApplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com` |
-| **Mark Applicant** | `markApplicant *[INDEX]  s/[STATUS] ​` <br> e.g.,`markapplicant 2 s/rejected`                                                                                                                                                       |
-| **Help**           | `help`                                                                                                                                                                                                                              |
+| **Delete Applicant** | `deleteapplicant *[INDEX]`<br> e.g., `deleteapplicant 3`                                     |
+| **Mark Applicant** | `markapplicant *[INDEX] *s/[STATUS] ​` <br> e.g.,`markapplicant 2 s/rejected`       |
+| **Sort Applicant** | `sortapplicant *by/[ATTRIBUTE]` <br> e.g., `sortapplicant by/dateapplied` |
+| **Find Applicant** | `findapplicant KEYWORD…​` <br> e.g., `findapplicant Alice` |
+| **List Applicant** | `listapplicant` |
+| **Switch to Applicant Tab** | `tabapplicant` |
+| **Add Job**  | `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]` <br> e.g., `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000 - 4000 `             |
+| **Edit Job** | `editJob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g.,  `editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
+| **Delete Job** | `deletejob *[INDEX]`<br> e.g., `deletejob 3`                                     |
+| **Mark Job** | `markjob *[INDEX] *js/[STATUS] ​` <br> e.g.,`markjob 2 js/vacant`       |
+| **Sort Job** | `sortjob`  |
+| **Find Job** | `findjob jt/KEYWORD [MORE_KEYWORDS]` <br> e.g., `findjob jt/Engineer` <br>***OR***<br> `findjob id/[ID]` <br> e.g., `findjob id/2` |
+| **List Job** | `listjob` |
+| **Switch to Job Tab** | `tabjob` |
+| **Help**           | `help`              |
+| **Clear**           | `clear`              |
+| **Exit**           | `exit`              |
