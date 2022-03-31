@@ -149,7 +149,7 @@ Format: `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[A
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] s/[STATUS] t/[TAG]…​`
 
-Tip: Fill in fields in any order. Just input the fields that you would like to change for the specific index number.
+**Tip** : Fill in fields in any order. Just input the fields that you would like to change for the specific index number.
 To leave out fields, skip the flag and attribute completely.
 
 *flag/[ATTRIBUTE]:*
@@ -293,14 +293,14 @@ Format: `findapplicant KEYWORD…​`
 Examples:
 * `findapplicant Alice` returns anyone in the applicant list that has "Alice" in their name.
   <br>
-
+  
 
 ### Listing all applicants in the Applicant List: `listapplicant`
 
 Lists out all the applicants that are in the ApplicantList.
 This will help to display all the applicants in the applicant list again, after finding a particular applicant by `findapplicant`.
 
-Format: `listjob` <br>
+Format: `listapplicant` <br>
 
 
 ### Switch to tab containing the ApplicantList: `tabapplicant`
@@ -315,6 +315,8 @@ Format: `tabjob` <br>
 Adds a new job posting to ReCLIne
 
 Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]`
+
+**Tip**: Fill in fields in any order.
 
 *flag/[Attribute]:*
 
@@ -340,14 +342,13 @@ of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne 
 A range where the lower bound is equal to the upper bound is accepted.
 </div>
 
-**Tip**: Fill in fields in the stipulated order.
-
 Example:
 
 `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
 
 * Adds a job called Software Developer, for a company Ebiz Pte Ltd. The location of the job is at Hougang Road Blk 38,
 and it requires a Bachelors in Computer Science. This is a full time position with a salary between 3000-4000.
+  
 
 ### Editing a Job in the JobList: `editjob`
 
@@ -358,7 +359,7 @@ outdated information to applicants.
 Format: `editJob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
-Tip: Fill in fields in any order. Just input the fields that you would like to change for the specific job.
+**Tip** : Fill in fields in any order. Just input the fields that you would like to change for the specific job.
 To leave out fields, skip the flag and attribute completely.
 
 *flag/[ATTRIBUTE]:*
@@ -399,33 +400,7 @@ sal/4000 - 5000`
 * Edits a job with index number 1 with job title - Software Engineer UI/UX comapny name - Designer Club,
   qualification - Degree of Computer Science, address - Block 3 Designer Road, 
   position - full time, salary range - 4000 - 5000. <br>
-
-
-### Marking a Job: `markjob`
-Marks an existing job posting as filled or vacant.
-
-Format: `markjob *[INDEX] *js/[JOBSTATUS]`
-
-*flag/[Attribute]:*
-
-`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
-
-`js/[JOB STATUS]`: The new status of the job posting.
-
-<div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The `[JOB STATUS]` field only accepts either `filled` or `vacant` as an input. ReCLIne will output an error if anything
-else is inputted.
-</div>
-
-**Tip**: All fields are compulsory for `markjob` 
-
-Example:
-
-`markjob 23 js/pt`
-* Marks the job listing at index 23 as part-time position type.
-
-`markjob 41 js/ft`
-* Marks the job listing at index 41 as full-time position type.
+  
 
 ### Deleting a job: `deletejob`
 
@@ -441,12 +416,48 @@ Example:
 
 *Deletes the job at index 1 from the job list of ReCLIne.
 
+
+### Marking a Job: `markjob`
+Marks an existing job posting as filled or vacant.
+
+Format: `markjob *[INDEX] *js/[JOBSTATUS]`
+
+**Tip**: All fields are compulsory for `markjob`
+
+*flag/[Attribute]:*
+
+`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
+
+`js/[JOB STATUS]`: The new status of the job posting.
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[JOB STATUS]` field only accepts either `filled` or `vacant` as an input. ReCLIne will 
+output an error if anything else is inputted.
+</div>
+
+Example:
+
+`markjob 23 js/filled`
+* Marks the job listing at index 23 as filled.
+
+`markjob 41 js/vacant`
+* Marks the job listing at index 41 as vacant.
+
+
+### Sorting jobs by Job Status: `sortjob`
+
+Sort the jobs in the job list of ReCLIne by the job status. Job status can be either 'filled' or 'vacant'.
+
+Format: `sortjob`
+
+
 ### Locating jobs by name: `findjob`
 
-Finds jobs in the job list either by `Job Title` or by `Job ID`. Find jobs by Job Title by matching job titles in `Job List` to the inputted keywords. Find jobs by `Job ID` by matching the job id in `Job List` to the the inputted integer id.
+Find jobs in the job list either by `Job Title` or by `Job ID`. Find jobs by Job Title by matching job titles in 
+`Job List` to the inputted keywords. Find jobs by `Job ID` by matching the job id in `Job List` to the inputted integer id.
 
-Format (search via job title): `findjob jt/KEYWORD [MORE_KEYWORDS]` or `findjob id/[ID]`
-
+Format (search via job title): `findjob jt/KEYWORD [MORE_KEYWORDS]`
+Format (search via job ID): `findjob id/[ID]`
 
 ***flag/[Attribute]***
 
@@ -463,6 +474,7 @@ Examples:
 * `findjob jt/Engineer` returns `software engineer` and `Mech Engineer`
 * `findjob id/2` returns a job with id 2 <br>
 
+
 ### Listing all jobs in the JobList: `listjob`
 
 Lists out all the jobs that are in the JobList.
@@ -470,17 +482,14 @@ This will help to display all the jobs in the JobList again, after finding a par
 
 Format: `listjob` <br>
 
+
 ### Switch to tab containing the JobList: `tabjob`
 
 Switches to the `job list` tab in the GUI (the changes are reflected on the application window
 
-   Format: `tabjob` <br>
+Format: `tabjob` <br>
 
-### Sorting jobs by Job Status: `sortjob`
-
-Sort the jobs in the job list of ReCLIne by the job status. Job status can be either 'filled' or 'vacant'.
-
-Format and Example: `sortjob`
+## Utility Commands
 
 ### Clearing all entries : `clear`
 
@@ -525,7 +534,21 @@ _Details coming soon ..._
 | Action             | Format, Examples                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add Applicant**  | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`             |
-| **Delete Applicant** | `deleteapplicant INDEX`<br> e.g., `deleteapplicant 3`                                                                                                                                                                               |
 | **Edit Applicant** | `editApplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com` |
-| **Mark Applicant** | `markApplicant *[INDEX]  s/[STATUS] ​` <br> e.g.,`markapplicant 2 s/rejected`                                                                                                                                                       |
-| **Help**           | `help`                                                                                                                                                                                                                              |
+| **Delete Applicant** | `deleteapplicant *[INDEX]`<br> e.g., `deleteapplicant 3`                                     |
+| **Mark Applicant** | `markapplicant *[INDEX] *s/[STATUS] ​` <br> e.g.,`markapplicant 2 s/rejected`       |
+| **Sort Applicant** | `sortapplicant *by/[ATTRIBUTE]` <br> e.g., `sortapplicant by/dateapplied` |
+| **Find Applicant** | `findapplicant KEYWORD…​` <br> e.g., `findapplicant Alice` |
+| **List Applicant** | `listapplicant` |
+| **Switch to Applicant Tab** | `tabapplicant` |
+| **Add Job**  | `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]` <br> e.g., `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000 - 4000 `             |
+| **Edit Job** | `editJob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g.,  `editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
+| **Delete Job** | `deletejob *[INDEX]`<br> e.g., `deletejob 3`                                     |
+| **Mark Job** | `markjob *[INDEX] *js/[STATUS] ​` <br> e.g.,`markjob 2 js/vacant`       |
+| **Sort Job** | `sortjob`  |
+| **Find Job** | `findjob jt/KEYWORD [MORE_KEYWORDS]` <br> e.g., `findjob jt/Engineer` <br>***OR***<br> `findjob id/[ID]` <br> e.g., `findjob id/2` |
+| **List Job** | `listjob` |
+| **Switch to Job Tab** | `tabjob` |
+| **Help**           | `help`              |
+| **Clear**           | `clear`              |
+| **Exit**           | `exit`              |
