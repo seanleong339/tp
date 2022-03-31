@@ -3,21 +3,39 @@ layout: page
 title: User Guide
 ---
 
-ReCLIne is a **desktop app which serves as a centralised location for recruiters to store and track job applicants and jobs, optimized for use via a
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, ReCLIne can get your contact management tasks done faster than traditional GUI apps.
+## Introduction
 
-* Table of Contents
-    * [Quick Start](#quick-start)
-    * [Features](#features)
-    * [FAQ](#faq)
-    * [Command Summary](#command-summary)
+Being a Job Recruiter means working in a **fast paced environment with long hours**, and a need to have **attention to 
+details**. It is a Job where **time is money** as the number of applicants that sign to a job determines the amount of 
+commission earned.
+
+Hence, introducing **ReCLIne**. ReCLIne is a **desktop app which serves as a centralised location for recruiters to 
+store and track job applicants and jobs, optimized for use via a Command Line Interface** (CLI) while still having 
+the benefits of a Graphical User Interface (GUI). If you can type fast, ReCLIne can get your contact management tasks 
+done faster than traditional GUI apps.
+
+## How to use this guide
+The **goal of this guide** is to help you, the users, to **understand** how to use our application better. 
+If you are a **new user**, we recommend going to the [Quick Start](#quick-start) section, to learn how to install the 
+application onto your device and to have a quick try at some commands that ReCline provides.
+If you are an **experienced user**, we recommend going to the [Features](#features) section to view all the commands
+available on ReCLIne.
+
+## Table of Contents
+
+* [Introduction](#introduction)
+* [How to use this guide](#how-to-use-this-guide)
+* [Table of Contents](#table-of-contents)  
+* [Quick Start](#quick-start)
+* [Features](#features)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start
 
-1. Ensure you have Java `11` or above installed in your Computer.
+1. Ensure you have [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) or above installed in your Computer.
 
 1. Download the latest `ReCLIne.jar` from [here](https://github.com/AY2122S2-CS2103T-W15-1/tp/releases).
 
@@ -29,11 +47,13 @@ If you can type fast, ReCLIne can get your contact management tasks done faster 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`addapplicant`**`n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` : Adds a contact named `Jaden Ho` to the Address Book.
+   * **`addapplicant`**`n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` 
+     : Adds an applicant named `Jaden Ho` with the inputted NRIC, address, email, phone number, and date applied to the Address Book.
 
-   * **`deleteapplicant`**`3` : Deletes the 3rd contact shown in the current list.
+   * **`deleteapplicant`**`3` : Deletes the 3rd applicant shown in the displayed list.
 
-   * **`editapplicant`**`1  e/jadenho@email.com q/Degree in Computer Science i/2022-03-18` : Edits Applicant 3 changing the email, qualification and interview date.
+   * **`editapplicant`**`1  e/jadenho@email.com q/Degree in Computer Science i/2022-03-18` 
+     : Edits the 1st applicant on the displayed list, changing his email, qualification and interview date.
 
    * **`exit`** : Exits the app.
 
@@ -48,30 +68,34 @@ If you can type fast, ReCLIne can get your contact management tasks done faster 
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `addapplicant n/NAME`, `NAME` is a parameter which can be used as `addapplicant n/John Doe`.
 
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+* Items **with** an asterisk before the flag are compulsory.<br>
+  e.g `*n/[NAME] *p/[PHONE]` can only be used as `n/John Doe p/93483747`.
+  
+* Items **without** an asterisk before the flag are optional.<br>
+  e.g `*n/[NAME] t/[TAG]` can be used as `n/John Doe t/Applicant` or `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+* Items with `…​` after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of
+* If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of
   the parameter will be taken.<br>
   e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`)
+* Extraneous parameters for commands that do not take in parameters 
+  (such as `help`, `listapplicant`, `listjob`, `tabapplicant`, `tabjob`, `exit` and `clear`)
   will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 </div>
 
-### Viewing help : `help` [coming soon]
+### Viewing help : `help` 
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -82,9 +106,9 @@ Format: `help`
 Adds an applicant to the applicant list of ReCLIne.
 
 Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
-            *d/[DATEAPPLIED]`
+            *d/[DATEAPPLIED] t/[TAG]…​`
 
-Tip: Fill in fields in any order. All fields are compulsory.
+Tip: Fill in fields in any order. All fields are compulsory, except for `t/[TAG]…​` field.
 
 *flag/[ATTRIBUTE]:*
 
@@ -100,6 +124,12 @@ Tip: Fill in fields in any order. All fields are compulsory.
 
 `d/[DATEAPPLIED]` : Date that Applicant applied for the job
 
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
+any other format.
+</div>
+
+`t/[TAG]` : Applicant's Tag
 
 Examples:
 
@@ -115,7 +145,7 @@ Edits an applicant in the applicant list of ReCLIne.
 
 Format: `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[ADDRESS]
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
-i/[INTERVIEWDATE] s/[STATUS] t/[TAG]`
+i/[INTERVIEWDATE] s/[STATUS] t/[TAG]…​`
 
 Tip: Fill in fields in any order. Just input the fields that you would like to change for the specific index number.
 To leave out fields, skip the flag and attribute completely.
@@ -138,11 +168,21 @@ To leave out fields, skip the flag and attribute completely.
 
 `d/[DATEAPPLIED]` : Updated Applicant's application date
 
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
+any other format.
+</div>
+
 `q/[QUALIFICATION]` : Updated Applicant's qualification
 
 `j/[JOB ID]` : Updated unique ID of the job applicant is applying for
 
-`i/[INTERVIEW]` : Updated Applicant’s upcoming job interview date
+`i/[INTERVIEWDATE]` : Updated Applicant’s upcoming job interview date
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The `[INTERVIEWDATE]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
+any other format.
+</div>
 
 `t/[TAG]` :  Updated Applicant's Tag
 
@@ -154,18 +194,7 @@ i/2022-03-18`
 * Edits an applicant with index number 1 with name - Jaden Ho, address - Tampines St 96 Block 312
   email - jadenho@email.com, date applied - 2022-03-12, qualification - Degree of Computer Science,
   interview date - 2022-03-18.
-
-### Saving the data
-
-ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-ReCLIne data are saved as a JSON file `[JAR file location]/data/recline.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
-</div>
+  
 
 ### Delete an Applicant: `deleteapplicant`
 
@@ -422,17 +451,30 @@ Sort the jobs in the job list of ReCLIne by the job status. Job status can be ei
 
 Format and Example: `sortjob`
 
-### Clearing all entries : `clear` [coming soon]
+### Clearing all entries : `clear`
 
 Clears all entries from the address book.
 
 Format: `clear`
 
-### Exiting the program : `exit` [coming soon]
+### Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
+
+### Saving the data
+
+ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+### Editing the data file
+
+ReCLIne data are saved as a JSON file `[JAR file location]/data/recline.json`. Advanced users are welcome to update data directly by editing that data file.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+If your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
+</div>
+
 
 ### Archiving data files `[coming in v2.0]`
 
