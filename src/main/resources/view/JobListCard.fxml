@@ -28,7 +28,7 @@
                </children>
             </HBox>
             <Label fx:id="companyName" styleClass="cell_small_label" text="\$company name"/>
-            <Label fx:id="position" styleClass="cell_small_label" text="\$position"/>
+            <Label fx:id="status" styleClass="cell_small_label" text="\$status"/>
          </children>
       </VBox>
    </center>

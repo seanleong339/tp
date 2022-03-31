@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.job.Job;
+import seedu.address.ui.StyleUtil;
 import seedu.address.ui.UiPart;
 
 
@@ -36,10 +37,10 @@ public class JobCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label position;
+    private Label status;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Person} and index to display.
+     * Creates a {@code JobCard} with the given {@code Job} and index to display.
      */
     public JobCard(Job job, int displayedIndex) {
         super(FXML);
@@ -48,7 +49,7 @@ public class JobCard extends UiPart<Region> {
         jobTitle.setText(job.getJobTitle().toString());
         companyName.setText(job.getCompany().toString());
         id.setText("#" + job.getJobId().toString());
-        position.setText(job.getPosition().toString());
+        StyleUtil.setJobStatusStyle(status, job.getJobStatus().toString());
     }
 
     @Override
@@ -57,12 +58,10 @@ public class JobCard extends UiPart<Region> {
         if (other == this) {
             return true;
         }
-
         // instanceof handles nulls
         if (!(other instanceof JobCard)) {
             return false;
         }
-
         // state check
         JobCard card = (JobCard) other;
         return id.getText().equals(card.id.getText())
