@@ -101,6 +101,8 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
+## Applicant Commands
+
 ### Adding an Applicant to the ApplicantList: `addapplicant`
 
 Adds an applicant to the applicant list of ReCLIne.
@@ -152,7 +154,7 @@ To leave out fields, skip the flag and attribute completely.
 
 *flag/[ATTRIBUTE]:*
 
-`[INDEX]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
+`[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 `n/[NAME]`: Updated Applicant's name
 
@@ -191,7 +193,7 @@ Examples:
 `editapplicant 1 n/Jaden Ho a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12 q/Degree in Computer Science
 i/2022-03-18`
 
-* Edits an applicant with index number 1 with name - Jaden Ho, address - Tampines St 96 Block 312
+* Edits an applicant of index 1 with name - Jaden Ho, address - Tampines St 96 Block 312
   email - jadenho@email.com, date applied - 2022-03-12, qualification - Degree of Computer Science,
   interview date - 2022-03-18.
   
@@ -200,9 +202,9 @@ i/2022-03-18`
 
 Deletes an applicant specified by the index from the applicant list in ReCLIne.
 
-Format: `deleteapplicant *[INDEX]`
+Format: `deleteapplicant [INDEX*]`
 
-`Index` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
+`[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 Example:
 
@@ -223,7 +225,7 @@ Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 `[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
-`s/[STATUS]`: Flag to mark the applicant status of the applicant. [STATUS] must be either
+`s/[STATUS]`: Flag to mark the applicant status of the applicant. `[STATUS]` must be either
 pending, accepted, or rejected
 
 **Tip:** Fill in fields in the stipulated order. To leave out optional fields, skip the flag and attribute completely.
@@ -273,12 +275,41 @@ Example:
 - Applicants who have yet to apply for a specific job listing will be ranked lower.
 
 
+### Locating applicants by name: `findapplicant`
+
+Finds applicants in the applicant list by their name.
+
+Format: `findapplicant KEYWORD…​`
+
+*flag/[Attribute]*
+
+`KEYWORD…​`: Search for an applicant name containing the `KEYWORD…​`.
+* The search is case-insensitive. e.g `alice` will match `Alice`
+* The order of the keywords does not matter. e.g. `Alice Goh` will match `Goh Alice`
+* Only full words will be matched e.g. `Ali` will not match `Alice`
+* Applicants matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `Alice` will return `Alice Tan Mei Ling`, `Alice Goh Ming Yue`
+
+Examples:
+* `findapplicant Alice` returns anyone in the applicant list that has "Alice" in their name.
+  <br>
+
+
+### Listing all applicants in the Applicant List: `listapplicant`
+
+Lists out all the applicants that are in the ApplicantList.
+This will help to display all the applicants in the applicant list again, after finding a particular applicant by `findapplicant`.
+
+Format: `listjob` <br>
+
+
 ### Switch to tab containing the ApplicantList: `tabapplicant`
 
 Switches to the `applicant list` tab in the GUI (the changes are reflected on the application window)
 
 Format: `tabjob` <br>
 
+## Job Commands
 
 ### Adding a Job: `addjob`
 Adds a new job posting to ReCLIne
@@ -371,7 +402,7 @@ sal/4000 - 5000`
 
 
 ### Marking a Job: `markjob`
-Marks an existing job posting as full-time or part-time.
+Marks an existing job posting as filled or vacant.
 
 Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
@@ -379,10 +410,10 @@ Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
 `[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
 
-`js/[JOB STATUS]`: Job listing position, 
+`js/[JOB STATUS]`: The new status of the job posting.
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The `[POSITION]` field only accepts either `ft` or `pt` as an input. ReCLIne will output an error if anything
+**Note:** The `[JOB STATUS]` field only accepts either `filled` or `vacant` as an input. ReCLIne will output an error if anything
 else is inputted.
 </div>
 
