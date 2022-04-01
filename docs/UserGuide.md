@@ -329,7 +329,7 @@ Format: `listapplicant` <br>
 
 Switches to the `applicant list` tab in the GUI (the changes are reflected on the application window)
 
-Format: `tabjob` <br>
+Format: `tabapplicant` <br>
 
 ## Job Commands
 
