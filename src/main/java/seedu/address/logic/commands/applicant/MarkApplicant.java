@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.applicant;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICANTS;
@@ -20,10 +21,11 @@ public class MarkApplicant extends Command {
     public static final String COMMAND_WORD = "markapplicant";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing Applicant's status. "
-            + " The applicant is identified by the index number used in the displayed applicant list."
-            + "Parameters: "
-            + "INDEX (must be a positive integer)"
-            + PREFIX_STATUS + "STATUS\n"
+            + " The applicant is identified by the index number used in the displayed applicant list. \n"
+            + "Parameters: \n"
+            + "INDEX (must be a positive integer) \n"
+            + PREFIX_STATUS + "STATUS: "
+            + "STATUS can be either rejected, pending, interviewed or accepted \n"
             + "Example: " + COMMAND_WORD + " "
             + "2 "
             + PREFIX_STATUS + "accepted";
@@ -52,8 +54,8 @@ public class MarkApplicant extends Command {
         List<Applicant> lastShownList = model.getFilteredApplicantList();
 
         int zeroBasedIndex = index.getZeroBased();
-        if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex == 0) {
-            throw new CommandException(Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
+            throw new CommandException(String.format(MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
 
         Applicant applicantToMark = lastShownList.get(index.getZeroBased());
