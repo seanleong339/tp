@@ -33,10 +33,10 @@ public class InterviewDate implements Comparable<InterviewDate> {
         checkArgument(isValidInterviewDate(interviewDate), MESSAGE_CONSTRAINTS);
         if (interviewDate.equals("PENDING")) {
             isInit = false;
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("uuuu-MM-dd");
             date = LocalDate.parse("1999-01-19", format);
         } else {
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("uuuu-MM-dd");
             isInit = true;
             date = LocalDate.parse(interviewDate, format);
         }
@@ -47,7 +47,7 @@ public class InterviewDate implements Comparable<InterviewDate> {
      */
     public InterviewDate() {
         isInit = false;
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("uuuu-MM-dd");
         date = LocalDate.parse("1999-01-19", format);
     }
 

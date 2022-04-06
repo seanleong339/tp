@@ -34,7 +34,7 @@ public class DateApplied implements Comparable<DateApplied> {
     public DateApplied(String dateApplied) {
         requireNonNull(dateApplied);
         checkArgument(isValidDateApplied(dateApplied), MESSAGE_CONSTRAINTS);
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("uuuu-MM-dd");
         date = LocalDate.parse(dateApplied, format);
     }
 
