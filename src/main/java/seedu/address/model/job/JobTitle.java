@@ -5,7 +5,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class JobTitle {
     public static final String MESSAGE_CONSTRAINTS =
-            "Job titles should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Job titles should only contain alphanumeric characters and spaces, "
+                    + "special symbols such as '/' or '#' should be avoided.\n"
+                    + " It should also not be blank";
 
     /*
      * The first character of the job title must not be a whitespace,
