@@ -1,9 +1,9 @@
 package seedu.address.logic.parser.applicant;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_MARK_STATUS;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import seedu.address.commons.core.index.Index;
@@ -32,7 +32,7 @@ public class MarkApplicantParser implements Parser<MarkApplicant> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX,
+            throw new ParseException(String.format(MESSAGE_INVALID_INDEX,
                     MarkApplicant.MESSAGE_USAGE), pe);
         }
 

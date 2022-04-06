@@ -1,14 +1,13 @@
 package seedu.address.logic.commands.applicant;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICANTS;
 
 import java.util.List;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -55,7 +54,7 @@ public class MarkApplicant extends Command {
 
         int zeroBasedIndex = index.getZeroBased();
         if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
-            throw new CommandException(String.format(MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX, MESSAGE_USAGE));
+            throw new CommandException(String.format(MESSAGE_INVALID_INDEX, MESSAGE_USAGE));
         }
 
         Applicant applicantToMark = lastShownList.get(index.getZeroBased());
