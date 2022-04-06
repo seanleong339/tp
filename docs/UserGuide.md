@@ -6,7 +6,7 @@ title: User Guide
 ## Introduction
 
 Being a Job Recruiter means working in a **fast paced environment with long hours**, and a need to have **attention to 
-details**. It is a Job where **time is money** as the number of applicants that sign to a job determines the amount of 
+details**. It is a job where **time is money** as the number of applicants that sign to a job determines the amount of 
 commission earned.
 
 Hence, introducing **ReCLIne**. ReCLIne is a **desktop app which serves as a centralised location for recruiters to 
@@ -16,9 +16,9 @@ done faster than traditional GUI apps.
 
 ## How to use this guide
 The **goal of this guide** is to help you, the users, to **understand** how to use our application better. 
-If you are a **new user**, we recommend going to the [Quick Start](#quick-start) section, to learn how to install the 
-application onto your device and to have a quick try at some commands that ReCline provides.
-If you are an **experienced user**, we recommend going to the [Features](#features) section to view all the commands
+* If you are a **new user**, we recommend going to the [Quick Start](#quick-start) section, to learn how to install the 
+application onto your device and to have a quick try at some commands that ReCLIne provides.
+* If you are an **experienced user**, we recommend going to the [Features](#features) section to view all the commands
 available on ReCLIne.
 
 ## Table of Contents
@@ -69,12 +69,12 @@ available on ReCLIne.
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`addapplicant`**`n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` 
+   * **`addapplicant`**` n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` 
      : Adds an applicant named `Jaden Ho` with the inputted NRIC, address, email, phone number, and date applied to the Address Book.
 
-   * **`deleteapplicant`**`3` : Deletes the 3rd applicant shown in the displayed list.
+   * **`deleteapplicant`**` 3` : Deletes the 3rd applicant shown in the displayed list.
 
-   * **`editapplicant`**`1  e/jadenho@email.com q/Degree in Computer Science i/2022-03-18` 
+   * **`editapplicant`**` 1 e/jadenho@email.com q/Degree in Computer Science i/2022-03-18` 
      : Edits the 1st applicant on the displayed list, changing his email, qualification and interview date.
 
    * **`exit`** : Exits the app.
@@ -352,7 +352,7 @@ Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *po
 
 `pos/[POSITION]`: Type of job, whether part-time or full time.
 <div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The `[POSITION]` field only accepts either `ft` or `pt` as an input. ReCLIne will output an error is anything
+**Note:** The `[POSITION]` field only accepts either `ft` - "full time" or `pt` - "part time" as an input. ReCLIne will output an error is anything
 else is inputted.
 </div>
 
@@ -378,7 +378,7 @@ Edits a job in the job list of the ReCLIne.
 This will allow you to be able to keep all the information about a job updated, negating the possibility of sending
 outdated information to applicants.
 
-Format: `editJob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
+Format: `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
 **Tip** : Fill in fields in any order. Just input the fields that you would like to change for the specific job.
@@ -399,7 +399,7 @@ To leave out fields, skip the flag and attribute completely.
 `pos/[POSITION]` : Update Job's position to `[POSITION]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The `[POSITION]` field only accepts either `ft` or `pt` as an input. ReCLIne will output an error is anything
+**Note:** The `[POSITION]` field only accepts either `ft` - "full time" or `pt` - "part time" as an input. ReCLIne will output an error is anything
 else is inputted.
 
 </div>
@@ -416,10 +416,10 @@ indicates that the salary is not a range, but rather a fixed amount.
 
 Examples:
 
-`editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft 
+`editjob 1 jt/Software Engineer UI c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft 
 sal/4000 - 5000`
 
-* Edits a job with index number 1 with job title - Software Engineer UI/UX comapny name - Designer Club,
+* Edits a job with index number 1 with job title - Software Engineer UI comapny name - Designer Club,
   qualification - Degree of Computer Science, address - Block 3 Designer Road, 
   position - full time, salary range - 4000 - 5000. <br>
   
@@ -556,7 +556,7 @@ _Details coming soon ..._
 | Action             | Format, Examples                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add Applicant**  | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`             |
-| **Edit Applicant** | `editApplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com` |
+| **Edit Applicant** | `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com` |
 | **Delete Applicant** | `deleteapplicant *[INDEX]`<br> e.g., `deleteapplicant 3`                                     |
 | **Mark Applicant** | `markapplicant *[INDEX] *s/[STATUS] ​` <br> e.g.,`markapplicant 2 s/rejected`       |
 | **Sort Applicant** | `sortapplicant *by/[ATTRIBUTE]` <br> e.g., `sortapplicant by/dateapplied` |
@@ -564,7 +564,7 @@ _Details coming soon ..._
 | **List Applicant** | `listapplicant` |
 | **Switch to Applicant Tab** | `tabapplicant` |
 | **Add Job**  | `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]` <br> e.g., `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000 - 4000 `             |
-| **Edit Job** | `editJob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g.,  `editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
+| **Edit Job** | `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g.,  `editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
 | **Delete Job** | `deletejob *[INDEX]`<br> e.g., `deletejob 3`                                     |
 | **Mark Job** | `markjob *[INDEX] *js/[STATUS] ​` <br> e.g.,`markjob 2 js/vacant`       |
 | **Sort Job** | `sortjob`  |
