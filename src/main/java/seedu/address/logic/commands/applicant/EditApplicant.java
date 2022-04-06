@@ -1,7 +1,7 @@
 package seedu.address.logic.commands.applicant;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEAPPLIED;
@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.Command;
@@ -92,8 +91,7 @@ public class EditApplicant extends Command {
 
         int zeroBasedIndex = index.getZeroBased();
         if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
-            throw new CommandException(String.format(MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX,
-                    DeleteApplicant.MESSAGE_USAGE));
+            throw new CommandException(String.format(MESSAGE_INVALID_INDEX, MESSAGE_USAGE));
         }
 
         Applicant applicantToEdit = lastShownList.get(index.getZeroBased());

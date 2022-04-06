@@ -2,6 +2,7 @@ package seedu.address.logic.commands.job;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showJobAtIndex;
@@ -11,7 +12,6 @@ import static seedu.address.testutil.TypicalJobs.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -41,7 +41,8 @@ class DeleteJobTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredJobList().size() + 1);
         DeleteJob deleteJob = new DeleteJob(outOfBoundIndex);
 
-        assertCommandFailure(deleteJob, model, Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
+        assertCommandFailure(deleteJob, model,
+                String.format(MESSAGE_INVALID_INDEX, DeleteJob.MESSAGE_USAGE));
     }
 
     @Test
@@ -71,7 +72,8 @@ class DeleteJobTest {
 
         DeleteJob deleteJob = new DeleteJob(outOfBoundIndex);
 
-        assertCommandFailure(deleteJob, model, Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
+        assertCommandFailure(deleteJob, model,
+                String.format(MESSAGE_INVALID_INDEX, DeleteJob.MESSAGE_USAGE));
     }
 
     @Test

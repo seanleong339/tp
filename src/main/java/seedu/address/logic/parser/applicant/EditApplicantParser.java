@@ -1,8 +1,6 @@
 package seedu.address.logic.parser.applicant;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEAPPLIED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
@@ -43,7 +41,7 @@ public class EditApplicantParser implements Parser<EditApplicant> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX,
+            throw new ParseException(String.format(pe.getMessage(),
                     EditApplicant.MESSAGE_USAGE), pe);
         }
 
