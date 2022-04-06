@@ -20,6 +20,7 @@ public class MarkJob extends Command {
 
     public static final String COMMAND_WORD = "markjob";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing job as 'filled' or 'vacant'. "
+            + "The job is identified by the index number used in the displayed job list."
             + "Parameters: "
             + "INDEX (must be a positive integer) "
             + PREFIX_JOBSTATUS + "JOB STATUS\n"

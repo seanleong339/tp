@@ -20,8 +20,9 @@ public class MarkApplicant extends Command {
     public static final String COMMAND_WORD = "markapplicant";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing Applicant's status. "
+            + " The applicant is identified by the index number used in the displayed applicant list."
             + "Parameters: "
-            + "INDEX "
+            + "INDEX (must be a positive integer)"
             + PREFIX_STATUS + "STATUS\n"
             + "Example: " + COMMAND_WORD + " "
             + "2 "
