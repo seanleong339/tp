@@ -1,6 +1,8 @@
 package seedu.address.logic.parser.job;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_JOB_MARK_STATUS;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
 
@@ -30,9 +32,14 @@ public class MarkJobParser implements Parser<MarkJob> {
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (ParseException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_JOB_DISPLAYED_INDEX, MarkJob.MESSAGE_USAGE), e);
+        }
+
+        try {
             jobStatus = ParserUtil.parseJobStatus(argMultimap.getValue(PREFIX_JOBSTATUS).get());
         } catch (ParseException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MarkJob.MESSAGE_USAGE), e);
+            throw new ParseException(String.format(MESSAGE_INVALID_JOB_MARK_STATUS, MarkJob.MESSAGE_USAGE), e);
         }
 
         return new MarkJob(index, jobStatus);

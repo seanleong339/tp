@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.job;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_JOBS;
@@ -19,11 +20,12 @@ import seedu.address.model.job.JobStatus;
 public class MarkJob extends Command {
 
     public static final String COMMAND_WORD = "markjob";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing job as 'filled' or 'vacant'. "
-            + "The job is identified by the index number used in the displayed job list."
-            + "Parameters: "
-            + "INDEX (must be a positive integer) "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing job as 'filled' or 'vacant'. \n"
+            + "The job is identified by the index number used in the displayed job list. \n"
+            + "Parameters: \n"
+            + "INDEX (must be a positive integer) \n"
             + PREFIX_JOBSTATUS + "JOB STATUS\n"
+            + "Job status can be either filled or vacant"
             + "Example: markjob 1 js/filled";
     public static final String MESSAGE_SUCCESS = "Job status updated: %1$s";
     public static final String MESSAGE_JOBSTATUS_UP_TO_DATE = "This job is already marked '%1$s'.";
@@ -50,8 +52,9 @@ public class MarkJob extends Command {
         List<Job> lastShownList = model.getFilteredJobList();
 
         int zeroBasedIndex = index.getZeroBased();
-        if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex == 0) {
-            throw new CommandException(Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
+        if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
+            throw new CommandException(String.format(MESSAGE_INVALID_JOB_DISPLAYED_INDEX,
+                    MarkJob.MESSAGE_USAGE));
         }
 
         Job toMark = lastShownList.get(index.getZeroBased());
