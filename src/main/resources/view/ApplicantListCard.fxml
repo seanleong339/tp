@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="100" prefWidth="200" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="120" prefWidth="200" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <Label fx:id="id" style="-fx-padding: 10 10 10 10;" styleClass="cell_big_label" BorderPane.alignment="CENTER">
          <minWidth>
@@ -28,13 +28,15 @@
                   <Label fx:id="name" style="-fx-padding: 0 8 0 0;" styleClass="cell_big_label" text="\$first" />
                   <Label style="-fx-padding: 2 0 0 0;">
                      <graphic>
-                        <Circle  fx:id="status"  fill="#a8a8a8" radius="6.0" stroke="#3636366e" strokeType="INSIDE" />
+                        <Circle fx:id="status" fill="#a8a8a8" radius="6.0" stroke="#3636366e" strokeType="INSIDE" />
                      </graphic>
                   </Label>
                </children>
             </HBox>
-            <FlowPane fx:id="tags" style="-fx-padding: 0 0 3 0;"/>
-            <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+            <FlowPane fx:id="tags" style="-fx-padding: 0 0 3 0;" />
+               <Label fx:id="jobID" styleClass="cell_small_label" text="\$jobid" />
+               <Label fx:id="dateapplied" styleClass="cell_small_label" text="\$dateapplied" />
+               <Label fx:id="interviewdate" styleClass="cell_small_label" text="\$interviewdate" />
          </children>
       </VBox>
    </center>

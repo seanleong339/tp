@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -190,6 +191,11 @@ class AddApplicantTest {
 
         @Override
         public void sortJob() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void sortApplicant(Comparator<Applicant> sortBy) {
             throw new AssertionError("This method should not be called.");
         }
     }

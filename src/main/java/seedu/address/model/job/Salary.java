@@ -10,9 +10,9 @@ public class Salary {
             + "Salary is salary paid per month and in SGD\n"
             + "eg 4000-5000";
 
-    public static final String LEFT_REGEX = "^[0-9]+";
+    public static final String LEFT_REGEX = "^[ ]*[0-9]+[ ]*";
     public static final String MIDDLE_REGEX = "[-]";
-    public static final String RIGHT_REGEX = "[0-9]+";
+    public static final String RIGHT_REGEX = "[ ]*[0-9]+[ ]*";
     public static final String VALIDATION_REGEX = LEFT_REGEX + MIDDLE_REGEX + RIGHT_REGEX + "$";
 
     public final String startingSalary;
@@ -40,8 +40,8 @@ public class Salary {
         requireNonNull(salary);
         String trimmedSalary = salary.trim();
         int index = trimmedSalary.indexOf("-");
-        this.startingSalary = trimmedSalary.substring(0, index);
-        this.endSalary = trimmedSalary.substring(index + 1);
+        this.startingSalary = trimmedSalary.substring(0, index).trim();
+        this.endSalary = trimmedSalary.substring(index + 1).trim();
         this.salaryRange = startingSalary + "-" + endSalary;
     }
 
@@ -70,8 +70,8 @@ public class Salary {
         }
         String trimmedSalary = salary.trim();
         int index = trimmedSalary.indexOf("-");
-        String startingSalary = trimmedSalary.substring(0, index);
-        String endSalary = trimmedSalary.substring(index + 1);
+        String startingSalary = trimmedSalary.substring(0, index).trim();
+        String endSalary = trimmedSalary.substring(index + 1).trim();
         String salaryRange = startingSalary + "-" + endSalary;
         return salaryRange.matches(VALIDATION_REGEX)
                 && Integer.parseInt(startingSalary) <= Integer.parseInt(endSalary);

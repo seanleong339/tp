@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  * Represents an Applicant's date applied for the job in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDateApplied(String)}
  */
-public class DateApplied {
+public class DateApplied implements Comparable<DateApplied> {
     public static final String MESSAGE_CONSTRAINTS =
             "DateApplied should be of the format yyyy-mm-dd "
                     + "and adhere to the following constraints:\n"
@@ -58,5 +58,10 @@ public class DateApplied {
     @Override
     public int hashCode() {
         return date.hashCode();
+    }
+
+    @Override
+    public int compareTo(DateApplied o) {
+        return date.compareTo(o.date);
     }
 }
