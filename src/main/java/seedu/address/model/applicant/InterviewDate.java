@@ -5,6 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 
 public class InterviewDate implements Comparable<InterviewDate> {
     public static final String MESSAGE_CONSTRAINTS =
@@ -12,7 +13,8 @@ public class InterviewDate implements Comparable<InterviewDate> {
                     + "and adhere to the following constraints:\n"
                     + "1. The date should not be blank\n"
                     + "2. The date should be within a range of 1-31\n"
-                    + "3. The month should be within a range of 1-12";
+                    + "3. The month should be within a range of 1-12"
+                    + "Please also ensure that the date exists E.g 2022-02-30 does not exist.";
     /*
      * The first character of the date must not be a whitespace,
      * and the date has to be valid and in the format of yyyy-mm-dd with leading zeros.
@@ -53,7 +55,18 @@ public class InterviewDate implements Comparable<InterviewDate> {
      * Returns true if a given string is a valid date.
      */
     public static boolean isValidInterviewDate(String test) {
-        return test.matches(VALIDATION_REGEX) || test.equals("PENDING");
+        requireNonNull(test);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT);
+        if (test.equals("PENDING")) {
+            return true;
+        }
+        try {
+            LocalDate parsedDate = LocalDate.parse(test, format);
+            return test.matches(VALIDATION_REGEX);
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
     }
 
     @Override
