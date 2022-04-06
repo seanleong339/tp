@@ -1,5 +1,6 @@
 package seedu.address.logic.parser.job;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
@@ -20,7 +21,7 @@ public class DeleteJobParser implements Parser<DeleteJob> {
             return new DeleteJob(index);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteJob.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX, DeleteJob.MESSAGE_USAGE), pe);
         }
     }
 }

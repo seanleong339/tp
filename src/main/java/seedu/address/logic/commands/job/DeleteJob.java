@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.job;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX;
 
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class DeleteJob extends Command {
         List<Job> lastShownList = model.getFilteredJobList();
         int zeroBasedIndex = targetIndex.getZeroBased();
         if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
-            throw new CommandException(Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
+            throw new CommandException(String.format(MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX,
+                    DeleteJob.MESSAGE_USAGE));
         }
 
         Job jobToDelete = lastShownList.get(targetIndex.getZeroBased());
