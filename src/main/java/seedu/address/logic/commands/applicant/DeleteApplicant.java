@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.applicant;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX;
 
 import java.util.List;
 
@@ -41,8 +42,11 @@ public class DeleteApplicant extends Command {
         requireNonNull(model);
         List<Applicant> lastShownList = model.getFilteredApplicantList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        int zeroBasedIndex = targetIndex.getZeroBased();
+
+        if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
+            throw new CommandException(String.format(MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX,
+                    DeleteApplicant.MESSAGE_USAGE));
         }
 
         Applicant applicantToDelete = lastShownList.get(targetIndex.getZeroBased());

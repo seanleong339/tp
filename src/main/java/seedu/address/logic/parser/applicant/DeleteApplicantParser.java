@@ -1,5 +1,6 @@
 package seedu.address.logic.parser.applicant;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
@@ -20,7 +21,7 @@ public class DeleteApplicantParser implements Parser<DeleteApplicant> {
             return new DeleteApplicant(index);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteApplicant.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX, DeleteApplicant.MESSAGE_USAGE), pe);
         }
     }
 }

@@ -49,7 +49,8 @@ public class MarkJob extends Command {
 
         List<Job> lastShownList = model.getFilteredJobList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
+        int zeroBasedIndex = index.getZeroBased();
+        if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex == 0) {
             throw new CommandException(Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
         }
 

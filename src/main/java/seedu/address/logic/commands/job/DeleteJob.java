@@ -37,8 +37,8 @@ public class DeleteJob extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Job> lastShownList = model.getFilteredJobList();
-
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        int zeroBasedIndex = targetIndex.getZeroBased();
+        if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
             throw new CommandException(Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
         }
 

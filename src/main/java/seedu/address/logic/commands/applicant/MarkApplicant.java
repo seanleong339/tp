@@ -51,7 +51,8 @@ public class MarkApplicant extends Command {
         requireNonNull(model);
         List<Applicant> lastShownList = model.getFilteredApplicantList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
+        int zeroBasedIndex = index.getZeroBased();
+        if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex == 0) {
             throw new CommandException(Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
         }
 
