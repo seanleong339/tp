@@ -77,7 +77,7 @@ public class EditJob extends Command {
         int zeroBasedIndex = index.getZeroBased();
 
         if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
-            throw new CommandException(String.format(MESSAGE_INVALID_INDEX, EditJob.MESSAGE_USAGE));
+            throw new CommandException(String.format(MESSAGE_INVALID_INDEX, MESSAGE_USAGE));
         }
 
         Job jobToEdit = lastShownList.get(index.getZeroBased());
