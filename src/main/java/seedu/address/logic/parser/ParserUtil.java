@@ -229,8 +229,8 @@ public class ParserUtil {
         requireNonNull(salary);
         String trimmedSalary = salary.trim();
         int index = trimmedSalary.indexOf("-");
-        String startingSalary = trimmedSalary.substring(0, index);
-        String endSalary = trimmedSalary.substring(index + 1);
+        String startingSalary = trimmedSalary.substring(0, index).trim();
+        String endSalary = trimmedSalary.substring(index + 1).trim();
         if (!Salary.isValidSalary(startingSalary, endSalary, trimmedSalary)) {
             throw new ParseException(Salary.MESSAGE_CONSTRAINTS);
         }

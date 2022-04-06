@@ -50,5 +50,9 @@ class SalaryTest {
                 "4000", "5000", "4000-5000")); // starting salary less than end salary
         assertTrue(Salary.isValidSalary(
                 "3000", "3000", "3000-3000")); // starting salary equal to end salary
+        assertTrue(Salary.isValidSalary(
+                "3000", "4000", "3000 - 4000")); // space in salary
+        assertTrue(Salary.isValidSalary(
+                " 3000  -  4000  ")); // any number of spaces between salary range
     }
 }
