@@ -1,14 +1,13 @@
 package seedu.address.logic.commands.job;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_JOBS;
 
 import java.util.List;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -53,7 +52,7 @@ public class MarkJob extends Command {
 
         int zeroBasedIndex = index.getZeroBased();
         if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
-            throw new CommandException(String.format(MESSAGE_INVALID_JOB_DISPLAYED_INDEX,
+            throw new CommandException(String.format(MESSAGE_INVALID_INDEX,
                     MarkJob.MESSAGE_USAGE));
         }
 
