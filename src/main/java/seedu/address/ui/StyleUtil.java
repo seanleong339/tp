@@ -42,8 +42,9 @@ public class StyleUtil {
     }
 
     /**
-     * Displays the status and Set style of an application status label based on the status value.
+     * Displays the status and set style of an application status label based on the status value.
      *
+     * @param label to change style
      * @param status status value to display
      */
     public static void setApplicantStatusStyle(Label label, String status) {
@@ -64,8 +65,9 @@ public class StyleUtil {
     }
 
     /**
-     * Displays the status and Set style of an application status label based on the status value.
+     * Displays the status and set style of an application status circle based on the status value.
      *
+     * @param circle to change style
      * @param status status value to display
      */
     public static void setApplicantStatusStyle(Circle circle, String status) {
@@ -78,5 +80,14 @@ public class StyleUtil {
         } else {
             circle.setFill(Color.GREY);
         }
+    }
+
+    /**
+     * Resets the style of the label to default..
+     *
+     * @param label to reset style
+     */
+    public static void resetLabelStyle(Label label) {
+        label.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
     }
 }
