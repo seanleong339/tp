@@ -83,7 +83,7 @@ public class StyleUtil {
     }
 
     /**
-     * Resets the style of the label to default..
+     * Resets the style of the label to default.
      *
      * @param label to reset style
      */
