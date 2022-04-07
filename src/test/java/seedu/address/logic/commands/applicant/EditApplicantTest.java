@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_CHARLIE;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_DON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC_TWO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -51,9 +53,11 @@ class EditApplicantTest {
 
         ApplicantBuilder applicantInList = new ApplicantBuilder(lastApplicant);
         Applicant editedApplicant = applicantInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
 
         EditApplicantDescriptor descriptor = new EditApplicantDescriptorBuilder().withName(VALID_NAME_BOB)
+                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB)
                 .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
         EditApplicant editApplicant = new EditApplicant(indexLastApplicant, descriptor);
 
@@ -81,9 +85,13 @@ class EditApplicantTest {
         showApplicantAtIndex(model, INDEX_FIRST_PERSON);
 
         Applicant applicantInFilteredList = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Applicant editedApplicant = new ApplicantBuilder(applicantInFilteredList).withName(VALID_NAME_BOB).build();
+        Applicant editedApplicant = new ApplicantBuilder(applicantInFilteredList).withName(VALID_NAME_BOB)
+                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB)
+                .withPhone(VALID_PHONE_BOB).build();
         EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON,
-                new EditApplicantDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditApplicantDescriptorBuilder().withName(VALID_NAME_BOB).withNric(VALID_NRIC_TWO)
+                        .withEmail(VALID_EMAIL_BOB)
+                        .withPhone(VALID_PHONE_BOB).build());
 
         String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
 
