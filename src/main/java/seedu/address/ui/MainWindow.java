@@ -200,6 +200,10 @@ public class MainWindow extends UiPart<Stage> {
         tabs.getSelectionModel().select(1);
     }
 
+    private void handleRestInfoPanel() {
+        infoPanel.resetPanel();
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -225,6 +229,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isTabJob()) {
                 handleListJob();
+            }
+
+            if (commandResult.isResetInfoPanel()) {
+                handleRestInfoPanel();
             }
 
             return commandResult;
