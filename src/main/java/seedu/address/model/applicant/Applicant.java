@@ -147,7 +147,9 @@ public class Applicant {
         }
 
         return otherApplicant != null
-                && otherApplicant.getName().equals(getName());
+                && otherApplicant.getNric().equals(getNric())
+                && otherApplicant.getPhone().equals(getPhone())
+                && otherApplicant.getEmail().equals(getEmail());
     }
 
     //todo may have to do a hard equal function to compare all the properties of Applicant
