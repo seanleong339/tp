@@ -1,13 +1,13 @@
 package seedu.address.logic.commands.job;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_JOBS;
 
 import java.util.List;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -19,10 +19,12 @@ import seedu.address.model.job.JobStatus;
 public class MarkJob extends Command {
 
     public static final String COMMAND_WORD = "markjob";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing job as 'filled' or 'vacant'. "
-            + "Parameters: "
-            + "INDEX (must be a positive integer) "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing job as 'filled' or 'vacant'. \n"
+            + "The job is identified by the index number used in the displayed job list. \n"
+            + "Parameters: \n"
+            + "INDEX (must be a positive integer) \n"
             + PREFIX_JOBSTATUS + "JOB STATUS\n"
+            + "Job status can be either filled or vacant"
             + "Example: markjob 1 js/filled";
     public static final String MESSAGE_SUCCESS = "Job status updated: %1$s";
     public static final String MESSAGE_JOBSTATUS_UP_TO_DATE = "This job is already marked '%1$s'.";
@@ -48,8 +50,10 @@ public class MarkJob extends Command {
 
         List<Job> lastShownList = model.getFilteredJobList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
+        int zeroBasedIndex = index.getZeroBased();
+        if (zeroBasedIndex >= lastShownList.size() || zeroBasedIndex < 0) {
+            throw new CommandException(String.format(MESSAGE_INVALID_INDEX,
+                    MarkJob.MESSAGE_USAGE));
         }
 
         Job toMark = lastShownList.get(index.getZeroBased());

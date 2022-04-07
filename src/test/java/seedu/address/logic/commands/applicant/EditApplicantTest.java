@@ -2,6 +2,7 @@ package seedu.address.logic.commands.applicant;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_CHARLIE;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_DON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
@@ -15,7 +16,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.applicant.EditApplicant.EditApplicantDescriptor;
@@ -123,7 +123,8 @@ class EditApplicantTest {
                 .withName(VALID_NAME_BOB).build();
         EditApplicant editCommand = new EditApplicant(outOfBoundIndex, descriptor);
 
-        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, model,
+                String.format(MESSAGE_INVALID_INDEX, EditApplicant.MESSAGE_USAGE));
     }
 
     /**
@@ -140,7 +141,8 @@ class EditApplicantTest {
         EditApplicant editCommand = new EditApplicant(outOfBoundIndex,
                 new EditApplicantDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
-        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, model,
+                String.format(MESSAGE_INVALID_INDEX, EditApplicant.MESSAGE_USAGE));
     }
 
     @Test
