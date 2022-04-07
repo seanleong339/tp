@@ -2,6 +2,7 @@ package seedu.address.logic.commands.applicant;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showApplicantAtIndex;
@@ -12,14 +13,13 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICANT;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.applicant.Applicant;
 
-class DeleteApplicantCommandTest {
+class DeleteApplicantTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
@@ -41,7 +41,8 @@ class DeleteApplicantCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredApplicantList().size() + 1);
         DeleteApplicant deleteApplicant = new DeleteApplicant(outOfBoundIndex);
 
-        assertCommandFailure(deleteApplicant, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        assertCommandFailure(deleteApplicant, model,
+                String.format(MESSAGE_INVALID_INDEX, DeleteApplicant.MESSAGE_USAGE));
     }
 
     @Test
@@ -71,7 +72,8 @@ class DeleteApplicantCommandTest {
 
         DeleteApplicant deleteApplicant = new DeleteApplicant(outOfBoundIndex);
 
-        assertCommandFailure(deleteApplicant, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        assertCommandFailure(deleteApplicant, model,
+                String.format(MESSAGE_INVALID_INDEX, DeleteApplicant.MESSAGE_USAGE));
     }
 
     @Test

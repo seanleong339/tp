@@ -4,12 +4,17 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.DATEAPPLIED_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.INTERVIEWDATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.JOB_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.NRIC_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.QUALIFICATION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC;
+import static seedu.address.logic.commands.applicant.AddApplicant.MESSAGE_INVALID_FIELDS;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
@@ -61,5 +66,20 @@ class AddApplicantParserTest {
         assertParseFailure(parser, NAME_DESC_AMY + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
                         + NRIC_DESC + VALID_DATE, expectedMessage);
 
+    }
+
+    @Test
+    void parse_extraField_failure() {
+        String expectedMessage = String.format(MESSAGE_INVALID_FIELDS, AddApplicant.MESSAGE_USAGE);
+
+        //Contains InterviewDate
+        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+                + NRIC_DESC + DATEAPPLIED_DESC + INTERVIEWDATE_DESC, expectedMessage);
+        //Contains Qualification
+        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+                + NRIC_DESC + DATEAPPLIED_DESC + QUALIFICATION_DESC, expectedMessage);
+        //Contains JobId
+        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+                + NRIC_DESC + DATEAPPLIED_DESC + JOB_DESC, expectedMessage);
     }
 }

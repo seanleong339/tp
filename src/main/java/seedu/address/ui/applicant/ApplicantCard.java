@@ -47,7 +47,7 @@ public class ApplicantCard extends UiPart<Region> {
     private FlowPane tags;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Person} and index to display.
+     * Creates a {@code ApplicantCard} with the given {@code Applicant} and index to display.
      */
     public ApplicantCard(Applicant applicant, int displayedIndex) {
         super(FXML);

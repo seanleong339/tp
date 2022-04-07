@@ -40,6 +40,8 @@ public class AddApplicant extends Command {
 
     public static final String MESSAGE_SUCCESS = "New applicant added: %1$s";
     public static final String MESSAGE_DUPLICATE_APPLICANT = "This applicant already exists in the address book";
+    public static final String MESSAGE_INVALID_FIELDS = "Your command has an invalid field that should be added by"
+            + " editapplicant (InterviewDate, i/, or Qualification, q/, or JobId, j/.";
 
     private final Applicant toAdd;
 
