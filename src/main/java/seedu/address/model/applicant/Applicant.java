@@ -147,12 +147,12 @@ public class Applicant {
         }
 
         return otherApplicant != null
-                && otherApplicant.getNric().equals(getNric())
-                && otherApplicant.getPhone().equals(getPhone())
-                && otherApplicant.getEmail().equals(getEmail());
+                 && otherApplicant.getNric().equals(getNric());
+                 // && (otherApplicant.getEmail().equals(getEmail())
+                 // && otherApplicant.getPhone().equals(getPhone());
     }
 
-    //todo may have to do a hard equal function to compare all the properties of Applicant
+
     /**
      * Returns true if both applicants have the same identity and data fields.
      * This defines a stronger notion of equality between two applicants.

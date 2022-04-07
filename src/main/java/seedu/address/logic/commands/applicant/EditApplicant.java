@@ -65,8 +65,11 @@ public class EditApplicant extends Command {
 
     public static final String MESSAGE_NOT_IMPLEMENTED = "The EditApplicant feature is not completed yet.";
     public static final String MESSAGE_EDIT_APPLICANT_SUCCESS = "Edited Applicant: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_APPLICANT = "This Applicant already exists in the address book.";
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edited must be provided.";
+    public static final String MESSAGE_DUPLICATE_APPLICANT = "This Applicant already exists in the ReCLIne."
+            + "Applicants are considered duplicates if they have the same NRIC, email or phone number.";
+    public static final String MESSAGE_SAME_DETAILS_AS_BEFORE = "The edited details"
+            + " is the same as the current details of the Applicant";
 
     private final Index index;
     private final EditApplicantDescriptor editApplicantDescriptor;
@@ -96,6 +99,10 @@ public class EditApplicant extends Command {
 
         Applicant applicantToEdit = lastShownList.get(index.getZeroBased());
         Applicant editedApplicant = createEditedApplicant(applicantToEdit, editApplicantDescriptor);
+
+        if (applicantToEdit.equals(editedApplicant)) {
+            throw new CommandException(MESSAGE_SAME_DETAILS_AS_BEFORE);
+        }
 
         if (!applicantToEdit.isSameApplicant(editedApplicant) && model.hasApplicant(editedApplicant)) {
             throw new CommandException(MESSAGE_DUPLICATE_APPLICANT);

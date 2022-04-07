@@ -66,16 +66,14 @@ class EditApplicantTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_fieldsSpecifiedSameAsOriginalApplicant_failure() {
         EditApplicant editApplicant =
                 new EditApplicant(INDEX_FIRST_PERSON, new EditApplicant.EditApplicantDescriptor());
         Applicant editedApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
 
-        String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
+        String expectedMessage = String.format(EditApplicant.MESSAGE_SAME_DETAILS_AS_BEFORE);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandFailure(editApplicant, model, expectedMessage);
     }
 
     @Test

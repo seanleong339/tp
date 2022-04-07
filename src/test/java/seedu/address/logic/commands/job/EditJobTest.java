@@ -71,16 +71,14 @@ class EditJobTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_fieldsSpecifiedSameAsOriginalJob_failure() {
         EditJob editJob =
                 new EditJob(INDEX_FIRST_PERSON, new EditJob.EditJobDescriptor());
         Job editedJob = model.getFilteredJobList().get(INDEX_FIRST_PERSON.getZeroBased());
 
-        String expectedMessage = String.format(EditJob.MESSAGE_EDIT_JOB_SUCCESS, editedJob);
+        String expectedMessage = String.format(EditJob.MESSAGE_SAME_DETAILS_AS_BEFORE);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-
-        assertCommandSuccess(editJob, model, expectedMessage, expectedModel);
+        assertCommandFailure(editJob, model, expectedMessage);
     }
 
     @Test

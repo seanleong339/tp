@@ -51,7 +51,10 @@ public class EditJob extends Command {
 
     public static final String MESSAGE_EDIT_JOB_SUCCESS = "Edited Job: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_JOB = "This Job already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_JOB = "This Job already exists in ReCLIne. "
+            + "Jobs are considered to be duplicate if they have the same Company Name and Job Title.";;
+    public static final String MESSAGE_SAME_DETAILS_AS_BEFORE = "The edited details"
+            + " is the same as the current details of the Job";
 
     private final Index index;
     private final EditJobDescriptor editJobDescriptor;
@@ -82,6 +85,10 @@ public class EditJob extends Command {
 
         Job jobToEdit = lastShownList.get(index.getZeroBased());
         Job editedJob = createEditedJob(jobToEdit, editJobDescriptor);
+
+        if (jobToEdit.equals(editedJob)) {
+            throw new CommandException(MESSAGE_SAME_DETAILS_AS_BEFORE);
+        }
 
         if (!jobToEdit.isSameJob(editedJob) && model.hasJob(editedJob)) {
             throw new CommandException(MESSAGE_DUPLICATE_JOB);
