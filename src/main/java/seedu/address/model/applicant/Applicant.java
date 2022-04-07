@@ -138,7 +138,7 @@ public class Applicant {
     }
 
     /**
-     * Returns true if both applicants have the same name.
+     * Returns true if both applicants have the same nric, email and phone number.
      * This defines a weaker notion of equality between two applicants.
      */
     public boolean isSameApplicant(Applicant otherApplicant) {
