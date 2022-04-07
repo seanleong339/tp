@@ -10,7 +10,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class CompanyName {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Company Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Company Names should only contain alphanumeric characters and spaces, "
+                    + "special symbols such as '/' or '#' should be avoided.\n"
+                    + " It should also not be blank";
 
     /**
      * The first character of the company name must not be a whitespace,

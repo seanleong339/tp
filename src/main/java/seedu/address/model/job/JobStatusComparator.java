@@ -1,3 +1,4 @@
+//@author e0543517
 package seedu.address.model.job;
 
 import java.util.Comparator;

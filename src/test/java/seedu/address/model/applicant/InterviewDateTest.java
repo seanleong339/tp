@@ -38,6 +38,9 @@ public class InterviewDateTest {
         // invalid parts
         assertFalse(InterviewDate.isValidInterviewDate("2022-12-50")); // date out of range
         assertFalse(InterviewDate.isValidInterviewDate("2022-15-30")); // month out of range
+        assertFalse(InterviewDate.isValidInterviewDate("2022-02-30")); // invalid date
+        assertFalse(InterviewDate.isValidInterviewDate("2022-02-31")); // invalid date
+        assertFalse(InterviewDate.isValidInterviewDate("2017-02-29")); // invalid date
 
         // valid parts
         assertTrue(InterviewDate.isValidInterviewDate("2022-01-24"));
@@ -45,6 +48,5 @@ public class InterviewDateTest {
         assertTrue(InterviewDate.isValidInterviewDate("2020-03-01"));
         assertTrue(InterviewDate.isValidInterviewDate("2018-07-31"));
         assertTrue(InterviewDate.isValidInterviewDate("2017-02-28"));
-
     }
 }

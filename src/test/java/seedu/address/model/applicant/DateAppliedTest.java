@@ -39,6 +39,8 @@ class DateAppliedTest {
         // invalid parts
         assertFalse(DateApplied.isValidDateApplied("2022-12-50")); // date out of range
         assertFalse(DateApplied.isValidDateApplied("2022-15-30")); // month out of range
+        assertFalse(DateApplied.isValidDateApplied("2017-02-29")); // 2017 not leap year
+        assertFalse(DateApplied.isValidDateApplied("2017-02-31")); // 2017 not leap year
 
         // valid parts
         assertTrue(DateApplied.isValidDateApplied("2022-01-24"));

@@ -2,6 +2,7 @@ package seedu.address.logic.commands.applicant;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showApplicantAtIndex;
@@ -11,7 +12,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICANT;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -51,7 +51,8 @@ public class MarkApplicantTest {
         expectedModel.setApplicant(model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased()),
                 applicantToMark);
 
-        assertCommandFailure(markApplicant, model, Messages.MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX);
+        assertCommandFailure(markApplicant, model,
+                String.format(MESSAGE_INVALID_INDEX, MarkApplicant.MESSAGE_USAGE));
     }
 
     @Test

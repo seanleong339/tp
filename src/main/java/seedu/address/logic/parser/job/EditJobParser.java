@@ -1,7 +1,6 @@
 package seedu.address.logic.parser.job;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
@@ -31,7 +30,7 @@ public class EditJobParser implements Parser<EditJob> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditJob.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(pe.getMessage(), EditJob.MESSAGE_USAGE), pe);
         }
 
         EditJob.EditJobDescriptor editJobDescriptor = new EditJob.EditJobDescriptor();

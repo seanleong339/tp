@@ -86,6 +86,7 @@ public class CommandTestUtil {
     public static final String JOB_DESC = " " + PREFIX_JOB + VALID_JOB;
     public static final String QUALIFICATION_DESC = " " + PREFIX_QUALIFICATION + VALID_QUALIFICATION;
     public static final String QUALIFICATION_TWO_DESC = " " + PREFIX_QUALIFICATION + VALID_QUALIFICATION_TWO;
+    public static final String INTERVIEWDATE_DESC = " " + PREFIX_DATEINTERVIEW + VALID_DATE;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
