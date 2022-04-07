@@ -148,7 +148,7 @@ public class Applicant {
 
         return otherApplicant != null
                  && otherApplicant.getNric().equals(getNric());
-                 // && (otherApplicant.getEmail().equals(getEmail())
+                 // || otherApplicant.getEmail().equals(getEmail()));
                  // && otherApplicant.getPhone().equals(getPhone());
     }
 
