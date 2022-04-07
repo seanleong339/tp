@@ -42,6 +42,8 @@ public class JobListPanel extends UiPart<Region> {
             Job job = jobListView.getSelectionModel().getSelectedItem();
             if (job != null) {
                 infoPanel.setJobInfo(job);
+            } else {
+                infoPanel.resetPanel();
             }
         });
     }
