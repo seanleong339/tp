@@ -82,6 +82,33 @@ available on ReCLIne.
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+## Flags
+| Action             | Format, Examples                                                                                                                                                                                                                    |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **`n/`**  | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`             |
+| **`p/`** | `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com` |
+| **`e/`** | `deleteapplicant *[INDEX]`<br> e.g., `deleteapplicant 3`                                     |
+| **`a/`** | `markapplicant *[INDEX] *s/[STATUS] ​` <br> e.g.,`markapplicant 2 s/rejected`       |
+| **`t/`** | `sortapplicant *by/[ATTRIBUTE]` <br> e.g., `sortapplicant by/dateapplied` |
+| **`q/`** | `findapplicant KEYWORD…​` <br> e.g., `findapplicant Alice` |
+| **``** | `listapplicant` |
+| **`d/`** | `tabapplicant` |
+| **`j/`**  | `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]` <br> e.g., `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000 - 4000 `             |
+| **`i/`** | `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g.,  `editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
+| **`nric/`** | `deletejob *[INDEX]`<br> e.g., `deletejob 3`                                     |
+| **`s/`** | `markjob *[INDEX] *js/[STATUS] ​` <br> e.g.,`markjob 2 js/vacant`       |
+| **`by/`** | `sortjob`  |
+| **** | `findjob jt/KEYWORD [MORE_KEYWORDS]` <br> e.g., `findjob jt/Engineer` <br>***OR***<br> `findjob id/[ID]` <br> e.g., `findjob id/2` |
+| **`jt/`** | `listjob` |
+| **`c/`** | `tabjob` |
+| **`sal/`**           | `help`              |
+| **`js/`**           | `clear`              |
+| **`pos/`**           | `exit`              |
+| **`id/`**           | `exit`              |
+| **`s/`**           | `exit`              |
+| **`s/`**           | `exit`              |
+| **`s/`**           | `exit`              |
+
 
 ## Features
 
