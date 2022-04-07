@@ -49,6 +49,7 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=seanleong339&breakdown=true)
 
 * **Project management**:
+    * Manage the issue tracker, close completed issues and completed milestones.
     * Managed release `v1.3.1` (1 release) on GitHub
     * Lead weekly meetings on project deliverables and tasks for the week.
 
@@ -62,7 +63,6 @@ Given below are my contributions to the project.
 * **Contribution to team-based tasks**:
   * Code quality: Looks after code quality, ensures adherence to coding standards, etc
   * Write and manage the Applicant and Job classes, coordinate the group to ensure all the attribute classes can work together, and make the appropriate changes to the attribute class methods: [\#250](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/250), [\#248](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/248), [\#98](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/98), [\#116](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/116)
-  * Manage the issue tracker, close completed issues and completed milestones.
   * Remove traces of AB3 from User Guide [\#56]("https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/56/files")
 
 
