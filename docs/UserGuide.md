@@ -83,31 +83,43 @@ available on ReCLIne.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Flags
+These flags are used in the commands to indicate which **field you are currently referring to**. 
+They are used first before entering adding to corresponding fields.
+* For example: `n/Benson Goh` - the `n/` flag is used to indicate that the subsequent input will be the `Applicant Name`.
+* For example: `jt/Project Manager` - the `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
+
+They are commonly used in every command. Details are given below
+
+### Applicant Flags
+
 | Action             | Format, Examples                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **`n/`**  | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`             |
-| **`p/`** | `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com` |
-| **`e/`** | `deleteapplicant *[INDEX]`<br> e.g., `deleteapplicant 3`                                     |
-| **`a/`** | `markapplicant *[INDEX] *s/[STATUS] ​` <br> e.g.,`markapplicant 2 s/rejected`       |
-| **`t/`** | `sortapplicant *by/[ATTRIBUTE]` <br> e.g., `sortapplicant by/dateapplied` |
-| **`q/`** | `findapplicant KEYWORD…​` <br> e.g., `findapplicant Alice` |
-| **``** | `listapplicant` |
-| **`d/`** | `tabapplicant` |
-| **`j/`**  | `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]` <br> e.g., `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000 - 4000 `             |
-| **`i/`** | `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g.,  `editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
-| **`nric/`** | `deletejob *[INDEX]`<br> e.g., `deletejob 3`                                     |
-| **`s/`** | `markjob *[INDEX] *js/[STATUS] ​` <br> e.g.,`markjob 2 js/vacant`       |
-| **`by/`** | `sortjob`  |
-| **** | `findjob jt/KEYWORD [MORE_KEYWORDS]` <br> e.g., `findjob jt/Engineer` <br>***OR***<br> `findjob id/[ID]` <br> e.g., `findjob id/2` |
-| **`jt/`** | `listjob` |
-| **`c/`** | `tabjob` |
-| **`sal/`**           | `help`              |
-| **`js/`**           | `clear`              |
-| **`pos/`**           | `exit`              |
-| **`id/`**           | `exit`              |
-| **`s/`**           | `exit`              |
-| **`s/`**           | `exit`              |
-| **`s/`**           | `exit`              |
+| **`n/`** | Indicate Applicant's **Name**           |
+| **`nric/`** | Indicates Applicant's **NRIC** |
+| **`p/`** | Indicate Applicant's **Phone Number** |
+| **`e/`** | Indicates Applicant's **Email Address**                |
+| **`a/`** | Indicates Applicant's **Address**  |
+| **`t/`** | Indicates Applicant's **Tags** |
+| **`q/`** | Indicates Applicant's **Qualification Requirement** |
+| **`d/`** | Indicates Applicant's **Date Applied** |
+| **`j/`** | Indicates Applicant's **Job ID** that they applied for          |
+| **`i/`** | Indicates Applicant's **Interview Date**           |
+| **`s/`** | Indicates Applicant's **Status**                         |
+| **`by/`** | Indicates the Applicant field to be **sorted by**  |
+
+
+### Job Flags
+
+| Action             | Format, Examples                                                                                                                                                                                                                    |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **`jt/`** | Indicates Job's **Job Title** |
+| **`c/`** | Indicates Job's **Company** |
+| **`a/`** | Indicates Job's **Address**  |
+| **`q/`** | Indicates Job's **Qualification Requirement** |
+| **`sal/`** | Indicates Job's **Expected Salary** |
+| **`js/`** | Indicates Job's **Job Status**  |
+| **`pos/`**  | Indicates Job's **Position**       |
+| **`id/`**  |  Indicates Job's **Job ID**         |
 
 
 ## Features
