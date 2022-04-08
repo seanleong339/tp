@@ -69,7 +69,7 @@ public class EditApplicant extends Command {
 
     public static final String MESSAGE_NOT_EDITED = "At least one field to edited must be provided.";
     public static final String MESSAGE_DUPLICATE_APPLICANT = "This Applicant already exists in the ReCLIne. "
-            + "Applicants are considered duplicates if they have the same NRIC, email or phone number.";
+            + "Applicants are considered duplicates if they have the same NRIC, Email or Phone Number.";
     public static final String MESSAGE_SAME_DETAILS_AS_BEFORE = "The edited details"
             + " is the same as the current details of the Applicant";
     public static final String MESSAGE_DATE_APPLIED_LATER_THAN_INTERVIEW_DATE = "The date applied by this applicant "
