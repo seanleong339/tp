@@ -2,6 +2,7 @@ package seedu.address.logic.commands.applicant;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SORTAPPLICANT;
 
 import java.util.Comparator;
 import java.util.List;
@@ -23,7 +24,12 @@ public class SortApplicant extends Command {
 
     public static final String COMMAND_WORD = "sortapplicant";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all applicants by a given attribute.";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all applicants by a given attribute.\n"
+            + "Parameters: \n"
+            + PREFIX_SORTAPPLICANT + "ATTRIBUTE: "
+            + "ATTRIBUTE can be either dateapplied, interview or job \n"
+            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_SORTAPPLICANT + "dateapplied";
 
     public static final String MESSAGE_SORT_APPLICANT_SUCCESS = "Applicants successfully sorted by %1$s.";
 
