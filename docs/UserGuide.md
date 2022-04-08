@@ -304,8 +304,8 @@ Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 `*[INDEX]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
-`*s/[STATUS]`: Flag to mark the applicant status of the applicant. `[STATUS]` must be either
-pending, accepted, or rejected
+`s/[STATUS]`: Flag to mark the applicant status of the applicant. `[STATUS]` must be either
+`pending`, `interviewed`, `accepted`, or `rejected`.
 
 Example:
 
