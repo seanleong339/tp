@@ -82,6 +82,45 @@ available on ReCLIne.
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+## Flags
+These flags are used in the commands to indicate which **field you are currently referring to**. 
+They are used first before entering adding to corresponding fields.
+* For example: `n/Benson Goh` - the `n/` flag is used to indicate that the subsequent input will be the `Applicant Name`.
+* For example: `jt/Project Manager` - the `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
+
+They are commonly used in every command. Details are given below
+
+### Applicant Flags
+
+| Action             | Format, Examples                                                                                                                                                                                                                    |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **`n/`** | Indicate Applicant's **Name**           |
+| **`nric/`** | Indicates Applicant's **NRIC** |
+| **`p/`** | Indicate Applicant's **Phone Number** |
+| **`e/`** | Indicates Applicant's **Email Address**                |
+| **`a/`** | Indicates Applicant's **Address**  |
+| **`t/`** | Indicates Applicant's **Tags** |
+| **`q/`** | Indicates Applicant's **Qualification Requirement** |
+| **`d/`** | Indicates Applicant's **Date Applied** |
+| **`j/`** | Indicates Applicant's **Job ID** that they applied for          |
+| **`i/`** | Indicates Applicant's **Interview Date**           |
+| **`s/`** | Indicates Applicant's **Status**                         |
+| **`by/`** | Indicates the Applicant field to be **sorted by**  |
+
+
+### Job Flags
+
+| Action             | Format, Examples                                                                                                                                                                                                                    |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **`jt/`** | Indicates Job's **Job Title** |
+| **`c/`** | Indicates Job's **Company** |
+| **`a/`** | Indicates Job's **Address**  |
+| **`q/`** | Indicates Job's **Qualification Requirement** |
+| **`sal/`** | Indicates Job's **Expected Salary** |
+| **`js/`** | Indicates Job's **Job Status**  |
+| **`pos/`**  | Indicates Job's **Position**       |
+| **`id/`**  |  Indicates Job's **Job ID**         |
+
 
 ## Features
 
