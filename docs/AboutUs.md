@@ -12,6 +12,7 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/justinnje.png" width="200px">
 
 [[github](https://github.com/Justinnje)]
+[[Portfolio Page](https://ay2122s2-cs2103t-w15-1.github.io/tp/team/justinnje.html)]
 
 * Role: Developer - Job Feature
 * Responsibilities: Testing
