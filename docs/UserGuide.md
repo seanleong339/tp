@@ -63,11 +63,11 @@ available on ReCLIne.
 
 3. Copy the file to the folder you want to use as the _home folder_ for your ReCLIne.
 
-4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-If you are a MacOS user and unable to run file by double-clicking, go to Terminal and run `java -jar ReCLIne.jar`.
+4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
+
 <div markdown="span" class="alert alert-info">:information_source: 
 If you are a MacOS user and unable to run file by double-clicking, go to Terminal and run `java -jar ReCLIne.jar`.
-</div>
+</div> <br>
 
    ![UiQuickStart](images/UiQuickStart.png)
 
