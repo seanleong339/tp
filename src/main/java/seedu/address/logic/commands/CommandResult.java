@@ -23,16 +23,29 @@ public class CommandResult {
     /** The application should switch to job tab. */
     private final boolean tabJob;
 
+    /** The application should reset */
+    private final boolean resetInfoPanel;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
-                         boolean tabApplicant, boolean tabJob) {
+                         boolean tabApplicant, boolean tabJob, boolean resetPanel) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
         this.tabApplicant = tabApplicant;
         this.tabJob = tabJob;
+        this.resetInfoPanel = resetPanel;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields except {@code resetPanel},
+     * {@code resetPanel} is set to default value.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
+                         boolean tabApplicant, boolean tabJob) {
+        this(feedbackToUser, showHelp, exit, tabApplicant, tabJob, false);
     }
 
     /**
@@ -68,6 +81,10 @@ public class CommandResult {
 
     public boolean isTabJob() {
         return tabJob;
+    }
+
+    public boolean isResetInfoPanel() {
+        return resetInfoPanel;
     }
 
     @Override

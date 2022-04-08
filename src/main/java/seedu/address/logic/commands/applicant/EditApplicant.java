@@ -15,6 +15,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICANTS;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -65,11 +66,13 @@ public class EditApplicant extends Command {
 
     public static final String MESSAGE_NOT_IMPLEMENTED = "The EditApplicant feature is not completed yet.";
     public static final String MESSAGE_EDIT_APPLICANT_SUCCESS = "Edited Applicant: %1$s";
+
     public static final String MESSAGE_NOT_EDITED = "At least one field to edited must be provided.";
     public static final String MESSAGE_DUPLICATE_APPLICANT = "This Applicant already exists in the ReCLIne. "
             + "Applicants are considered duplicates if they have the same NRIC, email or phone number.";
     public static final String MESSAGE_SAME_DETAILS_AS_BEFORE = "The edited details"
             + " is the same as the current details of the Applicant";
+
 
     private final Index index;
     private final EditApplicantDescriptor editApplicantDescriptor;
@@ -118,7 +121,8 @@ public class EditApplicant extends Command {
      * edited with {@code editApplicantDescriptor}.
      */
     private static Applicant createEditedApplicant(Applicant applicantToEdit,
-                                                EditApplicantDescriptor editApplicantDescriptor) {
+                                                EditApplicantDescriptor editApplicantDescriptor)
+                                                        throws CommandException {
         assert applicantToEdit != null;
 
         Name updatedName = editApplicantDescriptor.getName().orElse(applicantToEdit.getName());
@@ -137,6 +141,12 @@ public class EditApplicant extends Command {
         // TODO: Add Job update method as well
         JobId updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJobId());
         ApplicantStatus applicantStatus = applicantToEdit.getApplicantStatus();
+
+        LocalDate dateApplied = updatedDateApplied.date;
+        LocalDate interviewDate = updatedInterviewDate.date;
+        if (interviewDate.compareTo(dateApplied) < 0) {
+            throw new CommandException(MESSAGE_DATE_APPLIED_LATER_THAN_INTERVIEW_DATE);
+        }
 
         return new Applicant(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedDateApplied,
                 updatedNric, updatedJob, updatedInterviewDate, updatedQualification, applicantStatus);
