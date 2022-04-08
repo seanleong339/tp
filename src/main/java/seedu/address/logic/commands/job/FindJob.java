@@ -21,8 +21,8 @@ public class FindJob extends Command {
 
     public static final String COMMAND_WORD = "findjob";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all job whose job title contains"
-            + "the specified keywords (case-insensitive) or finds a job matching the id given."
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all job whose job title contains "
+            + "the specified keywords (case-insensitive) or finds a job matching the id given. "
             + "findjob command will displays them as a list with index numbers.\n"
             + "Parameters (search via jobtitle keyword): " + PREFIX_JOBTITLE + "SEARCH_TYPE KEYWORD [KEYWORD]\n"
             + "Parameters (search via id): " + PREFIX_JOBID + "JOB ID\n"
@@ -45,7 +45,8 @@ public class FindJob extends Command {
         requireNonNull(model);
         model.updateFilteredJobList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_JOBS_LISTED_OVERVIEW, model.getFilteredJobList().size()));
+                String.format(Messages.MESSAGE_JOBS_LISTED_OVERVIEW, model.getFilteredJobList().size()), false, true,
+                false);
     }
 
     @Override
