@@ -56,6 +56,13 @@ public class CommandResult {
     }
 
     /**
+     * Constructs a {@code CommandResult} that makes appropriate changes to UI
+     */
+    public CommandResult(String feedbackToUser, boolean tabApplicant, boolean tabJob, boolean resetPanel) {
+        this(feedbackToUser, false, false, tabApplicant, tabJob, resetPanel);
+    }
+
+    /**
      * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
      * and other fields set to their default value.
      */
