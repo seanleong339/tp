@@ -27,7 +27,7 @@ public class AddJob extends Command {
             + "*" + PREFIX_JOB_POSITION + "POSITION "
             + "*" + PREFIX_SALARY + "SALARY "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_JOBTITLE + "Software Developer "
+            + PREFIX_JOBTITLE + "Devops Engineer "
             + PREFIX_COMPANY_NAME + "Ebiz Pte Ltd "
             + PREFIX_ADDRESS + "59 Hougang Road Blk 38 "
             + PREFIX_QUALIFICATION + "Bachelors in Computer Science "
@@ -61,7 +61,7 @@ public class AddJob extends Command {
                 toAdd.getAddress(), toAdd.getQualification(), toAdd.getJobStatus(), toAdd.getPosition(),
                 toAdd.getSalary());
         model.addJob(jobWithId);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, jobWithId));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, jobWithId), false, true, true);
     }
 
     @Override

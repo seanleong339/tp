@@ -63,7 +63,7 @@ public class AddApplicant extends Command {
         }
 
         model.addApplicant(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), true, false, true);
     }
 
     @Override

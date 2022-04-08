@@ -44,7 +44,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(model.getFilteredApplicantList().get(0), editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -67,7 +67,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(lastApplicant, editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -99,7 +99,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(model.getFilteredApplicantList().get(0), editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -161,12 +161,10 @@ class EditApplicantTest {
         Applicant firstApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
 
         Applicant editedApplicant = new ApplicantBuilder(firstApplicant)
-                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB).withPhone(VALID_PHONE_BOB)
                 .withInterviewDate(VALID_DATE_TWO).build();
 
         EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON,
                 new EditApplicantDescriptorBuilder()
-                        .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB).withPhone(VALID_PHONE_BOB)
                         .withInterviewDate(VALID_DATE_TWO).build());
 
         String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
@@ -174,7 +172,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(firstApplicant, editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     /**
@@ -186,12 +184,10 @@ class EditApplicantTest {
         Applicant firstApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
 
         Applicant editedApplicant = new ApplicantBuilder(firstApplicant)
-                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB).withPhone(VALID_PHONE_BOB)
                 .withDateApplied(VALID_DATE_TWO).withInterviewDate(VALID_DATE_TWO).build();
 
         EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON,
                 new EditApplicantDescriptorBuilder()
-                        .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB).withPhone(VALID_PHONE_BOB)
                         .withDateApplied(VALID_DATE_TWO).withInterviewDate(VALID_DATE_TWO).build());
 
         String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
@@ -199,7 +195,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(firstApplicant, editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     /**

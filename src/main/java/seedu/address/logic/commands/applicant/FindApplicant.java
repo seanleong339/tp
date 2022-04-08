@@ -33,7 +33,8 @@ public class FindApplicant extends Command {
         requireNonNull(model);
         model.updateFilteredApplicantList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_APPLICANTS_LISTED_OVERVIEW, model.getFilteredApplicantList().size()));
+                String.format(Messages.MESSAGE_APPLICANTS_LISTED_OVERVIEW, model.getFilteredApplicantList().size()),
+                true, false, false);
     }
 
     @Override

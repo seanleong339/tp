@@ -96,7 +96,7 @@ public class EditJob extends Command {
 
         model.setJob(jobToEdit, editedJob);
         model.updateFilteredJobList(PREDICATE_SHOW_ALL_JOBS);
-        return new CommandResult(String.format(MESSAGE_EDIT_JOB_SUCCESS, editedJob));
+        return new CommandResult(String.format(MESSAGE_EDIT_JOB_SUCCESS, editedJob), false, true, true);
     }
 
     /**

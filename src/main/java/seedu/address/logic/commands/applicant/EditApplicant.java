@@ -109,14 +109,14 @@ public class EditApplicant extends Command {
         if (applicantToEdit.equals(editedApplicant)) {
             throw new CommandException(MESSAGE_SAME_DETAILS_AS_BEFORE);
         }
-        
         if (!applicantToEdit.isSameApplicantCompare(editedApplicant) && model.hasApplicant(editedApplicant)) {
             throw new CommandException(MESSAGE_DUPLICATE_APPLICANT);
         }
 
         model.setApplicant(applicantToEdit, editedApplicant);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
-        return new CommandResult(String.format(MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant));
+        return new CommandResult(String.format(MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant),
+                true, false, true);
     }
 
     /**
@@ -147,7 +147,7 @@ public class EditApplicant extends Command {
 
         LocalDate dateApplied = updatedDateApplied.date;
         LocalDate interviewDate = updatedInterviewDate.date;
-        if (interviewDate.compareTo(dateApplied) < 0) {
+        if (interviewDate.compareTo(dateApplied) < 0 && updatedInterviewDate.isInit) {
             throw new CommandException(MESSAGE_DATE_APPLIED_LATER_THAN_INTERVIEW_DATE);
         }
 
