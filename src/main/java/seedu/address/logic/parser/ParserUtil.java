@@ -39,7 +39,6 @@ import seedu.address.model.tag.Tag;
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
 public class ParserUtil {
-
     public static final String MESSAGE_INVALID_ID = "ID is not a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_PREDICATE = "The predicate has to be either jobtitle or name";
 
@@ -377,10 +376,14 @@ public class ParserUtil {
             String[] jobTitleKeywords = trimmedKeyword.split("\\s+");
             return new NameJobContainsKeywordsPredicate(Arrays.asList(jobTitleKeywords));
         } else if (isID) {
+            int id;
             try {
-                int id = Integer.parseInt(trimmedKeyword);
+                id = Integer.parseInt(trimmedKeyword);
             } catch (NumberFormatException e) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
+                throw new ParseException(String.format(MESSAGE_INVALID_ID, FindJob.MESSAGE_USAGE));
+            }
+            if (id < 1) {
+                throw new ParseException(String.format(MESSAGE_INVALID_ID, FindJob.MESSAGE_USAGE));
             }
             return new JobIdSamePredicate(trimmedKeyword);
         } else {
