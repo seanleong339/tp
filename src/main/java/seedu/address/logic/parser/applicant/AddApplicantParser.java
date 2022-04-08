@@ -2,6 +2,7 @@ package seedu.address.logic.parser.applicant;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.applicant.AddApplicant.MESSAGE_INVALID_FIELDS;
+import static seedu.address.logic.commands.applicant.AddApplicant.MESSAGE_USAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEAPPLIED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
@@ -50,10 +51,10 @@ public class AddApplicantParser implements Parser<AddApplicant> {
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL,
             PREFIX_NRIC, PREFIX_DATEAPPLIED)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddApplicant.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
         if (anyPrefixesPresent(argMultimap, PREFIX_DATEINTERVIEW, PREFIX_JOB, PREFIX_QUALIFICATION)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_FIELDS, AddApplicant.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_FIELDS+ "\n" + MESSAGE_USAGE, MESSAGE_USAGE));
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
