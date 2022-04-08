@@ -138,7 +138,8 @@ public class Applicant {
     }
 
     /**
-     * Returns true if both applicants have the same name.
+     * Returns true if both applicants have the same nric, email and phone number.
+     * Used to compare between applicants in the applicant list.
      * This defines a weaker notion of equality between two applicants.
      */
     public boolean isSameApplicant(Applicant otherApplicant) {
@@ -147,10 +148,33 @@ public class Applicant {
         }
 
         return otherApplicant != null
-                && otherApplicant.getName().equals(getName());
+                && isSame(otherApplicant);
     }
 
-    //todo may have to do a hard equal function to compare all the properties of Applicant
+    private boolean isSame(Applicant otherApplicant) {
+        return otherApplicant.getNric().equals(getNric())
+                || otherApplicant.getEmail().equals(getEmail())
+                || otherApplicant.getPhone().equals(getPhone());
+    }
+
+    /**
+     * Returns true if nric, phone and email are the same
+     * Used when checking if the edited applicant is the same as the old application
+     * @param otherApplicant
+     * @return
+     */
+    public boolean isSameApplicantCompare(Applicant otherApplicant) {
+        if (otherApplicant == this) {
+            return true;
+        }
+
+        return otherApplicant != null
+                && otherApplicant.getNric().equals(getNric())
+                && otherApplicant.getEmail().equals(getEmail())
+                && otherApplicant.getPhone().equals(getPhone());
+    }
+
+
     /**
      * Returns true if both applicants have the same identity and data fields.
      * This defines a stronger notion of equality between two applicants.
@@ -174,6 +198,7 @@ public class Applicant {
                 && otherApplicant.getDateApplied().equals(getDateApplied())
                 && otherApplicant.getNric().equals(getNric())
                 && otherApplicant.getJobId().equals(getJobId())
+                && otherApplicant.getInterviewDate().equals(getInterviewDate())
                 && otherApplicant.getApplicantStatus().equals((getApplicantStatus()));
     }
 

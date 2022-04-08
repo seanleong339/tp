@@ -20,12 +20,12 @@ public class AddJob extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a Job to ReCLIne. "
             + "Parameters: "
-            + PREFIX_JOBTITLE + "JOB TITLE "
-            + PREFIX_COMPANY_NAME + "COMPANY "
-            + PREFIX_ADDRESS + "ADDRESS "
-            + PREFIX_QUALIFICATION + "QUALIFICATION "
-            + PREFIX_JOB_POSITION + "POSITION "
-            + PREFIX_SALARY + "SALARY "
+            + "*" + PREFIX_JOBTITLE + "JOB TITLE "
+            + "*" + PREFIX_COMPANY_NAME + "COMPANY "
+            + "*" + PREFIX_ADDRESS + "ADDRESS "
+            + "*" + PREFIX_QUALIFICATION + "QUALIFICATION "
+            + "*" + PREFIX_JOB_POSITION + "POSITION "
+            + "*" + PREFIX_SALARY + "SALARY "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_JOBTITLE + "Devops Engineer "
             + PREFIX_COMPANY_NAME + "Ebiz Pte Ltd "
@@ -35,7 +35,8 @@ public class AddJob extends Command {
             + PREFIX_SALARY + "3000-4000 ";
 
     public static final String MESSAGE_SUCCESS = "New job added: %1$s";
-    public static final String MESSAGE_DUPLICATE_JOB = "This job already exists in the ReCLIne";
+    public static final String MESSAGE_DUPLICATE_JOB = "This job already exists in the ReCLIne. "
+            + "Jobs are considered to be duplicate if they have the same Company Name and Job Title.";
 
     private final Job toAdd;
 

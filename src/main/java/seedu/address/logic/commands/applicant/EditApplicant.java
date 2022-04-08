@@ -46,19 +46,19 @@ public class EditApplicant extends Command {
     public static final String COMMAND_WORD = "editapplicant";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the applicant identified "
-            + "by the index number used in the displayed Applicant list.\n"
+            + "by the index number used in the displayed Applicant list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_NRIC + "NRIC] "
-            + "[" + PREFIX_QUALIFICATION + "QUALIFICATION]\n"
-            + "[" + PREFIX_DATEAPPLIED + "DATE APPLIED] "
-            + "[" + PREFIX_JOB + "JOB ID] "
-            + "[" + PREFIX_DATEINTERVIEW + "DATE OF INTERVIEW] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "Parameters: *[INDEX] (must be a positive integer) "
+            + PREFIX_NAME + "[NAME] "
+            + PREFIX_PHONE + "[PHONE] "
+            + PREFIX_EMAIL + "[EMAIL] "
+            + PREFIX_ADDRESS + "[ADDRESS] "
+            + PREFIX_NRIC + "[NRIC] "
+            + PREFIX_QUALIFICATION + "[QUALIFICATION]\n"
+            + PREFIX_DATEAPPLIED + "[DATE APPLIED] "
+            + PREFIX_JOB + "[JOB ID] "
+            + PREFIX_DATEINTERVIEW + "[DATE OF INTERVIEW] "
+            + PREFIX_TAG + "[TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_QUALIFICATION + "Bachelor in Computing "
@@ -66,10 +66,16 @@ public class EditApplicant extends Command {
 
     public static final String MESSAGE_NOT_IMPLEMENTED = "The EditApplicant feature is not completed yet.";
     public static final String MESSAGE_EDIT_APPLICANT_SUCCESS = "Edited Applicant: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_APPLICANT = "This Applicant already exists in the address book.";
+
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edited must be provided.";
+    public static final String MESSAGE_DUPLICATE_APPLICANT = "This Applicant already exists in the ReCLIne. "
+            + "Applicants are considered duplicates if they have the same NRIC, Email or Phone Number.";
+    public static final String MESSAGE_SAME_DETAILS_AS_BEFORE = "The edited details"
+            + " is the same as the current details of the Applicant";
     public static final String MESSAGE_DATE_APPLIED_LATER_THAN_INTERVIEW_DATE = "The date applied by this applicant "
             + "is later than the interview date of this applicant.";
+
+
 
     private final Index index;
     private final EditApplicantDescriptor editApplicantDescriptor;
@@ -100,14 +106,17 @@ public class EditApplicant extends Command {
         Applicant applicantToEdit = lastShownList.get(index.getZeroBased());
         Applicant editedApplicant = createEditedApplicant(applicantToEdit, editApplicantDescriptor);
 
-        if (!applicantToEdit.isSameApplicant(editedApplicant) && model.hasApplicant(editedApplicant)) {
+        if (applicantToEdit.equals(editedApplicant)) {
+            throw new CommandException(MESSAGE_SAME_DETAILS_AS_BEFORE);
+        }
+        if (!applicantToEdit.isSameApplicantCompare(editedApplicant) && model.hasApplicant(editedApplicant)) {
             throw new CommandException(MESSAGE_DUPLICATE_APPLICANT);
         }
 
         model.setApplicant(applicantToEdit, editedApplicant);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
-        return new CommandResult(String.format(MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant), true, false,
-                true);
+        return new CommandResult(String.format(MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant),
+                true, false, true);
     }
 
     /**
