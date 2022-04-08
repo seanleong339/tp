@@ -15,12 +15,17 @@ public class ListApplicant extends Command {
     public static final String COMMAND_WORD = "listapplicant";
 
     public static final String MESSAGE_SUCCESS = "Listed all applicants";
+    public static final String MESSAGE_EMPTY_LIST = "There are currently no applicants in ReCLIne.";
 
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
-        return new CommandResult(MESSAGE_SUCCESS);
+        if (model.getFilteredApplicantList().size() == 0) {
+            return new CommandResult(MESSAGE_EMPTY_LIST);
+        } else {
+            return new CommandResult(MESSAGE_SUCCESS);
+        }
     }
 }
