@@ -702,7 +702,7 @@ testers are expected to do more *exploratory* testing.
 1. _{ more test cases …​ }_
 
 ### Adding an Applicant
-1. Adding an Applicant to application
+1. Adding an Applicant to the application
 
     1. Test case: `addapplicant n/Rick Sanchez nric/S2344567D p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21 t/lab-trained`
         Expected: An applicant named Rick Sanchez, with all the information in the command above, will be added. However, his interview date,
@@ -712,8 +712,20 @@ testers are expected to do more *exploratory* testing.
     Expected: No applicant will be added. An error message with the correct command usage will be shown. 
        
     3. Test case: `addapplicant n/Rick Sanchez j/2 nric/S2344567D p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21 t/lab-trained`
-    Expected: No applicant will be added as command includes a field that should be added by editapplicant. An error message detailing the error and how
+    Expected: No applicant will be added as command includes a field (j/) that should be added by editapplicant. An error message detailing the error and how
        to use the command will be shown.
+       Other incorrect fields to try are `q/` and `i/`.
+       
+### Adding a Job
+1. Adding a Job to the application
+
+    1. Test case: `addjob jt/Devops Engineer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
+        Expected: A Job listing for Devops Engineer, including all the included information in the command above, will be added to the Job list.
+        The job status will always be vacant by default.
+       
+    2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
+        Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
+       
 
 ### Deleting a person
 
