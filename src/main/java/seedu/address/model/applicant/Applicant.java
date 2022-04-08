@@ -176,6 +176,7 @@ public class Applicant {
                 && otherApplicant.getDateApplied().equals(getDateApplied())
                 && otherApplicant.getNric().equals(getNric())
                 && otherApplicant.getJobId().equals(getJobId())
+                && otherApplicant.getInterviewDate().equals(getInterviewDate())
                 && otherApplicant.getApplicantStatus().equals((getApplicantStatus()));
     }
 

@@ -160,10 +160,14 @@ class EditApplicantTest {
     public void execute_dateAppliedEarlierThanInterviewDate_success() {
         Applicant firstApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
 
-        Applicant editedApplicant = new ApplicantBuilder(firstApplicant).withInterviewDate(VALID_DATE_TWO).build();
+        Applicant editedApplicant = new ApplicantBuilder(firstApplicant)
+                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB).withPhone(VALID_PHONE_BOB)
+                .withInterviewDate(VALID_DATE_TWO).build();
 
         EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON,
-                new EditApplicantDescriptorBuilder().withInterviewDate(VALID_DATE_TWO).build());
+                new EditApplicantDescriptorBuilder()
+                        .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB).withPhone(VALID_PHONE_BOB)
+                        .withInterviewDate(VALID_DATE_TWO).build());
 
         String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
 
@@ -182,10 +186,12 @@ class EditApplicantTest {
         Applicant firstApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
 
         Applicant editedApplicant = new ApplicantBuilder(firstApplicant)
+                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB).withPhone(VALID_PHONE_BOB)
                 .withDateApplied(VALID_DATE_TWO).withInterviewDate(VALID_DATE_TWO).build();
 
         EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON,
                 new EditApplicantDescriptorBuilder()
+                        .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB).withPhone(VALID_PHONE_BOB)
                         .withDateApplied(VALID_DATE_TWO).withInterviewDate(VALID_DATE_TWO).build());
 
         String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
