@@ -66,7 +66,7 @@ available on ReCLIne.
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1. Type the command in the command box and press Enter to execute it. e.g.. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * **`addapplicant`**` n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` 
@@ -88,7 +88,7 @@ They are used first before entering adding to corresponding fields.
 * For example: `n/Benson Goh` - the `n/` flag is used to indicate that the subsequent input will be the `Applicant Name`.
 * For example: `jt/Project Manager` - the `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
 
-They are commonly used in every command. Details are given below
+They are commonly used in every command. Details are.g.iven below
 
 ### Applicant Flags
 
@@ -129,28 +129,28 @@ They are commonly used in every command. Details are given below
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `addapplicant n/NAME`, `NAME` is a parameter which can be used as `addapplicant n/John Doe`.
+  e.g.. in `addapplicant n/NAME`, `NAME` is a parameter which can be used as `addapplicant n/John Doe`.
 
 * Items **with** an asterisk before the flag are compulsory.<br>
-  e.g `*n/[NAME] *p/[PHONE]` can only be used as `n/John Doe p/93483747`.
+  e.g. `*n/[NAME] *p/[PHONE]` can only be used as `n/John Doe p/93483747`.
   
 * Items **without** an asterisk before the flag are optional.<br>
-  e.g `*n/[NAME] t/[TAG]` can be used as `n/John Doe t/Applicant` or `n/John Doe`.
+  e.g. `*n/[NAME] t/[TAG]` can be used as `n/John Doe t/Applicant` or `n/John Doe`.
 
 * Items with `…​` after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g.. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g.. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 * If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of
   the parameter will be taken.<br>
-  e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
+  e.g.. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
 * Extraneous parameters for commands that do not take in parameters 
   (such as `help`, `listapplicant`, `listjob`, `tabapplicant`, `tabjob`, `exit` and `clear`)
   will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+  e.g.. if the command specifies `help 123`, it will be interpreted as `help`.
 
 </div>
 
@@ -345,11 +345,11 @@ Format: `findapplicant KEYWORD…​`
 *flag/[Attribute]*
 
 `KEYWORD…​`: Search for an applicant name containing the `KEYWORD…​`.
-* The search is case-insensitive. e.g `alice` will match `Alice`
-* The order of the keywords does not matter. e.g. `Alice Goh` will match `Goh Alice`
-* Only full words will be matched e.g. `Ali` will not match `Alice`
+* The search is case-insensitive. e.g. `alice` will match `Alice`
+* The order of the keywords does not matter. e.g.. `Alice Goh` will match `Goh Alice`
+* Only full words will be matched e.g.. `Ali` will not match `Alice`
 * Applicants matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Alice` will return `Alice Tan Mei Ling`, `Alice Goh Ming Yue`
+  e.g.. `Alice` will return `Alice Tan Mei Ling`, `Alice Goh Ming Yue`
 
 Examples:
 * `findapplicant Alice` returns anyone in the applicant list that has "Alice" in their name.
@@ -455,7 +455,7 @@ indicates that the salary is not a range, but rather a fixed amount.
 
 Examples:
 
-`editjob 1 jt/Software Engineer UI c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft 
+`editjob 1 jt/Software Engineer UI c/De.g.iner Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft 
 sal/4000 - 5000`
 
 * Edits a job with index number 1 with job title - Software Engineer UI comapny name - Designer Club,
@@ -523,16 +523,16 @@ Format (search via job ID): `findjob id/[ID]`
 ***flag/[Attribute]***
 
 `jt/[KEYWORD] KEYWORD`: Search for job title containing the `[KEYWORD]`. 
-* The search is case-insensitive. e.g `engineer` will match `Engineer`
-* The order of the keywords does not matter. e.g. `Software Engineer` will match `Engineer Software`
-* Only full words will be matched e.g. `Software` will not match `Soft`
+* The search is case-insensitive. e.g. `e.g.ineer` will match `Engineer`
+* The order of the keywords does not matter. e.g.. `Software Engineer` will match `Engineer Software`
+* Only full words will be matched e.g.. `Software` will not match `Soft`
 * Jobs matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Engineer` will return `Software Engineer`, `Chemical Engineer`
+  e.g.. `Engineer` will return `Software Engineer`, `Chemical Engineer`
 
 `id/[ID]` : Search for job with matching `[ID]`.
 
 Examples:
-* `findjob jt/Engineer` returns `software engineer` and `Mech Engineer`
+* `findjob jt/Engineer` returns `software e.g.ineer` and `Mech Engineer`
 * `findjob id/2` returns a job with id 2 <br>
 
 
@@ -592,24 +592,24 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action                      | Format, Examples                                                                                                                                                                                                                                               |
-|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add Applicant**           | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`                                        |
-| **Edit Applicant**          | `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com`                            |
-| **Delete Applicant**        | `deleteapplicant *[INDEX]`<br> e.g., `deleteapplicant 3`                                                                                                                                                                                                       |
-| **Mark Applicant**          | <code>markapplicant *[INDEX] *s/[pending &vert; interviewed &vert; accepted &vert; interviewed]</code>                                                                                                                                                         |
-| **Sort Applicant**          | `sortapplicant *by/[ATTRIBUTE]` <br> e.g., `sortapplicant by/dateapplied`                                                                                                                                                                                      |
-| **Find Applicant**          | `findapplicant KEYWORD…​` <br> e.g., `findapplicant Alice`                                                                                                                                                                                                     |
-| **List Applicant**          | `listapplicant`                                                                                                                                                                                                                                                |
-| **Switch to Applicant Tab** | `tabapplicant`                                                                                                                                                                                                                                                 |
-| **Add Job**                 | `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]` <br> e.g., `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000 - 4000 `                  |
-| **Edit Job**                | `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g.,  `editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
-| **Delete Job**              | `deletejob *[INDEX]`<br> e.g., `deletejob 3`                                                                                                                                                                                                                   |
-| **Mark Job**                | `markjob *[INDEX] *js/[STATUS] ​` <br> e.g.,`markjob 2 js/vacant`                                                                                                                                                                                              |
-| **Sort Job**                | `sortjob`                                                                                                                                                                                                                                                      |
-| **Find Job**                | `findjob jt/KEYWORD [MORE_KEYWORDS]` <br> e.g., `findjob jt/Engineer` <br>***OR***<br> `findjob id/[ID]` <br> e.g., `findjob id/2`                                                                                                                             |
-| **List Job**                | `listjob`                                                                                                                                                                                                                                                      |
-| **Switch to Job Tab**       | `tabjob`                                                                                                                                                                                                                                                       |
-| **Help**                    | `help`                                                                                                                                                                                                                                                         |
-| **Clear**                   | `clear`                                                                                                                                                                                                                                                        |
-| **Exit**                    | `exit`                                                                                                                                                                                                                                                         |
+| Action                      | Format, Examples                                                                                                                                                                                                                                              |
+|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Applicant**           | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g. `addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`                                       |
+| **Edit Applicant**          | `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g. `editapplicant 2 n/James Lee e/jameslee@example.com`                           |
+| **Delete Applicant**        | `deleteapplicant *[INDEX]`<br> e.g. `deleteapplicant 3`                                                                                                                                                                                                       |
+| **Mark Applicant**          | <code>markapplicant *[INDEX] *s/[pending &vert; interviewed &vert; accepted &vert; interviewed]</code> <br> e.g. `markapplicant 10 s/rejected`                                                                                                                |
+| **Sort Applicant**          | <code>sortapplicant *by/[dateapplied &vert; interview &vert; job]</code> <br> e.g. `sortapplicant by/dateapplied`                                                                                                                                             |
+| **Find Applicant**          | `findapplicant KEYWORD…​` <br> e.g. `findapplicant Alice`                                                                                                                                                                                                     |
+| **List Applicant**          | `listapplicant`                                                                                                                                                                                                                                               |
+| **Switch to Applicant Tab** | `tabapplicant`                                                                                                                                                                                                                                                |
+| **Add Job**                 | `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]` <br> e.g. `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000 - 4000 `                  |
+| **Edit Job**                | `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g. `editjob 1 jt/Software Engineer UI/UX c/De.g.iner Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
+| **Delete Job**              | `deletejob *[INDEX]`<br> e.g. `deletejob 3`                                                                                                                                                                                                                   |
+| **Mark Job**                | `markjob *[INDEX] *js/[STATUS] ​` <br> e.g. `markjob 2 js/vacant`                                                                                                                                                                                             |
+| **Sort Job**                | `sortjob`                                                                                                                                                                                                                                                     |
+| **Find Job**                | `findjob jt/KEYWORD [MORE_KEYWORDS]` <br> e.g. `findjob jt/Engineer` <br>***OR***<br> `findjob id/[ID]` <br> e.g. `findjob id/2`                                                                                                                              |
+| **List Job**                | `listjob`                                                                                                                                                                                                                                                     |
+| **Switch to Job Tab**       | `tabjob`                                                                                                                                                                                                                                                      |
+| **Help**                    | `help`                                                                                                                                                                                                                                                        |
+| **Clear**                   | `clear`                                                                                                                                                                                                                                                       |
+| **Exit**                    | `exit`                                                                                                                                                                                                                                                        |
