@@ -62,10 +62,10 @@ public class SampleDataUtil {
                         new ApplicantStatus("1")),
             new Applicant(new Name("Benson Goh"), new Phone("98184343"), new Email("bensongoh@example.com"),
                     new Address("311, Clementi Ave 2, #02-25"), getTagSet("Applicant"),
-                    new DateApplied("2022-01-22"), new Nric("S9920202A")),
+                    new DateApplied("2022-01-22"), new Nric("S8830303B")),
             new Applicant(new Name("Carl Teo"), new Phone("83127843"), new Email("carlteo@example.com"),
                     new Address("456, Hougang North Street 6, #03-21"), getTagSet("Applicant"),
-                    new DateApplied("2022-01-19"), new Nric("S9920202A"), new JobId("1"),
+                    new DateApplied("2022-01-19"), new Nric("S7750505G"), new JobId("1"),
                     new InterviewDate("2022-02-10"), new Qualification("Degree in Psychology"),
                     new ApplicantStatus("3")),
         };

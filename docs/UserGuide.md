@@ -171,21 +171,25 @@ Adds an applicant to the applicant list of ReCLIne.
 Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
             *d/[DATEAPPLIED] t/[TAG]…​`
 
-Tip: Fill in fields in any order. All fields are compulsory, except for `t/[TAG]…​` field.
+<div markdown="span" class="alert alert-info">:information_source: 
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**
+
+* **All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.
+</div>
 
 *flag/[ATTRIBUTE]:*
 
-`n/[NAME]`: Applicant's name
+`*n/[NAME]`: Applicant's name
 
-`p/[PHONE]`: Applicant's phone number
+`*p/[PHONE]`: Applicant's phone number
 
-`nric/[NRIC]`: Applicant's NRIC
+`*nric/[NRIC]`: Applicant's NRIC
 
-`a/[ADDRESS]` : Applicant's address
+`*a/[ADDRESS]` : Applicant's address
 
-`e/[EMAIL]` : Applicant's email address
+`*e/[EMAIL]` : Applicant's email address
 
-`d/[DATEAPPLIED]` : Date that Applicant applied for the job
+`*d/[DATEAPPLIED]` : Date that Applicant applied for the job
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
@@ -210,12 +214,16 @@ Format: `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[A
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] s/[STATUS] t/[TAG]…​`
 
-**Tip** : Fill in fields in any order. Just input the fields that you would like to change for the specific index number.
-To leave out fields, skip the flag and attribute completely.
+<div markdown="span" class="alert alert-info">:information_source: 
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**
+
+* Just input the fields that you would like to change for the specific index number.
+* To leave out fields, **skip the flag and attribute** completely.
+</div>
 
 *flag/[ATTRIBUTE]:*
 
-`[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
+`*[INDEX]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 `n/[NAME]`: Updated Applicant's name
 
@@ -251,10 +259,10 @@ any other format.
 
 Examples:
 
-`editapplicant 1 n/Jaden Ho a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12 q/Degree in Computer Science
+`editapplicant 1 n/Bryan Ho a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12 q/Degree in Computer Science
 i/2022-03-18`
 
-* Edits an applicant of index 1 with name - Jaden Ho, address - Tampines St 96 Block 312
+* Edits an applicant of index 1 with name - Bryan Ho, address - Tampines St 96 Block 312
   email - jadenho@email.com, date applied - 2022-03-12, qualification - Degree of Computer Science,
   interview date - 2022-03-18.
   
@@ -263,9 +271,13 @@ i/2022-03-18`
 
 Deletes an applicant specified by the index from the applicant list in ReCLIne.
 
-Format: `deleteapplicant [INDEX*]`
+Format: `deleteapplicant *[INDEX]`
 
-`[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
+<div markdown="span" class="alert alert-info">:information_source: 
+**Tip:** **Only fields with `*` indicated are compulsory.**
+</div>
+
+`*[INDEX]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
 Example:
 
@@ -282,11 +294,17 @@ Mark applicant status.
 
 Format: `markapplicant *[INDEX] *s/[STATUS]`
 
+<div markdown="span" class="alert alert-info">:information_source: 
+**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.**
+
+* **All fields are compulsory for `markapplicant`**
+</div>
+
 *flag/[Attribute]*
 
-`[INDEX*]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
+`*[INDEX]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
 
-`s/[STATUS]`: Flag to mark the applicant status of the applicant. `[STATUS]` must be either
+`*s/[STATUS]`: Flag to mark the applicant status of the applicant. `[STATUS]` must be either
 pending, accepted, or rejected
 
 **Tip:** All fields are mandatory for the `markapplicant` command. Fill in fields in the stipulated order.
@@ -315,12 +333,17 @@ Sorts the list of applicants by a given attribute.
 
 Format: `sortapplicant *by/[ATTRIBUTE]`
 
+<div markdown="span" class="alert alert-info">:information_source: 
+**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.**
+
+* All fields for `sortapplicant` are compulsory.
+</div>
+
 *flag/[Attribute]*
 
-`by/[ATTRIBUTE]`: Flag to mark the attribute used to sort the applicant list. [ATTRIBUTE] must be either
+`*by/[ATTRIBUTE]`: Flag to mark the attribute used to sort the applicant list. [ATTRIBUTE] must be either
 dateapplied, interview, job
 
-**Tip:** All fields for `sortapplicant` are compulsory.
 
 Example:
 
@@ -377,26 +400,32 @@ Adds a new job posting to ReCLIne
 
 Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]`
 
-**Tip**: Fill in fields in any order.
+<div markdown="span" class="alert alert-info">:information_source: 
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**
+
+* **All fields are compulsory for `addjob``**.
+</div>
 
 *flag/[Attribute]:*
 
-`jt/[JOB TITLE]`: Job title of the job
+`*jt/[JOB TITLE]`: Job title of the job
 
-`c/[COMPANY]`: The company for the job opening 
+`*c/[COMPANY]`: The company for the job opening 
 
-`a/[ADDRESS]`: Location of the job 
+`*a/[ADDRESS]`: Location of the job 
 
-`q/[QUALIFICATION]`: Education qualification required for the job
+`*q/[QUALIFICATION]`: Education qualification required for the job
 
-`pos/[POSITION]`: Type of job, whether part-time or full time.
+`*pos/[POSITION]`: Type of job, whether part-time or full time.
+
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The `[POSITION]` field only accepts either `ft` - "full time" or `pt` - "part time" as an input. ReCLIne will output an error is anything
 else is inputted.
 </div>
 
-`s/[SALARY]`:  Salary of job, based on how much the job pays a month. The start and end of the SALARY range must be a positive integer
+`*s/[SALARY]`:  Salary of job, based on how much the job pays a month. The start and end of the SALARY range must be a positive integer
 1000,2000,3000,...
+
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The inputted `[SALARY]` must be a range. The lower bound of the range cannot be larger than the upper bound 
 of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
@@ -420,12 +449,16 @@ outdated information to applicants.
 Format: `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
-**Tip** : Fill in fields in any order. Just input the fields that you would like to change for the specific job.
-To leave out fields, skip the flag and attribute completely.
+<div markdown="span" class="alert alert-info">:information_source: 
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**
+
+* Just input the fields that you would like to change for the specific index number.
+* To leave out fields, **skip the flag and attribute** completely.
+</div>
 
 *flag/[ATTRIBUTE]:*
 
-`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
+`*[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
 
 `jt/[JOB TITLE]`: Update Job's Title to the mentioned `[JOB TITLE]`
 
@@ -469,7 +502,11 @@ Delete a job specified by the index from the job list of ReCLIne.
 
 Format: `deletejob *[INDEX]`
 
-`Index` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
+<div markdown="span" class="alert alert-info">:information_source: 
+**Tip:** **Only fields with `*` indicated are compulsory.**
+</div>
+
+`*[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
 
 Example:
 
@@ -483,13 +520,17 @@ Marks an existing job posting as filled or vacant.
 
 Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
-**Tip**: All fields are compulsory for `markjob`
+<div markdown="span" class="alert alert-info">:information_source: 
+**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.**
+
+* **All fields are compulsory for `markjob`**
+</div>
 
 *flag/[Attribute]:*
 
-`[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
+`*[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
 
-`js/[JOB STATUS]`: The new status of the job posting.
+`*js/[JOB STATUS]`: The new status of the job posting.
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The `[JOB STATUS]` field only accepts either `filled` or `vacant` as an input. ReCLIne will 

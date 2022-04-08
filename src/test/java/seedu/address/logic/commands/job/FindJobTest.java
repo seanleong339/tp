@@ -62,7 +62,7 @@ public class FindJobTest {
         NameJobContainsKeywordsPredicate predicate = preparePredicateName(" ");
         FindJob command = new FindJob(predicate);
         expectedModel.updateFilteredJobList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertCommandSuccess(command, model, expectedMessage, false, true, false, expectedModel);
         assertEquals(Collections.emptyList(), model.getFilteredJobList());
     }
 
@@ -72,7 +72,7 @@ public class FindJobTest {
         NameJobContainsKeywordsPredicate predicate = preparePredicateName("Waiter Software Engineer");
         FindJob command = new FindJob(predicate);
         expectedModel.updateFilteredJobList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertCommandSuccess(command, model, expectedMessage, false, true, false, expectedModel);
         assertEquals(Arrays.asList(SOFTWARE_ENGINEER, ENGINEER, WAITER), model.getFilteredJobList());
     }
 
@@ -82,7 +82,7 @@ public class FindJobTest {
         JobIdSamePredicate predicate = preparePredicateID(" 1");
         FindJob command = new FindJob(predicate);
         expectedModel.updateFilteredJobList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertCommandSuccess(command, model, expectedMessage, false, true, false, expectedModel);
         assertEquals(Collections.emptyList(), model.getFilteredJobList());
     }
 
@@ -92,7 +92,7 @@ public class FindJobTest {
         JobIdSamePredicate predicate = preparePredicateID("3");
         FindJob command = new FindJob(predicate);
         expectedModel.updateFilteredJobList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertCommandSuccess(command, model, expectedMessage, false, true, false, expectedModel);
         assertEquals(Arrays.asList(SOFTWARE_ENGINEER), model.getFilteredJobList());
     }
 

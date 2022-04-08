@@ -21,13 +21,13 @@ public class AddApplicant extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an Applicant to ReCLIne. "
             + "Parameters: "
-            + PREFIX_NAME + "NAME "
-            + PREFIX_NRIC + "NRIC "
-            + PREFIX_PHONE + "PHONE "
-            + PREFIX_EMAIL + "EMAIL "
-            + PREFIX_ADDRESS + "ADDRESS "
-            + PREFIX_DATEAPPLIED + "DATE APPLIED "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "*" + PREFIX_NAME + "[NAME] "
+            + "*" + PREFIX_NRIC + "[NRIC] "
+            + "*" + PREFIX_PHONE + "[PHONE] "
+            + "*" + PREFIX_EMAIL + "[EMAIL] "
+            + "*" + PREFIX_ADDRESS + "[ADDRESS] "
+            + "*" + PREFIX_DATEAPPLIED + "[DATE APPLIED] "
+            + PREFIX_TAG + "[TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_NRIC + "S1234567D "
@@ -39,7 +39,8 @@ public class AddApplicant extends Command {
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New applicant added: %1$s";
-    public static final String MESSAGE_DUPLICATE_APPLICANT = "This applicant already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_APPLICANT = "This applicant already exists in the address book. "
+            + "Applicants are considered duplicates if they have the same NRIC, email or phone number.";
     public static final String MESSAGE_INVALID_FIELDS = "Your command has an invalid field that should be added by"
             + " editapplicant (InterviewDate, i/, or Qualification, q/, or JobId, j/.";
 
@@ -62,7 +63,7 @@ public class AddApplicant extends Command {
         }
 
         model.addApplicant(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), true, false, true);
     }
 
     @Override
