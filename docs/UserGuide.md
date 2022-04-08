@@ -69,7 +69,7 @@ If you are a MacOS user and unable to run file by double-clicking, go to Termina
 If you are a MacOS user and unable to run file by double-clicking, go to Terminal and run `java -jar ReCLIne.jar`.
 </div>
 
-   ![Ui](images/UiQuickStart.png)
+   ![UiQuickStart](images/UiQuickStart.png)
 
 5. Type the command in the command box [1] and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
