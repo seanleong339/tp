@@ -2,6 +2,7 @@ package seedu.address.model.applicant;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.applicant.exceptions.ApplicantNotFoundException;
 import seedu.address.model.applicant.exceptions.DuplicateApplicantException;
 import seedu.address.testutil.ApplicantBuilder;
@@ -167,5 +169,21 @@ class UniqueApplicantListTest {
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () ->
                 uniqueApplicantList.asUnmodifiableObservableList().remove(0));
+    }
+
+    @Test
+    public void hashcode() {
+        // same values -> returns same hashcode
+        assertEquals(uniqueApplicantList.hashCode(), new UniqueApplicantList().hashCode());
+
+        // add an Applicant into second Unique Applicant List  -> returns different hashcode
+        UniqueApplicantList expectedUniqueApplicantList = new UniqueApplicantList();
+        expectedUniqueApplicantList.add(BOB);
+        assertNotEquals(uniqueApplicantList.hashCode(), expectedUniqueApplicantList.hashCode());
+
+        // add the same Applicant into first Unique Applicant List, both have the same Applicant inside list
+        // -> return same hashcode
+        uniqueApplicantList.add(BOB);
+        assertEquals(uniqueApplicantList.hashCode(), expectedUniqueApplicantList.hashCode());
     }
 }
