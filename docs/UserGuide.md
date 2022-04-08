@@ -59,14 +59,19 @@ available on ReCLIne.
 
 1. Ensure you have [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) or above installed in your Computer.
 
-1. Download the latest `ReCLIne.jar` from [here](https://github.com/AY2122S2-CS2103T-W15-1/tp/releases).
+2. Download the latest `ReCLIne.jar` from [here](https://github.com/AY2122S2-CS2103T-W15-1/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your ReCLIne.
+3. Copy the file to the folder you want to use as the _home folder_ for your ReCLIne.
 
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+<div markdown="span" class="alert alert-info">:information_source: 
+If you are a MacOS user and unable to run file by double-clicking, go to Terminal and run `java -jar ReCLIne.jar`.
+</div> <br>
+
+   ![UiQuickStart](images/UiQuickStart.png)
+
+5. Type the command in the command box [1] and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * **`addapplicant`**` n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` 
@@ -79,7 +84,7 @@ available on ReCLIne.
 
    * **`exit`** : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Flags
