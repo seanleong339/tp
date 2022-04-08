@@ -592,24 +592,24 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action             | Format, Examples                                                                                                                                                                                                                    |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add Applicant**  | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`             |
-| **Edit Applicant** | `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com` |
-| **Delete Applicant** | `deleteapplicant *[INDEX]`<br> e.g., `deleteapplicant 3`                                     |
-| **Mark Applicant** | `markapplicant *[INDEX] *s/[STATUS] ​` <br> e.g.,`markapplicant 2 s/rejected`       |
-| **Sort Applicant** | `sortapplicant *by/[ATTRIBUTE]` <br> e.g., `sortapplicant by/dateapplied` |
-| **Find Applicant** | `findapplicant KEYWORD…​` <br> e.g., `findapplicant Alice` |
-| **List Applicant** | `listapplicant` |
-| **Switch to Applicant Tab** | `tabapplicant` |
-| **Add Job**  | `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]` <br> e.g., `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000 - 4000 `             |
-| **Edit Job** | `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g.,  `editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
-| **Delete Job** | `deletejob *[INDEX]`<br> e.g., `deletejob 3`                                     |
-| **Mark Job** | `markjob *[INDEX] *js/[STATUS] ​` <br> e.g.,`markjob 2 js/vacant`       |
-| **Sort Job** | `sortjob`  |
-| **Find Job** | `findjob jt/KEYWORD [MORE_KEYWORDS]` <br> e.g., `findjob jt/Engineer` <br>***OR***<br> `findjob id/[ID]` <br> e.g., `findjob id/2` |
-| **List Job** | `listjob` |
-| **Switch to Job Tab** | `tabjob` |
-| **Help**           | `help`              |
-| **Clear**           | `clear`              |
-| **Exit**           | `exit`              |
+| Action                      | Format, Examples                                                                                                                                                                                                                                               |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Applicant**           | `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL] *d/[DATEAPPLIED]​` <br> e.g.,`addapplicant n/James Ho p/22224444 nric/S9913138H a/123, Clementi Rd, 1234665 e/jamesho@example.com d/2022-01-02`                                        |
+| **Edit Applicant**          | `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID] i/[INTERVIEWDATE] s/[STATUS] t/[TAG]​` <br> e.g.,`editapplicant 2 n/James Lee e/jameslee@example.com`                            |
+| **Delete Applicant**        | `deleteapplicant *[INDEX]`<br> e.g., `deleteapplicant 3`                                                                                                                                                                                                       |
+| **Mark Applicant**          | <code>markapplicant *[INDEX] *s/[pending &vert; interviewed &vert; accepted &vert; interviewed]</code>                                                                                                                                                         |
+| **Sort Applicant**          | `sortapplicant *by/[ATTRIBUTE]` <br> e.g., `sortapplicant by/dateapplied`                                                                                                                                                                                      |
+| **Find Applicant**          | `findapplicant KEYWORD…​` <br> e.g., `findapplicant Alice`                                                                                                                                                                                                     |
+| **List Applicant**          | `listapplicant`                                                                                                                                                                                                                                                |
+| **Switch to Applicant Tab** | `tabapplicant`                                                                                                                                                                                                                                                 |
+| **Add Job**                 | `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]` <br> e.g., `addjob jt/Software Developer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000 - 4000 `                  |
+| **Edit Job**                | `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]` <br> e.g.,  `editjob 1 jt/Software Engineer UI/UX c/Desginer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft sal/4000 - 5000` |
+| **Delete Job**              | `deletejob *[INDEX]`<br> e.g., `deletejob 3`                                                                                                                                                                                                                   |
+| **Mark Job**                | `markjob *[INDEX] *js/[STATUS] ​` <br> e.g.,`markjob 2 js/vacant`                                                                                                                                                                                              |
+| **Sort Job**                | `sortjob`                                                                                                                                                                                                                                                      |
+| **Find Job**                | `findjob jt/KEYWORD [MORE_KEYWORDS]` <br> e.g., `findjob jt/Engineer` <br>***OR***<br> `findjob id/[ID]` <br> e.g., `findjob id/2`                                                                                                                             |
+| **List Job**                | `listjob`                                                                                                                                                                                                                                                      |
+| **Switch to Job Tab**       | `tabjob`                                                                                                                                                                                                                                                       |
+| **Help**                    | `help`                                                                                                                                                                                                                                                         |
+| **Clear**                   | `clear`                                                                                                                                                                                                                                                        |
+| **Exit**                    | `exit`                                                                                                                                                                                                                                                         |
