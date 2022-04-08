@@ -217,7 +217,7 @@ Edits an applicant in the applicant list of ReCLIne.
 
 Format: `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[ADDRESS]
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
-i/[INTERVIEWDATE] s/[STATUS] t/[TAG]…​`
+i/[INTERVIEWDATE] t/[TAG]…​`
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**
