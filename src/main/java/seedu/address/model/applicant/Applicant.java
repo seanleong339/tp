@@ -139,6 +139,7 @@ public class Applicant {
 
     /**
      * Returns true if both applicants have the same nric, email and phone number.
+     * Used to compare between applicants in the applicant list.
      * This defines a weaker notion of equality between two applicants.
      */
     public boolean isSameApplicant(Applicant otherApplicant) {
@@ -147,9 +148,30 @@ public class Applicant {
         }
 
         return otherApplicant != null
-                 && (otherApplicant.getNric().equals(getNric())
-                 || otherApplicant.getEmail().equals(getEmail())
-                 || otherApplicant.getPhone().equals(getPhone()));
+                && isSame(otherApplicant);
+    }
+
+    private boolean isSame(Applicant otherApplicant) {
+        return otherApplicant.getNric().equals(getNric())
+                || otherApplicant.getEmail().equals(getEmail())
+                || otherApplicant.getPhone().equals(getPhone());
+    }
+
+    /**
+     * Returns true if nric, phone and email are the same
+     * Used when checking if the edited applicant is the same as the old application
+     * @param otherApplicant
+     * @return
+     */
+    public boolean isSameApplicantCompare(Applicant otherApplicant) {
+        if (otherApplicant == this) {
+            return true;
+        }
+
+        return otherApplicant != null
+                && otherApplicant.getNric().equals(getNric())
+                && otherApplicant.getEmail().equals(getEmail())
+                && otherApplicant.getPhone().equals(getPhone());
     }
 
 

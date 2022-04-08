@@ -109,8 +109,8 @@ public class EditApplicant extends Command {
         if (applicantToEdit.equals(editedApplicant)) {
             throw new CommandException(MESSAGE_SAME_DETAILS_AS_BEFORE);
         }
-
-        if (model.hasApplicant(editedApplicant)) {
+        
+        if (!applicantToEdit.isSameApplicantCompare(editedApplicant) && model.hasApplicant(editedApplicant)) {
             throw new CommandException(MESSAGE_DUPLICATE_APPLICANT);
         }
 
