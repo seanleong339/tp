@@ -7,12 +7,14 @@ public class Salary {
     public static final String MESSAGE_CONSTRAINTS = "Salary must be a string with the format "
             + "[Non-negative integers][-][Non-negative integers]\n"
             + "The right bound salary should be equal to or more than the left bound salary\n"
+            + "The maximum number of digits for the salary is 9 digits \n"
+            + "The salary cannot start with a 0 eg 01234 - 0032134\n"
             + "Salary is salary paid per month and in SGD\n"
             + "eg 4000-5000";
 
-    public static final String LEFT_REGEX = "^[ ]*[0-9]+[ ]*";
+    public static final String LEFT_REGEX = "^[ ]*[1-9][0-9]{0,8}+[ ]*";
     public static final String MIDDLE_REGEX = "[-]";
-    public static final String RIGHT_REGEX = "[ ]*[0-9]+[ ]*";
+    public static final String RIGHT_REGEX = "[ ]*[1-9][0-9]{0,8}+[ ]*";
     public static final String VALIDATION_REGEX = LEFT_REGEX + MIDDLE_REGEX + RIGHT_REGEX + "$";
 
     public final String startingSalary;
