@@ -15,6 +15,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICANTS;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -67,6 +68,8 @@ public class EditApplicant extends Command {
     public static final String MESSAGE_EDIT_APPLICANT_SUCCESS = "Edited Applicant: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_APPLICANT = "This Applicant already exists in the address book.";
+    public static final String MESSAGE_DATE_APPLIED_LATER_THAN_INTERVIEW_DATE = "The date applied by this applicant "
+            + "is later than the interview date of this applicant.";
 
     private final Index index;
     private final EditApplicantDescriptor editApplicantDescriptor;
@@ -103,7 +106,8 @@ public class EditApplicant extends Command {
 
         model.setApplicant(applicantToEdit, editedApplicant);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
-        return new CommandResult(String.format(MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant));
+        return new CommandResult(String.format(MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant), true, false,
+                true);
     }
 
     /**
@@ -111,7 +115,8 @@ public class EditApplicant extends Command {
      * edited with {@code editApplicantDescriptor}.
      */
     private static Applicant createEditedApplicant(Applicant applicantToEdit,
-                                                EditApplicantDescriptor editApplicantDescriptor) {
+                                                EditApplicantDescriptor editApplicantDescriptor)
+                                                        throws CommandException {
         assert applicantToEdit != null;
 
         Name updatedName = editApplicantDescriptor.getName().orElse(applicantToEdit.getName());
@@ -130,6 +135,12 @@ public class EditApplicant extends Command {
         // TODO: Add Job update method as well
         JobId updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJobId());
         ApplicantStatus applicantStatus = applicantToEdit.getApplicantStatus();
+
+        LocalDate dateApplied = updatedDateApplied.date;
+        LocalDate interviewDate = updatedInterviewDate.date;
+        if (interviewDate.compareTo(dateApplied) < 0 && updatedInterviewDate.isInit) {
+            throw new CommandException(MESSAGE_DATE_APPLIED_LATER_THAN_INTERVIEW_DATE);
+        }
 
         return new Applicant(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedDateApplied,
                 updatedNric, updatedJob, updatedInterviewDate, updatedQualification, applicantStatus);

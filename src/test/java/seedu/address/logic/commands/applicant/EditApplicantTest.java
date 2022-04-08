@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_CHARLIE;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_DON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_TWO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -41,7 +42,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(model.getFilteredApplicantList().get(0), editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -62,7 +63,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(lastApplicant, editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -75,7 +76,7 @@ class EditApplicantTest {
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -92,7 +93,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(model.getFilteredApplicantList().get(0), editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -143,6 +144,65 @@ class EditApplicantTest {
 
         assertCommandFailure(editCommand, model,
                 String.format(MESSAGE_INVALID_INDEX, EditApplicant.MESSAGE_USAGE));
+    }
+
+    /**
+     * Edit Interview Date to be later than the Date Applied,
+     * this should be possible as an applicant must have applied first before getting an interview.
+     */
+    @Test
+    public void execute_dateAppliedEarlierThanInterviewDate_success() {
+        Applicant firstApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
+
+        Applicant editedApplicant = new ApplicantBuilder(firstApplicant).withInterviewDate(VALID_DATE_TWO).build();
+
+        EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON,
+                new EditApplicantDescriptorBuilder().withInterviewDate(VALID_DATE_TWO).build());
+
+        String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setApplicant(firstApplicant, editedApplicant);
+
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
+    }
+
+    /**
+     * Edit Interview Date to be same as the Date Applied,
+     * this should be possible as an applicant may have applied and got an interview on the same day.
+     */
+    @Test
+    public void execute_dateAppliedSameAsInterviewDate_success() {
+        Applicant firstApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
+
+        Applicant editedApplicant = new ApplicantBuilder(firstApplicant)
+                .withDateApplied(VALID_DATE_TWO).withInterviewDate(VALID_DATE_TWO).build();
+
+        EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON,
+                new EditApplicantDescriptorBuilder()
+                        .withDateApplied(VALID_DATE_TWO).withInterviewDate(VALID_DATE_TWO).build());
+
+        String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setApplicant(firstApplicant, editedApplicant);
+
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
+    }
+
+    /**
+     * Edit Date Applied to be later than the Interview Date,
+     * this should not be possible as an applicant must have applied first before getting an interview.
+     */
+    @Test
+    public void execute_dateAppliedLaterThanInterviewDate_failure() {
+        Applicant firstApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
+        EditApplicant.EditApplicantDescriptor descriptor = new EditApplicantDescriptorBuilder(firstApplicant)
+                .withDateApplied(VALID_DATE_TWO).build();
+
+        EditApplicant editCommand = new EditApplicant(INDEX_FIRST_PERSON, descriptor);
+
+        assertCommandFailure(editCommand, model, EditApplicant.MESSAGE_DATE_APPLIED_LATER_THAN_INTERVIEW_DATE);
     }
 
     @Test

@@ -58,7 +58,7 @@ class FindApplicantTest {
         NameApplicantContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindApplicant command = new FindApplicant(predicate);
         expectedModel.updateFilteredApplicantList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertCommandSuccess(command, model, expectedMessage, true, false, false, expectedModel);
         assertEquals(Collections.emptyList(), model.getFilteredApplicantList());
     }
 
@@ -68,7 +68,7 @@ class FindApplicantTest {
         NameApplicantContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
         FindApplicant command = new FindApplicant(predicate);
         expectedModel.updateFilteredApplicantList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertCommandSuccess(command, model, expectedMessage, true, false, false, expectedModel);
         assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredApplicantList());
     }
 

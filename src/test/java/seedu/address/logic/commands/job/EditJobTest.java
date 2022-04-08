@@ -45,7 +45,7 @@ class EditJobTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setJob(model.getFilteredJobList().get(0), editedJob);
 
-        assertCommandSuccess(editJob, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editJob, model, expectedMessage, false, true, true, expectedModel);
     }
 
     @Test
@@ -67,7 +67,7 @@ class EditJobTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setJob(lastJob, editedJob);
 
-        assertCommandSuccess(editJob, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editJob, model, expectedMessage, false, true, true, expectedModel);
     }
 
     @Test
@@ -80,7 +80,7 @@ class EditJobTest {
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
 
-        assertCommandSuccess(editJob, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editJob, model, expectedMessage, false, true, true, expectedModel);
     }
 
     @Test
@@ -97,7 +97,7 @@ class EditJobTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setJob(model.getFilteredJobList().get(0), editedJob);
 
-        assertCommandSuccess(editJob, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editJob, model, expectedMessage, false, true, true, expectedModel);
     }
 
     @Test

@@ -62,7 +62,8 @@ public class MarkApplicant extends Command {
 
         model.setApplicant(applicantToMark, markedApplicant);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, applicantToMark, applicantStatus));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, applicantToMark, applicantStatus), true, false,
+                true);
     }
 
     @Override

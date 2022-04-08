@@ -29,25 +29,27 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label secondLabel;
+    private ImageView image;
     @FXML
-    private Label fourthLabel;
+    private FlowPane tags;
+    @FXML
+    private Label firstLabel;
+    @FXML
+    private Label secondLabel;
     @FXML
     private Label thirdLabel;
     @FXML
-    private Label sixthLabel;
+    private Label fourthLabel;
     @FXML
     private Label fifthLabel;
     @FXML
-    private Label firstLabel;
+    private Label sixthLabel;
     @FXML
     private Label seventhLabel;
     @FXML
     private Label eighthLabel;
     @FXML
     private Label ninthLabel;
-    @FXML
-    private FlowPane tags;
     @FXML
     private Label firstSubHeader;
     @FXML
@@ -66,8 +68,6 @@ public class InfoPanel extends UiPart<Region> {
     private Label eighthSubHeader;
     @FXML
     private Label ninthSubHeader;
-    @FXML
-    private ImageView image;
 
     // Stores image of applicant icon
     private final Image applicantIcon = new Image(this.getClass().getResourceAsStream("/images/applicant_icon.png"),
@@ -83,7 +83,6 @@ public class InfoPanel extends UiPart<Region> {
         super(FXML);
     }
 
-
     /**
      * Displays an applicant info.
      *
@@ -91,7 +90,8 @@ public class InfoPanel extends UiPart<Region> {
      */
     public void setApplicantInfo(Applicant applicant) {
         // Reset panels to display the applicant
-        resetInfoPanelApplicant();
+        resetPanel();
+        setApplicantSubHeader();
         image.setImage(applicantIcon);
         // Set name
         name.setText(applicant.getName().fullName);
@@ -119,26 +119,9 @@ public class InfoPanel extends UiPart<Region> {
     }
 
     /**
-     * Resets the layout for displaying a job in order to display an applicant.
-     */
-    private void resetInfoPanelApplicant() {
-        tags.getChildren().clear();
-        secondLabel.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        fifthLabel.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        id.setVisible(false);
-        seventhLabel.setVisible(true);
-        eighthLabel.setVisible(true);
-        ninthLabel.setVisible(true);
-        setApplicantSubHeader();
-    }
-
-    /**
      * Sets the sub-headers for displaying an applicant.
      */
     private void setApplicantSubHeader() {
-        seventhSubHeader.setVisible(true);
-        eighthSubHeader.setVisible(true);
-        ninthSubHeader.setVisible(true);
         firstSubHeader.setText("Nric: ");
         secondSubHeader.setText("Phone number: ");
         thirdSubHeader.setText("Email: ");
@@ -156,7 +139,8 @@ public class InfoPanel extends UiPart<Region> {
      * @param job a job selected from the list
      */
     public void setJobInfo(Job job) {
-        resetInfoPanelJob();
+        resetPanel();
+        setJobSubHeader();
         image.setImage(jobIcon);
         name.setText(job.getJobTitle().toString());
         id.setText("#" + job.getJobId().toString());
@@ -176,18 +160,6 @@ public class InfoPanel extends UiPart<Region> {
     }
 
     /**
-     * Resets the layout for displaying an applicant to display a job.
-     */
-    private void resetInfoPanelJob() {
-        tags.getChildren().clear();
-        id.setVisible(true);
-        seventhLabel.setVisible(false);
-        eighthLabel.setVisible(false);
-        ninthLabel.setVisible(false);
-        setJobSubHeader();
-    }
-
-    /**
      * Sets the sub-headers for job information.
      */
     private void setJobSubHeader() {
@@ -197,9 +169,47 @@ public class InfoPanel extends UiPart<Region> {
         fourthSubHeader.setText("Address: ");
         fifthSubHeader.setText("Job Status: ");
         sixthSubHeader.setText("Qualification: ");
-        // Make unused heading to invisible
-        seventhSubHeader.setVisible(false);
-        eighthSubHeader.setVisible(false);
-        ninthSubHeader.setVisible(false);
+    }
+
+    /**
+     * Deletes the old sub header on the info panel
+     */
+    private void resetSubHeader() {
+        firstSubHeader.setText(null);
+        secondSubHeader.setText(null);
+        thirdSubHeader.setText(null);
+        fourthSubHeader.setText(null);
+        fifthSubHeader.setText(null);
+        sixthSubHeader.setText(null);
+        seventhSubHeader.setText(null);
+        eighthSubHeader.setText(null);
+        ninthSubHeader.setText(null);
+    }
+
+    private void resetLabel() {
+        firstLabel.setText(null);
+        secondLabel.setText(null);
+        thirdLabel.setText(null);
+        fourthLabel.setText(null);
+        fifthLabel.setText(null);
+        sixthLabel.setText(null);
+        seventhLabel.setText(null);
+        eighthLabel.setText(null);
+        ninthLabel.setText(null);
+    }
+
+    /**
+     * Delete the old texts on the info panel
+     */
+    public void resetPanel() {
+        tags.getChildren().clear();
+        image.setImage(null);
+        name.setText(null);
+        id.setText(null);
+        resetSubHeader();
+        resetLabel();
+        StyleUtil.resetLabelStyle(secondLabel);
+        StyleUtil.resetLabelStyle(fifthLabel);
+        StyleUtil.resetLabelStyle(ninthLabel);
     }
 }
