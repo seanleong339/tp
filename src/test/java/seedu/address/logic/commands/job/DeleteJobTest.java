@@ -33,7 +33,7 @@ class DeleteJobTest {
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteJob(jobToDelete);
 
-        assertCommandSuccess(deleteJob, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteJob, model, expectedMessage, false, true, true, expectedModel);
     }
 
     @Test
@@ -59,7 +59,7 @@ class DeleteJobTest {
         expectedModel.deleteJob(jobToDelete);
         showNoJob(expectedModel);
 
-        assertCommandSuccess(deleteJob, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteJob, model, expectedMessage, false, true, true, expectedModel);
     }
 
     @Test

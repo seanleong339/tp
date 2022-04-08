@@ -66,7 +66,7 @@ public class MarkJob extends Command {
         model.setJob(toMark, markedJob);
         model.updateFilteredJobList(PREDICATE_SHOW_ALL_JOBS);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, markedJob));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, markedJob), false, true, true);
     }
 
     @Override
