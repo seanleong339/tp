@@ -6,7 +6,9 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_CHARLIE;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_DON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_TWO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC_TWO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -52,9 +54,11 @@ class EditApplicantTest {
 
         ApplicantBuilder applicantInList = new ApplicantBuilder(lastApplicant);
         Applicant editedApplicant = applicantInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
 
         EditApplicantDescriptor descriptor = new EditApplicantDescriptorBuilder().withName(VALID_NAME_BOB)
+                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB)
                 .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
         EditApplicant editApplicant = new EditApplicant(indexLastApplicant, descriptor);
 
@@ -67,16 +71,14 @@ class EditApplicantTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_fieldsSpecifiedSameAsOriginalApplicant_failure() {
         EditApplicant editApplicant =
                 new EditApplicant(INDEX_FIRST_PERSON, new EditApplicant.EditApplicantDescriptor());
         Applicant editedApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
 
-        String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
+        String expectedMessage = String.format(EditApplicant.MESSAGE_SAME_DETAILS_AS_BEFORE);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-
-        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
+        assertCommandFailure(editApplicant, model, expectedMessage);
     }
 
     @Test
@@ -84,9 +86,13 @@ class EditApplicantTest {
         showApplicantAtIndex(model, INDEX_FIRST_PERSON);
 
         Applicant applicantInFilteredList = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Applicant editedApplicant = new ApplicantBuilder(applicantInFilteredList).withName(VALID_NAME_BOB).build();
+        Applicant editedApplicant = new ApplicantBuilder(applicantInFilteredList).withName(VALID_NAME_BOB)
+                .withNric(VALID_NRIC_TWO).withEmail(VALID_EMAIL_BOB)
+                .withPhone(VALID_PHONE_BOB).build();
         EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON,
-                new EditApplicantDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditApplicantDescriptorBuilder().withName(VALID_NAME_BOB).withNric(VALID_NRIC_TWO)
+                        .withEmail(VALID_EMAIL_BOB)
+                        .withPhone(VALID_PHONE_BOB).build());
 
         String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
 
@@ -154,10 +160,12 @@ class EditApplicantTest {
     public void execute_dateAppliedEarlierThanInterviewDate_success() {
         Applicant firstApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
 
-        Applicant editedApplicant = new ApplicantBuilder(firstApplicant).withInterviewDate(VALID_DATE_TWO).build();
+        Applicant editedApplicant = new ApplicantBuilder(firstApplicant)
+                .withInterviewDate(VALID_DATE_TWO).build();
 
         EditApplicant editApplicant = new EditApplicant(INDEX_FIRST_PERSON,
-                new EditApplicantDescriptorBuilder().withInterviewDate(VALID_DATE_TWO).build());
+                new EditApplicantDescriptorBuilder()
+                        .withInterviewDate(VALID_DATE_TWO).build());
 
         String expectedMessage = String.format(EditApplicant.MESSAGE_EDIT_APPLICANT_SUCCESS, editedApplicant);
 
