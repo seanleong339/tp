@@ -58,5 +58,7 @@ class SalaryTest {
                 "3000", "4000", "3000 - 4000")); // space in salary
         assertTrue(Salary.isValidSalary(
                 " 3000  -  4000  ")); // any number of spaces between salary range
+        assertTrue(Salary.isValidSalary(
+                " 123456789  -  123456789  ")); // any number of spaces between salary range
     }
 }
