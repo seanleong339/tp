@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -40,6 +41,9 @@ public class MainWindow extends UiPart<Stage> {
 
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+
+    @FXML
+    private ScrollPane scrollPane;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -129,6 +133,8 @@ public class MainWindow extends UiPart<Stage> {
         // Displays info panel
         infoPanel = new InfoPanel();
         infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
+        scrollPane.vvalueProperty().bind(infoPanelPlaceholder.widthProperty());
+
 
         // Displays applicant list
         applicantListPanel = new ApplicantListPanel(logic.getFilteredApplicantList(), infoPanel);
@@ -200,6 +206,10 @@ public class MainWindow extends UiPart<Stage> {
         tabs.getSelectionModel().select(1);
     }
 
+    private void handleRestInfoPanel() {
+        infoPanel.resetPanel();
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -225,6 +235,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isTabJob()) {
                 handleListJob();
+            }
+
+            if (commandResult.isResetInfoPanel()) {
+                handleRestInfoPanel();
             }
 
             return commandResult;

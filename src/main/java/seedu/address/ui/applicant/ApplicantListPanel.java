@@ -42,6 +42,8 @@ public class ApplicantListPanel extends UiPart<Region> {
             Applicant applicant = applicantListView.getSelectionModel().getSelectedItem();
             if (applicant != null) {
                 infoPanel.setApplicantInfo(applicant);
+            } else {
+                infoPanel.resetPanel();
             }
         });
     }
