@@ -71,7 +71,7 @@ class AddApplicantParserTest {
 
     @Test
     void parse_extraField_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_FIELDS + "\n" +  MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_FIELDS + "\n" + MESSAGE_USAGE);
 
         //Contains InterviewDate
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB

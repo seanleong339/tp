@@ -54,7 +54,7 @@ public class AddApplicantParser implements Parser<AddApplicant> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
         if (anyPrefixesPresent(argMultimap, PREFIX_DATEINTERVIEW, PREFIX_JOB, PREFIX_QUALIFICATION)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_FIELDS+ "\n" + MESSAGE_USAGE, MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_FIELDS + "\n" + MESSAGE_USAGE, MESSAGE_USAGE));
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
