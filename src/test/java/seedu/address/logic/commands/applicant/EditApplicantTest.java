@@ -42,7 +42,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(model.getFilteredApplicantList().get(0), editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -63,7 +63,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(lastApplicant, editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -76,7 +76,7 @@ class EditApplicantTest {
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -93,7 +93,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(model.getFilteredApplicantList().get(0), editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test
@@ -164,7 +164,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(firstApplicant, editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     /**
@@ -187,7 +187,7 @@ class EditApplicantTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setApplicant(firstApplicant, editedApplicant);
 
-        assertCommandSuccess(editApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     /**
