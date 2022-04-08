@@ -5,8 +5,6 @@ title: About Us
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
 ### Justin Ng
@@ -32,6 +30,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/seanleong339.png" width="200px">
 
 [[github](http://github.com/seanleong339)]
+[[PPP](https://ay2122s2-cs2103t-w15-1.github.io/tp/team/seanleong339.html)]
 
 * Role: Developer - Applicant Feature
 * Responsibilities: Code Quality

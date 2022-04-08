@@ -44,6 +44,10 @@ class SalaryTest {
                 "5000-abc")); // only end salary alphabets
         assertFalse(Salary.isValidSalary("-4000", "-3000",
                 "-4000-5000")); // only end salary alphabets
+        assertFalse(Salary.isValidSalary("02000", "4000",
+                "02000-4000")); // salary starts with 0
+        assertFalse(Salary.isValidSalary("1234567890", "1234567899",
+                "1234567890-1234567890")); // salary more than 9 digits
 
         // valid Salary
         assertTrue(Salary.isValidSalary(
@@ -54,5 +58,7 @@ class SalaryTest {
                 "3000", "4000", "3000 - 4000")); // space in salary
         assertTrue(Salary.isValidSalary(
                 " 3000  -  4000  ")); // any number of spaces between salary range
+        assertTrue(Salary.isValidSalary(
+                " 123456789  -  123456789  ")); // any number of spaces between salary range
     }
 }
