@@ -10,10 +10,10 @@ public class TabApplicant extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches to Applicant Tab.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String SHOWING_HELP_MESSAGE = "Switched to Applicant Tab.";
+    public static final String SHOWING_TABAPPLICANT_MESSAGE = "Switched to Applicant Tab.";
 
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(SHOWING_HELP_MESSAGE, false, false, true, false);
+        return new CommandResult(SHOWING_TABAPPLICANT_MESSAGE, false, false, true, false);
     }
 }
