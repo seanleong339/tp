@@ -15,7 +15,7 @@ public class TabJobTest {
     @Test
     public void execute_exit_success() {
         CommandResult expectedCommandResult = new CommandResult(SHOWING_TABJOB_MESSAGE, false,
-                false, false, true);
+                true, true);
         assertCommandSuccess(new TabJob(), model, expectedCommandResult, expectedModel);
     }
 }

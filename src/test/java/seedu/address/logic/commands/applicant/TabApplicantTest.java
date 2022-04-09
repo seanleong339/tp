@@ -14,8 +14,8 @@ public class TabApplicantTest {
 
     @Test
     public void execute_exit_success() {
-        CommandResult expectedCommandResult = new CommandResult(SHOWING_TABAPPLICANT_MESSAGE, false,
-                false, true, false);
+        CommandResult expectedCommandResult = new CommandResult(SHOWING_TABAPPLICANT_MESSAGE,
+                true, false, true);
         assertCommandSuccess(new TabApplicant(), model, expectedCommandResult, expectedModel);
     }
 }
