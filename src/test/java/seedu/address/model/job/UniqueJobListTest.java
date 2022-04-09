@@ -2,6 +2,7 @@ package seedu.address.model.job;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -165,5 +166,21 @@ class UniqueJobListTest {
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () ->
                 uniqueJobList.asUnmodifiableObservableList().remove(0));
+    }
+
+    @Test
+    public void hashcode() {
+        // same values -> returns same hashcode
+        assertEquals(uniqueJobList.hashCode(), new UniqueJobList().hashCode());
+
+        // add an Applicant into second Unique Applicant List  -> returns different hashcode
+        UniqueJobList expectedUniqueJobList = new UniqueJobList();
+        expectedUniqueJobList.add(DATA_ANALYSIS);
+        assertNotEquals(uniqueJobList.hashCode(), expectedUniqueJobList.hashCode());
+
+        // add the same Applicant into first Unique Applicant List, both have the same Applicant inside list
+        // -> return same hashcode
+        uniqueJobList.add(DATA_ANALYSIS);
+        assertEquals(uniqueJobList.hashCode(), expectedUniqueJobList.hashCode());
     }
 }
