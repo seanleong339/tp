@@ -14,6 +14,6 @@ public class TabJob extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(SHOWING_TABJOB_MESSAGE, false, false, false, true);
+        return new CommandResult(SHOWING_TABJOB_MESSAGE, false, true, true);
     }
 }

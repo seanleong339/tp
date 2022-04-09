@@ -14,6 +14,6 @@ public class TabApplicant extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(SHOWING_TABAPPLICANT_MESSAGE, false, false, true, false);
+        return new CommandResult(SHOWING_TABAPPLICANT_MESSAGE, true, false, true);
     }
 }
