@@ -140,9 +140,54 @@ The `Model` component,
 <img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in json format, and read them back into corresponding objects.
+* saves both ReCLIne data and user preference data in json format, and read them back into corresponding objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+
+The `JsonAdaptedApplicant` and `JsonAdaptedJob` classes are used to convert the Job and Applicant models to and from their JSON format.
+`idCount` is an integer that represents the job id to be assigned. When a new Job is added, it will be assigned the current `idCount` as its
+job Id. `idCount` will then be incremented, and saved.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** Ensure that the `idCount` is not smaller than any of the current Job ids in the Job list. This is because Job Id has to be unique, and since `idCount` is always incremented, it will result in duplicate ids in the application. <br>
+</div>
+
+The `JsonSerializableAddressBook` converts the current ReCLIne into a JSON file using the 2 classes, `JsonAdaptedApplicant` and `JsonAdaptedJob`. The idCount integer
+in ReCLIne is stored directly without the use of any wrapper class.
+
+The diagram below shows the structure of the JSON file. Applicants are stored in an array in the "applicant" property, while Jobs are stored in an array in "jobs".
+
+<img src="images/Storage.png" width="450" />
+
+To ensure that the data file is readable by the application, the user must ensure that the data file follows the JSON format shown
+below. Take note of the JSON properties, they are **case-sensitive**, and ensure that the property name matches the ones shown **exactly**.
+
+```
+{
+ "applicants" : [ {
+    "name" : "Alice Tan",
+    "phone" : "98567843",
+    "email" : "alicetan@example.com",
+    "address" : "123, Jurong West Ave 6, #08-111",
+    "tagged" : [ "Applicant" ],
+    "nric" : "S9920202A",
+    "job" : "2",
+    "qualification" : "Degree in Sociology",
+    "dateApplied" : "2022-02-12",
+    "interviewDate" : "2022-03-18",
+    "applicationStatus" : "1"
+  }] ,
+  "jobs" : [ {
+    "jobTitle" : "Data Analyst",
+    "companyName" : "Facebook",
+    "id" : "1",
+    "address" : "9 Straits View, Marina One",
+    "qualification" : "Degree in Data Science",
+    "jobStatus" : "filled",
+    "position" : "ft",
+    "salary" : "6000-8000"
+  }] ,
+  "idCount" : 11
+  }
+```
 
 ### Common classes
 
