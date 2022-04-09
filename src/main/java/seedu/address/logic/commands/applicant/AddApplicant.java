@@ -42,7 +42,7 @@ public class AddApplicant extends Command {
     public static final String MESSAGE_DUPLICATE_APPLICANT = "This applicant already exists in the address book. "
             + "Applicants are considered duplicates if they have the same NRIC, email or phone number.";
     public static final String MESSAGE_INVALID_FIELDS = "Your command has an invalid field that should be added by"
-            + " editapplicant (InterviewDate, i/, or Qualification, q/, or JobId, j/.";
+            + " editapplicant\n (InterviewDate, i/, or Qualification, q/, or JobId, j/).";
 
     private final Applicant toAdd;
 
@@ -58,8 +58,8 @@ public class AddApplicant extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasApplicant(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_APPLICANT);
+        if (model.hasApplicant (toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_APPLICANT );
         }
 
         model.addApplicant(toAdd);

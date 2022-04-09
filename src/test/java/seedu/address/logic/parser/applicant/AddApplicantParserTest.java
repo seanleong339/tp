@@ -15,6 +15,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC;
 import static seedu.address.logic.commands.applicant.AddApplicant.MESSAGE_INVALID_FIELDS;
+import static seedu.address.logic.commands.applicant.AddApplicant.MESSAGE_USAGE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
@@ -52,7 +53,7 @@ class AddApplicantParserTest {
 
     @Test
     void parse_missingField_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddApplicant.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE);
 
         //Missing name prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
@@ -70,7 +71,7 @@ class AddApplicantParserTest {
 
     @Test
     void parse_extraField_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_FIELDS, AddApplicant.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_FIELDS + "\n" + MESSAGE_USAGE);
 
         //Contains InterviewDate
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
