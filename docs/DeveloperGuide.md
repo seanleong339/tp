@@ -350,6 +350,9 @@ The following sequence diagram shows how the `deleteapplicant` command works:
 
 ![DeleteApplicantSequenceDiagram](images/DeleteApplicantSequenceDiagram.png)
 
+### AddJob feature 
+The design implementation for AddJob is similar to that for AddApplicant, but with classes to add a Job instead of Applicant. Refer to the section above on AddApplicant for the design considerations.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -803,9 +806,11 @@ testers are expected to do more *exploratory* testing.
       1. If the data file has been corrupted, or is unable to be read by ReCLIne for any reason, the application will
     start with an empty list for both applicants and jobs. A user can look out for this log message when he starts
          the application to confirm. `"WARNING: Data file not in the correct format. Will be starting with an empty ReCLIne"`
-      2. To restart the application with a sampledata book, users will need to delete the data folder generated in the same folder
+         
+   3. Solutions      
+      1. To restart the application with a sampledata book, users will need to delete the data folder generated in the same folder
     as their ReCLIne.jar file.
-      3. If the user is familiar with the JSON format, and wants to fix the corrupted file, he can attempt to do so by opening
+      2. If the user is familiar with the JSON format, and wants to fix the corrupted file, he can attempt to do so by opening
     the `ReCLIne.json` file in the data folder, and try fixing the format error. Refer to the [storage section](DeveloperGuide.md#storage-component) of this Developer Guide
          to see the storage file format.
 
