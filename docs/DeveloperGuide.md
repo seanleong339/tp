@@ -158,8 +158,9 @@ The diagram below shows the structure of the JSON file. Applicants are stored in
 <img src="images/Storage.png" width="450" />
 
 To ensure that the data file is readable by the application, the user must ensure that the data file follows the JSON format shown
-below. Take note of the JSON properties, they are **case-sensitive**, and ensure that the property name matches the ones shown **exactly**.
+below. Take note of the JSON properties, they are **case-sensitive**, and ensure that the JSON object properties match the ones shown **exactly**.
 
+__Sample ReCLIne.json__
 ```
 {
  "applicants" : [ {
@@ -186,7 +187,7 @@ below. Take note of the JSON properties, they are **case-sensitive**, and ensure
     "salary" : "6000-8000"
   }] ,
   "idCount" : 11
-  }
+}
 ```
 
 ### Common classes
