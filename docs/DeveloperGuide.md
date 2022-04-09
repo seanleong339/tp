@@ -153,7 +153,7 @@ job Id. `idCount` will then be incremented, and saved.
 The `JsonSerializableAddressBook` converts the current ReCLIne into a JSON file using the 2 classes, `JsonAdaptedApplicant` and `JsonAdaptedJob`. The idCount integer
 in ReCLIne is stored directly without the use of any wrapper class.
 
-The diagram below shows the structure of the JSON file. Applicants are stored in an array in the "applicant" property, while Jobs are stored in an array in "jobs".
+The diagram below shows the structure of the JSON file. Applicants are stored in an array in the "applicants" property, while Jobs are stored in an array in "jobs".
 
 <img src="images/Storage.png" width="450" />
 
