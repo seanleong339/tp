@@ -30,7 +30,6 @@ public class MarkApplicant extends Command {
             + PREFIX_STATUS + "accepted";
 
     public static final String MESSAGE_SUCCESS = "Updated Applicant %1$s's status to: %2$s";
-    public static final String MESSAGE_INVALID_APPLICANT_STATUS = "Applicant status %1$s does not correspond to index.";
 
     private final Index index;
     private final ApplicantStatus applicantStatus;
@@ -62,8 +61,8 @@ public class MarkApplicant extends Command {
 
         model.setApplicant(applicantToMark, markedApplicant);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, applicantToMark, applicantStatus), true, false,
-                true);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, applicantToMark, applicantStatus), true,
+                false, true);
     }
 
     @Override

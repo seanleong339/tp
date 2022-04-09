@@ -11,12 +11,15 @@ public class CommandResultTest {
     @Test
     public void equals() {
         CommandResult commandResult = new CommandResult("feedback");
+        System.out.print(commandResult.isResetInfoPanel());
 
         // same values -> returns true
         assertTrue(commandResult.equals(new CommandResult("feedback")));
         assertTrue(commandResult.equals(new CommandResult("feedback", false, false)));
         assertTrue(commandResult.equals(new CommandResult("feedback", false,
-                false, false, false)));
+                false, false)));
+        assertTrue(commandResult.equals(new CommandResult("feedback", false,
+                false, false, false, false)));
 
         // same object -> returns true
         assertTrue(commandResult.equals(commandResult));
@@ -37,12 +40,14 @@ public class CommandResultTest {
         assertFalse(commandResult.equals(new CommandResult("feedback", false, true)));
 
         // different list applicant value -> returns false
-        assertFalse(commandResult.equals(new CommandResult("feedback", false, false,
-                true, false)));
+        assertFalse(commandResult.equals(new CommandResult("feedback", true,
+                false, false)));
 
         // different list job value -> returns false
-        assertFalse(commandResult.equals(new CommandResult("feedback", false, false,
-                false, true)));
+        assertFalse(commandResult.equals(new CommandResult("feedback", false, true, false)));
+
+        // different reset panel value -> returns false
+        assertFalse(commandResult.equals(new CommandResult("feedback", false, false, true)));
     }
 
     @Test
@@ -64,11 +69,13 @@ public class CommandResultTest {
                 true).hashCode());
 
         // different list applicant value -> returns different hashcode
-        assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false,
-                false, true, false).hashCode());
+        assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", true, false, false).hashCode());
 
         // different list job value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false,
-                false, false, true).hashCode());
+               true, false).hashCode());
+
+        // different reset panel value -> returns different hashcode
+        assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, false, true).hashCode());
     }
 }

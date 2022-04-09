@@ -16,6 +16,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -70,6 +71,8 @@ public class CommandTestUtil {
     public static final String VALID_JOB_TWO = "12678";
     public static final String VALID_QUALIFICATION = "Degree in Computing";
     public static final String VALID_QUALIFICATION_TWO = "Degree in Engineering";
+    public static final String VALID_APPLICANT_STATUS = "3";
+    public static final String VALID_APPLICANT_STATUS_TWO = "0";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -87,6 +90,8 @@ public class CommandTestUtil {
     public static final String QUALIFICATION_DESC = " " + PREFIX_QUALIFICATION + VALID_QUALIFICATION;
     public static final String QUALIFICATION_TWO_DESC = " " + PREFIX_QUALIFICATION + VALID_QUALIFICATION_TWO;
     public static final String INTERVIEWDATE_DESC = " " + PREFIX_DATEINTERVIEW + VALID_DATE;
+    public static final String APPLICANT_STATUS_DESC = " " + PREFIX_STATUS + "accepted";
+    public static final String APPLICANT_STATUS_DESC_TWO = " " + PREFIX_STATUS + "rejected";
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
@@ -96,6 +101,9 @@ public class CommandTestUtil {
     public static final String INVALID_NRIC = " " + PREFIX_NRIC + "1234567d"; // nric must end and start with alphabet
     public static final String INVALID_DATEAPPLIED = " " + PREFIX_DATEAPPLIED + "123-fs-12"; // yyyy-mm-dd format
     public static final String INVALID_INTERVIEWDATE = " " + PREFIX_DATEINTERVIEW + "fsd-fsd-fsd"; // yyyy-mm-dd format
+    // Strings other than 'accepted', 'interviewed', 'pending', or 'rejected' are not allowed
+    public static final String INVALID_APPLICANT_STATUS = " " + PREFIX_STATUS + "H3LL0";
+
     // cannot have special characters in qualification
     public static final String INVALID_QUALIFICATION = " " + PREFIX_QUALIFICATION + " **degree in science";
     public static final String INVALID_JOB = " " + PREFIX_JOB + "a12345"; // job id must be all numbers
@@ -140,9 +148,6 @@ public class CommandTestUtil {
             + VALID_COMPANY_NAME_PROJECT_MANAGER;
     public static final String JOBID_DESC_PROJECT_MANAGER = " " + PREFIX_JOBID + VALID_JOB_ID_PROJECT_MANAGER;
     public static final String POSITION_DESC_DATA_ANALYSIS = " " + PREFIX_JOB_POSITION + VALID_POSITION_FULL_TIME;
-    public static final String POSITION_DESC_PROJECT_MANAGER = " " + PREFIX_JOB_POSITION + VALID_POSITION_FULL_TIME;
-    public static final String SALARY_DESC_DATA_ANALYSIS = " " + PREFIX_SALARY + VALID_SALARY_LOW_DATA_ANALYSIS + "-"
-            + VALID_SALARY_HIGH_DATA_ANALYSIS;
     public static final String SALARY_DESC_PROJECT_MANAGER = " " + PREFIX_SALARY + VALID_SALARY_LOW_PROJECT_MANAGER
             + "-" + VALID_SALARY_HIGH_PROJECT_MANAGER;
 
@@ -280,6 +285,4 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredJobList().size());
 
     }
-
-
 }

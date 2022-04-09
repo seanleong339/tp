@@ -59,7 +59,7 @@ public class AddApplicant extends Command {
         requireNonNull(model);
 
         if (model.hasApplicant (toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_APPLICANT );
+            throw new CommandException(MESSAGE_DUPLICATE_APPLICANT);
         }
 
         model.addApplicant(toAdd);
