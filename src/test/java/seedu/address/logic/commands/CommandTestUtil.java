@@ -16,6 +16,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -100,7 +101,8 @@ public class CommandTestUtil {
     public static final String INVALID_NRIC = " " + PREFIX_NRIC + "1234567d"; // nric must end and start with alphabet
     public static final String INVALID_DATEAPPLIED = " " + PREFIX_DATEAPPLIED + "123-fs-12"; // yyyy-mm-dd format
     public static final String INVALID_INTERVIEWDATE = " " + PREFIX_DATEINTERVIEW + "fsd-fsd-fsd"; // yyyy-mm-dd format
-    public static final String INVALID_APPLICANT_STATUS = " " + PREFIX_STATUS + "H3LL0"; // not accepted, interviewed, pending, or rejected
+    // Strings other than 'accepted', 'interviewed', 'pending', or 'rejected' are not allowed
+    public static final String INVALID_APPLICANT_STATUS = " " + PREFIX_STATUS + "H3LL0";
 
     // cannot have special characters in qualification
     public static final String INVALID_QUALIFICATION = " " + PREFIX_QUALIFICATION + " **degree in science";

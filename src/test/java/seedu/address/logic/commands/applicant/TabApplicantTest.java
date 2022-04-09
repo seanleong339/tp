@@ -1,12 +1,14 @@
 package seedu.address.logic.commands.applicant;
 
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.applicant.TabApplicant.SHOWING_TABAPPLICANT_MESSAGE;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.applicant.TabApplicant.SHOWING_TABAPPLICANT_MESSAGE;
 
 public class TabApplicantTest {
     private Model model = new ModelManager();

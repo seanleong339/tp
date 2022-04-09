@@ -1,12 +1,13 @@
 package seedu.address.logic.commands.job;
 
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.job.TabJob.SHOWING_TABJOB_MESSAGE;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.job.TabJob.SHOWING_TABJOB_MESSAGE;
 
 public class TabJobTest {
     private Model model = new ModelManager();

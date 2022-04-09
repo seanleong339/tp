@@ -11,8 +11,8 @@ public class ApplicantStatus {
     /**
      * The error message for invalid applicant status received.
      */
-    public static final String MESSAGE_CONSTRAINTS = "Application status has to be either rejected, pending, " +
-            "interviewed, or accepted";
+    public static final String MESSAGE_CONSTRAINTS = "Application status has to be either rejected, pending, "
+            + "interviewed, or accepted";
     private static final String[] STATUSES = {"REJECTED", "PENDING", "INTERVIEWED", "ACCEPTED"};
     public final Integer applicantStatus;
 
