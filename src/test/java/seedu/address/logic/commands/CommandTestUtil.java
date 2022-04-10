@@ -49,10 +49,10 @@ public class CommandTestUtil {
     public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_NAME_CHARLIE = "Charlie Goh";
     public static final String VALID_NAME_DON = "Don Lee";
-    public static final String VALID_PHONE_AMY = "11111111";
-    public static final String VALID_PHONE_BOB = "22222222";
-    public static final String VALID_PHONE_CHARLIE = "33333333";
-    public static final String VALID_PHONE_DON = "44444444";
+    public static final String VALID_PHONE_AMY = "98134712";
+    public static final String VALID_PHONE_BOB = "82914455";
+    public static final String VALID_PHONE_CHARLIE = "91823456";
+    public static final String VALID_PHONE_DON = "91824856";
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
     public static final String VALID_EMAIL_CHARLIE = "charlie@example.com";
