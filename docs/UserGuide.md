@@ -575,7 +575,7 @@ Format (search via job ID): `findjob id/[ID]`
 
 ***flag/[Attribute]***
 
-`jt/[KEYWORD] KEYWORD`: Search for job title containing the `[KEYWORD]`. 
+`jt/[KEYWORD] KEYWORDS`: Search for job title containing the `[KEYWORD]`. 
 * The search is case-insensitive. e.g. `engineer` will match `Engineer`
 * The order of the keywords does not matter. e.g. `Software Engineer` will match `Engineer Software`
 * Only full words will be matched e.g. `Software` will not match `Soft`
@@ -599,7 +599,7 @@ Format: `listjob` <br>
 
 ### Switch to tab containing the JobList: `tabjob`
 
-Switches to the `job list` tab in the GUI (the changes are reflected on the application window
+Switches to the `job list` tab in the GUI (the changes are reflected on the application window)
 
 Format: `tabjob` <br>
 
