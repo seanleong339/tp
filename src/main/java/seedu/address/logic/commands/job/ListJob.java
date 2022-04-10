@@ -25,7 +25,7 @@ public class ListJob extends Command {
         if (model.getFilteredJobList().size() == 0) {
             return new CommandResult(MESSAGE_EMPTY_LIST);
         } else {
-            return new CommandResult(MESSAGE_SUCCESS);
+            return new CommandResult(MESSAGE_SUCCESS, false, true, false);
         }
     }
 }

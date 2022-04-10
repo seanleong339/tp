@@ -372,7 +372,7 @@ The following sequence diagram shows how the `deleteapplicant` command works:
 ![DeleteApplicantSequenceDiagram](images/DeleteApplicantSequenceDiagram.png)
 
 ### AddJob feature 
-The design implementation for AddJob is similar to that for AddApplicant, but with classes to add a Job instead of Applicant. Refer to the section above on AddApplicant for the design considerations.
+The design implementation for AddJob is similar to that for AddApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#addapplicant-feature) on AddApplicant for the design considerations.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -835,4 +835,3 @@ testers are expected to do more *exploratory* testing.
     the `ReCLIne.json` file in the data folder, and try fixing the format error. Refer to the [storage section](DeveloperGuide.md#storage-component) of this Developer Guide
          to see the storage file format.
 
-1. _{ more test cases …​ }_
