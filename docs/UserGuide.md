@@ -312,6 +312,8 @@ Format: `markapplicant *[INDEX] *s/[STATUS]`
 `s/[STATUS]`: Flag to mark the applicant status of the applicant. `[STATUS]` must be either
 `pending`, `interviewed`, `accepted`, or `rejected`.
 
+**Tip:** All fields are mandatory for the `markapplicant` command. Fill in fields in the stipulated order.
+
 Example:
 
 `markapplicant 104 s/rejected`
