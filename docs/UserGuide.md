@@ -347,8 +347,7 @@ Format: `sortapplicant *by/[ATTRIBUTE]`
 *flag/[Attribute]*
 
 `*by/[ATTRIBUTE]`: Flag to mark the attribute used to sort the applicant list. [ATTRIBUTE] must be either
-dateapplied, interview, job
-
+`dateapplied`, `interview`, or `job`.
 
 Example:
 
