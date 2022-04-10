@@ -178,7 +178,7 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
             *d/[DATEAPPLIED] t/[TAG]…​`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
 
 * **All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.
 </div>
@@ -221,9 +221,10 @@ nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] t/[TAG]…​`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
 
 * Just input the fields that you would like to change for the specific index number.
+  
 * To leave out fields, **skip the flag and attribute** completely.
 </div>
 
@@ -301,9 +302,10 @@ Mark applicant status.
 Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.**
+**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
 * **All fields are compulsory for `markapplicant`**
+
 </div>
 
 *flag/[Attribute]*
@@ -340,7 +342,7 @@ Sorts the list of applicants by a given attribute.
 Format: `sortapplicant *by/[ATTRIBUTE]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.**
+**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
 * All fields for `sortapplicant` are compulsory.
 </div>
@@ -406,9 +408,9 @@ Adds a new job posting to ReCLIne
 Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
-* **All fields are compulsory for `addjob``**.
+* **All fields are compulsory for `addjob`**.
 </div>
 
 *flag/[Attribute]:*
@@ -424,7 +426,7 @@ Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *po
 `*pos/[POSITION]`: Type of job, whether part-time or full time.
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The `[POSITION]` field only accepts either `ft` - "full time" or `pt` - "part time" as an input. ReCLIne will output an error is anything
+**Note:** The `[POSITION]` field only accepts either `ft` - **"full time"** or `pt` - **"part time"** as an input. ReCLIne will output an error is anything
 else is inputted.
 </div>
 
@@ -432,9 +434,9 @@ else is inputted.
 1000,2000,3000,...
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The inputted `[SALARY]` must be a range. The lower bound of the range cannot be larger than the upper bound 
+**Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
 of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
-A range where the lower bound is equal to the upper bound is accepted.
+A range where the **lower bound is equal to the upper bound** is **accepted**.
 </div>
 
 Example:
@@ -455,7 +457,7 @@ Format: `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
 
 * Just input the fields that you would like to change for the specific index number.
 * To leave out fields, **skip the flag and attribute** completely.
@@ -476,7 +478,7 @@ q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 `pos/[POSITION]` : Update Job's position to `[POSITION]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The `[POSITION]` field only accepts either `ft` - "full time" or `pt` - "part time" as an input. ReCLIne will output an error is anything
+**Note:** The `[POSITION]` field only accepts either `ft` - **"full time"** or `pt` - **"part time"** as an input. ReCLIne will output an error is anything
 else is inputted.
 
 </div>
@@ -484,9 +486,9 @@ else is inputted.
 `sal/[SALARY]` : Update the Job to edit the salary to `[SALARY]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The inputted `[SALARY]` must be a range. The lower bound of the range cannot be larger than the upper bound 
+**Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
 of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
-A range where the lower bound is equal to the upper bound is accepted. For example "4000 - 4000" is allowed. This 
+A range where the **lower bound is equal to the upper bound** is **accepted**. For example "4000 - 4000" is allowed. This 
 indicates that the salary is not a range, but rather a fixed amount.
 
 </div>
@@ -517,7 +519,7 @@ Example:
 
 `deletejob 1`
 
-*Deletes the job at index 1 from the job list of ReCLIne.
+* Deletes the job at index 1 from the job list of ReCLIne.
 
 
 ### Marking a Job: `markjob`
@@ -526,7 +528,7 @@ Marks an existing job posting as filled or vacant.
 Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.**
+**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
 * **All fields are compulsory for `markjob`**
 </div>
@@ -553,7 +555,7 @@ Example:
 
 ### Sorting jobs by Job Status: `sortjob`
 
-Sort the jobs in the job list of ReCLIne by the job status. Job status can be either 'filled' or 'vacant'.
+Sort the jobs in the job list of ReCLIne by the `Job Status`. Job status can be either `filled` or `vacant`.
 
 Format: `sortjob`
 
