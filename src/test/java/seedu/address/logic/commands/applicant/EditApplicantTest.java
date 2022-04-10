@@ -31,6 +31,7 @@ import seedu.address.testutil.ApplicantBuilder;
 import seedu.address.testutil.EditApplicantDescriptorBuilder;
 import seedu.address.testutil.TypicalApplicants;
 
+
 class EditApplicantTest {
     private Model model = new ModelManager(TypicalApplicants.getTypicalAddressBook(), new UserPrefs());
     @Test
@@ -103,24 +104,24 @@ class EditApplicantTest {
     }
 
     @Test
-    public void execute_duplicateApplicantUnfilteredList_failure() {
+    public void execute_sameDetailsApplicantUnfilteredList_failure() {
         Applicant firstApplicant = model.getFilteredApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
         EditApplicant.EditApplicantDescriptor descriptor = new EditApplicantDescriptorBuilder(firstApplicant).build();
-        EditApplicant editCommand = new EditApplicant(INDEX_SECOND_PERSON, descriptor);
+        EditApplicant editCommand = new EditApplicant(INDEX_FIRST_PERSON, descriptor);
 
-        assertCommandFailure(editCommand, model, EditApplicant.MESSAGE_DUPLICATE_APPLICANT);
+        assertCommandFailure(editCommand, model, EditApplicant.MESSAGE_SAME_DETAILS_AS_BEFORE);
     }
 
     @Test
-    public void execute_duplicateApplicantFilteredList_failure() {
+    public void execute_sameDetailsApplicantFilteredList_failure() {
         showApplicantAtIndex(model, INDEX_FIRST_PERSON);
 
         // edit Applicant in filtered list into a duplicate in address book
-        Applicant applicantInList = model.getAddressBook().getApplicantList().get(INDEX_SECOND_PERSON.getZeroBased());
+        Applicant applicantInList = model.getAddressBook().getApplicantList().get(INDEX_FIRST_PERSON.getZeroBased());
         EditApplicant editCommand = new EditApplicant(INDEX_FIRST_PERSON,
                 new EditApplicantDescriptorBuilder(applicantInList).build());
 
-        assertCommandFailure(editCommand, model, EditApplicant.MESSAGE_DUPLICATE_APPLICANT);
+        assertCommandFailure(editCommand, model, EditApplicant.MESSAGE_SAME_DETAILS_AS_BEFORE);
     }
 
     @Test
@@ -238,3 +239,4 @@ class EditApplicantTest {
         assertFalse(standardCommand.equals(new EditApplicant(INDEX_FIRST_PERSON, DESC_DON)));
     }
 }
+
