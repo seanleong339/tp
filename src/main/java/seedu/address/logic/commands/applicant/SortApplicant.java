@@ -63,7 +63,7 @@ public class SortApplicant extends Command {
         requireNonNull(compareBy);
         checkArgument(isValid(compareBy), MESSAGE_CONSTRAINTS);
 
-        switch (compareBy) {
+        switch (compareBy.toLowerCase()) {
         case SORTAPPLICANT_BY_DATEAPPLIED:
             this.compareBy = COMPARE_BY_DATEAPPLIED;
             this.attribute = ATTRIBUTE_DATEAPPLIED;
