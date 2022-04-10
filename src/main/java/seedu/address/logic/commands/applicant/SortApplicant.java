@@ -26,7 +26,7 @@ public class SortApplicant extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all applicants by a given attribute.\n"
             + "Parameters: \n"
-            + PREFIX_SORTAPPLICANT + "ATTRIBUTE: "
+            + "*" + PREFIX_SORTAPPLICANT + "ATTRIBUTE: "
             + "ATTRIBUTE can be either dateapplied, interview or job \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_SORTAPPLICANT + "dateapplied";
