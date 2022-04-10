@@ -25,7 +25,7 @@ public class ListApplicant extends Command {
         if (model.getFilteredApplicantList().size() == 0) {
             return new CommandResult(MESSAGE_EMPTY_LIST);
         } else {
-            return new CommandResult(MESSAGE_SUCCESS);
+            return new CommandResult(MESSAGE_SUCCESS, true, false, true);
         }
     }
 }

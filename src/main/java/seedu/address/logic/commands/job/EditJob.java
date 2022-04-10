@@ -5,7 +5,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
@@ -45,9 +44,9 @@ public class EditJob extends Command {
             + PREFIX_JOB_POSITION + "[POSITION] "
             + PREFIX_SALARY + "[SALARY]\n"
             + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_JOBTITLE + "Financial Adviser "
             + PREFIX_COMPANY_NAME + "JP Morgan "
-            + PREFIX_QUALIFICATION + "Bachelor in Computing "
-            + PREFIX_JOB + "1234";
+            + PREFIX_QUALIFICATION + "Bachelor in Computing ";
 
     public static final String MESSAGE_EDIT_JOB_SUCCESS = "Edited Job: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

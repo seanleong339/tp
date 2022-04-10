@@ -17,7 +17,7 @@ public class DeleteJob extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the job identified by the index number used in the displayed job list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Parameters: *[INDEX] (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_JOB_SUCCESS = "Deleted job: %1$s";

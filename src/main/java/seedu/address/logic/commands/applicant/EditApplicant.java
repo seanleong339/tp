@@ -158,7 +158,6 @@ public class EditApplicant extends Command {
                 .orElse(applicantToEdit.getQualification());
         InterviewDate updatedInterviewDate = editApplicantDescriptor.getInterviewDate()
                 .orElse(applicantToEdit.getInterviewDate());
-        // TODO: Add Job update method as well
         JobId updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJobId());
         ApplicantStatus applicantStatus = applicantToEdit.getApplicantStatus();
 
