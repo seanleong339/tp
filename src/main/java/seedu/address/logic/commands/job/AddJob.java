@@ -25,7 +25,7 @@ public class AddJob extends Command {
             + "*" + PREFIX_ADDRESS + "ADDRESS "
             + "*" + PREFIX_QUALIFICATION + "QUALIFICATION "
             + "*" + PREFIX_JOB_POSITION + "POSITION "
-            + "*" + PREFIX_SALARY + "SALARY "
+            + "*" + PREFIX_SALARY + "SALARY \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_JOBTITLE + "Devops Engineer "
             + PREFIX_COMPANY_NAME + "Ebiz Pte Ltd "

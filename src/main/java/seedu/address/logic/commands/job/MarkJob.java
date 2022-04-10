@@ -22,8 +22,8 @@ public class MarkJob extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing job as 'filled' or 'vacant'. \n"
             + "The job is identified by the index number used in the displayed job list. \n"
             + "Parameters: \n"
-            + "INDEX (must be a positive integer) \n"
-            + PREFIX_JOBSTATUS + "JOB STATUS\n"
+            + "*[INDEX] (must be a positive integer) \n"
+            + "*" + PREFIX_JOBSTATUS + "JOB STATUS\n"
             + "Job status can be either filled or vacant"
             + "Example: markjob 1 js/filled";
     public static final String MESSAGE_SUCCESS = "Job status updated: %1$s";

@@ -26,13 +26,15 @@ class ListApplicantTest {
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListApplicant(), model, ListApplicant.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListApplicant(), model, ListApplicant.MESSAGE_SUCCESS,
+                true, false, true, expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showApplicantAtIndex(model, INDEX_FIRST_APPLICANT);
-        assertCommandSuccess(new ListApplicant(), model, ListApplicant.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListApplicant(), model, ListApplicant.MESSAGE_SUCCESS,
+                true, false, true, expectedModel);
     }
 
     @Test
