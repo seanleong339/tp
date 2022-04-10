@@ -396,7 +396,7 @@ Format: `listapplicant` <br>
 
 ### Switch to tab containing the ApplicantList: `tabapplicant`
 
-Switches to the `applicant list` tab in the GUI (the changes are reflected on the application window)
+Switches to the `applicant list` tab in the GUI, without listing all Applicants. (Keeps the result from `findapplicant`)
 
 Format: `tabapplicant` <br>
 
@@ -599,7 +599,7 @@ Format: `listjob` <br>
 
 ### Switch to tab containing the JobList: `tabjob`
 
-Switches to the `job list` tab in the GUI (the changes are reflected on the application window)
+Switches to the `job list` tab in the GUI, without listing all Jobs. (Keeps the result from `findjob`)
 
 Format: `tabjob` <br>
 
@@ -667,13 +667,13 @@ We would like to remind users again, if your changes to the data file makes its 
 
 **Q**: How do I transfer my data to another Computer?<br>
 
-**A**: <ol><li>Download the `ReCLIne.jar` to a new empty folder on your other Computer.</li>
-          <li>Run the application for the first time on your new device by double clicking on the `ReCLIne.jar` file.</li>
-          <li>Run the command `deletejob 1` to save a new data file.</li>
-          <li>In the folder containing your `ReCLIne.jar` go into the `data` folder.</li>
-          <li>Delete the `ReCLIne.json` file here, then copy the `ReCLIne.json` file on your old device to this folder. The file can be found in the same folder on your old device as your new device.</li> 
-       </ol>
-        The file structure of your new ReCLIne application should be as such after Step 2.
+**A**: 
+1. Download the `ReCLIne.jar` to a new empty folder on your other Computer.
+2. Run the application for the first time on your new device by double clicking on the `ReCLIne.jar` file.
+3. Run the command `deletejob 1` to save a new data file.
+4. In the folder containing your `ReCLIne.jar` go into the `data` folder.
+5. Delete the `ReCLIne.json` file here, then copy the `ReCLIne.json` file on your old device to this folder. The file can be found in the same folder on your old device as your new device. 
+        The file structure of the ReCLIne application folder in your new device should be as such after Step 2.
 ```
 folderContainingReCLIne
 | addressbook.log.0
