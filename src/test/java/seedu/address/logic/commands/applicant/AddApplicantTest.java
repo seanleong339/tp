@@ -37,7 +37,7 @@ class AddApplicantTest {
     void execute() throws Exception {
         Set<Tag> tagSet = new HashSet<>();
         tagSet.add(new Tag("testtag"));
-        Applicant test = new Applicant(new Name("John"), new Phone("1234567"), new Email("johnd@example.com"),
+        Applicant test = new Applicant(new Name("John"), new Phone("91827467"), new Email("johnd@example.com"),
                 new Address("311, Clementi Ave 2"), tagSet, new DateApplied("2022-12-12"),
                 new Nric("S1234567D"));
         AddApplicant testCommand = new AddApplicant(test);
@@ -196,6 +196,21 @@ class AddApplicantTest {
 
         @Override
         public void sortApplicant(Comparator<Applicant> sortBy) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Applicant getApplicantWithEmail(Email email) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Applicant getApplicantWithPhone(Phone phone) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Applicant getApplicantWithNric(Nric nric) {
             throw new AssertionError("This method should not be called.");
         }
     }

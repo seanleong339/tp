@@ -26,13 +26,13 @@ class ListJobTest {
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListJob(), model, ListJob.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListJob(), model, ListJob.MESSAGE_SUCCESS, false, true, false, expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showJobAtIndex(model, INDEX_FIRST_APPLICANT);
-        assertCommandSuccess(new ListJob(), model, ListJob.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListJob(), model, ListJob.MESSAGE_SUCCESS, false, true, false, expectedModel);
     }
 
     @Test

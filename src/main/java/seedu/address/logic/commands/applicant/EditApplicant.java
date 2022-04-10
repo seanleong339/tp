@@ -64,7 +64,6 @@ public class EditApplicant extends Command {
             + PREFIX_QUALIFICATION + "Bachelor in Computing "
             + PREFIX_JOB + "1234";
 
-    public static final String MESSAGE_NOT_IMPLEMENTED = "The EditApplicant feature is not completed yet.";
     public static final String MESSAGE_EDIT_APPLICANT_SUCCESS = "Edited Applicant: %1$s";
 
     public static final String MESSAGE_NOT_EDITED = "At least one field to edited must be provided.";
@@ -74,8 +73,9 @@ public class EditApplicant extends Command {
             + " is the same as the current details of the Applicant";
     public static final String MESSAGE_DATE_APPLIED_LATER_THAN_INTERVIEW_DATE = "The date applied by this applicant "
             + "is later than the interview date of this applicant.";
-
-
+    public static final String MESSAGE_DUPLICATE_EMAIL = "The edited Email of the applicant already exists.";
+    public static final String MESSAGE_DUPLICATE_NRIC = "The edited Nric of the applicant already exists.";
+    public static final String MESSAGE_DUPLICATE_PHONE = "The edited Phone number of the applicant already exists.";
 
     private final Index index;
     private final EditApplicantDescriptor editApplicantDescriptor;
@@ -109,8 +109,25 @@ public class EditApplicant extends Command {
         if (applicantToEdit.equals(editedApplicant)) {
             throw new CommandException(MESSAGE_SAME_DETAILS_AS_BEFORE);
         }
-        if (!applicantToEdit.isSameApplicantCompare(editedApplicant) && model.hasApplicant(editedApplicant)) {
-            throw new CommandException(MESSAGE_DUPLICATE_APPLICANT);
+        if (!applicantToEdit.getEmail().equals(editedApplicant.getEmail())) {
+            Applicant applicantWithEmail = model.getApplicantWithEmail(editedApplicant.getEmail());
+            if (applicantWithEmail != null) {
+                throw new CommandException(MESSAGE_DUPLICATE_EMAIL);
+            }
+        }
+
+        if (!applicantToEdit.getNric().equals(editedApplicant.getNric())) {
+            Applicant applicantWithNric = model.getApplicantWithNric(editedApplicant.getNric());
+            if (applicantWithNric != null) {
+                throw new CommandException(MESSAGE_DUPLICATE_NRIC);
+            }
+        }
+
+        if (!applicantToEdit.getPhone().equals(editedApplicant.getPhone())) {
+            Applicant applicantWithPhone = model.getApplicantWithPhone(editedApplicant.getPhone());
+            if (applicantWithPhone != null) {
+                throw new CommandException(MESSAGE_DUPLICATE_PHONE);
+            }
         }
 
         model.setApplicant(applicantToEdit, editedApplicant);
@@ -141,7 +158,6 @@ public class EditApplicant extends Command {
                 .orElse(applicantToEdit.getQualification());
         InterviewDate updatedInterviewDate = editApplicantDescriptor.getInterviewDate()
                 .orElse(applicantToEdit.getInterviewDate());
-        // TODO: Add Job update method as well
         JobId updatedJob = editApplicantDescriptor.getJobId().orElse(applicantToEdit.getJobId());
         ApplicantStatus applicantStatus = applicantToEdit.getApplicantStatus();
 

@@ -42,16 +42,16 @@ public class TypicalApplicants {
             .withDateApplied("2022-01-24").withNric("S9950505D").withInterviewDate("2022-01-31")
             .withJob("1").withQualification("degree in Business").withApplicationStatus("2")
             .withTags("friends").build();
-    public static final Applicant ELLE = new ApplicantBuilder().withName("Elle Meyer").withPhone("9482224")
+    public static final Applicant ELLE = new ApplicantBuilder().withName("Elle Meyer").withPhone("94822241")
             .withEmail("werner@example.com").withAddress("michegan ave").withApplicationStatus("2")
             .withDateApplied("2022-01-25").withNric("S9960606E").withInterviewDate("2022-02-01")
             .withJob("2").withQualification("degree in Data Science").build();
-    public static final Applicant FIONA = new ApplicantBuilder().withName("Fiona Kunz").withPhone("9482427")
+    public static final Applicant FIONA = new ApplicantBuilder().withName("Fiona Kunz").withPhone("94824271")
             .withEmail("lydia@example.com").withAddress("little tokyo").withApplicationStatus("3")
             .withDateApplied("2022-01-26").withNric("S9970707F").withInterviewDate("2022-02-02")
             .withJob("1").withQualification("degree in Real Estate")
             .build();
-    public static final Applicant GEORGE = new ApplicantBuilder().withName("George Best").withPhone("9482442")
+    public static final Applicant GEORGE = new ApplicantBuilder().withName("George Best").withPhone("94824421")
             .withEmail("anna@example.com").withAddress("4th street").withApplicationStatus("0")
             .withDateApplied("2022-01-27").withNric("S9980808G").withInterviewDate("2022-02-03")
             .withJob("1").withQualification("degree in Political Science")

@@ -91,7 +91,7 @@ public class LogicManagerTest {
         String addCommand = AddApplicant.COMMAND_WORD + NAME_DESC_AMY + " nric/ " + DEFAULT_NRIC
                 + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + " d/" + "2022-03-08";
         Set<Tag> tagSet = new HashSet<>();
-        Applicant expectedApplicant = new Applicant(new Name("Amy Bee"), new Phone("11111111"),
+        Applicant expectedApplicant = new Applicant(new Name("Amy Bee"), new Phone("98134712"),
                 new Email("amy@example.com"), new Address("Block 312, Amy Street 1"),
                 tagSet, new DateApplied("2022-03-08"), new Nric("S9901010A"));
         ModelManager expectedModel = new ModelManager();
