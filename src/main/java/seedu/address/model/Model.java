@@ -7,9 +7,12 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.Nric;
 import seedu.address.model.job.Job;
 import seedu.address.model.job.JobStatus;
+import seedu.address.model.person.Email;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
 
 /**
  * The API of the Model component.
@@ -199,4 +202,19 @@ public interface Model {
      * Sorts the applicant list by a given comparator.
      */
     void sortApplicant(Comparator<Applicant> sortBy);
+
+    /**
+     * Returns the {@code Applicant} with the {@code Email} provided if exists; or null if no such applicant.
+     */
+    Applicant getApplicantWithEmail(Email email);
+
+    /**
+     * Returns the {@code Applicant} with the {@code Nric} provided if exists; or null if no such applicant.
+     */
+    Applicant getApplicantWithNric(Nric nric);
+
+    /**
+     * Returns the {@code Applicant} with the {@code Phone} provided if exists; or null if no such applicant.
+     */
+    Applicant getApplicantWithPhone(Phone phone);
 }
