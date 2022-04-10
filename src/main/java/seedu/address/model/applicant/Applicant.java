@@ -199,6 +199,7 @@ public class Applicant {
                 && otherApplicant.getNric().equals(getNric())
                 && otherApplicant.getJobId().equals(getJobId())
                 && otherApplicant.getInterviewDate().equals(getInterviewDate())
+                && otherApplicant.getQualification().equals((getQualification()))
                 && otherApplicant.getApplicantStatus().equals((getApplicantStatus()));
     }
 
