@@ -73,9 +73,9 @@ public class EditApplicant extends Command {
             + " is the same as the current details of the Applicant";
     public static final String MESSAGE_DATE_APPLIED_LATER_THAN_INTERVIEW_DATE = "The date applied by this applicant "
             + "is later than the interview date of this applicant.";
-    public static final String MESSAGE_DUPLICATE_EMAIL = "The edited email of the applicant already exists.";
+    public static final String MESSAGE_DUPLICATE_EMAIL = "The edited Email of the applicant already exists.";
     public static final String MESSAGE_DUPLICATE_NRIC = "The edited Nric of the applicant already exists.";
-    public static final String MESSAGE_DUPLICATE_PHONE = "The edited phone number of the applicant already exists.";
+    public static final String MESSAGE_DUPLICATE_PHONE = "The edited Phone number of the applicant already exists.";
 
     private final Index index;
     private final EditApplicantDescriptor editApplicantDescriptor;
