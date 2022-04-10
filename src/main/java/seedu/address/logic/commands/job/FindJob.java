@@ -26,7 +26,7 @@ public class FindJob extends Command {
             + "findjob command will displays them as a list with index numbers.\n"
             + "Parameters (search via jobtitle keyword): " + PREFIX_JOBTITLE + "SEARCH_TYPE KEYWORD [KEYWORD]\n"
             + "Parameters (search via id): " + PREFIX_JOBID + "JOB ID\n"
-            + "Example: " + COMMAND_WORD + " " + PREFIX_JOBID + "designer\n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_JOBTITLE + "designer\n"
             + COMMAND_WORD + " " + PREFIX_JOBID + "1234";
 
 

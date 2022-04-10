@@ -22,8 +22,8 @@ public class MarkApplicant extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks an existing Applicant's status. "
             + " The applicant is identified by the index number used in the displayed applicant list. \n"
             + "Parameters: \n"
-            + "INDEX (must be a positive integer) \n"
-            + PREFIX_STATUS + "STATUS: "
+            + "*[INDEX] (must be a positive integer) \n"
+            + "*" + PREFIX_STATUS + "STATUS: "
             + "STATUS can be either rejected, pending, interviewed or accepted \n"
             + "Example: " + COMMAND_WORD + " "
             + "2 "
@@ -61,7 +61,7 @@ public class MarkApplicant extends Command {
 
         model.setApplicant(applicantToMark, markedApplicant);
         model.updateFilteredApplicantList(PREDICATE_SHOW_ALL_APPLICANTS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, applicantToMark, applicantStatus), true,
+        return new CommandResult(String.format(MESSAGE_SUCCESS, markedApplicant, applicantStatus), true,
                 false, true);
     }
 
