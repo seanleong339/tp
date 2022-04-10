@@ -566,7 +566,12 @@ Find jobs in the job list either by `Job Title` or by `Job ID`. Find jobs by Job
 `Job List` to the inputted keywords. Find jobs by `Job ID` by matching the job id in `Job List` to the inputted integer id.
 
 Format (search via job title): `findjob jt/KEYWORD [MORE_KEYWORDS]`
+
 Format (search via job ID): `findjob id/[ID]`
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** You can only find jobs by either `Job Title` or `ID`. It is not possible to search by both attributes.
+</div>
 
 ***flag/[Attribute]***
 
