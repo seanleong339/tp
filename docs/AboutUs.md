@@ -31,7 +31,7 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/seanleong339.png" width="200px">
 
 [[github](http://github.com/seanleong339)]
-[[PPP](https://ay2122s2-cs2103t-w15-1.github.io/tp/team/seanleong339.html)]
+[[Portfolio Page](https://ay2122s2-cs2103t-w15-1.github.io/tp/team/seanleong339.html)]
 
 * Role: Developer - Applicant Feature
 * Responsibilities: Code Quality

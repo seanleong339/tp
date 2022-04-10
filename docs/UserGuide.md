@@ -616,23 +616,68 @@ ReCLIne data are saved in the hard disk automatically after any command that cha
 
 ### Editing the data file
 
-ReCLIne data are saved as a JSON file `[JAR file location]/data/recline.json`. Advanced users are welcome to update data directly by editing that data file.
+Users who are unfamiliar with programming can safely ignore this section of the user guide.
+ReCLIne data are saved as a JSON file `[JAR file location]/data/ReCLIne.json`. We strongly advise users __not__ to edit the data file as a single wrong error such as naming the "applicants" array as "Applicants" will cause the data file to fail and start with an empty list.
+Advanced users who are familiar with Javascript and JSON objects are welcome to update data directly by editing that data file, and following the sample format shown below.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
+We would like to remind users again, if your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
 </div>
 
+```
+{
+ "applicants" : [ {
+    "name" : "Alice Tan",
+    "phone" : "98567843",
+    "email" : "alicetan@example.com",
+    "address" : "123, Jurong West Ave 6, #08-111",
+    "tagged" : [ "Applicant" ],
+    "nric" : "S9920202A",
+    "job" : "2",
+    "qualification" : "Degree in Sociology",
+    "dateApplied" : "2022-02-12",
+    "interviewDate" : "2022-03-18",
+    "applicationStatus" : "1"
+  }] ,
+  "jobs" : [ {
+    "jobTitle" : "Data Analyst",
+    "companyName" : "Facebook",
+    "id" : "1",
+    "address" : "9 Straits View, Marina One",
+    "qualification" : "Degree in Data Science",
+    "jobStatus" : "filled",
+    "position" : "ft",
+    "salary" : "6000-8000"
+  }] ,
+  "idCount" : 11
+}
+```
 
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ReCLIne home folder.
+
+**A**: <ol><li>Download the `ReCLIne.jar` to a new empty folder on your other Computer.</li>
+          <li>Run the application for the first time on your new device by double clicking on the `ReCLIne.jar` file.</li>
+          <li>Run the command `deletejob 1` to save a new data file.</li>
+          <li>In the folder containing your `ReCLIne.jar` go into the `data` folder.</li>
+          <li>Delete the `ReCLIne.json` file here, then copy the `ReCLIne.json` file on your old device to this folder. The file can be found in the same folder on your old device as your new device.</li> 
+       </ol>
+        The file structure of your new ReCLIne application should be as such after Step 2.
+```
+folderContainingReCLIne
+| addressbook.log.0
+| config.json
+| preferences.json
+| ReCLIne.jar
+|
+└─── data
+     | ReCLIne.json
+```
+       
 
 --------------------------------------------------------------------------------------------------------------------
 

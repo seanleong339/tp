@@ -49,13 +49,15 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=seanleong339&breakdown=true)
 
 * **Project management**:
-    * Manage the issue tracker, close completed issues and completed milestones.
+    * Manage the issue tracker, ensure that issues are resolved, close completed and irrelevant issues, and close completed milestones.
     * Managed release `v1.3.1` (1 release) on GitHub
     * Lead weekly meetings on project deliverables and tasks for the week.
 
 * **Documentation**:
     * User Guide:
         * Added documentation for the features `addapplicant` and `addjob` [\#72]()
+        * Added section on editing the data file
+        * Added new FAQ on how to transfer data to a new computer.
     * Developer Guide:
         * Added implementation details of the `addapplicant` feature, as well as the UML diagrams in that section.
         * Added documentation on how the storage components of ReCLIne store data, as well as the UML diagrams in that section.
