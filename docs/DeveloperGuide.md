@@ -160,9 +160,55 @@ The `Model` component,
 <img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in json format, and read them back into corresponding objects.
+* saves both ReCLIne data and user preference data in json format, and read them back into corresponding objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+
+The `JsonAdaptedApplicant` and `JsonAdaptedJob` classes are used to convert the Job and Applicant models to and from their JSON format.
+`idCount` is an integer that represents the job id to be assigned. When a new Job is added, it will be assigned the current `idCount` as its
+job Id. `idCount` will then be incremented, and saved.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** Ensure that the `idCount` is not smaller than any of the current Job ids in the Job list. This is because Job Id has to be unique, and since `idCount` is always incremented, it will result in duplicate ids in the application. <br>
+</div>
+
+The `JsonSerializableAddressBook` converts the current ReCLIne into a JSON file using the 2 classes, `JsonAdaptedApplicant` and `JsonAdaptedJob`. The idCount integer
+in ReCLIne is stored directly without the use of any wrapper class.
+
+The diagram below shows the structure of the JSON file. Applicants are stored in an array in the "applicants" property, while Jobs are stored in an array in "jobs".
+
+<img src="images/Storage.png" width="450" />
+
+To ensure that the data file is readable by the application, the user must ensure that the data file follows the JSON format shown
+below. Take note of the JSON properties, they are **case-sensitive**, and ensure that the JSON object properties match the ones shown **exactly**.
+
+__Sample ReCLIne.json__
+```
+{
+ "applicants" : [ {
+    "name" : "Alice Tan",
+    "phone" : "98567843",
+    "email" : "alicetan@example.com",
+    "address" : "123, Jurong West Ave 6, #08-111",
+    "tagged" : [ "Applicant" ],
+    "nric" : "S9920202A",
+    "job" : "2",
+    "qualification" : "Degree in Sociology",
+    "dateApplied" : "2022-02-12",
+    "interviewDate" : "2022-03-18",
+    "applicationStatus" : "1"
+  }] ,
+  "jobs" : [ {
+    "jobTitle" : "Data Analyst",
+    "companyName" : "Facebook",
+    "id" : "1",
+    "address" : "9 Straits View, Marina One",
+    "qualification" : "Degree in Data Science",
+    "jobStatus" : "filled",
+    "position" : "ft",
+    "salary" : "6000-8000"
+  }] ,
+  "idCount" : 11
+}
+```
 
 ### Common classes
 
@@ -324,6 +370,9 @@ The applicant will display the new applicant list without the deleted applicant 
 The following sequence diagram shows how the `deleteapplicant` command works:
 
 ![DeleteApplicantSequenceDiagram](images/DeleteApplicantSequenceDiagram.png)
+
+### AddJob feature 
+The design implementation for AddJob is similar to that for AddApplicant, but with classes to add a Job instead of Applicant. Refer to the section above on AddApplicant for the design considerations.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -721,6 +770,32 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Adding an Applicant
+1. Adding an Applicant to the application
+
+    1. Test case: `addapplicant n/Rick Sanchez nric/S2344567D p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21 t/lab-trained`
+        Expected: An applicant named Rick Sanchez, with all the information in the command above, will be added. However, his interview date,
+       job Id, Qualification and application status will all be "PENDING" as they have not been confirmed.
+       
+    2. Test case: `addapplicant n/Rick Sanchez p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21`
+    Expected: No applicant will be added. An error message with the correct command usage will be shown. 
+       
+    3. Test case: `addapplicant n/Rick Sanchez j/2 nric/S2344567D p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21 t/lab-trained`
+    Expected: No applicant will be added as command includes a field (j/) that should be added by editapplicant. An error message detailing the error and how
+       to use the command will be shown.
+       Other incorrect fields to try are `q/` and `i/`.
+       
+### Adding a Job
+1. Adding a Job to the application
+
+    1. Test case: `addjob jt/Devops Engineer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
+        Expected: A Job listing for Devops Engineer, including all the included information in the command above, will be added to the Job list.
+        The job status will always be vacant by default.
+       
+    2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
+        Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
+       
+
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -742,6 +817,22 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Missing data file
+      1. When ReCLIne cannot find a data file, it will automatically generate a sample data file containing sample data.
+    This happens by default when a user installs a new ReCLIne for the first time. A user can look out for this log 
+         message when he starts the application to confirm. 
+`"INFO: Data file not found. Will be starting with a sample ReCLIne"`
+         
+   2. Corrupted data file
+      1. If the data file has been corrupted, or is unable to be read by ReCLIne for any reason, the application will
+    start with an empty list for both applicants and jobs. A user can look out for this log message when he starts
+         the application to confirm. `"WARNING: Data file not in the correct format. Will be starting with an empty ReCLIne"`
+         
+   3. Solutions      
+      1. To restart the application with a sampledata book, users will need to delete the data folder generated in the same folder
+    as their ReCLIne.jar file.
+      2. If the user is familiar with the JSON format, and wants to fix the corrupted file, he can attempt to do so by opening
+    the `ReCLIne.json` file in the data folder, and try fixing the format error. Refer to the [storage section](DeveloperGuide.md#storage-component) of this Developer Guide
+         to see the storage file format.
 
 1. _{ more test cases …​ }_

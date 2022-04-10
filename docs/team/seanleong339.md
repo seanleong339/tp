@@ -57,7 +57,9 @@ Given below are my contributions to the project.
     * User Guide:
         * Added documentation for the features `addapplicant` and `addjob` [\#72]()
     * Developer Guide:
-        * Added implementation details of the `addapplicant` feature.
+        * Added implementation details of the `addapplicant` feature, as well as the UML diagrams in that section.
+        * Added documentation on how the storage components of ReCLIne store data, as well as the UML diagrams in that section.
+        * Added instruction for manual testing for adding an applicant an adding a job, as well as dealing with data file issues.
 
 
 * **Contribution to team-based tasks**:
