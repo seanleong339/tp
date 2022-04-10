@@ -49,7 +49,7 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=seanleong339&breakdown=true)
 
 * **Project management**:
-    * Manage the issue tracker, close completed issues and completed milestones.
+    * Manage the issue tracker, ensure that issues are resolved, close completed and irrelevant issues, and close completed milestones.
     * Managed release `v1.3.1` (1 release) on GitHub
     * Lead weekly meetings on project deliverables and tasks for the week.
 
