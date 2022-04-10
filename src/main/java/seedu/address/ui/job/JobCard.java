@@ -48,7 +48,7 @@ public class JobCard extends UiPart<Region> {
         index.setText(displayedIndex + ". ");
         jobTitle.setText(job.getJobTitle().toString());
         companyName.setText(job.getCompany().toString());
-        id.setText("#" + job.getJobId().toString());
+        id.setText("(Job ID: " + job.getJobId().toString() + ")");
         StyleUtil.setJobStatusStyle(status, job.getJobStatus().toString());
     }
 

@@ -20,14 +20,14 @@ public class AddJob extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a Job to ReCLIne. "
             + "Parameters: "
-            + PREFIX_JOBTITLE + "JOB TITLE "
-            + PREFIX_COMPANY_NAME + "COMPANY "
-            + PREFIX_ADDRESS + "ADDRESS "
-            + PREFIX_QUALIFICATION + "QUALIFICATION "
-            + PREFIX_JOB_POSITION + "POSITION "
-            + PREFIX_SALARY + "SALARY "
+            + "*" + PREFIX_JOBTITLE + "JOB TITLE "
+            + "*" + PREFIX_COMPANY_NAME + "COMPANY "
+            + "*" + PREFIX_ADDRESS + "ADDRESS "
+            + "*" + PREFIX_QUALIFICATION + "QUALIFICATION "
+            + "*" + PREFIX_JOB_POSITION + "POSITION "
+            + "*" + PREFIX_SALARY + "SALARY "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_JOBTITLE + "Software Developer "
+            + PREFIX_JOBTITLE + "Devops Engineer "
             + PREFIX_COMPANY_NAME + "Ebiz Pte Ltd "
             + PREFIX_ADDRESS + "59 Hougang Road Blk 38 "
             + PREFIX_QUALIFICATION + "Bachelors in Computer Science "
@@ -35,7 +35,8 @@ public class AddJob extends Command {
             + PREFIX_SALARY + "3000-4000 ";
 
     public static final String MESSAGE_SUCCESS = "New job added: %1$s";
-    public static final String MESSAGE_DUPLICATE_JOB = "This job already exists in the ReCLIne";
+    public static final String MESSAGE_DUPLICATE_JOB = "This job already exists in the ReCLIne. "
+            + "Jobs are considered to be duplicate if they have the same Company Name and Job Title.";
 
     private final Job toAdd;
 
@@ -55,12 +56,11 @@ public class AddJob extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_JOB);
         }
 
-        // Todo Use getIdCount() from ModelManager instead of new JobID after idCount is implemented
         Job jobWithId = new Job(toAdd.getJobTitle(), toAdd.getCompany(), new JobId(model.getIdCount()),
                 toAdd.getAddress(), toAdd.getQualification(), toAdd.getJobStatus(), toAdd.getPosition(),
                 toAdd.getSalary());
         model.addJob(jobWithId);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, jobWithId));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, jobWithId), false, true, true);
     }
 
     @Override

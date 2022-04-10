@@ -40,28 +40,28 @@ public class CommandResult {
     }
 
     /**
-     * Constructs a {@code CommandResult} with the specified fields except {@code resetPanel},
-     * {@code resetPanel} is set to default value.
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
+     * and other fields set to their default value.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
-                         boolean tabApplicant, boolean tabJob) {
-        this(feedbackToUser, showHelp, exit, tabApplicant, tabJob, false);
+    public CommandResult(String feedbackToUser) {
+        this(feedbackToUser, false, false, false, false, false);
     }
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
-        this(feedbackToUser, showHelp, exit, false, false);
+        this(feedbackToUser, showHelp, exit, false, false, false);
     }
 
     /**
-     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
-     * and other fields set to their default value.
+     * Constructs a {@code CommandResult} that makes appropriate changes to UI
      */
-    public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+    public CommandResult(String feedbackToUser, boolean tabApplicant, boolean tabJob, boolean resetPanel) {
+        this(feedbackToUser, false, false, tabApplicant, tabJob, resetPanel);
     }
+
+
 
     public String getFeedbackToUser() {
         return feedbackToUser;
@@ -103,11 +103,12 @@ public class CommandResult {
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit
                 && tabApplicant == otherCommandResult.tabApplicant
-                && tabJob == otherCommandResult.tabJob;
+                && tabJob == otherCommandResult.tabJob
+                && resetInfoPanel == otherCommandResult.resetInfoPanel;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit, tabApplicant, tabJob);
+        return Objects.hash(feedbackToUser, showHelp, exit, tabApplicant, tabJob, resetInfoPanel);
     }
 }

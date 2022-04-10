@@ -45,7 +45,7 @@ class EditJobTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setJob(model.getFilteredJobList().get(0), editedJob);
 
-        assertCommandSuccess(editJob, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editJob, model, expectedMessage, false, true, true, expectedModel);
     }
 
     @Test
@@ -67,20 +67,19 @@ class EditJobTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setJob(lastJob, editedJob);
 
-        assertCommandSuccess(editJob, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editJob, model, expectedMessage, false, true, true, expectedModel);
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_fieldsSpecifiedSameAsOriginalJob_failure() { //This check as well
         EditJob editJob =
                 new EditJob(INDEX_FIRST_PERSON, new EditJob.EditJobDescriptor());
         Job editedJob = model.getFilteredJobList().get(INDEX_FIRST_PERSON.getZeroBased());
 
-        String expectedMessage = String.format(EditJob.MESSAGE_EDIT_JOB_SUCCESS, editedJob);
+        String expectedMessage = String.format(EditJob.MESSAGE_SAME_DETAILS_AS_BEFORE);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        assertCommandFailure(editJob, model, expectedMessage);
 
-        assertCommandSuccess(editJob, model, expectedMessage, expectedModel);
     }
 
     @Test
@@ -97,7 +96,7 @@ class EditJobTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setJob(model.getFilteredJobList().get(0), editedJob);
 
-        assertCommandSuccess(editJob, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editJob, model, expectedMessage, false, true, true, expectedModel);
     }
 
     @Test

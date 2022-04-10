@@ -11,17 +11,9 @@ public class ApplicantStatus {
     /**
      * The error message for invalid applicant status received.
      */
-    public static final String MESSAGE_CONSTRAINTS = "Application status can take any positive integer value between "
-            + "0 and 3 inclusive, and it should not be blank";
-
-    private static final int APPLICANTSTATUS_REJECTED = 0;
-    private static final int APPLICANTSTATUS_PENDING = 1;
-    private static final int APPLICANTSTATUS_INTERVIEWED = 2;
-    private static final int APPLICANTSTATUS_ACCEPTED = 3;
-
+    public static final String MESSAGE_CONSTRAINTS = "Application status has to be either rejected, pending, "
+            + "interviewed, or accepted";
     private static final String[] STATUSES = {"REJECTED", "PENDING", "INTERVIEWED", "ACCEPTED"};
-    private static final String STATUS_OUT_OF_RANGE = "Applicant status should be within range 0 to 3.";
-
     public final Integer applicantStatus;
 
     /**
@@ -31,7 +23,7 @@ public class ApplicantStatus {
      */
     public ApplicantStatus(String status) {
         requireNonNull(status);
-        checkArgument(isValidStatus(status), STATUS_OUT_OF_RANGE);
+        checkArgument(isValidStatus(status), MESSAGE_CONSTRAINTS);
         applicantStatus = Integer.parseInt(status);
     }
 

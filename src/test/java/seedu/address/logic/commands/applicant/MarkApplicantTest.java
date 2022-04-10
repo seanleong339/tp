@@ -35,7 +35,7 @@ public class MarkApplicantTest {
         expectedModel.setApplicant(model.getFilteredApplicantList().get(INDEX_FIRST_APPLICANT.getZeroBased()),
                 applicantToMark);
 
-        assertCommandSuccess(markApplicant, model, expectedMessage, expectedModel);
+        assertCommandSuccess(markApplicant, model, expectedMessage, true, false, true, expectedModel);
     }
 
     @Test

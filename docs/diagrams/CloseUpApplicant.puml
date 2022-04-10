@@ -5,12 +5,7 @@ skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
 Package Model <<Rectangle>>{
-Class "<<interface>>\nReadOnlyAddressBook" as ReadOnlyAddressBook
-Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
-Class "<<interface>>\nModel" as Model
-Class AddressBook
 Class ModelManager
-Class UserPrefs
 
 Class UniqueApplicantList
 Class Applicant
@@ -26,30 +21,12 @@ Class Job_id
 Class Interview_Date
 Class Applicant_Status
 
-Class UniqueJobList
-Class Job
-Class Job_Title
-Class Company_Name
-Class Job_Status
-Class Position
-Class Salary
-
-
 }
 
 Class HiddenOutside #FFFFFF
-HiddenOutside ..> Model
+HiddenOutside ..> UniqueApplicantList
+HiddenOutside ..> ModelManager
 
-AddressBook .up.|> ReadOnlyAddressBook
-
-ModelManager .up.|> Model
-Model .right.> ReadOnlyUserPrefs
-Model .left.> ReadOnlyAddressBook
-ModelManager -left-> "1" AddressBook
-ModelManager -right-> "1" UserPrefs
-UserPrefs .up.|> ReadOnlyUserPrefs
-
-AddressBook *--> "1" UniqueApplicantList
 UniqueApplicantList --> "~* all" Applicant
 Applicant *--> Name
 Applicant *--> Phone
@@ -69,16 +46,5 @@ Address -[hidden]right-> Email
 
 ModelManager -->"~* filtered" Applicant
 
-AddressBook *--> "1" UniqueJobList
-UniqueJobList --> "~* all" Job
-Job *--> Job_Title
-Job *--> Company_Name
-Job *--> Job_id
-Job *--> Address
-Job *--> Qualification
-Job *--> Job_Status
-Job *--> Position
-Job *--> Salary
 
-ModelManager -->"~* filtered" Job
 @enduml

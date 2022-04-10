@@ -39,9 +39,7 @@ import seedu.address.model.tag.Tag;
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
 public class ParserUtil {
-
     public static final String MESSAGE_INVALID_ID = "ID is not a non-zero unsigned integer.";
-    public static final String MESSAGE_INVALID_PREDICATE = "The predicate has to be either jobtitle or name";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -295,13 +293,13 @@ public class ParserUtil {
      * trimmed.
      * @throws ParseException if the given {@code id} is invalid.
      */
-    public static Integer parseId(String id) throws ParseException {
+    public static String parseId(String id) throws ParseException {
         String trimmedId = id.trim();
         // TODO: check if the ID is valid (there is applicant associated with the ID)
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedId)) {
             throw new ParseException(MESSAGE_INVALID_ID);
         }
-        return Integer.parseInt(trimmedId);
+        return trimmedId;
     }
 
     /**
@@ -372,19 +370,13 @@ public class ParserUtil {
         if (trimmedKeyword.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
         }
-
         if (isName) {
             String[] jobTitleKeywords = trimmedKeyword.split("\\s+");
             return new NameJobContainsKeywordsPredicate(Arrays.asList(jobTitleKeywords));
         } else if (isID) {
-            try {
-                int id = Integer.parseInt(trimmedKeyword);
-            } catch (NumberFormatException e) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
-            }
-            return new JobIdSamePredicate(trimmedKeyword);
+            return new JobIdSamePredicate(parseId(trimmedKeyword));
         } else {
-            throw new ParseException(MESSAGE_INVALID_PREDICATE);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindJob.MESSAGE_USAGE));
         }
     }
 }
