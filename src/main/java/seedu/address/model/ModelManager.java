@@ -13,7 +13,6 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.applicant.Applicant;
-import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.job.Job;
 import seedu.address.model.job.JobStatus;
