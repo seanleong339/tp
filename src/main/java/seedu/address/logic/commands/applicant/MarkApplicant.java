@@ -30,8 +30,6 @@ public class MarkApplicant extends Command {
             + PREFIX_STATUS + "accepted";
 
     public static final String MESSAGE_SUCCESS = "Updated Applicant %1$s's status to: %2$s";
-    public static final String MESSAGE_APPLICANTSTATUS_UP_TO_DATE = "This applicant is already marked '%1$s'.";
-
 
     private final Index index;
     private final ApplicantStatus applicantStatus;
@@ -59,12 +57,6 @@ public class MarkApplicant extends Command {
         }
 
         Applicant applicantToMark = lastShownList.get(index.getZeroBased());
-
-        if (model.applicantStatusUpToDate(applicantToMark, applicantStatus)) {
-            throw new CommandException(String.format(MESSAGE_APPLICANTSTATUS_UP_TO_DATE, applicantStatus.toString()));
-        }
-
-
         Applicant markedApplicant = new Applicant(applicantToMark, applicantStatus);
 
         model.setApplicant(applicantToMark, markedApplicant);

@@ -136,18 +136,10 @@ public interface Model {
      */
     void setApplicant(Applicant target, Applicant editedApplicant);
 
-
-    /**
-     * Returns true if a given {@code applicant} is has a given {@code applicantStatus}.
-     */
-    boolean applicantStatusUpToDate(Applicant applicant, ApplicantStatus applicantStatus);
-
-
     /**
      * Returns an unmodifiable view of the filtered person list
      */
     ObservableList<Applicant> getFilteredApplicantList();
-
 
     /**
      * Returns true if a given {@code job} is has a given {@code jobStatus}.

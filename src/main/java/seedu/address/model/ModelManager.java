@@ -142,11 +142,6 @@ public class ModelManager implements Model {
         addressBook.setApplicant(target, editedApplicant);
     }
 
-    @Override
-    public boolean applicantStatusUpToDate(Applicant applicant, ApplicantStatus applicantStatus) {
-        requireAllNonNull(applicant, applicantStatus);
-        return applicant.getApplicantStatus().equals(applicantStatus);
-    }
 
     @Override
     public boolean hasJob(Job job) {
