@@ -21,12 +21,14 @@ application onto your device and to have a quick try at some commands that ReCLI
 * If you are an **experienced user**, we recommend going to the [Features](#features) section to view all the commands
 available on ReCLIne.
 
+<div style="page-break-after: always"></div>
+
 ## Table of Contents
 
-* [Introduction](#introduction)
-* [How to use this guide](#how-to-use-this-guide)
-* [Table of Contents](#table-of-contents)  
 * [Quick Start](#quick-start)
+* [Flags and Attributes](#flags-and-attributes)
+  * [Applicant Flags](#applicant-flags)
+  * [Job Flags](#job-flags)
 * [Features](#features)
   * [Help](#viewing-help--help)
   * [Applicant Commands](#applicant-commands)
@@ -44,7 +46,7 @@ available on ReCLIne.
     * [Delete Job](#deleting-a-job-deletejob)
     * [Mark Job](#marking-a-job-markjob)
     * [Sort Job](#sorting-jobs-by-job-status-sortjob)
-    * [Find Job](#locating-jobs-by-name-findjob)
+    * [Find Job](#locating-jobs-findjob)
     * [List Job](#listing-all-jobs-in-the-joblist-listjob)
     * [Switch to Job Tab](#switch-to-tab-containing-the-joblist-tabjob)
   * [Utility Commands](#utility-commands)
@@ -54,6 +56,7 @@ available on ReCLIne.
 * [Command Summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## Quick Start
 
@@ -88,13 +91,26 @@ If you are a MacOS user and unable to run file by double-clicking, go to Termina
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-## Flags
-These flags are used in the commands to indicate which **field you are currently referring to**. 
-They are used first before entering adding to corresponding fields.
-* For example: `n/Benson Goh` - the `n/` flag is used to indicate that the subsequent input will be the `Applicant Name`.
-* For example: `jt/Project Manager` - the `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
+<div style="page-break-after: always"></div>
 
-They are commonly used in every command. Details are given below.
+## Flags and Attributes
+`flag/[ATTRIBUTE]` are often used in commands.
+
+`flag` are used in the commands to indicate which **field you are currently referring to**. 
+They are used first before entering adding to corresponding fields.
+
+`[ATTRIBUTE]` are used in the commands to **input that value** that you want to add to a particular `flag`
+
+* For example: `n/Benson Goh` 
+  * The `n/` flag is used to indicate that you are referring to the `Applicant's Name`.
+  * `Benson Goh` is the `[ATTRIBUTE]` you want to add to the `n/` flag.
+* For example: `jt/Project Manager`
+  * The `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
+  * `Project Manager` is the `[ATTRIBUTE]` you want to add to the `/jt` flag.
+
+Attributes are used in the commands to indicate the **value you are inputting** for the flag
+
+They are commonly used in every command. Flag details are given below.
 
 ### Applicant Flags
 
@@ -127,6 +143,7 @@ They are commonly used in every command. Details are given below.
 | **`pos/`**  | Indicates Job's **Position**       |
 | **`id/`**  |  Indicates Job's **Job ID**         |
 
+<div style="page-break-after: always"></div>
 
 ## Features
 
@@ -134,23 +151,20 @@ They are commonly used in every command. Details are given below.
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `addapplicant n/NAME`, `NAME` is a parameter which can be used as `addapplicant n/John Doe`.
-
-* Items **with** an asterisk before the flag are compulsory.<br>
+* `flag/[ATTRIBUTE]` **with** an asterisk before the flag are compulsory.<br>
   e.g. `*n/[NAME] *p/[PHONE]` can only be used as `n/John Doe p/93483747`.
   
-* Items **without** an asterisk before the flag are optional.<br>
+* `flag/[ATTRIBUTE]` **without** an asterisk before the flag are optional.<br>
   e.g. `*n/[NAME] t/[TAG]` can be used as `n/John Doe t/Applicant` or `n/John Doe`.
 
-* Items with `…​` after them can be used multiple times including zero times.<br>
+* `flag/[ATTRIBUTE]` with `…​` after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of
-  the parameter will be taken.<br>
+* If a parameter is expected only once in the command, but you specified it multiple times, **only the last occurrence of
+  the parameter will be taken**.<br>
   e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
 * Extraneous parameters for commands that do not take in parameters 
@@ -678,6 +692,8 @@ We would like to remind users again, if your changes to the data file makes its 
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always"></div>
+
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
@@ -701,7 +717,13 @@ folderContainingReCLIne
 ```
        
 
+**Q**: Do I lose my Applicants' and Jobs' data if i accidentally shut down ReCLIne?
+
+**A**: All data that you have entrusted into ReCLIne will be auto-saved, so you will not lose any data.
+
+
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## Command summary
 
