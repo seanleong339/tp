@@ -10,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.applicant.exceptions.ApplicantNotFoundException;
 import seedu.address.model.applicant.exceptions.DuplicateApplicantException;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Phone;
 
 public class UniqueApplicantList implements Iterable<Applicant> {
     private final ObservableList<Applicant> internalList =
@@ -127,5 +129,47 @@ public class UniqueApplicantList implements Iterable<Applicant> {
         }
         return true;
 
+    }
+
+    /**
+     * Returns the {@code Applicant} with the {@code Email} provided if exists; or null if no such applicant.
+     */
+    public Applicant getApplicantWithEmail(Email email) {
+        requireNonNull(email);
+
+        for (Applicant a : internalList) {
+            if (email.equals(a.getEmail())) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the {@code Applicant} with the {@code Nric} provided if exists; or null if no such applicant.
+     */
+    public Applicant getApplicantWithNric(Nric nric) {
+        requireNonNull(nric);
+
+        for (Applicant a : internalList) {
+            if (nric.equals(a.getNric())) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the {@code Applicant} with the {@code Phone} provided if exists; or null if no such applicant.
+     */
+    public Applicant getApplicantWithPhone(Phone phone) {
+        requireNonNull(phone);
+
+        for (Applicant a : internalList) {
+            if (phone.equals(a.getPhone())) {
+                return a;
+            }
+        }
+        return null;
     }
 }

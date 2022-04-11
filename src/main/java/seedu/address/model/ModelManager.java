@@ -13,9 +13,12 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.Nric;
 import seedu.address.model.job.Job;
 import seedu.address.model.job.JobStatus;
+import seedu.address.model.person.Email;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -139,8 +142,6 @@ public class ModelManager implements Model {
         addressBook.setApplicant(target, editedApplicant);
     }
 
-
-
     @Override
     public boolean hasJob(Job job) {
         requireNonNull(job);
@@ -259,5 +260,20 @@ public class ModelManager implements Model {
     @Override
     public void sortApplicant(Comparator<Applicant> sortBy) {
         addressBook.sortApplicant(sortBy);
+    }
+
+    @Override
+    public Applicant getApplicantWithEmail(Email email) {
+        return addressBook.getApplicantWithEmail(email);
+    }
+
+    @Override
+    public Applicant getApplicantWithNric(Nric nric) {
+        return addressBook.getApplicantWithNric(nric);
+    }
+
+    @Override
+    public Applicant getApplicantWithPhone(Phone phone) {
+        return addressBook.getApplicantWithPhone(phone);
     }
 }

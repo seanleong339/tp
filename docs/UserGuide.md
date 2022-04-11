@@ -21,14 +21,14 @@ application onto your device and to have a quick try at some commands that ReCLI
 * If you are an **experienced user**, we recommend going to the [Features](#features) section to view all the commands
 available on ReCLIne.
 
-<div style="page-break-after: always;"></div>
+<div style="page-break-after: always"></div>
 
 ## Table of Contents
 
-* [Introduction](#introduction)
-* [How to use this guide](#how-to-use-this-guide)
-* [Table of Contents](#table-of-contents)  
 * [Quick Start](#quick-start)
+* [Flags and Attributes](#flags-and-attributes)
+  * [Applicant Flags](#applicant-flags)
+  * [Job Flags](#job-flags)
 * [Features](#features)
   * [Help](#viewing-help--help)
   * [Applicant Commands](#applicant-commands)
@@ -46,7 +46,7 @@ available on ReCLIne.
     * [Delete Job](#deleting-a-job-deletejob)
     * [Mark Job](#marking-a-job-markjob)
     * [Sort Job](#sorting-jobs-by-job-status-sortjob)
-    * [Find Job](#locating-jobs-by-name-findjob)
+    * [Find Job](#locating-jobs-findjob)
     * [List Job](#listing-all-jobs-in-the-joblist-listjob)
     * [Switch to Job Tab](#switch-to-tab-containing-the-joblist-tabjob)
   * [Utility Commands](#utility-commands)
@@ -55,7 +55,7 @@ available on ReCLIne.
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always;"></div>
+<div style="page-break-after: always"></div>
 
 ## Quick Start
 
@@ -90,16 +90,26 @@ If you are a MacOS user and unable to run file by double-clicking, go to Termina
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
-<div style="page-break-after: always;"></div>
+## Flags and Attributes
+`flag/[ATTRIBUTE]` are often used in commands.
 
-## Flags
-These flags are used in the commands to indicate which **field you are currently referring to**. 
+`flag` are used in the commands to indicate which **field you are currently referring to**. 
 They are used first before entering adding to corresponding fields.
-* For example: `n/Benson Goh` - the `n/` flag is used to indicate that the subsequent input will be the `Applicant Name`.
-* For example: `jt/Project Manager` - the `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
 
-They are commonly used in every command. Details are given below.
+`[ATTRIBUTE]` are used in the commands to **input that value** that you want to add to a particular `flag`
+
+* For example: `n/Benson Goh` 
+  * The `n/` flag is used to indicate that you are referring to the `Applicant's Name`.
+  * `Benson Goh` is the `[ATTRIBUTE]` you want to add to the `n/` flag.
+* For example: `jt/Project Manager`
+  * The `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
+  * `Project Manager` is the `[ATTRIBUTE]` you want to add to the `/jt` flag.
+
+Attributes are used in the commands to indicate the **value you are inputting** for the flag
+
+They are commonly used in every command. Flag details are given below.
 
 ### Applicant Flags
 
@@ -132,7 +142,7 @@ They are commonly used in every command. Details are given below.
 | **`pos/`**  | Indicates Job's **Position**       |
 | **`id/`**  |  Indicates Job's **Job ID**         |
 
-<div style="page-break-after: always;"></div>
+<div style="page-break-after: always"></div>
 
 ## Features
 
@@ -140,23 +150,20 @@ They are commonly used in every command. Details are given below.
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `addapplicant n/NAME`, `NAME` is a parameter which can be used as `addapplicant n/John Doe`.
-
-* Items **with** an asterisk before the flag are compulsory.<br>
+* `flag/[ATTRIBUTE]` **with** an asterisk before the flag are compulsory.<br>
   e.g. `*n/[NAME] *p/[PHONE]` can only be used as `n/John Doe p/93483747`.
   
-* Items **without** an asterisk before the flag are optional.<br>
+* `flag/[ATTRIBUTE]` **without** an asterisk before the flag are optional.<br>
   e.g. `*n/[NAME] t/[TAG]` can be used as `n/John Doe t/Applicant` or `n/John Doe`.
 
-* Items with `…​` after them can be used multiple times including zero times.<br>
+* `flag/[ATTRIBUTE]` with `…​` after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of
-  the parameter will be taken.<br>
+* If a parameter is expected only once in the command, but you specified it multiple times, **only the last occurrence of
+  the parameter will be taken**.<br>
   e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
 * Extraneous parameters for commands that do not take in parameters 
@@ -183,10 +190,12 @@ Adds an applicant to the applicant list of ReCLIne.
 Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
             *d/[DATEAPPLIED] t/[TAG]…​`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
+
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
 
 * **All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.
+
 </div>
 
 *flag/[ATTRIBUTE]:*
@@ -204,8 +213,10 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 `*d/[DATEAPPLIED]` : Date that Applicant applied for the job
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
 any other format.
+
 </div>
 
 `t/[TAG]` : Applicant's Tag
@@ -227,7 +238,8 @@ nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] t/[TAG]…​`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
+
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
 * Just input the fields that you would like to change for the specific index number.
   
@@ -253,8 +265,10 @@ i/[INTERVIEWDATE] t/[TAG]…​`
 `d/[DATEAPPLIED]` : Updated Applicant's application date
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
 any other format.
+
 </div>
 
 `q/[QUALIFICATION]` : Updated Applicant's qualification
@@ -264,6 +278,7 @@ any other format.
 `i/[INTERVIEWDATE]` : Updated Applicant’s upcoming job interview date
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Note:** The `[INTERVIEWDATE]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
 any other format.
 </div>
@@ -287,6 +302,7 @@ Deletes an applicant specified by the index from the applicant list in ReCLIne.
 Format: `deleteapplicant *[INDEX]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** **Only fields with `*` indicated are compulsory.**
 </div>
 
@@ -308,6 +324,7 @@ Mark applicant status.
 Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
 * **All fields are compulsory for `markapplicant`**
@@ -320,8 +337,6 @@ Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 `*s/[STATUS]`: Flag to mark the applicant status of the applicant. `[STATUS]` must be either
 `pending`, `interviewed`, `accepted`, or `rejected`.
-
-**Tip:** All fields are mandatory for the `markapplicant` command. Fill in fields in the stipulated order.
 
 Example:
 
@@ -347,7 +362,8 @@ Sorts the list of applicants by a given attribute.
 
 Format: `sortapplicant *by/[ATTRIBUTE]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
+
 **Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
 * All fields for `sortapplicant` are compulsory.
@@ -416,6 +432,7 @@ Adds a new job posting to ReCLIne
 Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
 * **All fields are compulsory for `addjob`**.
@@ -465,10 +482,13 @@ Format: `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
 
 * Just input the fields that you would like to change for the specific index number.
+  
 * To leave out fields, **skip the flag and attribute** completely.
+
 </div>
 
 *flag/[ATTRIBUTE]:*
@@ -518,6 +538,7 @@ Delete a job specified by the index from the job list of ReCLIne.
 Format: `deletejob *[INDEX]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** **Only fields with `*` indicated are compulsory.**
 </div>
 
@@ -536,6 +557,7 @@ Marks an existing job posting as filled or vacant.
 Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
 * **All fields are compulsory for `markjob`**
@@ -639,6 +661,10 @@ Advanced users who are familiar with Javascript and JSON objects are welcome to 
 We would like to remind users again, if your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
 </div>
 
+
+<div style="page-break-after: always"></div>
+
+Sample data file format
 ```
 {
  "applicants" : [ {
@@ -670,7 +696,8 @@ We would like to remind users again, if your changes to the data file makes its 
 
 
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always;"></div>
+
+<div style="page-break-after: always"></div>
 
 ## FAQ
 
@@ -695,7 +722,13 @@ folderContainingReCLIne
 ```
        
 
+**Q**: Do I lose my Applicants' and Jobs' data if i accidentally shut down ReCLIne?
+
+**A**: All data that you have entrusted into ReCLIne will be auto-saved, so you will not lose any data.
+
+
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## Command summary
 

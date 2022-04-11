@@ -8,11 +8,14 @@ import java.util.Objects;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.UniqueApplicantList;
 import seedu.address.model.job.Job;
 import seedu.address.model.job.JobStatusComparator;
 import seedu.address.model.job.UniqueJobList;
+import seedu.address.model.person.Email;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
 import seedu.address.model.person.UniquePersonList;
 
 /**
@@ -275,5 +278,26 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void sortApplicant(Comparator<Applicant> comparator) {
         applicants.sort(comparator);
+    }
+
+    /**
+     * Returns the {@code Applicant} with the {@code Email} provided if exists; or null if no such applicant.
+     */
+    public Applicant getApplicantWithEmail(Email email) {
+        return applicants.getApplicantWithEmail(email);
+    }
+
+    /**
+     * Returns the {@code Applicant} with the {@code Nric} provided if exists; or null if no such applicant.
+     */
+    public Applicant getApplicantWithNric(Nric nric) {
+        return applicants.getApplicantWithNric(nric);
+    }
+
+    /**
+     * Returns the {@code Applicant} with the {@code Phone} provided if exists; or null if no such applicant.
+     */
+    public Applicant getApplicantWithPhone(Phone phone) {
+        return applicants.getApplicantWithPhone(phone);
     }
 }

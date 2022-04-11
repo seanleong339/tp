@@ -146,9 +146,8 @@ public class Applicant {
         if (otherApplicant == this) {
             return true;
         }
-
         return otherApplicant != null
-                && isSame(otherApplicant);
+                && this.isSame(otherApplicant);
     }
 
     private boolean isSame(Applicant otherApplicant) {
@@ -156,24 +155,6 @@ public class Applicant {
                 || otherApplicant.getEmail().equals(getEmail())
                 || otherApplicant.getPhone().equals(getPhone());
     }
-
-    /**
-     * Returns true if nric, phone and email are the same
-     * Used when checking if the edited applicant is the same as the old application
-     * @param otherApplicant
-     * @return
-     */
-    public boolean isSameApplicantCompare(Applicant otherApplicant) {
-        if (otherApplicant == this) {
-            return true;
-        }
-
-        return otherApplicant != null
-                && otherApplicant.getNric().equals(getNric())
-                && otherApplicant.getEmail().equals(getEmail())
-                && otherApplicant.getPhone().equals(getPhone());
-    }
-
 
     /**
      * Returns true if both applicants have the same identity and data fields.
@@ -199,8 +180,8 @@ public class Applicant {
                 && otherApplicant.getNric().equals(getNric())
                 && otherApplicant.getJobId().equals(getJobId())
                 && otherApplicant.getInterviewDate().equals(getInterviewDate())
-                && otherApplicant.getQualification().equals((getQualification()))
-                && otherApplicant.getApplicantStatus().equals((getApplicantStatus()));
+                && otherApplicant.getApplicantStatus().equals((getApplicantStatus()))
+                && otherApplicant.getQualification().equals((getQualification()));
     }
 
     @Override
