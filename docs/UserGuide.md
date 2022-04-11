@@ -53,6 +53,7 @@ available on ReCLIne.
     * [Clear](#clearing-all-entries--clear)
     * [Exit](#exiting-the-program--exit)
 * [FAQ](#faq)
+* [Glossary](#glossary)
 * [Command Summary](#command-summary)
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
