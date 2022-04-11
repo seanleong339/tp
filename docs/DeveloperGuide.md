@@ -156,7 +156,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
@@ -707,6 +707,45 @@ testers are expected to do more *exploratory* testing.
     Expected: No applicant will be added as command includes a field (j/) that should be added by editapplicant. An error message detailing the error and how
        to use the command will be shown.
        Other incorrect fields to try are `q/` and `i/`.
+
+### Editing an Applicant
+1. Adding an Applicant to the application
+
+### Marking an Applicant
+1. Updating an Applicant's application status on the application
+
+    1. Test case: `markapplicant 95 s/interviewed`
+       Expected: An applicant at index 95 on the displayed list of applicants will have their application status updated to `interviewed`.
+       If there are less than 95 applicants in the list, an error message detailing the error and how to use the command will be shown. 
+
+    2. Test case: `markapplicant s/accepted`
+       Expected: No applicant status will be updated, since no applicant index was specified with the (s/) command field prefix. 
+       An error message detailing the error and how to use the command will be shown.
+
+    3. Test case: `markapplicant 13 q/rejected`
+       Expected: No applicant status will be updated, as no command field prefix (q/) is accepted for `markapplicant`. 
+       An error message detailing the error and how to use the command will be shown.
+       `markapplicant` only accepts `s/` as a command field prefix.
+
+   4. Test case: `markapplicant 42 s/deciding`
+      Expected: No applicant status will be updated, as `deciding` is not a valid application status.
+      An error message detailing the error and how to use the command will be shown.
+      The only valid statuses are `pending`, `interviewed`, `accepted` and `rejected`.
+
+### Sorting Applicants
+1. Sort the applicant list by a given attribute
+
+    1. Test case: `sortapplicant by/dateapplied`
+       Expected: The applicant list will be sorted by the date they applied, from earliest to most recent date applied.
+       If the applicant list is empty, an error message detailing the error will be shown.
+
+    2. Test case: `sortapplicant`
+       Expected: The applicant list will not be sorted, as no sorting attribute was specified.
+
+    3. Test case: `sortapplicant by/tags`
+       Expected: The applicant list will not be sorted, as `tags` are not a valid sorting attribute. 
+       The only valid attributes are `dateapplied`, `interview`, and `job`. 
+       An error message detailing the error and how to use the command will be shown.
        
 ### Adding a Job
 1. Adding a Job to the application
@@ -718,8 +757,29 @@ testers are expected to do more *exploratory* testing.
     2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
         Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
        
-### Editing an Applicant
-1. Adding an Applicant to the application
+
+       
+### Marking a Job
+1. Updating an Job listing's fulfillment status on the application
+
+    1. Test case: `markjob 54 js/filled`
+       Expected: An job listing at index 54 on the displayed job list will be marked as `filled`.
+       If there are less than 54 job listings, an error message detailing the error and how to use the command will be shown.
+
+    2. Test case: `markjob js/accepted`
+       Expected: No job listing status will be updated, since no job listing index was specified with the (js/) command field prefix.
+       An error message detailing the error and how to use the command will be shown.
+
+    3. Test case: `markjob 13 q/rejected`
+       Expected: No job listing will be added as no command field prefix (q/) is accepted for `markjob`.
+       An error message detailing the error and how to use the command will be shown.
+       `markjob` only accepts `js/` as a command field prefix.
+
+    4. Test case: `markjob 42 js/deciding`
+       Expected: No job listing status will be updated, as `deciding` is not a valid job fulfillment status.
+       An error message detailing the error and how to use the command will be shown.
+       The only valid statuses are `filled`, and `vacant`.
+>>>>>>> master
 
 ### Deleting an Applicant
 
@@ -781,4 +841,3 @@ testers are expected to do more *exploratory* testing.
       2. If the user is familiar with the JSON format, and wants to fix the corrupted file, he can attempt to do so by opening
     the `ReCLIne.json` file in the data folder, and try fixing the format error. Refer to the [storage section](DeveloperGuide.md#storage-component) of this Developer Guide
          to see the storage file format.
-
