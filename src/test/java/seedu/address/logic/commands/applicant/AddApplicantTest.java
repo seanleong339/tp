@@ -198,6 +198,21 @@ class AddApplicantTest {
         public void sortApplicant(Comparator<Applicant> sortBy) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public Applicant getApplicantWithEmail(Email email) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Applicant getApplicantWithPhone(Phone phone) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Applicant getApplicantWithNric(Nric nric) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

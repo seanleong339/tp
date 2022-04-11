@@ -18,6 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.Nric;
 import seedu.address.model.applicant.Qualification;
 import seedu.address.model.job.CompanyName;
 import seedu.address.model.job.Job;
@@ -26,7 +27,9 @@ import seedu.address.model.job.JobTitle;
 import seedu.address.model.job.Position;
 import seedu.address.model.job.Salary;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
 
 class AddJobTest {
 
@@ -194,6 +197,21 @@ class AddJobTest {
 
         @Override
         public void sortApplicant(Comparator<Applicant> sortBy) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Applicant getApplicantWithEmail(Email email) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Applicant getApplicantWithPhone(Phone phone) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Applicant getApplicantWithNric(Nric nric) {
             throw new AssertionError("This method should not be called.");
         }
     }
