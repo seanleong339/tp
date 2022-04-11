@@ -770,4 +770,3 @@ folderContainingReCLIne
 **Job** - A representation in ReCLIne of a job posting. Contains the relevant details of said job posting. See [addjob](#adding-a-job-addjob).
 
 **Terminal** - Also called command lines or consoles. Allow the use of a computer wihtout a GUI. In Mac, type 'Terminal' into the Spotlight tool (CMD + Space or click the magnifying glass in the top right). For Windows, click the Windows start button, search for 'cmd' and run.
-
