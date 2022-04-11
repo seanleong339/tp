@@ -851,19 +851,6 @@ testers are expected to do more *exploratory* testing.
     2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
         Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
 
-### Marking an Applicant
-1. Marking an Applicant in applicant list
-    1. Test case: `markapplicant 1 s/accepted`
-       Expected: The first applicant in the applicant list is marked as accepted. The updated applicant status followed by details
-   of the applicant is shown in the status message.
-
-    2. Test case: `markapplicant 1 s/complete`
-       Expected: No applicant will be marked. An error message with the correct command usage will be shown. Status remains the same.
-
-    3. Other incorrect delete commands to try: `markapplicant`, `markapplicant x` , `...` (where x is an integer larger than the list size or 
-   a non-positive integer)<br>
-       Expected: Similar to previous.
-
 ### Finding a Job
 1. Find a Job in job list give job title or job id
 
