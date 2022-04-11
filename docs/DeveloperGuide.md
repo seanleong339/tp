@@ -2,6 +2,7 @@
 layout: page
 title: Developer Guide
 ---
+## Table of Content
 * Table of Contents
 {:toc}
 
@@ -155,7 +156,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
@@ -213,6 +214,8 @@ __Sample ReCLIne.json__
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
+
+Back to [Table of Content](#table-of-content)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -374,94 +377,16 @@ The following sequence diagram shows how the `deleteapplicant` command works:
 ### AddJob feature 
 The design implementation for AddJob is similar to that for AddApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#addapplicant-feature) on AddApplicant for the design considerations.
 
-### \[Proposed\] Undo/redo feature
+### EditJob feature
+The design implementation for EditJob is similar to that for EditApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#editapplicant-feature) on EditApplicant for the design considerations.
 
-#### Proposed Implementation
+### MarkJob feature
+The design implementation for MarkJob is similar to that for MarkApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#markapplicant-feature) on MarkApplicant for the design considerations.
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+### DeleteJob feature
+The design implementation for DeleteJob is similar to that for DeleteApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#deleteapplicant-feature) on DeleteApplicant for the design considerations.
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: 
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, 
-pointing to the latest address book state, then there are no undone AddressBook states to restore. 
-The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. 
-If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<img src="images/CommitActivityDiagram.png" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
+Back to [Table of Content](#table-of-content)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -551,8 +476,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 |  `*` | recruiter                               | add the qualification requirement that an Employer is looking for | know what type of Applicants the Employer is looking for|
 |  `*` | recruiter                               | edit Employer’s details| keep the details up to date|
 
-
-*{More to be added}*
 
 ### Use cases
 
@@ -784,6 +707,87 @@ testers are expected to do more *exploratory* testing.
     Expected: No applicant will be added as command includes a field (j/) that should be added by editapplicant. An error message detailing the error and how
        to use the command will be shown.
        Other incorrect fields to try are `q/` and `i/`.
+
+### Editing an Applicant
+1. Adding an Applicant to the application
+
+    1. Test case: `editapplicant 2 n/Benjamin Oscar e/benjaminoscar123@example.com a/Block 233 Broadway Street 2, #09-111, i/2022-04-23`
+        
+        Expected: An applicant at index 2 on the displayed list of applicants, will have his name, email, address and interview date changed.
+        
+        Note: If the interview date inputted is earlier than the date applied, an error will be shown and the applicant at index 2 will 
+        not be edited.
+       
+        Note: If there are less than 2 applicants in the list, an error message detailing the error will be shown.
+       
+    2. Test case: `editapplicant 19 n/Stephen Curry p/92881727 e/stephencurry30@example.com p/90221122`
+       
+        Expected: An applicant at index 19 in the displayed list of applicants, will have his name, phone number and email changed.
+    
+        Note: The application will take the last instance of the field if there are duplicate fields inputted in a single command.
+    
+    3. Test case: `editapplicant n/Andrew Goodwill p/91238321 e/andrewgoodwill@example.com d/2022-03-22 i/2022-04-10`
+        
+        Expected: No applicant will be edited, since no applicant index was specified in the command. 
+       
+    4. Test case: `editapplicant 11 n/Michael Jordan p/94448321 e/michaeljordan@example.com sal/3000-4000`
+        
+        Expected: No applicant will be edited, since there is an invalid flag that was specified in the command. An error message
+        detailing the error and how to use the command will be shown.
+       
+        Note: If there are less than 11 applicants in the list, an error message detailing the error will be shown.
+    
+    
+### Marking an Applicant
+1. Updating an Applicant's application status on the application
+
+    1. Test case: `markapplicant 95 s/interviewed`
+       Expected: An applicant at index 95 on the displayed list of applicants will have their application status updated to `interviewed`.
+       If there are less than 95 applicants in the list, an error message detailing the error and how to use the command will be shown. 
+
+    2. Test case: `markapplicant s/accepted`
+       Expected: No applicant status will be updated, since no applicant index was specified with the (s/) command field prefix. 
+       An error message detailing the error and how to use the command will be shown.
+
+    3. Test case: `markapplicant 13 q/rejected`
+       Expected: No applicant status will be updated, as no command field prefix (q/) is accepted for `markapplicant`. 
+       An error message detailing the error and how to use the command will be shown.
+       `markapplicant` only accepts `s/` as a command field prefix.
+
+   4. Test case: `markapplicant 42 s/deciding`
+      Expected: No applicant status will be updated, as `deciding` is not a valid application status.
+      An error message detailing the error and how to use the command will be shown.
+      The only valid statuses are `pending`, `interviewed`, `accepted` and `rejected`.
+
+### Deleting an Applicant
+
+1. Deleting an applicant while all applicants are being shown
+
+    1. Prerequisites: List all applicants by clicking on the Applicant tab on the GUI or by using the `tabapplicant` command. Multiple applicants in the list.
+
+    1. Test case: `deleteapplicant 1`<br>
+       Expected: First applicant is deleted from the list. Details of the deleted applicant shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `deleteapplicant 0`<br>
+       Expected: No applicant is deleted. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect deleteapplicant commands to try: `deleteapplicant`, `deleteapplicant x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+### Sorting Applicants
+1. Sort the applicant list by a given attribute
+
+    1. Test case: `sortapplicant by/dateapplied`
+       Expected: The applicant list will be sorted by the date they applied, from earliest to most recent date applied.
+       If the applicant list is empty, an error message detailing the error will be shown.
+
+    2. Test case: `sortapplicant`
+       Expected: The applicant list will not be sorted, as no sorting attribute was specified.
+
+    3. Test case: `sortapplicant by/tags`
+       Expected: The applicant list will not be sorted, as `tags` are not a valid sorting attribute. 
+       The only valid attributes are `dateapplied`, `interview`, and `job`. 
+       An error message detailing the error and how to use the command will be shown.
        
 ### Adding a Job
 1. Adding a Job to the application
@@ -794,24 +798,71 @@ testers are expected to do more *exploratory* testing.
        
     2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
         Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
+
+### Editing a Job
+1. Adding a Job to the application
+
+    1. Test case: `editjob 2 jt/Project Facilitator c/Microsoft sal/2000-6000`
+
+       Expected: A job at index 2 on the displayed list of jobs, will have its Job Title, Company name and Salary changed.
+
+       Note: If there are less than 2 applicants in the list, an error message detailing the error will be shown.
+
+    2. Test case: `editjob jt/Software Designer UI sal/10000-20000 pos/ft`
+
+       Expected: No job will be edited, since no job index was specified in the command. An error message
+       detailing the error and how to use the command will be shown.
+
+    3. Test case: `editjob 11 c/HP sal/10000-11000 sth/Something`
+
+       Expected: No applicant will be edited, since there is an invalid flag that was specified in the command. 
+
+       Note: If there are less than 11 jobs in the list, an error message detailing the error will be shown.
        
+### Marking a Job
+1. Updating a Job listing's fulfillment status on the application
 
-### Deleting a person
+    1. Test case: `markjob 54 js/filled`
+       Expected: An job listing at index 54 on the displayed job list will be marked as `filled`.
+       If there are less than 54 job listings, an error message detailing the error and how to use the command will be shown.
 
-1. Deleting a person while all persons are being shown
+    2. Test case: `markjob js/accepted`
+       Expected: No job listing status will be updated, since no job listing index was specified with the (js/) command field prefix.
+       An error message detailing the error and how to use the command will be shown.
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    3. Test case: `markjob 13 q/rejected`
+       Expected: No job listing will be added as no command field prefix (q/) is accepted for `markjob`.
+       An error message detailing the error and how to use the command will be shown.
+       `markjob` only accepts `js/` as a command field prefix.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+    4. Test case: `markjob 42 js/deciding`
+       Expected: No job listing status will be updated, as `deciding` is not a valid job fulfillment status.
+       An error message detailing the error and how to use the command will be shown.
+       The only valid statuses are `filled`, and `vacant`.
+       
+### Deleting a Job
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+1. Deleting a Job while all jobs are being shown
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    1. Prerequisites: List all jobs by clicking on the Job tab on the GUI or by using the `tabjob` command. Multiple jobs in the list.
 
-1. _{ more test cases …​ }_
+    2. Test case: `deletejob 1`<br>
+       Expected: First job is deleted from the list. Details of the deleted job shown in the status message. Timestamp in the status bar is updated.
+
+    3. Test case: `deletejob 0`<br>
+       Expected: No job is deleted. Error details shown in the status message. Status bar remains the same.
+
+    4. Other incorrect deletejob commands to try: `deletejob`, `deletejob x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+### Sorting Job List
+
+1. Sorting the Job List by job status.
+
+    1. Prerequisites: List all jobs by clicking on the Job tab on the GUI or by using the `tabjob` command. Multiple jobs in the list with different job status.
+
+    1. Test case: `sortjob`<br>
+       Expected: Jobs are sorted by the job status with 'vacant' before 'filled'. SortJob success message shown in the status bar.
 
 ### Saving data
 
@@ -834,4 +885,3 @@ testers are expected to do more *exploratory* testing.
       2. If the user is familiar with the JSON format, and wants to fix the corrupted file, he can attempt to do so by opening
     the `ReCLIne.json` file in the data folder, and try fixing the format error. Refer to the [storage section](DeveloperGuide.md#storage-component) of this Developer Guide
          to see the storage file format.
-

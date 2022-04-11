@@ -21,12 +21,14 @@ application onto your device and to have a quick try at some commands that ReCLI
 * If you are an **experienced user**, we recommend going to the [Features](#features) section to view all the commands
 available on ReCLIne.
 
+<div style="page-break-after: always"></div>
+
 ## Table of Contents
 
-* [Introduction](#introduction)
-* [How to use this guide](#how-to-use-this-guide)
-* [Table of Contents](#table-of-contents)  
 * [Quick Start](#quick-start)
+* [Flags and Attributes](#flags-and-attributes)
+  * [Applicant Flags](#applicant-flags)
+  * [Job Flags](#job-flags)
 * [Features](#features)
   * [Help](#viewing-help--help)
   * [Applicant Commands](#applicant-commands)
@@ -44,16 +46,17 @@ available on ReCLIne.
     * [Delete Job](#deleting-a-job-deletejob)
     * [Mark Job](#marking-a-job-markjob)
     * [Sort Job](#sorting-jobs-by-job-status-sortjob)
-    * [Find Job](#locating-jobs-by-name-findjob)
+    * [Find Job](#locating-jobs-findjob)
     * [List Job](#listing-all-jobs-in-the-joblist-listjob)
     * [Switch to Job Tab](#switch-to-tab-containing-the-joblist-tabjob)
   * [Utility Commands](#utility-commands)
     * [Clear](#clearing-all-entries--clear)
     * [Exit](#exiting-the-program--exit)
 * [FAQ](#faq)
+* [Glossary](#glossary)
 * [Command Summary](#command-summary)
-
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## Quick Start
 
@@ -88,13 +91,26 @@ If you are a MacOS user and unable to run file by double-clicking, go to Termina
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-## Flags
-These flags are used in the commands to indicate which **field you are currently referring to**. 
-They are used first before entering adding to corresponding fields.
-* For example: `n/Benson Goh` - the `n/` flag is used to indicate that the subsequent input will be the `Applicant Name`.
-* For example: `jt/Project Manager` - the `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
+<div style="page-break-after: always"></div>
 
-They are commonly used in every command. Details are given below.
+## Flags and Attributes
+`flag/[ATTRIBUTE]` are often used in commands.
+
+`flag` are used in the commands to indicate which **field you are currently referring to**. 
+They are used first before entering adding to corresponding fields.
+
+`[ATTRIBUTE]` are used in the commands to **input that value** that you want to add to a particular `flag`
+
+* For example: `n/Benson Goh` 
+  * The `n/` flag is used to indicate that you are referring to the `Applicant's Name`.
+  * `Benson Goh` is the `[ATTRIBUTE]` you want to add to the `n/` flag.
+* For example: `jt/Project Manager`
+  * The `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
+  * `Project Manager` is the `[ATTRIBUTE]` you want to add to the `/jt` flag.
+
+Attributes are used in the commands to indicate the **value you are inputting** for the flag
+
+They are commonly used in every command. Flag details are given below.
 
 ### Applicant Flags
 
@@ -127,6 +143,7 @@ They are commonly used in every command. Details are given below.
 | **`pos/`**  | Indicates Job's **Position**       |
 | **`id/`**  |  Indicates Job's **Job ID**         |
 
+<div style="page-break-after: always"></div>
 
 ## Features
 
@@ -134,23 +151,20 @@ They are commonly used in every command. Details are given below.
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `addapplicant n/NAME`, `NAME` is a parameter which can be used as `addapplicant n/John Doe`.
-
-* Items **with** an asterisk before the flag are compulsory.<br>
+* `flag/[ATTRIBUTE]` **with** an asterisk before the flag are compulsory.<br>
   e.g. `*n/[NAME] *p/[PHONE]` can only be used as `n/John Doe p/93483747`.
   
-* Items **without** an asterisk before the flag are optional.<br>
+* `flag/[ATTRIBUTE]` **without** an asterisk before the flag are optional.<br>
   e.g. `*n/[NAME] t/[TAG]` can be used as `n/John Doe t/Applicant` or `n/John Doe`.
 
-* Items with `…​` after them can be used multiple times including zero times.<br>
+* `flag/[ATTRIBUTE]` with `…​` after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of
-  the parameter will be taken.<br>
+* If a parameter is expected only once in the command, but you specified it multiple times, **only the last occurrence of
+  the parameter will be taken**.<br>
   e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
 * Extraneous parameters for commands that do not take in parameters 
@@ -177,10 +191,13 @@ Adds an applicant to the applicant list of ReCLIne.
 Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
             *d/[DATEAPPLIED] t/[TAG]…​`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
+
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
+**Note:** Applicants are considered duplicates if they have the same **Nric**, **Email** **or** **Phone number**. ReCLIne does not allow duplicated applicants. <br>
 
 * **All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.
+
 </div>
 
 *flag/[ATTRIBUTE]:*
@@ -188,6 +205,10 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 `*n/[NAME]`: Applicant's name
 
 `*p/[PHONE]`: Applicant's phone number
+
+<div markdown="span" class="alert alert-info">:information_source: 
+
+**Note:** The `[PHONE]` field must be a Singapore number. It has to be **exactly 8** digits and the first digit has to be either **6,8 or 9**.
 
 `*nric/[NRIC]`: Applicant's NRIC
 
@@ -198,8 +219,10 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 `*d/[DATEAPPLIED]` : Date that Applicant applied for the job
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
 any other format.
+
 </div>
 
 `t/[TAG]` : Applicant's Tag
@@ -221,7 +244,10 @@ nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] t/[TAG]…​`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
+
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
+**Note:** Applicants are considered duplicates if they have the same **Nric**, **Email** **or** **Phone number**. ReCLIne does not allow duplicated applicants. <br>
+
 
 * Just input the fields that you would like to change for the specific index number.
   
@@ -236,6 +262,10 @@ i/[INTERVIEWDATE] t/[TAG]…​`
 
 `p/[PHONE]`: Updated Applicant's phone number
 
+<div markdown="span" class="alert alert-info">:information_source: 
+
+**Note:** The `[PHONE]` field must be a Singapore number. It has to be **exactly 8** digits and the first digit has to be either **6,8 or 9**.
+
 `nric/[NRIC]`: Updated Applicant's NRIC
 
 `a/[ADDRESS]` : Updated Applicant's address
@@ -247,8 +277,10 @@ i/[INTERVIEWDATE] t/[TAG]…​`
 `d/[DATEAPPLIED]` : Updated Applicant's application date
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
 any other format.
+
 </div>
 
 `q/[QUALIFICATION]` : Updated Applicant's qualification
@@ -258,6 +290,7 @@ any other format.
 `i/[INTERVIEWDATE]` : Updated Applicant’s upcoming job interview date
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Note:** The `[INTERVIEWDATE]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
 any other format.
 </div>
@@ -281,6 +314,7 @@ Deletes an applicant specified by the index from the applicant list in ReCLIne.
 Format: `deleteapplicant *[INDEX]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** **Only fields with `*` indicated are compulsory.**
 </div>
 
@@ -302,6 +336,7 @@ Mark applicant status.
 Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
 * **All fields are compulsory for `markapplicant`**
@@ -314,8 +349,6 @@ Format: `markapplicant *[INDEX] *s/[STATUS]`
 
 `*s/[STATUS]`: Flag to mark the applicant status of the applicant. `[STATUS]` must be either
 `pending`, `interviewed`, `accepted`, or `rejected`.
-
-**Tip:** All fields are mandatory for the `markapplicant` command. Fill in fields in the stipulated order.
 
 Example:
 
@@ -341,7 +374,8 @@ Sorts the list of applicants by a given attribute.
 
 Format: `sortapplicant *by/[ATTRIBUTE]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
+
 **Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
 * All fields for `sortapplicant` are compulsory.
@@ -400,6 +434,8 @@ Switches to the `applicant list` tab in the GUI, without listing all Applicants.
 
 Format: `tabapplicant` <br>
 
+<div style="page-break-after: always;"></div>
+
 ## Job Commands
 
 ### Adding a Job: `addjob`
@@ -408,7 +444,10 @@ Adds a new job posting to ReCLIne
 Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
+**Note:** Jobs are considered duplicates if they have the same **Job Title and Company**. ReCLIne does not allow duplicated jobs. <br>
+
 
 * **All fields are compulsory for `addjob`**.
 </div>
@@ -431,12 +470,13 @@ else is inputted.
 </div>
 
 `*s/[SALARY]`:  Salary of job, based on how much the job pays a month. The start and end of the SALARY range must be a positive integer
-1000,2000,3000,...
+1000,2000,3000,...The maximum start and end Salary is 999999999.
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
-of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
-A range where the **lower bound is equal to the upper bound** is **accepted**.
+of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
+A range where the **lower bound is equal to the upper bound** is **accepted**. For example "4000 - 4000" is allowed. This 
+indicates that the salary is not a range, but rather a fixed amount. The largest lower and upper bound salary is 999999999 (9 digits).
 </div>
 
 Example:
@@ -457,10 +497,16 @@ Format: `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
+**Note:** Jobs are considered duplicates if they have the same **Job Title and Company**. ReCLIne does not allow duplicated jobs. <br>
+
+
 
 * Just input the fields that you would like to change for the specific index number.
+  
 * To leave out fields, **skip the flag and attribute** completely.
+
 </div>
 
 *flag/[ATTRIBUTE]:*
@@ -480,7 +526,6 @@ q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The `[POSITION]` field only accepts either `ft` - **"full time"** or `pt` - **"part time"** as an input. ReCLIne will output an error is anything
 else is inputted.
-
 </div>
 
 `sal/[SALARY]` : Update the Job to edit the salary to `[SALARY]`
@@ -489,8 +534,7 @@ else is inputted.
 **Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
 of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
 A range where the **lower bound is equal to the upper bound** is **accepted**. For example "4000 - 4000" is allowed. This 
-indicates that the salary is not a range, but rather a fixed amount.
-
+indicates that the salary is not a range, but rather a fixed amount. The largest lower and upper bound salary is 999999999 (9 digits).
 </div>
 
 Examples:
@@ -510,6 +554,7 @@ Delete a job specified by the index from the job list of ReCLIne.
 Format: `deletejob *[INDEX]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** **Only fields with `*` indicated are compulsory.**
 </div>
 
@@ -528,6 +573,7 @@ Marks an existing job posting as filled or vacant.
 Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
 * **All fields are compulsory for `markjob`**
@@ -617,6 +663,10 @@ Exits the program.
 
 Format: `exit`
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always"></div>
+
 ### Saving the data
 
 ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -631,6 +681,10 @@ Advanced users who are familiar with Javascript and JSON objects are welcome to 
 We would like to remind users again, if your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
 </div>
 
+
+<div style="page-break-after: always"></div>
+
+Sample data file format
 ```
 {
  "applicants" : [ {
@@ -663,6 +717,8 @@ We would like to remind users again, if your changes to the data file makes its 
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always"></div>
+
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
@@ -686,7 +742,31 @@ folderContainingReCLIne
 ```
        
 
+**Q**: Do I lose my Applicants' and Jobs' data if i accidentally shut down ReCLIne?
+
+**A**: All data that you have entrusted into ReCLIne will be auto-saved, so you will not lose any data.
+
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
+
+## Glossary
+
+**Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
+
+**CLI** - Command Line Interface. It is a way of interacting with an application by typing in text.
+
+**GUI** - Graphical User Interface. It is the visible components of the application that the user can interact with. When the user runs the application and sees the ReCLIne window pop up, that is the GUI.
+
+**Javascript** - A programming language that is used mainly for web development.
+
+**JSON** - JavaScript Object Notation. It is a format for storing data.
+
+**Job** - A representation in ReCLIne of a job posting. Contains the relevant details of said job posting. See [addjob](#adding-a-job-addjob).
+
+**Terminal** - Also called command lines or consoles. Allow the use of a computer wihtout a GUI. In Mac, type 'Terminal' into the Spotlight tool (CMD + Space or click the magnifying glass in the top right). For Windows, click the Windows start button, search for 'cmd' and run.
+
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## Command summary
 
@@ -711,3 +791,5 @@ folderContainingReCLIne
 | **Help**                    | `help`                                                                                                                                                                                                                                                       |
 | **Clear**                   | `clear`                                                                                                                                                                                                                                                      |
 | **Exit**                    | `exit`                                                                                                                                                                                                                                                       |
+
+
