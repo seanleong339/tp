@@ -187,7 +187,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
@@ -245,6 +245,8 @@ __Sample ReCLIne.json__
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
+
+Back to [Table of Content](#table-of-content)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -432,22 +434,16 @@ The design implementation for AddJob is similar to that for AddApplicant, but wi
 
 #### Design considerations:
 
-**Aspect: How undo & redo executes:**
+### EditJob feature
+The design implementation for EditJob is similar to that for EditApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#editapplicant-feature) on EditApplicant for the design considerations.
 
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+### MarkJob feature
+The design implementation for MarkJob is similar to that for MarkApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#markapplicant-feature) on MarkApplicant for the design considerations.
 
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+### DeleteJob feature
+The design implementation for DeleteJob is similar to that for DeleteApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#deleteapplicant-feature) on DeleteApplicant for the design considerations.
 
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
+Back to [Table of Content](#table-of-content)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -537,8 +533,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 |  `*` | recruiter                               | add the qualification requirement that an Employer is looking for | know what type of Applicants the Employer is looking for|
 |  `*` | recruiter                               | edit Employer’s details| keep the details up to date|
 
-
-*{More to be added}*
 
 ### Use cases
 
@@ -770,6 +764,42 @@ testers are expected to do more *exploratory* testing.
     Expected: No applicant will be added as command includes a field (j/) that should be added by editapplicant. An error message detailing the error and how
        to use the command will be shown.
        Other incorrect fields to try are `q/` and `i/`.
+
+### Marking an Applicant
+1. Updating an Applicant's application status on the application
+
+    1. Test case: `markapplicant 95 s/interviewed`
+       Expected: An applicant at index 95 on the displayed list of applicants will have their application status updated to `interviewed`.
+       If there are less than 95 applicants in the list, an error message detailing the error and how to use the command will be shown. 
+
+    2. Test case: `markapplicant s/accepted`
+       Expected: No applicant status will be updated, since no applicant index was specified with the (s/) command field prefix. 
+       An error message detailing the error and how to use the command will be shown.
+
+    3. Test case: `markapplicant 13 q/rejected`
+       Expected: No applicant status will be updated, as no command field prefix (q/) is accepted for `markapplicant`. 
+       An error message detailing the error and how to use the command will be shown.
+       `markapplicant` only accepts `s/` as a command field prefix.
+
+   4. Test case: `markapplicant 42 s/deciding`
+      Expected: No applicant status will be updated, as `deciding` is not a valid application status.
+      An error message detailing the error and how to use the command will be shown.
+      The only valid statuses are `pending`, `interviewed`, `accepted` and `rejected`.
+
+### Sorting Applicants
+1. Sort the applicant list by a given attribute
+
+    1. Test case: `sortapplicant by/dateapplied`
+       Expected: The applicant list will be sorted by the date they applied, from earliest to most recent date applied.
+       If the applicant list is empty, an error message detailing the error will be shown.
+
+    2. Test case: `sortapplicant`
+       Expected: The applicant list will not be sorted, as no sorting attribute was specified.
+
+    3. Test case: `sortapplicant by/tags`
+       Expected: The applicant list will not be sorted, as `tags` are not a valid sorting attribute. 
+       The only valid attributes are `dateapplied`, `interview`, and `job`. 
+       An error message detailing the error and how to use the command will be shown.
        
 ### Adding a Job
 1. Adding a Job to the application
@@ -794,7 +824,28 @@ testers are expected to do more *exploratory* testing.
        Expected: No jobs are. Error details shown in the status message. The job list panel remains the same.
 
     4. Other incorrect delete commands to try: `findjob`, `findjob id/x`, `findjob jt/`, `findjob id/`, `...`(where x is a non-positive integer including 0)<br>
-          Expected: Similar to previous.
+          Expected: Similar to previous.       
+       
+### Marking a Job
+1. Updating an Job listing's fulfillment status on the application
+
+    1. Test case: `markjob 54 js/filled`
+       Expected: An job listing at index 54 on the displayed job list will be marked as `filled`.
+       If there are less than 54 job listings, an error message detailing the error and how to use the command will be shown.
+
+    2. Test case: `markjob js/accepted`
+       Expected: No job listing status will be updated, since no job listing index was specified with the (js/) command field prefix.
+       An error message detailing the error and how to use the command will be shown.
+
+    3. Test case: `markjob 13 q/rejected`
+       Expected: No job listing will be added as no command field prefix (q/) is accepted for `markjob`.
+       An error message detailing the error and how to use the command will be shown.
+       `markjob` only accepts `js/` as a command field prefix.
+
+    4. Test case: `markjob 42 js/deciding`
+       Expected: No job listing status will be updated, as `deciding` is not a valid job fulfillment status.
+       An error message detailing the error and how to use the command will be shown.
+       The only valid statuses are `filled`, and `vacant`.
 
 ### Deleting an Applicant
 
@@ -855,4 +906,3 @@ testers are expected to do more *exploratory* testing.
       2. If the user is familiar with the JSON format, and wants to fix the corrupted file, he can attempt to do so by opening
     the `ReCLIne.json` file in the data folder, and try fixing the format error. Refer to the [storage section](DeveloperGuide.md#storage-component) of this Developer Guide
          to see the storage file format.
-
