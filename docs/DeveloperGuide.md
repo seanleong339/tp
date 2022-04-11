@@ -2,20 +2,54 @@
 layout: page
 title: Developer Guide
 ---
-## Table of Content
-* Table of Contents
-{:toc}
+## Table of Contents
+* [Introduction](#introduction)
+* [Acknowledgements](#introduction)
+* [Setting up, getting started](#setting-up-getting-started)
+* [Design](#design-considerations)
+  * [Architecture](#architecture)
+  * [Ui component](#ui-component)
+  * [Logic component](#logic-component)
+  * [Model component](#model-component)
+  * [Storage component](#storage-component)
+  * [Common classes](#common-classes)
+* [Implementation](#implementation)
+  * [AddApplicant feature](#addapplicant-feature)
+  * [EditApplicant feature](#editapplicant-feature)
+  * [MarkApplicant feature](#markapplicant-feature)
+  * [DeleteApplicant feature](#deleteapplicant-feature)
+* [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
+* [Appendix: Requirement](#appendix-requirements)
+  * [Product scope](#product-scope)
+  * [User stories](#user-stories)
+  * [Use cases](#use-cases)
+  * [Non-Fuctional Requirement](#non-functional-requirements)
+  * [Glossary](#glossary)
+* [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
+  * [Launch and shutdown](#launch-and-shutdown)
+  * [Adding an Applicant](#adding-an-applicant)
+  * [Editing an Applicant](#editing-an-applicant)
+  * [Marking an Applicant](#marking-an-applicant)
+  * [Deleting an Applicant](#deleting-an-applicant)
+  * [Sorting Applicant](#sorting-applicants)
+  * [Adding a Job](#adding-a-job)
+  * [Finding a Job](#finding-a-job)
+  * [Editing a Job](#editing-a-job)
+  * [Marking a Job](#marking-a-job)
+  * [Deleting a Job](#deleting-a-job)
+  * [Sorting Job List](#sorting-job-list)
+  * [Saving data](#saving-data)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Introduction**
 
-ReCLIne is a desktop app which serves as a centralised location for recruiters to store and track job applicants and jobs, 
-optimized for use via a `Command Line Interface (CLI)` while still having the benefits of a `Graphical User Interface (GUI)`. 
+ReCLIne is a desktop app which serves as a centralised location for recruiters to store and track job applicants and jobs,
+optimized for use via a `Command Line Interface (CLI)` while still having the benefits of a `Graphical User Interface (GUI)`.
 
 This Developer Guide assumes that its readers have some basic understanding of programming.
 
-The purpose of this Develop Guide is to aid any curious or interested contributor in developing ReCLIne further by providing 
+The purpose of this Develop Guide is to aid any curious or interested contributor in developing ReCLIne further by providing
 an in-depth explanation of how the features are implemented.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -49,7 +83,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/MainApp.java). 
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/MainApp.java).
 It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
@@ -83,20 +117,25 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ApplicantListPanel`,
+`JobListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class
+which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml`
+files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`]
+(https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified
+in [`MainWindow.fxml`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Applicant` or `Job` object residing in the `Model`.
 
 ### Logic component
 
@@ -224,8 +263,8 @@ Back to [Table of Content](#table-of-content)
 This section describes some noteworthy details on how certain features are implemented.
 
 ### AddApplicant feature
-The `addapplicant` mechanism is facilitated by `AddApplicantParser` and `AddApplicant` command. It extends `AddressBook` with the capability to 
-create new applicants, and store them in the `UniqueApplicantList` of the `AddressBook`. Following the command pattern of the 
+The `addapplicant` mechanism is facilitated by `AddApplicantParser` and `AddApplicant` command. It extends `AddressBook` with the capability to
+create new applicants, and store them in the `UniqueApplicantList` of the `AddressBook`. Following the command pattern of the
 application, the `parse()` method will parse the user input, use the arguments parsed to create a new `Applicant`, and then
 the `Applicant` will be used to create an `AddApplicant` command.
 The command will then be executed to add the new `Applicant` to the `AddressBook`.
@@ -240,7 +279,7 @@ The `commandWord` will then cause a new `AddApplicantParser` to be created.
 ![AddApplicantStep1](images/AddApplicantStep1.png)
 
 Step 2. The `AddApplicantParser#parse()` method is then called with `arguments` as the argument. The `arguments` will then be
-further parsed using their respective class parser methods in `ParserUtil` to create their respective attribute classes, 
+further parsed using their respective class parser methods in `ParserUtil` to create their respective attribute classes,
 and then used to create a new `Applicant` object. The `Applicant` object will be used to create a new `AddApplicant` command.
 
 ![AddApplicantStep2](images/AddApplicantStep2.png)
@@ -327,10 +366,34 @@ and `MarkApplicantParser#parse()`. `MarkApplicantParser#parse()`calls `ParserUti
 which returns Index and ApplicantStatus objects representing the index and status value that user inputted. This returns a
 `MarkApplicant` with Index and ApplicantStatus objects as arguments.
 
+
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is greater than the
 size of the current `UniqueApplicantList` the execution of the command will fail. A `CommandException` will be thrown
 and displayed for the user. This ensures that inputted `index` is not out of bound.
 </div>
+
+
+Step 2. `MarkApplicant#execute()` is executed. Firstly, get the current Applicant object that is in the
+indicated index in the `UniqueApplicantList`. In this case, Applicant 1 in the `UniqueApplicantList` is stored in the
+`applicantToMark` variable.
+
+![MarkApplicantState1](images/MarkApplicantState1.png)
+
+Step 3. Next, a new Applicant object, `markedApplicant`, that is going to replace `applicantToMark` is created.
+This is done by creating a new instance of `Applicant` with ApplicantStauts object containing the status
+inputted by the user, in this case `rejected`.
+
+![MarkApplicantState2](images/MarkApplicantState2.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** A check between the new Applicant object
+and current Applicant object occurs. If both Applicant objects are the same, a `CommandException` is thrown. This ensures
+that there is no duplicate Applicants in the `UniqueApplicantList` and `AddressBook`
+</div>
+
+Step 4. Lastly, `markedApplicant`t will replace the current A`applicantToMark` of the indicated index number in the
+`AddressBook`.
+
+![MarkApplicantState3](images/MarkApplicantState3.png)
 
 The following sequence diagram shows how the `markapplicant` command works:
 
@@ -342,23 +405,23 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ### DeleteApplicant feature
 
-The `deleteapplicant` mechanism is facilitated by `AddressBook`. `DeleteApplicant` extends `Command` class. 
+The `deleteapplicant` mechanism is facilitated by `AddressBook`. `DeleteApplicant` extends `Command` class.
 
 When the user wants to delete an applicant from the address book, the user will input `deleteapplicant` along with the
 index number of the applicant. Note that this index is the same as the index that is displayed to the user under the
-applicant list tab in the ReCLIne application. 
+applicant list tab in the ReCLIne application.
 
 Given below is an example usage scenario and how the `deleteapplicant` mechanism behaves at each step.
 
 Step 1. The user inputs `deleteapplicant 1` into ReCLIne. `LogicManager#execute()` is executed, inside this method,
-`LogicManager#execute()` is executed which will return a DeleteApplicant object. 
+`LogicManager#execute()` is executed which will return a DeleteApplicant object.
 
 Step 2. Inside `LogicManager#execute()`, `DeleteApplicant#execute()` is executed. Inside this method, we obtained the last
 shown applicant list by calling `Model#getFilteredApplicantList()`. We also check if the index is invalid in `DeleteApplicant#execute()`.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is invalid, meaning 
-that it is greater than the size of the current `UnqiueApplicantList` or it is a negative integer or 0, the execution of 
-the command will fail and `AddressBookParser#parseCommand()` will throw a `CommandException` and the 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is invalid, meaning
+that it is greater than the size of the current `UnqiueApplicantList` or it is a negative integer or 0, the execution of
+the command will fail and `AddressBookParser#parseCommand()` will throw a `CommandException` and the
 `MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX` will be displayed to the user. This ensures that the inputted `index` is not out of bound.
 
 </div>
@@ -374,7 +437,7 @@ The following sequence diagram shows how the `deleteapplicant` command works:
 
 ![DeleteApplicantSequenceDiagram](images/DeleteApplicantSequenceDiagram.png)
 
-### AddJob feature 
+### AddJob feature
 The design implementation for AddJob is similar to that for AddApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#addapplicant-feature) on AddApplicant for the design considerations.
 
 ### EditJob feature
@@ -701,7 +764,7 @@ testers are expected to do more *exploratory* testing.
        job Id, Qualification and application status will all be "PENDING" as they have not been confirmed.
        
     2. Test case: `addapplicant n/Rick Sanchez p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21`
-    Expected: No applicant will be added. An error message with the correct command usage will be shown. 
+    Expected: No applicant will be added. An error message with the correct command usage will be shown.
        
     3. Test case: `addapplicant n/Rick Sanchez j/2 nric/S2344567D p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21 t/lab-trained`
     Expected: No applicant will be added as command includes a field (j/) that should be added by editapplicant. An error message detailing the error and how
@@ -736,7 +799,6 @@ testers are expected to do more *exploratory* testing.
         detailing the error and how to use the command will be shown.
        
         Note: If there are less than 11 applicants in the list, an error message detailing the error will be shown.
-    
     
 ### Marking an Applicant
 1. Updating an Applicant's application status on the application
@@ -791,14 +853,28 @@ testers are expected to do more *exploratory* testing.
        
 ### Adding a Job
 1. Adding a Job to the application
-
     1. Test case: `addjob jt/Devops Engineer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
         Expected: A Job listing for Devops Engineer, including all the included information in the command above, will be added to the Job list.
         The job status will always be vacant by default.
-       
-    2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
+
+    2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000`
         Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
 
+### Finding a Job
+1. Find a Job in job list give job title or job id
+
+    1. Test case: `findjob jt/Software Engineer`
+       Expected: Jobs with job title containing the keyword `Software` or `Engineer` is listed on the job list panel. The number of
+   jobs matching the condition is displayed in the status message.
+
+    2. Test case: `findjob id/3`
+       Expected: A job with job id `3` is listed  on the job list panel.
+
+    3. Test case: `findjob jt/Engineer id/3`
+       Expected: No jobs are. Error details shown in the status message. The job list panel remains the same.
+
+    4. Other incorrect delete commands to try: `findjob`, `findjob id/x`, `findjob jt/`, `findjob id/`, `...`(where x is a non-positive integer including 0)<br>
+          Expected: Similar to previous.       
 ### Editing a Job
 1. Adding a Job to the application
 
@@ -867,10 +943,9 @@ testers are expected to do more *exploratory* testing.
 ### Saving data
 
 1. Dealing with missing/corrupted data files
-
    1. Missing data file
       1. When ReCLIne cannot find a data file, it will automatically generate a sample data file containing sample data.
-    This happens by default when a user installs a new ReCLIne for the first time. A user can look out for this log 
+    This happens by default when a user installs a new ReCLIne for the first time. A user can look out for this log
          message when he starts the application to confirm. 
 `"INFO: Data file not found. Will be starting with a sample ReCLIne"`
          
@@ -879,7 +954,7 @@ testers are expected to do more *exploratory* testing.
     start with an empty list for both applicants and jobs. A user can look out for this log message when he starts
          the application to confirm. `"WARNING: Data file not in the correct format. Will be starting with an empty ReCLIne"`
          
-   3. Solutions      
+   3. Solutions
       1. To restart the application with a sampledata book, users will need to delete the data folder generated in the same folder
     as their ReCLIne.jar file.
       2. If the user is familiar with the JSON format, and wants to fix the corrupted file, he can attempt to do so by opening

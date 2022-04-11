@@ -138,9 +138,9 @@ public class ModelManager implements Model {
     @Override
     public void setApplicant(Applicant target, Applicant editedApplicant) {
         requireAllNonNull(target, editedApplicant);
-
         addressBook.setApplicant(target, editedApplicant);
     }
+
 
     @Override
     public boolean hasJob(Job job) {
