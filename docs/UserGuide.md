@@ -755,6 +755,9 @@ folderContainingReCLIne
 | **Exit**                    | `exit`                                                                                                                                                                                                                                                       |
 
 
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
+
 ##Glossary
 
 **Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
