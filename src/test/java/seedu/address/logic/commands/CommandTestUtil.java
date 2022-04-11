@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -156,6 +157,18 @@ public class CommandTestUtil {
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
+
+    // MarkJob Test
+    public static final String VALID_JOB_STATUS_FILLED = "filled";
+    public static final String VALID_JOB_STATUS_VACANT = "vacant";
+    public static final String VALID_INPUT_JOB_STATUS_FILLED = " " + PREFIX_JOBSTATUS + "filled";
+    public static final String VALID_INPUT_JOB_STATUS_VACANT = " " + PREFIX_JOBSTATUS + "vacant";
+    public static final String INVALID_JOB_STATUS_DECIDING = "deciding";
+    public static final String INVALID_JOB_STATUS_PREFIX = "sj/";
+    public static final String INVALID_INPUT_JOB_STATUS_FILLED = " " + INVALID_JOB_STATUS_PREFIX + "filled";
+    public static final String INVALID_INPUT_JOB_STATUS_VACANT = " " + INVALID_JOB_STATUS_PREFIX + "vacant";
+    public static final String INVALID_INPUT_JOB_STATUS_DECIDING = " " + PREFIX_JOBSTATUS + INVALID_JOB_STATUS_DECIDING;
+
     // ==================== Applicant =================================
     public static final EditApplicant.EditApplicantDescriptor DESC_CHARLIE;
     public static final EditApplicant.EditApplicantDescriptor DESC_DON;

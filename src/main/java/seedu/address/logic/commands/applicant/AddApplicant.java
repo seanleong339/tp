@@ -36,7 +36,7 @@ public class AddApplicant extends Command {
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_DATEAPPLIED + "2022-03-21 "
             + PREFIX_TAG + "applicant "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_TAG + "Competent in Java";
 
     public static final String MESSAGE_SUCCESS = "New applicant added: %1$s";
     public static final String MESSAGE_DUPLICATE_APPLICANT = "This applicant already exists in the address book. "

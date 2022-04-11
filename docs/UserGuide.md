@@ -53,6 +53,7 @@ available on ReCLIne.
     * [Clear](#clearing-all-entries--clear)
     * [Exit](#exiting-the-program--exit)
 * [FAQ](#faq)
+* [Glossary](#glossary)
 * [Command Summary](#command-summary)
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
@@ -193,6 +194,7 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 <div markdown="span" class="alert alert-info">:information_source:
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
+**Note:** Applicants are considered duplicates if they have the same **Nric**, **Email** **or** **Phone number**. ReCLIne does not allow duplicated applicants. <br>
 
 * **All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.
 
@@ -203,6 +205,10 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 `*n/[NAME]`: Applicant's name
 
 `*p/[PHONE]`: Applicant's phone number
+
+<div markdown="span" class="alert alert-info">:information_source: 
+
+**Note:** The `[PHONE]` field must be a Singapore number. It has to be **exactly 8** digits and the first digit has to be either **6,8 or 9**.
 
 `*nric/[NRIC]`: Applicant's NRIC
 
@@ -240,6 +246,8 @@ i/[INTERVIEWDATE] t/[TAG]…​`
 <div markdown="span" class="alert alert-info">:information_source: 
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
+**Note:** Applicants are considered duplicates if they have the same **Nric**, **Email** **or** **Phone number**. ReCLIne does not allow duplicated applicants. <br>
+
 
 * Just input the fields that you would like to change for the specific index number.
   
@@ -253,6 +261,10 @@ i/[INTERVIEWDATE] t/[TAG]…​`
 `n/[NAME]`: Updated Applicant's name
 
 `p/[PHONE]`: Updated Applicant's phone number
+
+<div markdown="span" class="alert alert-info">:information_source: 
+
+**Note:** The `[PHONE]` field must be a Singapore number. It has to be **exactly 8** digits and the first digit has to be either **6,8 or 9**.
 
 `nric/[NRIC]`: Updated Applicant's NRIC
 
@@ -434,6 +446,8 @@ Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *po
 <div markdown="span" class="alert alert-info">:information_source: 
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
+**Note:** Jobs are considered duplicates if they have the same **Job Title and Company**. ReCLIne does not allow duplicated jobs. <br>
+
 
 * **All fields are compulsory for `addjob`**.
 </div>
@@ -456,12 +470,13 @@ else is inputted.
 </div>
 
 `*s/[SALARY]`:  Salary of job, based on how much the job pays a month. The start and end of the SALARY range must be a positive integer
-1000,2000,3000,...
+1000,2000,3000,...The maximum start and end Salary is 999999999.
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
-of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
-A range where the **lower bound is equal to the upper bound** is **accepted**.
+of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
+A range where the **lower bound is equal to the upper bound** is **accepted**. For example "4000 - 4000" is allowed. This 
+indicates that the salary is not a range, but rather a fixed amount. The largest lower and upper bound salary is 999999999 (9 digits).
 </div>
 
 Example:
@@ -484,6 +499,9 @@ q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 <div markdown="span" class="alert alert-info">:information_source: 
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
+**Note:** Jobs are considered duplicates if they have the same **Job Title and Company**. ReCLIne does not allow duplicated jobs. <br>
+
+
 
 * Just input the fields that you would like to change for the specific index number.
   
@@ -508,7 +526,6 @@ q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The `[POSITION]` field only accepts either `ft` - **"full time"** or `pt` - **"part time"** as an input. ReCLIne will output an error is anything
 else is inputted.
-
 </div>
 
 `sal/[SALARY]` : Update the Job to edit the salary to `[SALARY]`
@@ -517,8 +534,7 @@ else is inputted.
 **Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
 of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
 A range where the **lower bound is equal to the upper bound** is **accepted**. For example "4000 - 4000" is allowed. This 
-indicates that the salary is not a range, but rather a fixed amount.
-
+indicates that the salary is not a range, but rather a fixed amount. The largest lower and upper bound salary is 999999999 (9 digits).
 </div>
 
 Examples:
@@ -647,6 +663,10 @@ Exits the program.
 
 Format: `exit`
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always"></div>
+
 ### Saving the data
 
 ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -726,6 +746,24 @@ folderContainingReCLIne
 
 **A**: All data that you have entrusted into ReCLIne will be auto-saved, so you will not lose any data.
 
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
+
+## Glossary
+
+**Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
+
+**CLI** - Command Line Interface. It is a way of interacting with an application by typing in text.
+
+**GUI** - Graphical User Interface. It is the visible components of the application that the user can interact with. When the user runs the application and sees the ReCLIne window pop up, that is the GUI.
+
+**Javascript** - A programming language that is used mainly for web development.
+
+**JSON** - JavaScript Object Notation. It is a format for storing data.
+
+**Job** - A representation in ReCLIne of a job posting. Contains the relevant details of said job posting. See [addjob](#adding-a-job-addjob).
+
+**Terminal** - Also called command lines or consoles. Allow the use of a computer wihtout a GUI. In Mac, type 'Terminal' into the Spotlight tool (CMD + Space or click the magnifying glass in the top right). For Windows, click the Windows start button, search for 'cmd' and run.
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
@@ -754,19 +792,4 @@ folderContainingReCLIne
 | **Clear**                   | `clear`                                                                                                                                                                                                                                                      |
 | **Exit**                    | `exit`                                                                                                                                                                                                                                                       |
 
-
-##Glossary
-**Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
-
-**CLI** - Command Line Interface. It is a way of interacting with an application by typing in text.
-
-**GUI** - Graphical User Interface. It is the visible components of the application that the user can interact with. When the user runs the application and sees the ReCLIne window pop up, that is the GUI.
-
-**Javascript** - A programming language that is used mainly for web development.
-
-**JSON** - JavaScript Object Notation. It is a format for storing data.
-
-**Job** - A representation in ReCLIne of a job posting. Contains the relevant details of said job posting. See [addjob](#adding-a-job-addjob).
-
-**Terminal** - Also called command lines or consoles. Allow the use of a computer wihtout a GUI. In Mac, type 'Terminal' into the Spotlight tool (CMD + Space or click the magnifying glass in the top right). For Windows, click the Windows start button, search for 'cmd' and run.
 
