@@ -190,11 +190,13 @@ Adds an applicant to the applicant list of ReCLIne.
 Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
             *d/[DATEAPPLIED] t/[TAG]…​`
 
-<div markdown="span" class="alert alert-info">:information_source:
+<div markdown="span" class="alert alert-info">
 
-**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
+:information_source:
 
-* **All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
+
+* **All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.<br>
 
 </div>
 
@@ -237,13 +239,16 @@ Format: `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[A
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] t/[TAG]…​`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">
+
+:information_source: 
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
-* Just input the fields that you would like to change for the specific index number.
+* Just input the fields that you would like to change for the specific index number.<br>
   
-* To leave out fields, **skip the flag and attribute** completely.
+* To leave out fields, **skip the flag and attribute** completely.<br>
+
 </div>
 
 *flag/[ATTRIBUTE]:*
@@ -301,9 +306,12 @@ Deletes an applicant specified by the index from the applicant list in ReCLIne.
 
 Format: `deleteapplicant *[INDEX]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">
+
+:information_source: 
 
 **Tip:** **Only fields with `*` indicated are compulsory.**
+
 </div>
 
 `*[INDEX]` : Index number for the applicant on the applicant list. The index should be a positive integer 1, 2, 3...
@@ -323,11 +331,13 @@ Mark applicant status.
 
 Format: `markapplicant *[INDEX] *s/[STATUS]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">
 
-**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
+:information_source: 
 
-* **All fields are compulsory for `markapplicant`**
+**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.**<br>
+
+* **All fields are compulsory for `markapplicant`**<br>
 
 </div>
 
@@ -362,11 +372,14 @@ Sorts the list of applicants by a given attribute.
 
 Format: `sortapplicant *by/[ATTRIBUTE]`
 
-<div markdown="span" class="alert alert-info">:information_source:
+<div markdown="span" class="alert alert-info">
 
-**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
+:information_source:
 
-* All fields for `sortapplicant` are compulsory.
+**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.**<br>
+
+* All fields for `sortapplicant` are compulsory.<br>
+
 </div>
 
 *flag/[Attribute]*
@@ -431,11 +444,14 @@ Adds a new job posting to ReCLIne
 
 Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">
+
+:information_source: 
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
-* **All fields are compulsory for `addjob`**.
+* **All fields are compulsory for `addjob`**.<br>
+
 </div>
 
 *flag/[Attribute]:*
@@ -481,13 +497,15 @@ outdated information to applicants.
 Format: `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">
 
-**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
+:information_source: 
 
-* Just input the fields that you would like to change for the specific index number.
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
+
+* Just input the fields that you would like to change for the specific index number.<br>
   
-* To leave out fields, **skip the flag and attribute** completely.
+* To leave out fields, **skip the flag and attribute** completely.<br>
 
 </div>
 
@@ -537,9 +555,12 @@ Delete a job specified by the index from the job list of ReCLIne.
 
 Format: `deletejob *[INDEX]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">
+
+:information_source: 
 
 **Tip:** **Only fields with `*` indicated are compulsory.**
+
 </div>
 
 `*[INDEX]` : The index displayed in the job list of ReCLIne. Index should be a positive integer.
@@ -556,11 +577,14 @@ Marks an existing job posting as filled or vacant.
 
 Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">
 
-**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
+:information_source: 
 
-* **All fields are compulsory for `markjob`**
+**Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.**<br>
+
+* **All fields are compulsory for `markjob`**<br>
+
 </div>
 
 *flag/[Attribute]:*
@@ -729,7 +753,7 @@ folderContainingReCLIne
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
 
-##Glossary
+## Glossary
 
 **Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
 
