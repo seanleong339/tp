@@ -708,6 +708,36 @@ testers are expected to do more *exploratory* testing.
        to use the command will be shown.
        Other incorrect fields to try are `q/` and `i/`.
 
+### Editing an Applicant
+1. Adding an Applicant to the application
+
+    1. Test case: `editapplicant 2 n/Benjamin Oscar e/benjaminoscar123@example.com a/Block 233 Broadway Street 2, #09-111, i/2022-04-23`
+        
+        Expected: An applicant at index 2 on the displayed list of applicants, will have his name, email, address and interview date changed.
+        
+        Note: If the interview date inputted is earlier than the date applied, an error will be shown and the applicant at index 2 will 
+        not be edited.
+       
+        Note: If there are less than 2 applicants in the list, an error message detailing the error will be shown.
+       
+    2. Test case: `editapplicant 19 n/Stephen Curry p/92881727 e/stephencurry30@example.com p/90221122`
+       
+        Expected: An applicant at index 19 in the displayed list of applicants, will have his name, phone number and email changed.
+    
+        Note: The application will take the last instance of the field if there are duplicate fields inputted in a single command.
+    
+    3. Test case: `editapplicant n/Andrew Goodwill p/91238321 e/andrewgoodwill@example.com d/2022-03-22 i/2022-04-10`
+        
+        Expected: No applicant will be edited, since no applicant index was specified in the command. 
+       
+    4. Test case: `editapplicant 11 n/Michael Jordan p/94448321 e/michaeljordan@example.com sal/3000-4000`
+        
+        Expected: No applicant will be edited, since there is an invalid flag that was specified in the command. An error message
+        detailing the error and how to use the command will be shown.
+       
+        Note: If there are less than 11 applicants in the list, an error message detailing the error will be shown.
+    
+    
 ### Marking an Applicant
 1. Updating an Applicant's application status on the application
 
@@ -728,6 +758,21 @@ testers are expected to do more *exploratory* testing.
       Expected: No applicant status will be updated, as `deciding` is not a valid application status.
       An error message detailing the error and how to use the command will be shown.
       The only valid statuses are `pending`, `interviewed`, `accepted` and `rejected`.
+
+### Deleting an Applicant
+
+1. Deleting an applicant while all applicants are being shown
+
+    1. Prerequisites: List all applicants by clicking on the Applicant tab on the GUI or by using the `tabapplicant` command. Multiple applicants in the list.
+
+    1. Test case: `deleteapplicant 1`<br>
+       Expected: First applicant is deleted from the list. Details of the deleted applicant shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `deleteapplicant 0`<br>
+       Expected: No applicant is deleted. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect deleteapplicant commands to try: `deleteapplicant`, `deleteapplicant x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 ### Sorting Applicants
 1. Sort the applicant list by a given attribute
@@ -753,10 +798,29 @@ testers are expected to do more *exploratory* testing.
        
     2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
         Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
-       
+
+### Editing a Job
+1. Adding a Job to the application
+
+    1. Test case: `editjob 2 jt/Project Facilitator c/Microsoft sal/2000-6000`
+
+       Expected: A job at index 2 on the displayed list of jobs, will have its Job Title, Company name and Salary changed.
+
+       Note: If there are less than 2 applicants in the list, an error message detailing the error will be shown.
+
+    2. Test case: `editjob jt/Software Designer UI sal/10000-20000 pos/ft`
+
+       Expected: No job will be edited, since no job index was specified in the command. An error message
+       detailing the error and how to use the command will be shown.
+
+    3. Test case: `editjob 11 c/HP sal/10000-11000 sth/Something`
+
+       Expected: No applicant will be edited, since there is an invalid flag that was specified in the command. 
+
+       Note: If there are less than 11 jobs in the list, an error message detailing the error will be shown.
        
 ### Marking a Job
-1. Updating an Job listing's fulfillment status on the application
+1. Updating a Job listing's fulfillment status on the application
 
     1. Test case: `markjob 54 js/filled`
        Expected: An job listing at index 54 on the displayed job list will be marked as `filled`.
@@ -775,22 +839,7 @@ testers are expected to do more *exploratory* testing.
        Expected: No job listing status will be updated, as `deciding` is not a valid job fulfillment status.
        An error message detailing the error and how to use the command will be shown.
        The only valid statuses are `filled`, and `vacant`.
-
-### Deleting an Applicant
-
-1. Deleting an applicant while all applicants are being shown
-
-   1. Prerequisites: List all applicants by clicking on the Applicant tab on the GUI or by using the `tabapplicant` command. Multiple applicants in the list.
-
-   1. Test case: `deleteapplicant 1`<br>
-      Expected: First applicant is deleted from the list. Details of the deleted applicant shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `deleteapplicant 0`<br>
-      Expected: No applicant is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect deleteapplicant commands to try: `deleteapplicant`, `deleteapplicant x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-
+       
 ### Deleting a Job
 
 1. Deleting a Job while all jobs are being shown
