@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.job.Job;
 import seedu.address.model.job.JobStatus;
@@ -134,6 +135,13 @@ public interface Model {
      * in the address book.
      */
     void setApplicant(Applicant target, Applicant editedApplicant);
+
+
+    /**
+     * Returns true if a given {@code applicant} is has a given {@code applicantStatus}.
+     */
+    boolean applicantStatusUpToDate(Applicant applicant, ApplicantStatus applicantStatus);
+
 
     /**
      * Returns an unmodifiable view of the filtered person list

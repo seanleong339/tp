@@ -2,8 +2,35 @@
 layout: page
 title: Developer Guide
 ---
-* Table of Contents
-{:toc}
+## Table of Contents
+* [Introduction](#introduction)
+* [Acknowledgements](#introduction)
+* [Setting up, getting started](#setting-up-getting-started)
+* [Design](#design-considerations)
+  * [Architecture](#architecture)
+  * [Ui component](#ui-component)
+  * [Logic component](#logic-component)
+  * [Model component](#model-component)
+  * [Storage component](#storage-component)
+  * [Common classes](#common-classes)
+* [Implementation](#implementation)
+  * [AddApplicant feature](#addapplicant-feature)
+  * [EditApplicant feature](#editapplicant-feature)
+  * [MarkApplicant feature](#markapplicant-feature)
+  * [DeleteApplicant feature](#deleteapplicant-feature)
+* [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
+* [Appendix: Requirement](#appendix-requirements)
+  * [Product scope](#product-scope)
+  * [User stories](#user-stories)
+  * [Use cases](#use-cases)
+  * [Non-Fuctional Requirement](#non-functional-requirements)
+  * [Glossary](#glossary)
+* [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
+  * [Launch and shutdown](#launch-and-shutdown)
+  * [Adding an Applicant](#adding-an-applicant)
+  * [Adding a Job](#adding-a-job)
+  * [Deleting a person](#deleting-a-person)
+  * [Saving data](#saving-data)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -86,16 +113,21 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ApplicantListPanel`,
+`JobListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class 
+which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` 
+files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`]
+(https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified 
+in [`MainWindow.fxml`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Applicant` or `Job` object residing in the `Model`.
 
 ### Logic component
 
@@ -324,10 +356,34 @@ and `MarkApplicantParser#parse()`. `MarkApplicantParser#parse()`calls `ParserUti
 which returns Index and ApplicantStatus objects representing the index and status value that user inputted. This returns a
 `MarkApplicant` with Index and ApplicantStatus objects as arguments.
 
+
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is greater than the
 size of the current `UniqueApplicantList` the execution of the command will fail. A `CommandException` will be thrown
 and displayed for the user. This ensures that inputted `index` is not out of bound.
 </div>
+
+
+Step 2. `MarkApplicant#execute()` is executed. Firstly, get the current Applicant object that is in the
+indicated index in the `UniqueApplicantList`. In this case, Applicant 1 in the `UniqueApplicantList` is stored in the
+`applicantToMark` variable.
+
+![MarkApplicantState1](images/MarkApplicantState1.png)
+
+Step 3. Next, a new Applicant object, `markedApplicant`, that is going to replace `applicantToMark` is created. 
+This is done by creating a new instance of `Applicant` with ApplicantStauts object containing the status
+inputted by the user, in this case `rejected`.
+
+![MarkApplicantState2](images/MarkApplicantState2.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** A check between the new Applicant object
+and current Applicant object occurs. If both Applicant objects are the same, a `CommandException` is thrown. This ensures
+that there is no duplicate Applicants in the `UniqueApplicantList` and `AddressBook`
+</div>
+
+Step 4. Lastly, `markedApplicant`t will replace the current A`applicantToMark` of the indicated index number in the
+`AddressBook`.
+
+![EditApplicantState3](images/MarkApplicantState3.png)
 
 The following sequence diagram shows how the `markapplicant` command works:
 
@@ -794,7 +850,37 @@ testers are expected to do more *exploratory* testing.
        
     2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
         Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
-       
+
+### Marking an Applicant
+1. Marking an Applicant in applicant list
+    1. Test case: `markapplicant 1 s/accepted`
+       Expected: The first applicant in the applicant list is marked as accepted. The updated applicant status followed by details
+   of the applicant is shown in the status message.
+
+    2. Test case: `markapplicant 1 s/complete`
+       Expected: No applicant will be marked. An error message with the correct command usage will be shown. Status remains the same.
+
+    3. Other incorrect delete commands to try: `markapplicant`, `markapplicant x` , `...` (where x is an integer larger than the list size or 
+   a non-positive integer)<br>
+       Expected: Similar to previous.
+
+### Finding a Job
+1. Find a Job in job list give job title or job id
+
+    1. Test case: `findjob jt/Software Engineer`
+       Expected: Jobs with job title containing the keyword `Software` or `Engineer` is listed on the job list panel. The number of 
+   jobs matching the condition is displayed in the status message.
+
+    2. Test case: `findjob id/3`
+       Expected: A job with job id `3` is listed  on the job list panel.
+
+    3. Test case: `findjob jt/Engineer id/3`
+       Expected: No jobs are. Error details shown in the status message. The job list panel remains the same.
+
+    4. Other incorrect delete commands to try: `findjob`, `findjob id/x`, `findjob jt/`, `findjob id/`, `...`(where x is a non-positive integer including 0)<br>
+          Expected: Similar to previous.
+    
+
 
 ### Deleting a person
 

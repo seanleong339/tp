@@ -13,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.applicant.Applicant;
+import seedu.address.model.applicant.ApplicantStatus;
 import seedu.address.model.applicant.Nric;
 import seedu.address.model.job.Job;
 import seedu.address.model.job.JobStatus;
@@ -138,8 +139,13 @@ public class ModelManager implements Model {
     @Override
     public void setApplicant(Applicant target, Applicant editedApplicant) {
         requireAllNonNull(target, editedApplicant);
-
         addressBook.setApplicant(target, editedApplicant);
+    }
+
+    @Override
+    public boolean applicantStatusUpToDate(Applicant applicant, ApplicantStatus applicantStatus) {
+        requireAllNonNull(applicant, applicantStatus);
+        return applicant.getApplicantStatus().equals(applicantStatus);
     }
 
     @Override

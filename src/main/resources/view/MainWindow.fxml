@@ -38,19 +38,19 @@
 
         <StackPane fx:id="commandBoxPlaceholder" prefHeight="40.0" prefWidth="620.0" VBox.vgrow="NEVER">
           <padding>
-            <Insets bottom="5" left="10" right="10" top="15" />
+            <Insets bottom="5" left="10" right="10" top="10" />
           </padding>
         </StackPane>
 
-        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="105" prefWidth="195.0" VBox.vgrow="NEVER">
+        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="105" prefWidth="230.0" VBox.vgrow="NEVER">
           <padding>
-            <Insets bottom="5" left="10" right="10" top="15" />
+            <Insets bottom="5" left="10" right="10" top="5" />
           </padding>
         </StackPane>
 
         <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
           <padding>
-            <Insets bottom="5" left="10" right="10" top="15" />
+            <Insets bottom="10" left="10" right="10" top="5" />
           </padding>
 
           <items>
