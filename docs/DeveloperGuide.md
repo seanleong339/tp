@@ -718,6 +718,8 @@ testers are expected to do more *exploratory* testing.
     2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
         Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
        
+### Editing an Applicant
+1. Adding an Applicant to the application
 
 ### Deleting an Applicant
 
