@@ -21,6 +21,8 @@ application onto your device and to have a quick try at some commands that ReCLI
 * If you are an **experienced user**, we recommend going to the [Features](#features) section to view all the commands
 available on ReCLIne.
 
+<div style="page-break-after: always;"></div>
+
 ## Table of Contents
 
 * [Introduction](#introduction)
@@ -52,8 +54,8 @@ available on ReCLIne.
     * [Exit](#exiting-the-program--exit)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
-
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Quick Start
 
@@ -88,6 +90,9 @@ If you are a MacOS user and unable to run file by double-clicking, go to Termina
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ## Flags
 These flags are used in the commands to indicate which **field you are currently referring to**. 
 They are used first before entering adding to corresponding fields.
@@ -127,6 +132,7 @@ They are commonly used in every command. Details are given below.
 | **`pos/`**  | Indicates Job's **Position**       |
 | **`id/`**  |  Indicates Job's **Job ID**         |
 
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -400,6 +406,8 @@ Switches to the `applicant list` tab in the GUI, without listing all Applicants.
 
 Format: `tabapplicant` <br>
 
+<div style="page-break-after: always;"></div>
+
 ## Job Commands
 
 ### Adding a Job: `addjob`
@@ -662,6 +670,7 @@ We would like to remind users again, if your changes to the data file makes its 
 
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
