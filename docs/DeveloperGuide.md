@@ -856,4 +856,3 @@ testers are expected to do more *exploratory* testing.
       2. If the user is familiar with the JSON format, and wants to fix the corrupted file, he can attempt to do so by opening
     the `ReCLIne.json` file in the data folder, and try fixing the format error. Refer to the [storage section](DeveloperGuide.md#storage-component) of this Developer Guide
          to see the storage file format.
-
