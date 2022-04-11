@@ -53,7 +53,9 @@ available on ReCLIne.
     * [Clear](#clearing-all-entries--clear)
     * [Exit](#exiting-the-program--exit)
 * [FAQ](#faq)
+* [Glossary](#glossary)
 * [Command Summary](#command-summary)
+
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
 
@@ -196,6 +198,8 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
+**Note:** Applicants are considered duplicates if they have the same **Nric**, **Email** **or** **Phone number**. ReCLIne does not allow duplicated applicants.<br>
+
 * **All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.<br>
 
 </div>
@@ -205,6 +209,12 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 `*n/[NAME]`: Applicant's name
 
 `*p/[PHONE]`: Applicant's phone number
+
+<div markdown="span" class="alert alert-info">:information_source: 
+
+**Note:** The `[PHONE]` field must be a Singapore number. It has to be **exactly 8** digits and the first digit has to be either **6,8 or 9**.
+
+</div>
 
 `*nric/[NRIC]`: Applicant's NRIC
 
@@ -245,6 +255,8 @@ i/[INTERVIEWDATE] t/[TAG]…​`
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
+**Note:** Applicants are considered duplicates if they have the same **Nric**, **Email** **or** **Phone number**. ReCLIne does not allow duplicated applicants.<br>
+
 * Just input the fields that you would like to change for the specific index number.<br>
   
 * To leave out fields, **skip the flag and attribute** completely.<br>
@@ -258,6 +270,12 @@ i/[INTERVIEWDATE] t/[TAG]…​`
 `n/[NAME]`: Updated Applicant's name
 
 `p/[PHONE]`: Updated Applicant's phone number
+
+<div markdown="span" class="alert alert-info">:information_source: 
+
+**Note:** The `[PHONE]` field must be a Singapore number. It has to be **exactly 8** digits and the first digit has to be either **6,8 or 9**.<br>
+
+</div>
 
 `nric/[NRIC]`: Updated Applicant's NRIC
 
@@ -449,6 +467,8 @@ Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *po
 :information_source: 
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
+**Note:** Jobs are considered duplicates if they have the same **Job Title and Company**. ReCLIne does not allow duplicated jobs. <br>
+
 
 * **All fields are compulsory for `addjob`**.<br>
 
@@ -466,18 +486,23 @@ Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *po
 
 `*pos/[POSITION]`: Type of job, whether part-time or full time.
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">
+
+:information_source: 
+
 **Note:** The `[POSITION]` field only accepts either `ft` - **"full time"** or `pt` - **"part time"** as an input. ReCLIne will output an error is anything
 else is inputted.
+
 </div>
 
 `*s/[SALARY]`:  Salary of job, based on how much the job pays a month. The start and end of the SALARY range must be a positive integer
-1000,2000,3000,...
+1000,2000,3000,...The maximum start and end Salary is 999999999.
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
-of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
-A range where the **lower bound is equal to the upper bound** is **accepted**.
+of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
+A range where the **lower bound is equal to the upper bound** is **accepted**. For example "4000 - 4000" is allowed. This 
+indicates that the salary is not a range, but rather a fixed amount. The largest lower and upper bound salary is 999999999 (9 digits).
 </div>
 
 Example:
@@ -503,6 +528,10 @@ q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
+**Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
+**Note:** Jobs are considered duplicates if they have the same **Job Title and Company**. ReCLIne does not allow duplicated jobs. <br>
+
+
 * Just input the fields that you would like to change for the specific index number.<br>
   
 * To leave out fields, **skip the flag and attribute** completely.<br>
@@ -526,16 +555,16 @@ q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** The `[POSITION]` field only accepts either `ft` - **"full time"** or `pt` - **"part time"** as an input. ReCLIne will output an error is anything
 else is inputted.
-
 </div>
 
 `sal/[SALARY]` : Update the Job to edit the salary to `[SALARY]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
+
 **Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
 of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
 A range where the **lower bound is equal to the upper bound** is **accepted**. For example "4000 - 4000" is allowed. This 
-indicates that the salary is not a range, but rather a fixed amount.
+indicates that the salary is not a range, but rather a fixed amount. The largest lower and upper bound salary is 999999999 (9 digits).
 
 </div>
 
@@ -670,6 +699,10 @@ Format: `clear`
 Exits the program.
 
 Format: `exit`
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always"></div>
 
 ### Saving the data
 
