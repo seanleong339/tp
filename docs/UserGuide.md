@@ -55,6 +55,7 @@ available on ReCLIne.
 * [FAQ](#faq)
 * [Glossary](#glossary)
 * [Command Summary](#command-summary)
+
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
 
@@ -195,7 +196,7 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
 
-* **All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.
+**All fields are compulsory for `addapplicant`**, except for `t/[TAG]…​` field.
 
 </div>
 
@@ -216,7 +217,7 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 <div markdown="span" class="alert alert-info">:information_source: 
 
 **Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
-any other format.
+any other format. <br>
 
 </div>
 
