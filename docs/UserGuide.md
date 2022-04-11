@@ -54,7 +54,6 @@ available on ReCLIne.
     * [Exit](#exiting-the-program--exit)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
-
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
 
@@ -423,6 +422,8 @@ Switches to the `applicant list` tab in the GUI, without listing all Applicants.
 
 Format: `tabapplicant` <br>
 
+<div style="page-break-after: always;"></div>
+
 ## Job Commands
 
 ### Adding a Job: `addjob`
@@ -660,6 +661,10 @@ Advanced users who are familiar with Javascript and JSON objects are welcome to 
 We would like to remind users again, if your changes to the data file makes its format invalid, ReCLIne will discard all data and start with an empty data file at the next run.
 </div>
 
+
+<div style="page-break-after: always"></div>
+
+Sample data file format
 ```
 {
  "applicants" : [ {
@@ -748,3 +753,20 @@ folderContainingReCLIne
 | **Help**                    | `help`                                                                                                                                                                                                                                                       |
 | **Clear**                   | `clear`                                                                                                                                                                                                                                                      |
 | **Exit**                    | `exit`                                                                                                                                                                                                                                                       |
+
+
+##Glossary
+**Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
+
+**CLI** - Command Line Interface. It is a way of interacting with an application by typing in text.
+
+**GUI** - Graphical User Interface. It is the visible components of the application that the user can interact with. When the user runs the application and sees the ReCLIne window pop up, that is the GUI.
+
+**Javascript** - A programming language that is used mainly for web development.
+
+**JSON** - JavaScript Object Notation. It is a format for storing data.
+
+**Job** - A representation in ReCLIne of a job posting. Contains the relevant details of said job posting. See [addjob](#adding-a-job-addjob).
+
+**Terminal** - Also called command lines or consoles. Allow the use of a computer wihtout a GUI. In Mac, type 'Terminal' into the Spotlight tool (CMD + Space or click the magnifying glass in the top right). For Windows, click the Windows start button, search for 'cmd' and run.
+
