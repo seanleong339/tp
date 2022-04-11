@@ -58,6 +58,7 @@ Given below are my contributions to the project.
         * Added documentation for the features `addapplicant` and `addjob` [\#72]()
         * Added section on editing the data file
         * Added new FAQ on how to transfer data to a new computer.
+        * Added the Glossary.
     * Developer Guide:
         * Added implementation details of the `addapplicant` feature, as well as the UML diagrams in that section.
         * Added documentation on how the storage components of ReCLIne store data, as well as the UML diagrams in that section.
