@@ -53,6 +53,7 @@ available on ReCLIne.
     * [Clear](#clearing-all-entries--clear)
     * [Exit](#exiting-the-program--exit)
 * [FAQ](#faq)
+* [Glossary](#glossary)
 * [Command Summary](#command-summary)
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
@@ -647,6 +648,10 @@ Exits the program.
 
 Format: `exit`
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always"></div>
+
 ### Saving the data
 
 ReCLIne data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -729,7 +734,7 @@ folderContainingReCLIne
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
 
-##Glossary
+## Glossary
 
 **Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
 
