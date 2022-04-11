@@ -36,12 +36,12 @@ title: Developer Guide
 
 ## **Introduction**
 
-ReCLIne is a desktop app which serves as a centralised location for recruiters to store and track job applicants and jobs, 
-optimized for use via a `Command Line Interface (CLI)` while still having the benefits of a `Graphical User Interface (GUI)`. 
+ReCLIne is a desktop app which serves as a centralised location for recruiters to store and track job applicants and jobs,
+optimized for use via a `Command Line Interface (CLI)` while still having the benefits of a `Graphical User Interface (GUI)`.
 
 This Developer Guide assumes that its readers have some basic understanding of programming.
 
-The purpose of this Develop Guide is to aid any curious or interested contributor in developing ReCLIne further by providing 
+The purpose of this Develop Guide is to aid any curious or interested contributor in developing ReCLIne further by providing
 an in-depth explanation of how the features are implemented.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/MainApp.java). 
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/MainApp.java).
 It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
@@ -114,12 +114,12 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ApplicantListPanel`,
-`JobListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class 
+`JobListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class
 which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` 
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml`
 files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`]
-(https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified 
+(https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified
 in [`MainWindow.fxml`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
@@ -253,8 +253,8 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 This section describes some noteworthy details on how certain features are implemented.
 
 ### AddApplicant feature
-The `addapplicant` mechanism is facilitated by `AddApplicantParser` and `AddApplicant` command. It extends `AddressBook` with the capability to 
-create new applicants, and store them in the `UniqueApplicantList` of the `AddressBook`. Following the command pattern of the 
+The `addapplicant` mechanism is facilitated by `AddApplicantParser` and `AddApplicant` command. It extends `AddressBook` with the capability to
+create new applicants, and store them in the `UniqueApplicantList` of the `AddressBook`. Following the command pattern of the
 application, the `parse()` method will parse the user input, use the arguments parsed to create a new `Applicant`, and then
 the `Applicant` will be used to create an `AddApplicant` command.
 The command will then be executed to add the new `Applicant` to the `AddressBook`.
@@ -269,7 +269,7 @@ The `commandWord` will then cause a new `AddApplicantParser` to be created.
 ![AddApplicantStep1](images/AddApplicantStep1.png)
 
 Step 2. The `AddApplicantParser#parse()` method is then called with `arguments` as the argument. The `arguments` will then be
-further parsed using their respective class parser methods in `ParserUtil` to create their respective attribute classes, 
+further parsed using their respective class parser methods in `ParserUtil` to create their respective attribute classes,
 and then used to create a new `Applicant` object. The `Applicant` object will be used to create a new `AddApplicant` command.
 
 ![AddApplicantStep2](images/AddApplicantStep2.png)
@@ -369,7 +369,7 @@ indicated index in the `UniqueApplicantList`. In this case, Applicant 1 in the `
 
 ![MarkApplicantState1](images/MarkApplicantState1.png)
 
-Step 3. Next, a new Applicant object, `markedApplicant`, that is going to replace `applicantToMark` is created. 
+Step 3. Next, a new Applicant object, `markedApplicant`, that is going to replace `applicantToMark` is created.
 This is done by creating a new instance of `Applicant` with ApplicantStauts object containing the status
 inputted by the user, in this case `rejected`.
 
@@ -395,23 +395,23 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ### DeleteApplicant feature
 
-The `deleteapplicant` mechanism is facilitated by `AddressBook`. `DeleteApplicant` extends `Command` class. 
+The `deleteapplicant` mechanism is facilitated by `AddressBook`. `DeleteApplicant` extends `Command` class.
 
 When the user wants to delete an applicant from the address book, the user will input `deleteapplicant` along with the
 index number of the applicant. Note that this index is the same as the index that is displayed to the user under the
-applicant list tab in the ReCLIne application. 
+applicant list tab in the ReCLIne application.
 
 Given below is an example usage scenario and how the `deleteapplicant` mechanism behaves at each step.
 
 Step 1. The user inputs `deleteapplicant 1` into ReCLIne. `LogicManager#execute()` is executed, inside this method,
-`LogicManager#execute()` is executed which will return a DeleteApplicant object. 
+`LogicManager#execute()` is executed which will return a DeleteApplicant object.
 
 Step 2. Inside `LogicManager#execute()`, `DeleteApplicant#execute()` is executed. Inside this method, we obtained the last
 shown applicant list by calling `Model#getFilteredApplicantList()`. We also check if the index is invalid in `DeleteApplicant#execute()`.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is invalid, meaning 
-that it is greater than the size of the current `UnqiueApplicantList` or it is a negative integer or 0, the execution of 
-the command will fail and `AddressBookParser#parseCommand()` will throw a `CommandException` and the 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `index` inputted is invalid, meaning
+that it is greater than the size of the current `UnqiueApplicantList` or it is a negative integer or 0, the execution of
+the command will fail and `AddressBookParser#parseCommand()` will throw a `CommandException` and the
 `MESSAGE_INVALID_APPLICANT_DISPLAYED_INDEX` will be displayed to the user. This ensures that the inputted `index` is not out of bound.
 
 </div>
@@ -427,77 +427,8 @@ The following sequence diagram shows how the `deleteapplicant` command works:
 
 ![DeleteApplicantSequenceDiagram](images/DeleteApplicantSequenceDiagram.png)
 
-### AddJob feature 
+### AddJob feature
 The design implementation for AddJob is similar to that for AddApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#addapplicant-feature) on AddApplicant for the design considerations.
-
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: 
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, 
-pointing to the latest address book state, then there are no undone AddressBook states to restore. 
-The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. 
-If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<img src="images/CommitActivityDiagram.png" width="250" />
 
 #### Design considerations:
 
@@ -517,7 +448,6 @@ _{more aspects and alternatives to be added}_
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
-
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -834,7 +764,7 @@ testers are expected to do more *exploratory* testing.
        job Id, Qualification and application status will all be "PENDING" as they have not been confirmed.
        
     2. Test case: `addapplicant n/Rick Sanchez p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21`
-    Expected: No applicant will be added. An error message with the correct command usage will be shown. 
+    Expected: No applicant will be added. An error message with the correct command usage will be shown.
        
     3. Test case: `addapplicant n/Rick Sanchez j/2 nric/S2344567D p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21 t/lab-trained`
     Expected: No applicant will be added as command includes a field (j/) that should be added by editapplicant. An error message detailing the error and how
@@ -843,19 +773,18 @@ testers are expected to do more *exploratory* testing.
        
 ### Adding a Job
 1. Adding a Job to the application
-
     1. Test case: `addjob jt/Devops Engineer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
         Expected: A Job listing for Devops Engineer, including all the included information in the command above, will be added to the Job list.
         The job status will always be vacant by default.
-       
-    2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
+
+    2. Test case: `addjob jt/Devops Engineer a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000`
         Expected: No Jobs will be added. The error message for wrong command format will be shown in the status window.
 
 ### Finding a Job
 1. Find a Job in job list give job title or job id
 
     1. Test case: `findjob jt/Software Engineer`
-       Expected: Jobs with job title containing the keyword `Software` or `Engineer` is listed on the job list panel. The number of 
+       Expected: Jobs with job title containing the keyword `Software` or `Engineer` is listed on the job list panel. The number of
    jobs matching the condition is displayed in the status message.
 
     2. Test case: `findjob id/3`
@@ -866,8 +795,6 @@ testers are expected to do more *exploratory* testing.
 
     4. Other incorrect delete commands to try: `findjob`, `findjob id/x`, `findjob jt/`, `findjob id/`, `...`(where x is a non-positive integer including 0)<br>
           Expected: Similar to previous.
-    
-
 
 ### Deleting an Applicant
 
@@ -911,10 +838,9 @@ testers are expected to do more *exploratory* testing.
 ### Saving data
 
 1. Dealing with missing/corrupted data files
-
    1. Missing data file
       1. When ReCLIne cannot find a data file, it will automatically generate a sample data file containing sample data.
-    This happens by default when a user installs a new ReCLIne for the first time. A user can look out for this log 
+    This happens by default when a user installs a new ReCLIne for the first time. A user can look out for this log
          message when he starts the application to confirm. 
 `"INFO: Data file not found. Will be starting with a sample ReCLIne"`
          
@@ -923,7 +849,7 @@ testers are expected to do more *exploratory* testing.
     start with an empty list for both applicants and jobs. A user can look out for this log message when he starts
          the application to confirm. `"WARNING: Data file not in the correct format. Will be starting with an empty ReCLIne"`
          
-   3. Solutions      
+   3. Solutions
       1. To restart the application with a sampledata book, users will need to delete the data folder generated in the same folder
     as their ReCLIne.jar file.
       2. If the user is familiar with the JSON format, and wants to fix the corrupted file, he can attempt to do so by opening
