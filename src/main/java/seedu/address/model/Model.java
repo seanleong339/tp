@@ -140,7 +140,6 @@ public interface Model {
      */
     ObservableList<Applicant> getFilteredApplicantList();
 
-
     /**
      * Returns true if a given {@code job} is has a given {@code jobStatus}.
      */

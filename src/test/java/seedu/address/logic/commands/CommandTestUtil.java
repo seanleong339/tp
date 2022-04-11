@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEINTERVIEW;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBSTATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOBTITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_JOB_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -16,6 +17,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUALIFICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SORTAPPLICANT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -108,6 +110,24 @@ public class CommandTestUtil {
     public static final String INVALID_QUALIFICATION = " " + PREFIX_QUALIFICATION + " **degree in science";
     public static final String INVALID_JOB = " " + PREFIX_JOB + "a12345"; // job id must be all numbers
 
+    // SortApplicantParserTest
+    public static final String INVALID_SORTING_ATTRIBUTE_PREFIX = "b/";
+    public static final String VALID_SORTING_ATTRIBUTE_DATEAPPLIED = "dateapplied";
+    public static final String VALID_SORTING_ATTRIBUTE_INTERVIEW = "interview";
+    public static final String VALID_SORTING_ATTRIBUTE_JOB = "job";
+    public static final String INVALID_SORTING_ATTRIBUTE = "name";
+
+    public static final String VALID_INPUT_SORT_BY_DATEAPPLIED = " " + PREFIX_SORTAPPLICANT
+            + VALID_SORTING_ATTRIBUTE_DATEAPPLIED;
+    public static final String VALID_INPUT_SORT_BY_INTERVIEW = " " + PREFIX_SORTAPPLICANT
+            + VALID_SORTING_ATTRIBUTE_INTERVIEW;
+    public static final String VALID_INPUT_SORT_BY_JOB = " " + PREFIX_SORTAPPLICANT
+            + VALID_SORTING_ATTRIBUTE_JOB;
+    public static final String INVALID_PREFIX_SORT_BY_DATE_APPLIED = " " + INVALID_SORTING_ATTRIBUTE_PREFIX
+            + VALID_SORTING_ATTRIBUTE_DATEAPPLIED;
+    public static final String INVALID_ATTRIBUTE_SORT_BY_NAME = " " + PREFIX_SORTAPPLICANT
+            + INVALID_SORTING_ATTRIBUTE;
+
     // ========================== Jobs ====================================
     public static final String VALID_JOB_TITLE_DATA_ANALYSIS = "Data Analyst";
     public static final String VALID_JOB_TITLE_PROJECT_MANAGER = "Project Manager";
@@ -156,6 +176,18 @@ public class CommandTestUtil {
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
+
+    // MarkJob Test
+    public static final String VALID_JOB_STATUS_FILLED = "filled";
+    public static final String VALID_JOB_STATUS_VACANT = "vacant";
+    public static final String VALID_INPUT_JOB_STATUS_FILLED = " " + PREFIX_JOBSTATUS + "filled";
+    public static final String VALID_INPUT_JOB_STATUS_VACANT = " " + PREFIX_JOBSTATUS + "vacant";
+    public static final String INVALID_JOB_STATUS_DECIDING = "deciding";
+    public static final String INVALID_JOB_STATUS_PREFIX = "sj/";
+    public static final String INVALID_INPUT_JOB_STATUS_FILLED = " " + INVALID_JOB_STATUS_PREFIX + "filled";
+    public static final String INVALID_INPUT_JOB_STATUS_VACANT = " " + INVALID_JOB_STATUS_PREFIX + "vacant";
+    public static final String INVALID_INPUT_JOB_STATUS_DECIDING = " " + PREFIX_JOBSTATUS + INVALID_JOB_STATUS_DECIDING;
+
     // ==================== Applicant =================================
     public static final EditApplicant.EditApplicantDescriptor DESC_CHARLIE;
     public static final EditApplicant.EditApplicantDescriptor DESC_DON;
