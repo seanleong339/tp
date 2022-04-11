@@ -869,22 +869,44 @@ testers are expected to do more *exploratory* testing.
     
 
 
-### Deleting a person
+### Deleting an Applicant
 
-1. Deleting a person while all persons are being shown
+1. Deleting an applicant while all applicants are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all applicants by clicking on the Applicant tab on the GUI or by using the `tabapplicant` command. Multiple applicants in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   1. Test case: `deleteapplicant 1`<br>
+      Expected: First applicant is deleted from the list. Details of the deleted applicant shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   1. Test case: `deleteapplicant 0`<br>
+      Expected: No applicant is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   1. Other incorrect deleteapplicant commands to try: `deleteapplicant`, `deleteapplicant x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+### Deleting a Job
+
+1. Deleting a Job while all jobs are being shown
+
+    1. Prerequisites: List all jobs by clicking on the Job tab on the GUI or by using the `tabjob` command. Multiple jobs in the list.
+
+    2. Test case: `deletejob 1`<br>
+       Expected: First job is deleted from the list. Details of the deleted job shown in the status message. Timestamp in the status bar is updated.
+
+    3. Test case: `deletejob 0`<br>
+       Expected: No job is deleted. Error details shown in the status message. Status bar remains the same.
+
+    4. Other incorrect deletejob commands to try: `deletejob`, `deletejob x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+### Sorting Job List
+
+1. Sorting the Job List by job status.
+
+    1. Prerequisites: List all jobs by clicking on the Job tab on the GUI or by using the `tabjob` command. Multiple jobs in the list with different job status.
+
+    1. Test case: `sortjob`<br>
+       Expected: Jobs are sorted by the job status with 'vacant' before 'filled'. SortJob success message shown in the status bar.
 
 ### Saving data
 
