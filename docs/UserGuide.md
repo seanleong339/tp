@@ -90,12 +90,6 @@ If you are a MacOS user and unable to run file by double-clicking, go to Termina
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-## Flags
-These flags are used in the commands to indicate which **field you are currently referring to**. 
-They are used first before adding to corresponding fields.
-* For example: `n/Benson Goh` - the `n/` flag is used to indicate that the subsequent input will be the `Applicant Name`.
-* For example: `jt/Project Manager` - the `jt/` flag is used to indicate that the subsequent input will be the `Job Title`.
-
 <div style="page-break-after: always"></div>
 
 ## Flags and Attributes
