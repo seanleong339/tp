@@ -440,8 +440,6 @@ The following sequence diagram shows how the `deleteapplicant` command works:
 ### AddJob feature
 The design implementation for AddJob is similar to that for AddApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#addapplicant-feature) on AddApplicant for the design considerations.
 
-#### Design considerations:
-
 ### EditJob feature
 The design implementation for EditJob is similar to that for EditApplicant, but with classes to add a Job instead of Applicant. Refer to the section [above](DeveloperGuide.md#editapplicant-feature) on EditApplicant for the design considerations.
 
