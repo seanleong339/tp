@@ -5,18 +5,18 @@ title: User Guide
 
 ## Introduction
 
-Being a Job Recruiter means working in a **fast paced environment with long hours**, and a need to have **attention to 
-details**. It is a job where **time is money** as the number of applicants that sign to a job determines the amount of 
+Being a Job Recruiter means working in a **fast paced environment with long hours**, and a need to have **attention to
+details**. It is a job where **time is money** as the number of applicants that sign to a job determines the amount of
 commission earned.
 
-Hence, introducing **ReCLIne**. ReCLIne is a **desktop app which serves as a centralised location for recruiters to 
-store and track job applicants and jobs, optimized for use via a Command Line Interface** (CLI) while still having 
-the benefits of a Graphical User Interface (GUI). If you can type fast, ReCLIne can get your contact management tasks 
+Hence, introducing **ReCLIne**. ReCLIne is a **desktop app which serves as a centralised location for recruiters to
+store and track job applicants and jobs, optimized for use via a Command Line Interface** (CLI) while still having
+the benefits of a Graphical User Interface (GUI). If you can type fast, ReCLIne can get your contact management tasks
 done faster than traditional GUI apps.
 
 ## How to use this guide
-The **goal of this guide** is to help you, the users, to **understand** how to use our application better. 
-* If you are a **new user**, we recommend going to the [Quick Start](#quick-start) section, to learn how to install the 
+The **goal of this guide** is to help you, the users, to **understand** how to use our application better.
+* If you are a **new user**, we recommend going to the [Quick Start](#quick-start) section, to learn how to install the
 application onto your device and to have a quick try at some commands that ReCLIne provides.
 * If you are an **experienced user**, we recommend going to the [Features](#features) section to view all the commands
 available on ReCLIne.
@@ -69,7 +69,7 @@ available on ReCLIne.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
 
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 If you are a MacOS user and unable to run file by double-clicking, go to Terminal and run `java -jar ReCLIne.jar`.
 </div> <br>
 
@@ -78,12 +78,12 @@ If you are a MacOS user and unable to run file by double-clicking, go to Termina
 5. Type the command in the command box [1] and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`addapplicant`**` n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12` 
+   * **`addapplicant`**` n/Jaden Ho p/92812192 nric/S1234567A a/Tampines St 96 Block 312 e/jadenho@email.com d/2022-03-12`
      : Adds an applicant named `Jaden Ho` with the inputted NRIC, address, email, phone number, and date applied to the Address Book.
 
    * **`deleteapplicant`**` 3` : Deletes the 3rd applicant shown in the displayed list.
 
-   * **`editapplicant`**` 1 e/jadenho@email.com q/Degree in Computer Science i/2022-03-18` 
+   * **`editapplicant`**` 1 e/jadenho@email.com q/Degree in Computer Science i/2022-03-18`
      : Edits the 1st applicant on the displayed list, changing his email, qualification and interview date.
 
    * **`exit`** : Exits the app.
@@ -96,12 +96,12 @@ If you are a MacOS user and unable to run file by double-clicking, go to Termina
 ## Flags and Attributes
 `flag/[ATTRIBUTE]` are often used in commands.
 
-`flag` are used in the commands to indicate which **field you are currently referring to**. 
+`flag` are used in the commands to indicate which **field you are currently referring to**.
 They are used first before entering adding to corresponding fields.
 
 `[ATTRIBUTE]` are used in the commands to **input that value** that you want to add to a particular `flag`
 
-* For example: `n/Benson Goh` 
+* For example: `n/Benson Goh`
   * The `n/` flag is used to indicate that you are referring to the `Applicant's Name`.
   * `Benson Goh` is the `[ATTRIBUTE]` you want to add to the `n/` flag.
 * For example: `jt/Project Manager`
@@ -153,7 +153,7 @@ They are commonly used in every command. Flag details are given below.
 
 * `flag/[ATTRIBUTE]` **with** an asterisk before the flag are compulsory.<br>
   e.g. `*n/[NAME] *p/[PHONE]` can only be used as `n/John Doe p/93483747`.
-  
+
 * `flag/[ATTRIBUTE]` **without** an asterisk before the flag are optional.<br>
   e.g. `*n/[NAME] t/[TAG]` can be used as `n/John Doe t/Applicant` or `n/John Doe`.
 
@@ -167,14 +167,14 @@ They are commonly used in every command. Flag details are given below.
   the parameter will be taken**.<br>
   e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
-* Extraneous parameters for commands that do not take in parameters 
+* Extraneous parameters for commands that do not take in parameters
   (such as `help`, `listapplicant`, `listjob`, `tabapplicant`, `tabjob`, `exit` and `clear`)
   will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 </div>
 
-### Viewing help : `help` 
+### Viewing help : `help`
 
 Shows a message explaining how to access the help page.
 
@@ -213,7 +213,7 @@ Format: `addapplicant *n/[NAME] *p/[PHONE] *nric/[NRIC] *a/[ADDRESS] *e/[EMAIL]
 
 `*d/[DATEAPPLIED]` : Date that Applicant applied for the job
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
 any other format.
@@ -238,12 +238,12 @@ Format: `editapplicant *[INDEX] n/[NAME] p/[PHONE NUMBER] e/[EMAIL ADDRESS] a/[A
 nric/[NRIC] q/[QUALIFICATION] d/[DATE APPLIED] j/[JOB ID]
 i/[INTERVIEWDATE] t/[TAG]…​`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
 * Just input the fields that you would like to change for the specific index number.
-  
+
 * To leave out fields, **skip the flag and attribute** completely.
 </div>
 
@@ -265,7 +265,7 @@ i/[INTERVIEWDATE] t/[TAG]…​`
 
 `d/[DATEAPPLIED]` : Updated Applicant's application date
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Note:** The `[DATEAPPLIED]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
 any other format.
@@ -278,7 +278,7 @@ any other format.
 
 `i/[INTERVIEWDATE]` : Updated Applicant’s upcoming job interview date
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Note:** The `[INTERVIEWDATE]` field must be in a `YYYY-MM-DD` format. ReCLIne will not accept the date if it is in
 any other format.
@@ -294,7 +294,7 @@ i/2022-03-18`
 * Edits an applicant of index 1 with name - Bryan Ho, address - Tampines St 96 Block 312
   email - jadenho@email.com, date applied - 2022-03-12, qualification - Degree of Computer Science,
   interview date - 2022-03-18.
-  
+
 
 ### Delete an Applicant: `deleteapplicant`
 
@@ -302,7 +302,7 @@ Deletes an applicant specified by the index from the applicant list in ReCLIne.
 
 Format: `deleteapplicant *[INDEX]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Tip:** **Only fields with `*` indicated are compulsory.**
 </div>
@@ -324,7 +324,7 @@ Mark applicant status.
 
 Format: `markapplicant *[INDEX] *s/[STATUS]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
@@ -407,7 +407,7 @@ Format: `findapplicant KEYWORD…​`
 Examples:
 * `findapplicant Alice` returns anyone in the applicant list that has "Alice" in their name.
   <br>
-  
+
 
 ### Listing all applicants in the Applicant List: `listapplicant`
 
@@ -430,7 +430,7 @@ Adds a new job posting to ReCLIne
 
 Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *pos/[POSITION] *sal/[SALARY]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.**<br>
 
@@ -441,15 +441,15 @@ Format: `addjob *jt/[JOB TITLE] *c/[COMPANY] *a/[ADDRESS] *q/[QUALIFICATION] *po
 
 `*jt/[JOB TITLE]`: Job title of the job
 
-`*c/[COMPANY]`: The company for the job opening 
+`*c/[COMPANY]`: The company for the job opening
 
-`*a/[ADDRESS]`: Location of the job 
+`*a/[ADDRESS]`: Location of the job
 
 `*q/[QUALIFICATION]`: Education qualification required for the job
 
 `*pos/[POSITION]`: Type of job, whether part-time or full time.
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 **Note:** The `[POSITION]` field only accepts either `ft` - **"full time"** or `pt` - **"part time"** as an input. ReCLIne will output an error is anything
 else is inputted.
 </div>
@@ -457,9 +457,9 @@ else is inputted.
 `*s/[SALARY]`:  Salary of job, based on how much the job pays a month. The start and end of the SALARY range must be a positive integer
 1000,2000,3000,...
 
-<div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
-of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error. 
+<div markdown="span" class="alert alert-info">:information_source:
+**Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound**
+of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
 A range where the **lower bound is equal to the upper bound** is **accepted**.
 </div>
 
@@ -469,7 +469,7 @@ Example:
 
 * Adds a job called Software Developer, for a company Ebiz Pte Ltd. The location of the job is at Hougang Road Blk 38,
 and it requires a Bachelors in Computer Science. This is a full time position with a salary between 3000-4000.
-  
+
 
 ### Editing a Job in the JobList: `editjob`
 
@@ -480,12 +480,12 @@ outdated information to applicants.
 Format: `editjob *[INDEX] jt/[JOB TITLE] c/[COMPANY NAME] a/[ADDRESS]
 q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Tip:** Fill in fields in any order. **Only fields with `*` indicated are compulsory.** <br>
 
 * Just input the fields that you would like to change for the specific index number.
-  
+
 * To leave out fields, **skip the flag and attribute** completely.
 
 </div>
@@ -504,7 +504,7 @@ q/[QUALIFICATION] pos/[POSITION] sal/[SALARY]`
 
 `pos/[POSITION]` : Update Job's position to `[POSITION]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 **Note:** The `[POSITION]` field only accepts either `ft` - **"full time"** or `pt` - **"part time"** as an input. ReCLIne will output an error is anything
 else is inputted.
 
@@ -513,22 +513,22 @@ else is inputted.
 `sal/[SALARY]` : Update the Job to edit the salary to `[SALARY]`
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound** 
+**Note:** The inputted `[SALARY]` must be a range. The **lower bound of the range cannot be larger than the upper bound**
 of the range. For example "4000 - 3000" is an invalid salary range, and ReCLIne will output an error.
-A range where the **lower bound is equal to the upper bound** is **accepted**. For example "4000 - 4000" is allowed. This 
+A range where the **lower bound is equal to the upper bound** is **accepted**. For example "4000 - 4000" is allowed. This
 indicates that the salary is not a range, but rather a fixed amount.
 
 </div>
 
 Examples:
 
-`editjob 1 jt/Software Engineer UI c/Designer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft 
+`editjob 1 jt/Software Engineer UI c/Designer Club q/Degree in Computer Science a/123 Block 3 Designer Road pos/ft
 sal/4000 - 5000`
 
 * Edits a job with index number 1 with job title - Software Engineer UI comapny name - Designer Club,
-  qualification - Degree of Computer Science, address - Block 3 Designer Road, 
+  qualification - Degree of Computer Science, address - Block 3 Designer Road,
   position - full time, salary range - 4000 - 5000. <br>
-  
+
 
 ### Deleting a job: `deletejob`
 
@@ -536,7 +536,7 @@ Delete a job specified by the index from the job list of ReCLIne.
 
 Format: `deletejob *[INDEX]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Tip:** **Only fields with `*` indicated are compulsory.**
 </div>
@@ -555,7 +555,7 @@ Marks an existing job posting as filled or vacant.
 
 Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 
 **Tip:** Fill in fields in the stipulated order. **Only fields with `*` indicated are compulsory.** <br>
 
@@ -568,8 +568,8 @@ Format: `markjob *[INDEX] *js/[JOBSTATUS]`
 
 `*js/[JOB STATUS]`: The new status of the job posting.
 
-<div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The `[JOB STATUS]` field only accepts either `filled` or `vacant` as an input. ReCLIne will 
+<div markdown="span" class="alert alert-info">:information_source:
+**Note:** The `[JOB STATUS]` field only accepts either `filled` or `vacant` as an input. ReCLIne will
 output an error if anything else is inputted.
 </div>
 
@@ -591,20 +591,20 @@ Format: `sortjob`
 
 ### Locating jobs: `findjob`
 
-Find jobs in the job list either by `Job Title` or by `Job ID`. Find jobs by Job Title by matching job titles in 
+Find jobs in the job list either by `Job Title` or by `Job ID`. Find jobs by Job Title by matching job titles in
 `Job List` to the inputted keywords. Find jobs by `Job ID` by matching the job id in `Job List` to the inputted integer id.
 
 Format (search via job title): `findjob jt/KEYWORD [MORE_KEYWORDS]`
 
 Format (search via job ID): `findjob id/[ID]`
 
-<div markdown="span" class="alert alert-info">:information_source: 
+<div markdown="span" class="alert alert-info">:information_source:
 **Note:** You can only find jobs by either `Job Title` or `ID`. It is not possible to search by both attributes.
 </div>
 
 ***flag/[Attribute]***
 
-`jt/[KEYWORD] KEYWORDS`: Search for job title containing the `[KEYWORD]`. 
+`jt/[KEYWORD] KEYWORDS`: Search for job title containing the `[KEYWORD]`.
 * The search is case-insensitive. e.g. `engineer` will match `Engineer`
 * The order of the keywords does not matter. e.g. `Software Engineer` will match `Engineer Software`
 * Only full words will be matched e.g. `Software` will not match `Soft`
@@ -698,12 +698,12 @@ We would like to remind users again, if your changes to the data file makes its 
 
 **Q**: How do I transfer my data to another Computer?<br>
 
-**A**: 
+**A**:
 1. Download the `ReCLIne.jar` to a new empty folder on your other Computer.
 2. Run the application for the first time on your new device by double clicking on the `ReCLIne.jar` file.
 3. Run the command `deletejob 1` to save a new data file.
 4. In the folder containing your `ReCLIne.jar` go into the `data` folder.
-5. Delete the `ReCLIne.json` file here, then copy the `ReCLIne.json` file on your old device to this folder. The file can be found in the same folder on your old device as your new device. 
+5. Delete the `ReCLIne.json` file here, then copy the `ReCLIne.json` file on your old device to this folder. The file can be found in the same folder on your old device as your new device.
         The file structure of the ReCLIne application folder in your new device should be as such after Step 2.
 ```
 folderContainingReCLIne
@@ -715,7 +715,6 @@ folderContainingReCLIne
 └─── data
      | ReCLIne.json
 ```
-       
 
 **Q**: Do I lose my Applicants' and Jobs' data if i accidentally shut down ReCLIne?
 

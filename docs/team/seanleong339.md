@@ -13,7 +13,7 @@ Given below are my contributions to the project.
   * What it does: Allows the user to save Applicants, Jobs, and the current unique id for new Jobs.
   * Justification: This feature is important for the application to save application information in the appropriate data file.
   * Highlights: This enhancement was challenging as it required an in-depth understanding of how data from the model and logic classes converts to a JSON format. Requires an understanding of how the data from individual models are gathered and saved in a single JSON file. Finally, it requires and understanding of how the data from the Json file converts back to a model. Given the number of attribute classes in both Applicants and Jobs, it also required extensive testing to ensure all attributes could be converted to JSON file, and converted back into the correct models. The implementation required additions in the JSON storage classes, creation of new Storage classes JsonAdaptedJob and JsonAdaptedApplicant, as well as changes in the model classes.
-  * Credits: This feature builds on the storage system of AB3. It uses the same design pattern and methods as JsonAdaptedPerson for JsonAdaptedApplicant and JsonAdaptedJob, but adapted for Applicant and Jobs respectively. 
+  * Credits: This feature builds on the storage system of AB3. It uses the same design pattern and methods as JsonAdaptedPerson for JsonAdaptedApplicant and JsonAdaptedJob, but adapted for Applicant and Jobs respectively.
 
 * **New Feature**: Added the ability to assign Unique ID to Jobs on creation of Job. [\#139](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/139/files)
   * What it does: Assigns a unique Id to Jobs when they are created.

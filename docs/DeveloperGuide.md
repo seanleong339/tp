@@ -76,6 +76,7 @@ Given below is a quick overview of main components and how they interact with ea
 **Main components of the architecture**
 
 **`Main`** has two classes called [`Main`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/MainApp.java).
+
 It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
@@ -109,7 +110,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -274,8 +275,8 @@ and then used to create a new `Applicant` object. The `Applicant` object will be
 
 ![AddApplicantStep2](images/AddApplicantStep2.png)
 
-Step 3. The `AddApplicant` command is executed, and it will call the `Model#addApplicant()`, which calls the 
-`AddressBook#addApplicant()`, to store the `Applicant` in the `UniqueApplicantList`. 
+Step 3. The `AddApplicant` command is executed, and it will call the `Model#addApplicant()`, which calls the
+`AddressBook#addApplicant()`, to store the `Applicant` in the `UniqueApplicantList`.
 
 ![AddApplicantStep3](images/AddApplicantStep3.png)
 
@@ -762,15 +763,15 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `addapplicant n/Rick Sanchez nric/S2344567D p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21 t/lab-trained`
         Expected: An applicant named Rick Sanchez, with all the information in the command above, will be added. However, his interview date,
        job Id, Qualification and application status will all be "PENDING" as they have not been confirmed.
-       
+
     2. Test case: `addapplicant n/Rick Sanchez p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21`
     Expected: No applicant will be added. An error message with the correct command usage will be shown.
-       
+
     3. Test case: `addapplicant n/Rick Sanchez j/2 nric/S2344567D p/98765432 e/rick@mort.com a/311, Jurong Ave 2, #08-19 d/2022-03-21 t/lab-trained`
     Expected: No applicant will be added as command includes a field (j/) that should be added by editapplicant. An error message detailing the error and how
        to use the command will be shown.
        Other incorrect fields to try are `q/` and `i/`.
-       
+
 ### Adding a Job
 1. Adding a Job to the application
     1. Test case: `addjob jt/Devops Engineer c/Ebiz Pte Ltd a/59 Hougang Road Blk 38 q/Bachelors in Computer Science pos/ft sal/3000-4000 `
@@ -841,14 +842,13 @@ testers are expected to do more *exploratory* testing.
    1. Missing data file
       1. When ReCLIne cannot find a data file, it will automatically generate a sample data file containing sample data.
     This happens by default when a user installs a new ReCLIne for the first time. A user can look out for this log
-         message when he starts the application to confirm. 
+         message when he starts the application to confirm.
 `"INFO: Data file not found. Will be starting with a sample ReCLIne"`
-         
+
    2. Corrupted data file
       1. If the data file has been corrupted, or is unable to be read by ReCLIne for any reason, the application will
     start with an empty list for both applicants and jobs. A user can look out for this log message when he starts
          the application to confirm. `"WARNING: Data file not in the correct format. Will be starting with an empty ReCLIne"`
-         
    3. Solutions
       1. To restart the application with a sampledata book, users will need to delete the data folder generated in the same folder
     as their ReCLIne.jar file.

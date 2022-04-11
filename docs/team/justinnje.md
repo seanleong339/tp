@@ -17,21 +17,21 @@ Given below are my contributions to the project.
     * Highlights: This enhancement was challenging in partner with EditApplicant as it is needed to determine if 2 applicants are duplicates or not. On one hand, when editing an applicant, the edited applicant and old applicant should only be the same if they have the same NRIC, Phone number and Email address. 
       However, on the other hand, when comparing an applicant to other applicants in the applicant list, an applicant should be considered a duplicate the moment either its NRIC, Phone number or Email address is the same as other applicants in the list.
     * This feature is adapted from the Person class from AB3.
-    
+
 * **New Feature**: Added an applicant list where all applicants in that list are unique from each other [\#79](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/79/files)
     * What it does: Used by AB3 to store applicants. Ensures that each applicant is unique from each other
     * Justification: This feature is important for the application as it the list that stores all the information of applicants to be used across all applicant command classes. Any addition of new applicants, any changes to an applicant, and any deletion of applicant will all require the use of this feature.
     * This feature is adapted from the UniquePersonList attribute in AB3. It now stores unique applicants.
-    
+
 * **New Feature**: Added a job list where all jobs in that list are unique from each other [\#135](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/135/files)
     * What it does: Used by AB3 to store jobs. Ensures that each job is unique from each other
     * Justification: This feature is important for the application as it the list that stores all the information of jobs to be used across all job command classes. Any addition of new jobs, any changes to a job, and any deletion of job will all require the use of this feature.
     * This feature is adapted from the UniquePersonList attribute in AB3. It now stores unique jobs.
 
-* **New Feature**: Added the ability to edit applicants that exist in ReCLIne [\#90](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/90) [\#140](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/140) 
+* **New Feature**: Added the ability to edit applicants that exist in ReCLIne [\#90](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/90) [\#140](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/140)
     * What it does: Allows the users to edit the details of an applicant that is currently stored in ReCLIne
     * Justification: This feature is important for the application as it gives the users the ability to edit the applicant's information and keep it up to date, without the hassle of having to delete the applicant and add him all over again whenever a change is needed.
-    * Highlights: The enhancement was challenging as it requires an in-depth understanding of how the many layers of AB3 interacted with each other. Editing the information was challenging as there was a need for each applicant in the list to be unique, no 2 applicants in ReCLIne should have the same NRIC, Phone number or Email address. 
+    * Highlights: The enhancement was challenging as it requires an in-depth understanding of how the many layers of AB3 interacted with each other. Editing the information was challenging as there was a need for each applicant in the list to be unique, no 2 applicants in ReCLIne should have the same NRIC, Phone number or Email address.
       Thus, there was a need for rigorous checking within the command to endure that applicants will always be unique to one another even after editing the applicant's information.
     * This feature is adapted from the Edit command from AB3. It used the same command design pattern, a parser and a command class. However, the class that is created is changed to Applicant, and had to have checks to ensure that an edited applicant is not a duplicate of other applicants that exists in the list.
 
@@ -65,11 +65,11 @@ Given below are my contributions to the project.
     * User Guide:
         * Added documentation for the features `editapplicant`, `editjob`, `listapplicant` and `findapplicant` [\#159](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/159/files)
         * Edited Command Summary [\#169](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/169/files)
-        * Added flag summary [\#260](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/260) 
+        * Added flag summary [\#260](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/260)
         * Overall maintenance of User Guide [\#112](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/112/files) [\#169](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/169/files) [\#251](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/251/files) [\#255](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/255)
     * Developer Guide:
         * Added implementation for `editapplicant` [\#119](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/119) [\#127](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/127)
-        * Added User Stories [\#119](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/119) 
+        * Added User Stories [\#119](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/119)
 
 * **Contribution to team-based tasks**:
     * Code quality: Looks after code quality, ensures adherence to coding standards, etc
@@ -83,6 +83,6 @@ Given below are my contributions to the project.
       [\#126](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/126)
       [\#158](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/158)
       [\#165](https://github.com/AY2122S2-CS2103T-W15-1/tp/pull/165)
-      
+
 
 
