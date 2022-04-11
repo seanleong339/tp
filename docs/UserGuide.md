@@ -756,6 +756,7 @@ folderContainingReCLIne
 
 
 ##Glossary
+
 **Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
 
 **CLI** - Command Line Interface. It is a way of interacting with an application by typing in text.
