@@ -726,6 +726,24 @@ folderContainingReCLIne
 
 **A**: All data that you have entrusted into ReCLIne will be auto-saved, so you will not lose any data.
 
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
+
+##Glossary
+
+**Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
+
+**CLI** - Command Line Interface. It is a way of interacting with an application by typing in text.
+
+**GUI** - Graphical User Interface. It is the visible components of the application that the user can interact with. When the user runs the application and sees the ReCLIne window pop up, that is the GUI.
+
+**Javascript** - A programming language that is used mainly for web development.
+
+**JSON** - JavaScript Object Notation. It is a format for storing data.
+
+**Job** - A representation in ReCLIne of a job posting. Contains the relevant details of said job posting. See [addjob](#adding-a-job-addjob).
+
+**Terminal** - Also called command lines or consoles. Allow the use of a computer wihtout a GUI. In Mac, type 'Terminal' into the Spotlight tool (CMD + Space or click the magnifying glass in the top right). For Windows, click the Windows start button, search for 'cmd' and run.
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
@@ -755,18 +773,3 @@ folderContainingReCLIne
 | **Exit**                    | `exit`                                                                                                                                                                                                                                                       |
 
 
-##Glossary
-
-**Applicant** - A representation in ReCLIne of an individual applying for a job. Stores the relevant information of said individual. See [addapplicant](#adding-an-applicant-to-the-applicantlist-addapplicant).
-
-**CLI** - Command Line Interface. It is a way of interacting with an application by typing in text.
-
-**GUI** - Graphical User Interface. It is the visible components of the application that the user can interact with. When the user runs the application and sees the ReCLIne window pop up, that is the GUI.
-
-**Javascript** - A programming language that is used mainly for web development.
-
-**JSON** - JavaScript Object Notation. It is a format for storing data.
-
-**Job** - A representation in ReCLIne of a job posting. Contains the relevant details of said job posting. See [addjob](#adding-a-job-addjob).
-
-**Terminal** - Also called command lines or consoles. Allow the use of a computer wihtout a GUI. In Mac, type 'Terminal' into the Spotlight tool (CMD + Space or click the magnifying glass in the top right). For Windows, click the Windows start button, search for 'cmd' and run.
