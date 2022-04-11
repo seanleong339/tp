@@ -159,15 +159,16 @@ public class CommandTestUtil {
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
     // MarkJob Test
-    public static final String VALID_JOBSTATUS_FILLED = "filled";
-    public static final String VALID_JOBSTATUS_VACANT = "vacant";
-    public static final String VALID_INPUT_JOBSTATUS_FILLED = " " + PREFIX_JOBSTATUS + "filled";
-    public static final String VALID_INPUT_JOBSTATUS_VACANT = " " + PREFIX_JOBSTATUS + "vacant";
-    public static final String INVALID_JOBSTATUS_DECIDING = "deciding";
-    public static final String INVALID_JOBSTATUS_PREFIX = "sj/";
-    public static final String INVALID_INPUT_JOBSTATUS_FILLED = " " +  INVALID_JOBSTATUS_PREFIX + "filled";
-    public static final String INVALID_INPUT_JOBSTATUS_VACANT = " " +  INVALID_JOBSTATUS_PREFIX + "vacant";
-    public static final String INVALID_INPUT_JOBSTATUS_DECIDING = " " +  PREFIX_JOBSTATUS + INVALID_JOBSTATUS_DECIDING ;
+    public static final String VALID_JOB_STATUS_FILLED = "filled";
+    public static final String VALID_JOB_STATUS_VACANT = "vacant";
+    public static final String VALID_INPUT_JOB_STATUS_FILLED = " " + PREFIX_JOBSTATUS + "filled";
+    public static final String VALID_INPUT_JOB_STATUS_VACANT = " " + PREFIX_JOBSTATUS + "vacant";
+    public static final String INVALID_JOB_STATUS_DECIDING = "deciding";
+    public static final String INVALID_JOB_STATUS_PREFIX = "sj/";
+    public static final String INVALID_INPUT_JOB_STATUS_FILLED = " " + INVALID_JOB_STATUS_PREFIX + "filled";
+    public static final String INVALID_INPUT_JOB_STATUS_VACANT = " " + INVALID_JOB_STATUS_PREFIX + "vacant";
+    public static final String INVALID_INPUT_JOB_STATUS_DECIDING = " " + PREFIX_JOBSTATUS + INVALID_JOB_STATUS_DECIDING;
+
     // ==================== Applicant =================================
     public static final EditApplicant.EditApplicantDescriptor DESC_CHARLIE;
     public static final EditApplicant.EditApplicantDescriptor DESC_DON;
