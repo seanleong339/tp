@@ -28,8 +28,16 @@ title: Developer Guide
 * [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
   * [Launch and shutdown](#launch-and-shutdown)
   * [Adding an Applicant](#adding-an-applicant)
+  * [Editing an Applicant](#editing-an-applicant)
+  * [Marking an Applicant](#marking-an-applicant)
+  * [Deleting an Applicant](#deleting-an-applicant)
+  * [Sorting Applicant](#sorting-applicants)
   * [Adding a Job](#adding-a-job)
-  * [Deleting a person](#deleting-a-person)
+  * [Finding a Job](#finding-a-job)
+  * [Editing a Job](#editing-a-job)
+  * [Marking a Job](#marking-a-job)
+  * [Deleting a Job](#deleting-a-job)
+  * [Sorting Job List](#sorting-job-list)
   * [Saving data](#saving-data)
 
 --------------------------------------------------------------------------------------------------------------------
