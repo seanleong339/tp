@@ -109,7 +109,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S2-CS2103T-W15-1/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -385,7 +385,7 @@ that there is no duplicate Applicants in the `UniqueApplicantList` and `AddressB
 Step 4. Lastly, `markedApplicant`t will replace the current A`applicantToMark` of the indicated index number in the
 `AddressBook`.
 
-![EditApplicantState3](images/MarkApplicantState3.png)
+![MarkApplicantState3](images/MarkApplicantState3.png)
 
 The following sequence diagram shows how the `markapplicant` command works:
 
